@@ -1,0 +1,14 @@
+.vscode
+vendor/
+public/vendor
+app/uploads
+app/config/config.php
+.idea/
+public/info.php
+composer.lock
+public/php_errors.log
+components/
+dev_resources_archive/
+bfg.jar
+filetmp/
+

@@ -1,0 +1,19 @@
+{
+  "require": {
+    "google/apiclient": "2.0",
+    "phpoffice/phpexcel": "1.8.1",
+    "twitter/bootstrap": "4.0.0-beta.3",
+    "heimrichhannot/popper.js": "1.12.6",
+    "datatables/datatables": "1.10.16",
+    "fortawesome/font-awesome": "4.7.0",
+    "nuovo/spreadsheet-reader": "0.5.11",
+    "driftyco/ionicons": "2.0.1",
+    "components/jqueryui": "1.12.1",
+    "components/jquery": "3.2.1",
+    "etdsolutions/sumoselect": "dev-master",
+    "twbs/bootstrap": "v4.0.0-alpha.6",
+    "hsalazr/jquery-validation":"dev-master",
+    "se/opentrans": "^0.1.3"
+  }
+
+}

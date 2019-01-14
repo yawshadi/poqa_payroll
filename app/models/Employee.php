@@ -1,0 +1,92 @@
+<?php
+
+class Employee extends tableDataObject{
+
+
+    const TABLENAME = 'basicinformation';
+
+    public static  function getEmployees(){
+        global $payrolldb;
+        $getrecords = "select * from  basicinformation where source is null ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+    }
+
+    public static  function getEmployeesByCompanyandDepartment($company, $department){
+        global $payrolldb;
+        $getrecords = "select * from  basicinformation  where company = '$company' and department = '$department' ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+    }
+
+    public static  function getEmployeesByCompany($company){
+        global $payrolldb;
+        $getrecords = "select * from  basicinformation  where company = '$company' and designation = 'Casual' ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+    }
+
+    public static  function getEmployeesByType($company, $type){
+        global $payrolldb;
+        $getrecords = "select * from  basicinformation  where company = '$company' and designation = '$type' ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+    }
+
+    public static  function getEmployeesById($id){
+        global $payrolldb;
+        $getrecords = "select * from  basicinformation  where basic_id = '$id' ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+    }
+
+
+    public static  function addchildren($basicid, $name, $dob){
+        global $payrolldb;
+        $insertrecords = "INSERT into children (childname, dateofbirth, basic_id) values ('$name', '$dob', $basicid)  ";
+        $payrolldb->prepare($insertrecords);
+        $payrolldb->execute();
+
+    }
+
+    public static  function getvisaemployees($company = null){
+        global $payrolldb;
+        if($company == ''){
+            $getrecords = "select * from  basicinformation where source = 'visa' ";
+        }else{
+        $getrecords = "select * from  basicinformation where source = 'visa'  and company = '$company' ";
+         }
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+    }
+
+
+    public static  function searchemployeegeneral($value){
+        global $payrolldb;
+        $getrecords = "select * from  basicinformation where  staffid = '$value' or telephone = '$value' ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->singleRecord();
+    }
+
+    public static  function searchemployeegeneralcount($value){
+        global $payrolldb;
+        $getrecords = "select count(*) as ct  from  basicinformation where  staffid = '$value' or telephone = '$value' ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->fetchColumn();
+    }
+
+
+
+
+
+}
+
+?>
