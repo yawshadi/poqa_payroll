@@ -70,6 +70,18 @@ tr, td{
          <td><input type="text" class="form-control bom" id="location" placeholder="Location"/></td>
          <td><input type="text" class="form-control bom"  id="telephone" placeholder="Telephone"/></td>
          </tr>
+         <tr>
+         <td><select class='form-control bom' id='nationality'>
+          <option value=''>Nationality</option>
+           <option>Ghanaian</option>
+           <option>Expatriate</option>
+          </select></td>
+         <td><select class='form-control bom' id='gender'>
+          <option value=''>Gender</option>
+           <option>Male</option>
+           <option>Female</option>
+          </select></td>
+         </tr>
 
          <tr>
          <td>
@@ -155,6 +167,30 @@ tr, td{
          <tr>
          <td><input type="text" class="form-control bom"  id="tierno"  placeholder="Tire 2 No: "/></td>
          <td align='right'><input type="text" class="form-control bom"  id="hiredate" placeholder="Hire Date"/></td>
+         </tr>
+
+         <tr>
+         <td><input type="text" class="form-control bom"  id="contractstart"  placeholder="Contract Start "/></td>
+         <td align='right'><input type="text" class="form-control bom"  id="contractend" placeholder="Contract End"/></td>
+         </tr>
+
+         <tr>
+         <td><input type="text" class="form-control bom"  id="entrydate"  placeholder="Entry Date"/></td>
+         <td align='right'><input type="text" class="form-control bom"  id="exitdate" placeholder="Exit Date"/></td>
+         </tr>
+         <tr>
+         <td><input type="text" class="form-control bom"  id="contractallocation"  placeholder="Contract Allocation"/></td>
+         <td><input type="text" class="form-control bom"  id="academictitle" placeholder="Academic Title"/></td>
+         </tr>
+         <tr>
+         <td><select class='form-control bom' id='category'>
+          <option value=''>Category</option>
+           <option>Manager</option>
+           <option>Officer 1</option>
+           <option>Officer 2</option>
+          </select></td>
+          <td><input type="text" class="form-control bom" name='basicsalary' id="basicsalary" placeholder="Basic Salary"/></td>
+
          </tr>
 
          <tr>

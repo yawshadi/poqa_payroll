@@ -43,7 +43,7 @@ tr, td{
       <div id='placeholder'>
 
       <div id='ajaxcontainer'> </div>
-      <?php// require APPROOT .'/views/inc/dash.php' ; ?>
+    
 
 
       </div>
@@ -74,7 +74,18 @@ tr, td{
          <td><input type="text" class="form-control bom" name="location" value="<?php echo $data['employees'][0]->location  ?>"  placeholder='First Location'/></td>
          <td><input type="text" class="form-control bom" name="telephone" value="<?php echo $data['employees'][0]->telephone  ?>"  placeholder='Telephone'/></td>
          </tr>
-
+         <tr>
+         <td><select class='form-control bom' name='nationality' id='nationality'>
+          <option ><?php echo $data['employees'][0]->nationality  ?></option>
+           <option>Ghanaian</option>
+           <option>Expatriate</option>
+          </select></td>
+         <td><select class='form-control bom' name='gender' id='gender'>
+          <option ><?php echo $data['employees'][0]->gender  ?></option>
+           <option>Male</option>
+           <option>Female</option>
+          </select></td>
+         </tr>
          <tr>
          <td>
          <select class='form-control bom' id='compval' name='company'>
@@ -159,6 +170,29 @@ tr, td{
          <tr>
          <td><input type="text" class="form-control bom"  name="tierno"  placeholder='Tire 2 Number' value="<?php echo $data['employees'][0]->tiernumber  ?>"/></td>
          <td align='right'><input type="text" class="form-control bom"  placeholder='Hire Date'  name="hiredate" value="<?php echo $data['employees'][0]->hiredate   ?>"/></td>
+         </tr>
+
+         <tr>
+         <td><input type="text" class="form-control bom"  id="contractstart" name='contractstart' value="<?php echo $data['employees'][0]->contractstart  ?>" placeholder="Contract Start "/></td>
+         <td align='right'><input type="text" class="form-control bom"  name='contractend' id="contractend" value="<?php echo $data['employees'][0]->contractend  ?>" placeholder="Contract End"/></td>
+         </tr>
+
+         <tr>
+         <td><input type="text" class="form-control bom"  id="entrydate" name='entrydate' value="<?php echo $data['employees'][0]->entrydate  ?>" placeholder="Entry Date"/></td>
+         <td align='right'><input type="text" class="form-control bom"  name='exitdate' value="<?php echo $data['employees'][0]->exitdate  ?>" id="exitdate" placeholder="Exit Date"/></td>
+         </tr>
+         <tr>
+         <td><input type="text" class="form-control bom"  name='contractallocation' id="contractallocation" value="<?php echo $data['employees'][0]->contractallocation  ?>"  placeholder="Contract Allocation"/></td>
+         <td><input type="text" class="form-control bom" name='academictitle'  id="academictitle"  value="<?php echo $data['employees'][0]->academictitle  ?>" placeholder="Academic Title"/></td>
+         </tr>
+         <tr>
+         <td><select class='form-control bom' name='category' id='category'>
+          <option><?php echo $data['employees'][0]->category  ?></option>
+           <option>Manager</option>
+           <option>Officer 1</option>
+           <option>Officer 2</option>
+          </select></td>
+          <td><input type="text" class="form-control bom" name='basicsalary' value="<?php echo $data['employees'][0]->basicsalary  ?>" id="basicsalary" placeholder="Basic Salary"/></td>
          </tr>
 
          <tr>

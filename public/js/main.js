@@ -15,7 +15,7 @@ $(document).ready(function() {
 
   // datepicker
 
-  $("#from, #to, #prostart, #proend, #hiredate, #dob").datepicker({inline: true,
+  $("#from, #to, #prostart, #proend, #hiredate, #dob, #entrydate, #exitdate, #contractstart, #contractend").datepicker({inline: true,
   changeMonth: true, changeYear: true, yearRange: "1920:2020", dateFormat: 'yy-mm-dd' });
 
   $(".alldate").datepicker({inline: true,
@@ -426,6 +426,20 @@ $(document).ready(function() {
         var  company = $('#compval').val();
         var  tinnumber = $('#tinnumber').val();
         var  tierno = $('#tierno').val();
+
+        var  nationality = $('#nationality').val();
+        var  academictitle = $('#academictitle').val();
+        var  contractallocation = $('#contractallocation').val();
+        var  contractstart = $('#contractstart').val();
+        var  contractend = $('#contractend').val();
+        var  entrydate = $('#entrydate').val();
+        var  exitdate = $('#exitdate').val();
+        var  gender = $('#gender').val();
+        var  category = $('#category').val();
+        var  basicsalary = $('#basicsalary').val();
+
+
+
         var  addemployee = 'Add';
 
 
@@ -433,7 +447,7 @@ $(document).ready(function() {
         email:email,  location: location, idtype:idtype, idnumber:idnumber, bankname:bankname, accountnumber:accountnumber,
         branch:branch, ssnitnumber:ssnitnumber,  gname:gname, gtelephone:gtelephone, dateofbirth:dateofbirth,
         department:department, position:position, staffid:staffid, hiredate:hiredate, probationstart:probationstart,
-        probationend:probationend, company:company, addemployee:addemployee, dob:dob, tinnumber:tinnumber, tierno:tierno};
+        probationend:probationend, company:company, addemployee:addemployee, dob:dob, tinnumber:tinnumber, tierno:tierno,nationality:nationality,academictitle:academictitle,contractallocation:contractallocation,contractstart:contractstart,contractend:contractend,entrydate:entrydate,exitdate:exitdate,gender:gender,category:category,basicsalary:basicsalary};
 
         var  ajaxurl =  urlroot + '/pages/employees';
         var  redirectionurl =  urlroot + '/pages/employees';
@@ -559,6 +573,18 @@ $(document).ready(function() {
                 var  tinnumber = $('#tinnumber').val();
                 var  tierno = $('#tierno').val();
                 var  employeeid = $('#employeeid').val();
+
+                var  nationality = $('#nationality').val();
+                var  academictitle = $('#academictitle').val();
+                var  contractallocation = $('#contractallocation').val();
+                var  contractstart = $('#contractstart').val();
+                var  contractend = $('#contractend').val();
+                var  entrydate = $('#entrydate').val();
+                var  exitdate = $('#exitdate').val();
+                var  gender = $('#gender').val();
+                var  category = $('#category').val();
+                var  basicsalary = $('#basicsalary').val();
+
                 var  updateemployee = 'Update';
 
 
@@ -567,11 +593,12 @@ $(document).ready(function() {
                 branch:branch, ssnitnumber:ssnitnumber,  gname:gname, gtelephone:gtelephone, dateofbirth:dateofbirth,
                 department:department, position:position, staffid:staffid, hiredate:hiredate, probationstart:probationstart,
                 probationend:probationend, company:company, updateemployee:updateemployee, dob:dob, tinnumber:tinnumber, tierno:tierno,
-                employeeid:employeeid};
+                employeeid:employeeid,nationality:nationality,academictitle:academictitle,contractallocation:contractallocation,contractstart:contractstart,contractend:contractend,entrydate:entrydate,exitdate:exitdate,gender:gender,category:category,basicsalary:basicsalary};
 
+                console.log(postdata);
                 var  ajaxurl =  urlroot + '/pages/updateemployee';
                 var  redirectionurl =  urlroot + '/pages/employees';
-                AjaxPostRedirection(ajaxurl, postdata,redirectionurl);
+               // AjaxPostRedirection(ajaxurl, postdata,redirectionurl);
                 //AjaxPostRequest(ajaxurl, postdata);
 
 

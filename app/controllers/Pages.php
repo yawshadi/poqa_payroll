@@ -320,6 +320,19 @@ class Pages extends Controller{
 			$datarow->company = $_POST['company'];
 			$datarow->tinnumber = $_POST['tinnumber'];
 			$datarow->tiernumber = $_POST['tierno'];
+
+			$datarow->nationality = $_POST['nationality'];
+			$datarow->academictitle = $_POST['academictitle'];
+			$datarow->contractallocation = $_POST['contractallocation'];
+			$datarow->contractstart = $_POST['contractstart'];
+			$datarow->contractend = $_POST['contractend'];
+			$datarow->entrydate = $_POST['entrydate'];
+			$datarow->exitdate = $_POST['exitdate'];
+			$datarow->gender = $_POST['gender'];
+			$datarow->category = $_POST['category'];
+			$datarow->basicsalary = $_POST['basicsalary'];
+
+
 			$empdata->store();
 
 			$basicid = $datarow->basic_id;
@@ -515,6 +528,18 @@ class Pages extends Controller{
 			$datarow->company = $_POST['company'];
 			$datarow->tinnumber = $_POST['tinnumber'];
 			$datarow->tiernumber = $_POST['tierno'];
+
+			$datarow->nationality = $_POST['nationality'];
+			$datarow->academictitle = $_POST['academictitle'];
+			$datarow->contractallocation = $_POST['contractallocation'];
+			$datarow->contractstart = $_POST['contractstart'];
+			$datarow->contractend = $_POST['contractend'];
+			$datarow->entrydate = $_POST['entrydate'];
+			$datarow->exitdate = $_POST['exitdate'];
+			$datarow->gender = $_POST['gender'];
+			$datarow->category = $_POST['category'];
+			$datarow->basicsalary = $_POST['basicsalary'];
+
 			$empdata->store();
 
 
