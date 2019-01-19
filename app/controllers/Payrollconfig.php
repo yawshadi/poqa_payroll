@@ -149,9 +149,7 @@ class Payrollconfig extends Controller{
 	public function updateofficerconfig(){
 
 				$posid = $_POST['posid'];
-				$weekdays = $_POST['weekdays'];
 				$basicsalary = $_POST['basicsalary'];
-				$transportallowance = $_POST['transportallowance'];
 				$company = $_POST['company'];
 				$department = $_POST['department'];
 				$position = $_POST['position'];

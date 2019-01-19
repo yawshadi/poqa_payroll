@@ -1,6 +1,7 @@
 .vscode
 vendor/
 public/vendor
+public/uploads
 app/uploads
 app/config/config.php
 .idea/
