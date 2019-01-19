@@ -6,13 +6,13 @@ class PayrollRecurrent extends tableDataObject{
     const TABLENAME = 'payrollrecurrent';
 
 
-    public static  function getRecurrentPayroll($company, $department,$startdate, $enddate, $designation){
+    public static  function getRecurrentPayroll($company, $department,$startdate, $enddate){
         global $payrolldb;
 
         $getrecords = "select payrollrecurrent.*,  basicinformation.*    from  payrollrecurrent
         inner join basicinformation on payrollrecurrent.basic_id = basicinformation.basic_id
          where payrollrecurrent.company='$company' and payrollrecurrent.department='$department'
-         and basicinformation.designation = '$designation' and (payrollrecurrent.paystart = '$startdate' and payrollrecurrent.payend = '$enddate') ";
+        and (payrollrecurrent.paystart = '$startdate' and payrollrecurrent.payend = '$enddate') ";
 
         $payrolldb->prepare($getrecords);
         $payrolldb->execute();

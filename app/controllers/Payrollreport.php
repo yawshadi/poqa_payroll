@@ -16,9 +16,10 @@ class Payrollreport extends Controller{
 
           $startdate = $_POST['startdate'];
           $enddate = $_POST['enddate'];
-          $payrolltype = $_POST['payrolltype'];
 
-          $empdata = Employee::getEmployeesByType($_POST['company'], $payrolltype);
+          $empdata = Employee::getEmployeesByType($_POST['company']);
+          // print_r($empdata);
+          // exit;
           $companyid = Companies::getCompanybyName($_POST['company']);
 
           $payrolldata = [];
@@ -31,9 +32,9 @@ class Payrollreport extends Controller{
             $fullname =  $get->fullname;
             $basic_id = $get->basic_id;
             $category = $get->category;
-            $ssnitno = $get->ssnitnumber;
+            $ssnitnumber = $get->ssnitnumber;
             $location = $get->location;
-            $basic_salary = $get->basicsalary;
+            $basicsalary = $get->basicsalary;
 
 
             //recurrent calculation
@@ -55,26 +56,27 @@ class Payrollreport extends Controller{
             $paye =  Vamedcalculations::paye($taxableincome);
             $whtonstandardovertime = Vamedcalculations::whtonstandardovertime($standardovertime);
             $whtonsatsunholovertime =  Vamedcalculations::whtonsatsunholovertime($satsunholovertime);
-            $bonutax = Vamedcalculations::bonustax($teamdevelopment);
+            $bonustax = Vamedcalculations::bonustax($teamdevelopment);
             $totaltaxpayable = Vamedcalculations::totaltaxpayable($paye, $whtonstandardovertime, $whtonsatsunholovertime, $bonustax);
             $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $rentallowance,
                                                $transportvehiclemaintenance, $totaltaxpayable, $salaryadvance);
             $vamedwelfarenetsalary = Vamedcalculations::vamedwelfarenetsalary($vamednetpay, $staffwelfare);
             $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
             $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
-            $ssnitact  = Vamedcalculations::snitact($totalssnit);
-            $secondtier = Vamedcalculations::econdtier($totalssnit, $ssnitact);
+            $ssnitact  = Vamedcalculations::ssnitact($totalssnit);
+            $secondtier = Vamedcalculations::secondtier($totalssnit, $ssnitact);
 
 
              $payrolldata[] = [
-                              'company'=>$company, 'department'=>$department, 'position'=>$position, 'ssnitnumber'=>$ssnitnumber,
-                               'location'=>$location, 'basic_salary'=>$basic_salary, '$taxrelief'=>$taxrelief, 'salaryadvance'=>$salaryadvance ,
+                               'company'=>$company, 'department'=>$department, 'position'=>$position, 'ssnitnumber'=>$ssnitnumber,
+                                'fullname'=>$fullname,
+                               'location'=>$location, 'basic_salary'=>$basicsalary, '$taxrelief'=>$taxrelief, 'salaryadvance'=>$salaryadvance ,
                                'staffwelfare'=>$staffwelfare,  'staffssnit'=>$staffssnit, 'totalincome'=>$totalincome,
                                'standardovertime'=>$standardovertime, 'teamdevelopment'=>$teamdevelopment, 'satsunholovertime'=>$satsunholovertime,
                                'transportvehiclemaintenance'=>$transportvehiclemaintenance, 'rentallowance'=>$rentallowance,
                                'grossincome'=>$grossincome, 'taxableincome'=>$taxableincome, 'paye'=>$paye,
                                'whtonstandardovertime'=>$whtonstandardovertime, 'whtonsatsunholovertime'=>$whtonsatsunholovertime,
-                               'bonutax'=>$bonutax, 'totaltaxpayable'=>$totaltaxpayable, 'vamednetpay'=>$vamednetpay,
+                               'bonustax'=>$bonustax, 'totaltaxpayable'=>$totaltaxpayable, 'vamednetpay'=>$vamednetpay,
                                'vamedwelfarenetsalary'=>$vamedwelfarenetsalary, 'employerssnit'=>$employerssnit,
                                'totalssnit'=>$totalssnit, 'ssnitact'=>$ssnitact, 'secondtier'=>$secondtier
                              ];
@@ -82,7 +84,7 @@ class Payrollreport extends Controller{
           }
 
        $alldata =  ['companies'=>$comdata, 'payrolldata'=>$payrolldata, 'payperiod'=>$paydata,
-                   'startdate'=>$startdate, 'enddate'=>$enddate, 'companyid'=>$companyid, 'payrolltype'=>$payrolltype ];
+                   'startdate'=>$startdate, 'enddate'=>$enddate, 'companyid'=>$companyid ];
        $this->view('reports/mainpayroll', $alldata);
         }else{
 

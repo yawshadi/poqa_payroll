@@ -103,14 +103,14 @@ tr, td{
 
   <?php if(isset($data['payrolldata'])){ ?>
 
-  <div style='width:100%; overflow-y:scroll; margin-top:10px'>
+  <div style='width:100%; margin-top:10px'>
 
   <div><a style='font-size:10px' href='<?php echo URLROOT  ?>/excelreport/actualexcel/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['companyid']) ?>'
    class='btn btn-danger pull-right'>Download</a></div>
   <br/>
   <table class='table table-bordered table-condensed' >
-  <tr>
-      <td>ID</td>
+  <tr style="font-weight:700">
+      <td>No:</td>
       <td>Employee Name</td>
       <td>Department</td>
       <td>Position</td>
@@ -128,7 +128,7 @@ tr, td{
 
     ?>
     <tr>
-      <td><?php echo $key  ?></td>
+      <td><?php echo $key + 1  ?></td>
       <td><?php echo $get['fullname']  ?></td>
       <td><?php echo $get['department']  ?></td>
       <td><?php echo $get['position']  ?></td>

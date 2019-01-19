@@ -61,29 +61,29 @@ class Vamedcalculations{
       return $amount;
    }
 
-   public static function paye($taxableincome){
+   public static function paye($taxable){
 
      if($taxable < 261){
         return $paye = 0;
       }elseif($taxable > 261 && $taxable<=330){
         $paye = ($taxable - 261) * 0.05;
-        return  round($paye , 2);
+        return $paye ;
       }elseif($taxable > 331 && $taxable <= 430){
          $paye = (($taxable - 331) * 0.10) + 3.5;
-         return  round($paye , 2);
+         return $paye ;
       }elseif($taxable > 431 && $taxable <= 3240){
           $paye = (($taxable - 431) * 0.175) + 13.5;
-          return  round($paye , 2);
+          return  $paye;
       }elseif($taxable > 3241){
         $paye = (($taxable - 3241) * 0.25) + 505.25;
-        return  round($paye , 2);
+        return  $paye;
       }else{
        return $paye = 0;
       }
    }
 
    public static function whtonstandardovertime($standardovertime){
-     $amount =  $standardovertime * 0.10;
+     $amount =  $standardovertime * 0.05;
       return $amount;
    }
 
@@ -93,7 +93,7 @@ class Vamedcalculations{
    }
 
    public static function bonustax($teamdevelopment){
-     $amount =  $satsunholovertime * 0.05;
+     $amount =  $teamdevelopment * 0.05;
       return $amount;
    }
 
@@ -106,7 +106,7 @@ class Vamedcalculations{
                                       $transportvehiclemaintenance, $totaltaxpayable, $salaryadvance)
                                       {
      $amount = $grossincome + $standardovertime + $teamdevelopment + $satsunholovertime + $rentallowance +
-                                        $transportvehiclemaintenance + $totaltaxpayable - $salaryadvance;
+                                        $transportvehiclemaintenance - $totaltaxpayable - $salaryadvance;
       return $amount;
    }
 
@@ -133,7 +133,7 @@ class Vamedcalculations{
 
 
    public static function secondtier($totalssnit, $ssnitact){
-      $amount = $totalssnit - $ssnitact
+      $amount = $totalssnit - $ssnitact;
       return $amount;
    }
 

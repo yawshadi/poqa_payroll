@@ -395,30 +395,18 @@ class Pages extends Controller{
 
 	public function Companies(){
 
-	    $comdata =  Companies::getCompany();
-
     if(isset($_POST['addcompany'])){
 
-		 //$comlogo = $_POST['comlogo'];
-
-		 $uploads = new Uploads();
-		 $uploads->filename = $_FILES['comlogo'];
-		 $uploadresponse = $uploads->upLoadFile();
-		 $logoname =  $uploadresponse['filename'];
-
-
-		$companydata = new Companies();
-		$datarow =&  $companydata->recordObject;
-		$datarow->companyname = $_POST['companyname'];
-		$datarow->companylogo = $logoname;
-		$companydata->store();
-
-		$comdata =  Companies::getCompany();
-		$this->view('pages/company', $comdata) ;
+			$companydata = new Companies();
+			$companydata->recordObject->companyname = $_POST['companyname'];
+			$companydata->store();
+			
+			$comdata =  Companies::getCompany();
+			$this->view('pages/company', $comdata) ;
 
 	   }else{
-		$comdata = Companies::getCompany();
-		$this->view('pages/company', $comdata);
+		 $comdata = Companies::getCompany();
+		 $this->view('pages/company', $comdata);
 	   }
 
 

@@ -84,9 +84,9 @@ tr, td{
       <?php  if(isset($data['employeedata'])){  ?>
       <table id='success'  class='table datatable table-bordered table-condensed'>
   	<thead>
-	   <tr>
+	   <tr style='font-weight:700'>
   		<td>Employee</td>
-  		<td  style=''>Tax Rel'f</td>
+  		<td  style=''>Tax Relief</td>
   		<td  style=''>Salary Advance </td>
   		<td  style=''>Staff Welfare Association</td>
       <td style='display:none'>PAYE</td>

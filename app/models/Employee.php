@@ -29,9 +29,9 @@ class Employee extends tableDataObject{
         return $payrolldb->resultSet();
     }
 
-    public static  function getEmployeesByType($company, $type){
+    public static  function getEmployeesByType($company){
         global $payrolldb;
-        $getrecords = "select * from  basicinformation  where company = '$company' and designation = '$type' ";
+        $getrecords = "select * from  basicinformation  where company = '$company' ";
         $payrolldb->prepare($getrecords);
         $payrolldb->execute();
         return $payrolldb->resultSet();

@@ -52,11 +52,6 @@ tr, td{
       </tr>
 
       <tr>
-      <td>Company Logo</td>
-      <td><input type='file' class='form-control' name='comlogo'></td>
-     </tr>
-
-      <tr>
        <td></td>
        <td><button class='btn btn-danger' type='submit' name='addcompany' > Add </button></td>
       </tr>
