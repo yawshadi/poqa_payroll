@@ -9,22 +9,11 @@
 
 <table class='table'>
 
-  <tr  style=''>
-  <td>Weekdays</td>
-  <td> <input type='text' id='weekdays'  value="<?php echo $data['weekdays'] ?>"  class='form-control'/></td>
-  </tr>
-
   <tr>
   <td>Basic Salary</td>
   <td>  <input type='text' id='basicsalary'  value="<?php echo $data['basicsalary'] ?>" class='form-control'/> </td>
   </tr>
-
-  <tr  style=''>
-  <td>Transport Allowance</td>
-  <td><input type='text' id='transportallowance'  value="<?php echo $data['transportallowance'] ?>" class='form-control'/>
-       <input type='hidden' id='posid'  value="<?php echo $data['posid'] ?>"  class='form-control'/>
-   </td>
-  </tr>
+  <input type='hidden' id='posid'  value="<?php echo $data['posid'] ?>"  class='form-control'/>
 
   <tr>
   <td></td>

@@ -86,12 +86,9 @@ tr, td{
   	<thead>
 	   <tr>
   		<td>Employee</td>
-  		<td  style=''>Weekday Dayshift Hours</td>
-  		<td  style=''>Weekday Nightshift Hours </td>
-  		<td  style=''>Weekday Overtime Hours</td>
-  		<td  style=''>Holiday and Weekend Overtime Hours</td>
-      <td >Other Deductions</td>
-      <td style=''>Other Allowances</td>
+  		<td  style=''>Tax Rel'f</td>
+  		<td  style=''>Salary Advance </td>
+  		<td  style=''>Staff Welfare Association</td>
       <td style='display:none'>PAYE</td>
 
      </tr>
@@ -107,12 +104,9 @@ tr, td{
      	<td width='15%'><?php echo $get->fullname ?><br/>
         <span style='font-size:10px; color:red'><?php echo $get->position ?></span>
       </td>
-  		<td  style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->weekdayshifthours ?>" field='weekdayshifthours' class='form-control pay'/></td>
-  		<td  style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->weekdaynightshifthours ?>" field='weekdaynightshifthours' class='form-control pay'/></td>
-  		<td  style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->weekdayovertimehours ?>" field='weekdayovertimehours' class='form-control pay'/></td>
-  		<td  style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->holidayovertimehours ?>" field='holidayovertimehours' class='form-control pay'/></td>
-      <td><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->otherdeductions == '' ?  0.00 :  $get->otherdeductions;  ?>" field='otherdeductions' class='form-control pay'/></td>
-      <td style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->otherallowances == '' ?  0.00 :  $get->otherallowances;  ?>" field='otherallowances' class='form-control pay'/></td>
+  		<td  style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->taxrelf ?>" field='taxrelf' class='form-control pay'/></td>
+  		<td  style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->salaryadvance ?>" field='salaryadvance' class='form-control pay'/></td>
+  		<td  style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->staffwelfare ?>" field='staffwelfare' class='form-control pay'/></td>
       <td style='display:none'><input style='display:none' type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->paye == '' ?  0.00 :  $get->paye; ?>" field='paye' class='form-control pay'/></td>
 
 

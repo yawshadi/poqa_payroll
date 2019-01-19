@@ -355,16 +355,14 @@ $(document).ready(function() {
 
 
       var posid = $('#posid').val();
-      var weekdays = $('#weekdays').val();
       var basicsalary = $('#basicsalary').val();
-      var transportallowance = $('#transportallowance').val();
 
       var company = $(this).attr('company');
       var department = $(this).attr('department');
       var position = $(this).attr('position');
 
 
-      var postdata = {weekdays:weekdays, basicsalary:basicsalary, transportallowance:transportallowance,
+      var postdata = {basicsalary:basicsalary,
                       posid:posid, company:company, department:department, position:position};
 
       var ajaxurl =  urlroot + '/payrollconfig/updateofficerconfig';
