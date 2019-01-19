@@ -59,7 +59,7 @@ $companyname  = $com->recordObject->companyname;
 <body class="fixed-nav sticky-footer bg-white" id="page-top">
 <!-- Navigation-->
 
-<nav class="navbar navbar-expand-lg navbar-dark  fixed-top" id="mainNav" style="background:#883002">
+<nav class="navbar navbar-expand-lg navbar-dark  fixed-top" id="mainNav" style="background:#00ACE5">
 
     <a class="navbar-brand" href="/"><?php echo strtoupper($companyname);  ?></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"

@@ -46,9 +46,8 @@
                <div class="row">
                   <!-- Logo & Information Panel-->
                   <div class="col-lg-6" style="background:#fff; border-right:1px solid #883002">
-                     <div id="content">
-                        
-                        <img src="<?php echo URLROOT ?>/img/plogo.png" alt="Commehr" style="height: 100%; width: 100%;">
+                     <div id="content" align='center'>
+                        <img src="<?php echo URLROOT ?>/img/vamed.png" alt="Vamed">
                      </div>
                   </div>
 
