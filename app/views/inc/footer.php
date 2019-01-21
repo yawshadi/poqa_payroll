@@ -23,7 +23,7 @@
 
 
 </html>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1nEal4lqDWdBz9mf79KUd0zGZdgArVfY&callback=initMap&v=3.exp&libraries=places"></script>
+<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1nEal4lqDWdBz9mf79KUd0zGZdgArVfY&callback=initMap&v=3.exp&libraries=places"></script>-->
 <script src="<?php echo URLROOT ?>/public/js/jquery.min.js"></script>
 <script src="<?php echo URLROOT ?>/public/js/moment.js"></script>
 <script src="<?php echo URLROOT ?>/public/js/fullcalendar.js"></script>

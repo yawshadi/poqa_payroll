@@ -1050,7 +1050,19 @@ $(document).ready(function() {
 
 
         },
-       // events: eventjson,
+        //events: eventjson,
+        eventSources: [
+
+            // your event source
+            {
+              url: urlroot+'/js/holiday.json', // use the `url` property
+              color: 'yellow',    // an option!
+              textColor: 'black'  // an option!
+            }
+        
+            // any other sources...
+        
+          ],
         displayEventTime: false,
         eventRender: function(event, element) {
             var today = new Date();
