@@ -16,10 +16,10 @@ $(document).ready(function() {
   // datepicker
 
   $("#from, #to, #prostart, #proend, #hiredate, #dob, #entrydate, #exitdate, #contractstart, #contractend").datepicker({inline: true,
-  changeMonth: true, changeYear: true, yearRange: "1920:2020", dateFormat: 'yy-mm-dd' });
+  changeMonth: true, changeYear: true, yearRange: "1920:2080", dateFormat: 'yy-mm-dd' });
 
   $(".alldate").datepicker({inline: true,
-  changeMonth: true, changeYear: true, yearRange: "1920:2020", dateFormat: 'yy-mm-dd' });
+  changeMonth: true, changeYear: true, yearRange: "1920:2080", dateFormat: 'yy-mm-dd' });
 
 
 // This Function will handle all ajax post request
@@ -66,6 +66,66 @@ $(document).ready(function() {
                 });
     }
 
+
+    function AjaxPostContainer(ajaxurl, postdata, containerclass){
+
+        $.ajax({
+            type: "POST",
+            url: ajaxurl,
+            data : postdata,
+            beforeSend: function () {
+                $.blockUI();
+            },
+            success: function (text) {
+              $('.'+containerclass+'').html(text);
+            },
+            complete: function () {
+                $.unblockUI();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + " " + thrownError);
+            }
+        });
+    }
+
+
+    function AjaxPostRequestforbooking(ajaxurl, postdata, containerclass,selectedday){
+
+        $.ajax({
+            type: "POST",
+            url: ajaxurl,
+            data : postdata,
+            beforeSend: function () {
+                $.blockUI();
+            },
+            success: function (text) {
+                $('.' + containerclass + '').html(text);
+                $('#startdate').val(selectedday);
+            },
+            complete: function () {
+                $.unblockUI();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + " " + thrownError);
+            }
+        });
+    }
+
+    function viewevent(eventid) {
+        ajaxurl = urlroot + '/operations/eventview';
+        postdata = { eventid: eventid };
+        containerclass = "bookingform";
+        console.log("eventview method");
+        AjaxPostContainer(ajaxurl, postdata, containerclass);
+    }
+
+    function callbookingform(selectedday) {
+        ajaxurl = urlroot + '/operations/bookingform';
+        postdata = {};
+        containerclass = "bookingform";
+        console.log("callbooking form method");
+        AjaxPostRequestforbooking(ajaxurl, postdata, containerclass, selectedday);
+    }
 
     $(document).on('click', '.deletecompany', function(){
 
@@ -1017,7 +1077,7 @@ $(document).ready(function() {
             right: 'next'
         },
         fixedWeekCount: false,
-        height: 460,
+        height: 660,
 
 
 
@@ -1036,14 +1096,12 @@ $(document).ready(function() {
             var selectedday = date.format("YYYY-MM-DD"); //selected date from the calendar
             var tday = new Date();
             var todaydate = moment(tday).format("YYYY-MM-DD");
-            var formatdate = date.format("DD.MM.YYYY");
+            var formatdate = date.format("YYYY-MM-DD");
             $('#eventdate').val(selectedday);
             if (todaydate === selectedday || date.isAfter(todaydate)) {
-                alert('after');
-               /* $('#myCalendarModal').modal('show');
-                $("#bookingModal").modal('hide');
+                $('#myCalendarModal').modal('show');
                 callbookingform(formatdate);
-*/
+
             } else {
                 //    Nothing happens
             }

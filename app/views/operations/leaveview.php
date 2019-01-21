@@ -33,14 +33,8 @@ tr, td{
       <div class="row" style="margin-bottom:20px;">
       <div class="col-lg-12 col-md-12 col-sm-12">
         <a href="#">
-        <div class="card">
-        <div class="container" style="padding:10px">
-          <br/>
+       
           <div id="calendar"></div>
-
-          <div>
-
-          </div>
 
         </div>
         </div>
@@ -53,7 +47,16 @@ tr, td{
 
     </div>
     </div>
+    <div class="modal fade" id="myCalendarModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style='width:500px' role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant bookingform">
 
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
 
   <!--Footer and JS directies -->
 

@@ -413,6 +413,12 @@ class Operations extends Controller{
 
      }
 
+     public function bookingform(){
 
+      $this->view('operations/bookingform');
+     }
 
+     public function viewevent(){
+
+    }
 }
