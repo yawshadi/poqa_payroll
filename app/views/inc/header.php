@@ -38,6 +38,7 @@ $companyname  = $com->recordObject->companyname;
     <link rel="shortcut icon" href="<?php echo URLROOT ?>/img/favicon.png">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/uploadify/uploadifive.css" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/jquery.timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo URLROOT ?>/vendor/fullcalendar/fullcalendar/dist/fullcalendar.min.css"/>
 
 
     <script type="text/javascript">
