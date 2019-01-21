@@ -35,7 +35,7 @@
 <script src="<?php echo URLROOT ?>/js/jquery.serializejson.js"></script>
 <script src="<?php echo URLROOT ?>/js/jquery.sumoselect.js"></script>
 <script src="<?php echo URLROOT ?>/js/jquery.serializejson.js"></script>
-<script src="<?php echo URLROOT ?>/js/jquery.validate.min.js"></script>
+<script src="<?php echo URLROOT ?>/js/jquery.validate.min.js"></script> js\FileSaver.js-master\dist
 <script src="<?php echo URLROOT ?>/uploadify/jquery.uploadifive.min.js"></script>
 <script type="text/javascript" src="<?php echo URLROOT ?>/css/dataTables/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="<?php echo URLROOT ?>/css/dataTables/js/dataTables.rowReorder.min.js"></script>
@@ -43,4 +43,8 @@
 <script type="text/javascript" src="<?php echo URLROOT ?>/js/jquery.timepicker.js"></script>
 <script type="text/javascript" src="<?php echo URLROOT ?>/js/raphael.min.js"></script>
 <script type="text/javascript" src="<?php echo URLROOT ?>/js/morris.js"></script>
+<script src="<?php echo URLROOT ?>/js/FileSaver.js-master/dist/FileSaver.min.js"></script>
+<script src="<?php echo URLROOT ?>/js/js-xlsx-master/dist/xlsx.core.min.js"></script>
+<script src="<?php echo URLROOT ?>/js/js-xlsx-master/dist/xlsx.full.min.js"></script>
+<script src="<?php echo URLROOT ?>/js/tableexport.js"></script>
 <script type="text/javascript" src="<?php echo URLROOT ?>/js/main.js"></script>
