@@ -1006,4 +1006,65 @@ $(document).ready(function() {
             AjaxPostRedirection(ajaxurl, postdata, redirectionurl)
         })
 
+
+        // full calendar scripts
+
+         //calendar view called in dashboard by id given
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev',
+            center: 'title',
+            right: 'next'
+        },
+        fixedWeekCount: false,
+        height: 460,
+
+
+
+        eventClick: function(calEvent, jsEvent, view) {
+            var utitle = calEvent.title;
+            var udate = moment(calEvent.start).format();
+            var eventid = calEvent.id;
+
+            $('#myCalendarModal').modal('show');
+            viewevent(eventid);
+            $("#bookingModal").modal('hide');
+        },
+
+        dayClick: function(date, jsEvent, view) {
+
+            var selectedday = date.format("YYYY-MM-DD"); //selected date from the calendar
+            var tday = new Date();
+            var todaydate = moment(tday).format("YYYY-MM-DD");
+            var formatdate = date.format("DD.MM.YYYY");
+            $('#eventdate').val(selectedday);
+            if (todaydate === selectedday || date.isAfter(todaydate)) {
+                alert('after');
+               /* $('#myCalendarModal').modal('show');
+                $("#bookingModal").modal('hide');
+                callbookingform(formatdate);
+*/
+            } else {
+                //    Nothing happens
+            }
+
+
+        },
+       // events: eventjson,
+        displayEventTime: false,
+        eventRender: function(event, element) {
+            var today = new Date();
+            var old = new Date(event.start);
+            var mtoday = moment(today).format("YYYY-MM-DD");
+            var mold = moment(old).format("YYYY-MM-DD");
+            if (event.icon) {
+                element.find(".fc-title").prepend("<i style='color:white;padding-left:25%' class='fa fa-" + event.icon + "'></i>");
+                element.css('border-radius', '2px')
+            }
+
+            if (moment(mold).isBefore(mtoday, 'day')) {
+                element.css({ 'background': '#A1565F', 'border': 'none', 'border-radius': '2px' })
+            }
+        }
+    });
 })

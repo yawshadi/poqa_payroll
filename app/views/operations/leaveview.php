@@ -33,51 +33,11 @@ tr, td{
       <div class="row" style="margin-bottom:20px;">
       <div class="col-lg-12 col-md-12 col-sm-12">
         <a href="#">
-        <div class="card"
+        <div class="card">
         <div class="container" style="padding:10px">
           <br/>
-          <table  class='table table-bordered table-condensed apptables' style='font-size:12px'>
-           <thead>
-           <tr>
-           <td>Employee</td>
-           <td>Start Date</td>
-           <td>End Date</td>
-           <td>Status</td>
-           <td>View</td>
-           <td>Action</td>
-          </tr>
-          </thead>
-
-           <?php
-            foreach($data['listdata'] as $get):
-              $em = new Employee($get->employeeid);
-              $employeename  =   $em->recordObject->fullname;
-           ?>
-           <tr>
-           <td><?php echo $employeename   ?></td>
-           <td><?php  echo $get->startdate ?></td>
-           <td><?php  echo $get->endate ?></td>
-           <td><?php if($get->status == ''){
-               echo '<span style="color:orange">Pending</span>';
-           }elseif($get->status == 'Approve'){
-               echo '<span style="color:green">Approved</span>';
-           }elseif($get->status  == 'Decline'){
-               echo '<span style="color:red">Declined</span>';
-           }
-           ?></td>
-
-           <td><a href='<?php  echo URLROOT.'/operations/operationprofile/'.$data['status'].'/'.$get->lid  ?>' >View</a></td>
-           <td><a href='#' class='actionleave' status='<?php echo $data['status'] ?>' actionid='<?php echo $get->lid ?>' >Action</a></td>
-           </tr>
-           <?php
-           endforeach;
-           ?>
-          </table>
-
-          <div>
-
-          </div>
-
+        
+          <div id="calendar"></div>
         </div>
         </div>
         </a>
