@@ -1137,4 +1137,36 @@ $(document).ready(function() {
             }
         }
     });
+
+
+    //autocomplete for employees
+    $('#employeename').autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: urlroot + "/pages/searchemployee",
+                type: 'GET',
+                dataType: "json",
+                data: {
+                    term: request.term,
+                    request: 'search'
+                },
+                success: function(data) {
+                    response($.map(data, function(item) {
+                        return {
+                            label: item.name,
+                            value: item.id
+                        }
+                    }));
+                }
+            });
+        },
+        select: function(event, ui) {
+            $(this).val(ui.item.label); // display the selected text
+            var employeeid = ui.item.value; // selected value
+            console.log(employeeid);
+            $("#employeeid").val(employeeid);
+            return false;
+        },
+        minLength: 2
+    });
 })

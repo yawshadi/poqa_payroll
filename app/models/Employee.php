@@ -83,7 +83,17 @@ class Employee extends tableDataObject{
         return $payrolldb->fetchColumn();
     }
 
-
+    public static function searchemployee($query,$request)
+    {
+        global $payrolldb;
+        if($request=='search') {
+            $getrecords = "select * from basicinformation  where firstname like '$query%' or surname like '$query%' or staffid like '$query%'";
+        }elseif ($request=='populate'){
+            $getrecords = "select * from basicinformation  where basic_id ='$query'";
+        }
+        $payrolldb->prepare($getrecords);
+        return $payrolldb->resultSet();
+    }
 
 
 

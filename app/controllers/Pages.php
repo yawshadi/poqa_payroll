@@ -942,7 +942,19 @@ class Pages extends Controller{
 	}
 
 
+	public function searchemployee(){
+		if(isset($_GET['term'])) $query=$_GET['term'];
+        if(isset($_GET['request'])) $request=$_GET['request'];
+        $employeejson=Employee::searchemployee($query,$request);
+        $employeedata=[];
+        foreach($employeejson as $get){
 
+            $name = $get->firstname.' '.$get->surname;
+            $employeeid = $get->basic_id;
+            $employeedata[] = array("id"=>$employeeid,"name"=>$name);
+        }
+        echo json_encode($employeedata);
+	}
 
 
 
