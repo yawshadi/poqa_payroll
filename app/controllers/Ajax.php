@@ -50,6 +50,14 @@ class Ajax extends Controller{
 
     }
 
+    public function deleteholiday(){
+
+      $holidayid = $_POST['holidayid'];
+      $depdelete = new Holiday($holidayid);
+      $depdelete->deleteFromDB();
+ 
+     }
+
     public function deleteposition(){
 
      $posid = $_POST['posid'];

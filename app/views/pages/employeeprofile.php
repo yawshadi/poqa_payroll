@@ -64,9 +64,7 @@ tr, td{
       <div id='placeholder'>
 
       <div id='ajaxcontainer'> </div>
-      <?php// require APPROOT .'/views/inc/dash.php' ; ?>
-
-
+    
       </div>
 
 

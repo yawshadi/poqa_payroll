@@ -364,7 +364,6 @@ class Operations extends Controller{
 
      public function leave(){
        $grievancedata = Leave::ListAll();
-
          if(isset($_POST['submitleave'])){
             $grievancedata = Leave::ListAll();
            $reportedby  = $_POST['reportedby'];
@@ -401,6 +400,9 @@ class Operations extends Controller{
                   Leave::insertleaveusers($lid, $uid);
                }
            }
+
+         
+
            $data = ['grievancedata'=>$grievancedata];
            $this->view('operations/leave', $data);
            exit;
@@ -421,4 +423,33 @@ class Operations extends Controller{
      public function viewevent(){
 
     }
+
+    public function holiday($holidayid=null){
+
+      $holiday = Holiday::getholidaybyid($holidayid);
+
+      if(isset($_POST['saveholidaybtn'])){
+        $holidayname = $_POST['holidayname'];
+        $holidaydate =$_POST['holidaydate'];
+        $holidayid =$_POST['holidayid'];
+        if($holidayid==''){
+          $holidayid=null;
+        }
+        $gv  = new Holiday($holidayid);
+        $gv->recordObject->holidayname = $holidayname;
+        $gv->recordObject->holidaydate = $holidaydate;
+        $gv->store();
+      }
+
+      $this->view('operations/holiday',$holiday);
+     }
+
+     public function holidaylist(){
+      $holidays = Holiday::listAll();
+
+      foreach($holidays as $holiday){
+        $list[]=array("title"=>$holiday->holidayname,"start"=>$holiday->holidaydate,"end"=>$holiday->holidaydate);
+       }
+       echo json_encode($list);
+     }
 }

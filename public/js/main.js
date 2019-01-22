@@ -5,6 +5,12 @@ $(document).ready(function() {
 
 //This handles the datatables
 // TODO  : will be moved from here to separate js file
+    $('.holidaytable').DataTable({
+        responsive: true,
+        "order": [
+            [1, "asc"]
+        ]
+    });
     $('.apptables').DataTable({
         responsive: true
     });
@@ -153,6 +159,21 @@ $(document).ready(function() {
         var redirectionurl =  urlroot + '/pages/departments';
 
         if(confirm('Do you want to delete department ?')){
+         AjaxPostRedirection(ajaxurl, postdata,redirectionurl);
+        }
+
+    })
+
+
+    $(document).on('click', '.deleteholiday', function(){
+
+        var  holidayid =  $(this).attr('holidayid');
+
+        var postdata = {holidayid:holidayid};
+        var ajaxurl =  urlroot + '/ajax/deleteholiday';
+        var redirectionurl =  urlroot + '/operations/holiday';
+
+        if(confirm('Do you want to delete holiday ?')){
          AjaxPostRedirection(ajaxurl, postdata,redirectionurl);
         }
 
@@ -1113,7 +1134,7 @@ $(document).ready(function() {
 
             // your event source
             {
-              url: urlroot+'/js/holiday.json', // use the `url` property
+              url: urlroot+'/operations/holidaylist', // use the `url` property
               color: 'yellow',    // an option!
               textColor: 'black'  // an option!
             }
