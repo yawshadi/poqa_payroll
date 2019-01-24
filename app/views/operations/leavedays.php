@@ -33,11 +33,7 @@ tr, td{
 
       <div class="row">
         <div class="col-10">
-          <h1 style='color:#FB6600; font-weight:700' class="page-title"> LEAVE REPORTING</h1>
-        </div>
-
-        <div class="col-2">
-         <div style='margin-top:10px'><a class='btn btn-danger' style='font-size:11px' href='<?php echo URLROOT.'/downloads/leaveform.xlsx'  ?>'><i class='fa fa-download'></i>  Download Form </a></div>
+          <h1 style='color:#FB6600; font-weight:700' class="page-title">LEAVE DAYS SETUP</h1>
         </div>
    </div>
 
@@ -54,16 +50,29 @@ tr, td{
      <div class="col-lg-5 col-md-5 col-sm-12">
 
      <div class='card'>
+     <form method='post'>
      <table class='table'>
          <tr>
-         <td width=90%><input type="text" class="form-control bom employeename"  id="empname" placeholder="Search Employee Name, StaffID or Telephone"/></td>
-         <td><button type='button' id='leavebtn' style='font-size:10px' class='btn btn-primary'>
-         <i class='fa fa-plus-circle'></i> Search</button></td>
+         <td>Total Leave Days</td>
+         <td><input required type="text" value="<?=isset($data->leavedays)?$data->leavedays:''?>" class="form-control bom" name="leavedays" placeholder="Total Number of Days"/></td>
          </tr>
-         <input type="hidden" class="form-control" id="employeeid">
-
-      </table>
-         <div id='searchcontainer' style="margin:10px"> </div>
+         <input type="hidden" value="<?=isset($data->daysid)?$data->daysid:''?>" name='daysid'/>
+         <tr>
+         <td></td>
+         <td align='right'><button type='submit' name='saveleavedaysbtn' style='font-size:12px' class='btn btn-primary'>
+         <i class='fa fa-plus-circle'></i><?=isset($data->daysid)?'Update':'Save'?></button>
+         <?php 
+         if(isset($data->daysid)):
+          ?>
+         <a href='<?= URLROOT ?>/operations/leavedays'><button type='button' name='' style='font-size:12px' class='btn btn-primary'>
+         <i class='fa fa-plus-circle'></i>back</button></a>
+         <?php 
+         endif;
+         ?>
+         </td>
+         </tr>
+         </table>
+         </form>
      </div>
 
       </div>
@@ -75,29 +84,22 @@ tr, td{
       <br/>
       <div align='center'>
 
-      <table  class='table table-bordered table-condensed apptables' style='font-size:12px'>
+      <table  class='table table-bordered table-condensed holidaytable' style='font-size:12px'>
        <thead>
        <tr>
-       <td>Employee</td>
-       <td>Start Date</td>
-       <td>End Date</td>
-       <td>View </td>
-       <td>Download</td>
+       <td>Total Leave Days</td>
+       <td>Edit </td>
+       <td>Delete </td>
       </tr>
       </thead>
 
        <?php
-        foreach($data['grievancedata'] as $get):
-          $em = new Employee($get->employeeid);
-          $employeename  =   $em->recordObject->fullname;
+        foreach(Leavedays::listAll() as $get):
        ?>
        <tr>
-       <td><?php echo $employeename   ?></td>
-       <td><?php  echo $get->startdate ?></td>
-       <td><?php  echo $get->endate ?></td>
-       <td><a href='#'>View</a></td>
-       <td><a href='<?php  echo URLROOT.'/uploads/'.$get->filename   ?>' >Download</a></td>
-       </tr>
+       <td><?php echo $get->leavedays   ?></td>
+       <td><a href='<?php echo URLROOT  ?>/operations/leavedays/<?php echo $get->daysid  ?>' ><i class='fa fa-pencil'></i></a></td>
+       <td><a href='#' class='deleteleaveday' daysid='<?php echo $get->daysid  ?>'><i class='fa fa-trash'></i></a></td>       </tr>
        <?php
        endforeach;
        ?>

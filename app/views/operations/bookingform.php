@@ -25,7 +25,7 @@
         <form role="form">
         <br style="clear:both">
     				<div class="form-group">
-						<input type="text" class="form-control" id="employeename" name="name" placeholder="Name" required>
+						<input type="text" class="form-control employeename" id="employeename" name="name" placeholder="Name" required>
 						<input type="hidden" class="form-control" id="employeeid">
 					</div>
 					<div class="form-group">

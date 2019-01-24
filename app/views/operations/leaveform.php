@@ -87,7 +87,7 @@ if($data['empcount'] > 0){
     <tr>
     <td></td>
     <td><button type='submit' name='submitleave' style='font-size:9px' class='btn btn-primary'>
-    <i class='fa fa-plus-circle'></i> Search</button></td>
+    <i class='fa fa-plus-circle'></i> Submit</button></td>
     </tr>
 
 </table>

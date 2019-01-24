@@ -60,7 +60,16 @@ tr, td{
          <tr>
          <td></td>
          <td align='right'><button type='submit' name='saveholidaybtn' style='font-size:12px' class='btn btn-primary'>
-         <i class='fa fa-plus-circle'></i>Save Holiday</button></td>
+         <i class='fa fa-plus-circle'></i><?=isset($data->holidayid)?'Update':'Save'?> Holiday</button>
+         <?php 
+         if(isset($data->holidayid)):
+          ?>
+         <a href='<?= URLROOT ?>/operations/holiday'><button type='button' name='' style='font-size:12px' class='btn btn-primary'>
+         <i class='fa fa-plus-circle'></i>back</button></a>
+         <?php 
+         endif;
+         ?>
+         </td>
          </tr>
          </table>
          </form>

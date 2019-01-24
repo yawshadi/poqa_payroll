@@ -146,9 +146,9 @@ class Operations extends Controller{
 
 
      public function leaveform(){
-        $empname  = $_POST['empname'];
-        $empdata = Employee::searchemployeegeneral($empname);
-        $empcount = Employee::searchemployeegeneralcount($empname);
+        $employeeid  = $_POST['employeeid'];
+        $empdata = Employee::getEmployeesById($employeeid)[0];
+        $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
         $usersdata = User::ListAll();
 
         $data = [ 'empdata'=>$empdata,  'empcount'=>$empcount, 'userdata'=>$usersdata];
@@ -378,15 +378,17 @@ class Operations extends Controller{
       		 $uploadresponse = $uploads->upLoadFile();
       		 $filename =  $uploadresponse['filename'];
 
+           $actualdays = Tools::datediff($_POST['startdate'],$_POST['endate']);
            $gv  = new Leave();
            $gv->recordObject->description = $description;
            $gv->recordObject->reportdate =  date('Y-m-d');
            $gv->recordObject->employeeid = $employeeid;
            $gv->recordObject->uid = $_SESSION['uid'];
-           $gv->recordObject->recipientid = $reportedby;
+           $gv->recordObject->receipientid = $reportedby;
            $gv->recordObject->filename = $filename;
            $gv->recordObject->startdate = $_POST['startdate'];
            $gv->recordObject->endate = $_POST['endate'];
+           $gv->recordObject->actualdays = $actualdays;
 
            if($gv->store()){
 
@@ -396,16 +398,13 @@ class Operations extends Controller{
 
                   $us = new User($uid);
                   $telephone = $us->recordObject->telephone;
-                  sendGrievanceText($telephone, 'leave request');
+                 // sendGrievanceText($telephone, 'leave request');
                   Leave::insertleaveusers($lid, $uid);
                }
            }
 
          
-
-           $data = ['grievancedata'=>$grievancedata];
-           $this->view('operations/leave', $data);
-           exit;
+           Redirecting::location('operations/leave');
          }
 
          else{
@@ -451,5 +450,23 @@ class Operations extends Controller{
         $list[]=array("title"=>$holiday->holidayname,"start"=>$holiday->holidaydate,"end"=>$holiday->holidaydate);
        }
        echo json_encode($list);
+     }
+
+     public function leavedays($daysid=null){
+      $leave = Leavedays::getleavedays($daysid);
+
+      if(isset($_POST['saveleavedaysbtn'])){
+        $leavedays = $_POST['leavedays'];
+        $daysid =$_POST['daysid'];
+        if($daysid==''){
+          $daysid=null;
+        }
+        $gv  = new Leavedays($daysid);
+        $gv->recordObject->leavedays = $leavedays;
+        $gv->store();
+      }
+
+      $this->view('operations/leavedays',$leave);
+
      }
 }

@@ -179,6 +179,20 @@ $(document).ready(function() {
 
     })
 
+
+    $(document).on('click', '.deleteleaveday', function(){
+
+        var  daysid =  $(this).attr('daysid');
+
+        var postdata = {daysid:daysid};
+        var ajaxurl =  urlroot + '/ajax/deleteleavedays';
+        var redirectionurl =  urlroot + '/operations/leavedays';
+
+        if(confirm('Do you want to delete leave day ?')){
+         AjaxPostRedirection(ajaxurl, postdata,redirectionurl);
+        }
+
+    })
     $(document).on('click', '.deleteposition', function(){
 
         var  posid =  $(this).attr('posid');
@@ -962,8 +976,9 @@ $(document).ready(function() {
 
 
           $(document).on('click', '#leavebtn', function(){
-               var empname   = $('#empname').val();
-               var postdata = {empname:empname};
+               var employeeid   = $('#employeeid').val();
+               if (employeeid=='')return;
+               var postdata = {employeeid:employeeid};
                var ajaxurl =  urlroot + '/operations/leaveform';
                $.ajax({
                   type: "POST",
@@ -1161,7 +1176,7 @@ $(document).ready(function() {
 
 
     //autocomplete for employees
-    $('#employeename').autocomplete({
+    $('.employeename').autocomplete({
         source: function(request, response) {
             $.ajax({
                 url: urlroot + "/pages/searchemployee",

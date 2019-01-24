@@ -87,7 +87,7 @@ class Employee extends tableDataObject{
     {
         global $payrolldb;
         if($request=='search') {
-            $getrecords = "select * from basicinformation  where firstname like '$query%' or surname like '$query%' or staffid like '$query%'";
+            $getrecords = "select * from basicinformation  where firstname like '$query%' or surname like '$query%' or staffid like '$query%' or telephone like '$query%'";
         }elseif ($request=='populate'){
             $getrecords = "select * from basicinformation  where basic_id ='$query'";
         }

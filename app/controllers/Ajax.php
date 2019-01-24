@@ -58,6 +58,14 @@ class Ajax extends Controller{
  
      }
 
+     public function deleteleavedays(){
+
+      $daysid = $_POST['daysid'];
+      $depdelete = new Leavedays($daysid);
+      $depdelete->deleteFromDB();
+ 
+     }
+
     public function deleteposition(){
 
      $posid = $_POST['posid'];
