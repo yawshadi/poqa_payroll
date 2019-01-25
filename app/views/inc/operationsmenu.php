@@ -19,6 +19,7 @@ $role =  $n->recordObject->role;
 <a href="<?php echo URLROOT  ?>/operations/leave"><i  class="fa  fa-circle"></i> Leave Management Form</a>
 <a href="<?php echo URLROOT  ?>/operations/holiday"><i  class="fa  fa-circle"></i> Holiday Setup</a>
 <a href="<?php echo URLROOT  ?>/operations/leavedays"><i  class="fa  fa-circle"></i> Leave Days</a>
+<a href="<?php echo URLROOT  ?>/operations/operationsview/Leave"><i  class="fa  fa-circle"></i> Leave Calendar</a>
 
 
 <?php //} ?>

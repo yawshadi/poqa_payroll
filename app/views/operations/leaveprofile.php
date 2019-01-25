@@ -152,21 +152,4 @@ tr, td{
 
   <?php require APPROOT .'/views/inc/footer.php'  ?>
 
-  <script type="text/javascript">
-  var uroot = '<?php echo URLROOT.'/task/savedoc/'.$data['task']->id ?>';
-
-  $('#subdoc').uploadifive({
-      'buttonText'  : 'Browse for document to upload',
-      'buttonClass' : 'uploadifive-button',
-      'auto'        : true,
-      'method'      : 'post',
-      'multi'       : true,
-      'width'       : 250,
-      'uploadScript': uroot,
-      'onUploadComplete' : function(file, data) {
-            alert(data);
-        }
-   });
-
-
-  </script>
+ 

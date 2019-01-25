@@ -1,10 +1,10 @@
 <script>
 
 const urlroot = marketplacecfg.urlroot;
-$('#reportedbycc').SumoSelect({search: true, okCancelInMulti: true});
+$('#reportedbycc').SumoSelect({search: true});
 
 $(".leavedate").datepicker({inline: true,
-changeMonth: true, changeYear: true, yearRange: "1920:2020", dateFormat: 'yy-mm-dd' });
+changeMonth: true, changeYear: true, yearRange: "1920:2080", dateFormat: 'yy-mm-dd' });
 
 </script>
 

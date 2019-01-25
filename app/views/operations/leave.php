@@ -95,7 +95,7 @@ tr, td{
        <td><?php echo $employeename   ?></td>
        <td><?php  echo $get->startdate ?></td>
        <td><?php  echo $get->endate ?></td>
-       <td><a href='#'>View</a></td>
+       <td><a href='<?php  echo URLROOT.'/Operations/operationprofile/Leave/'.$get->lid   ?>'>View</a></td>
        <td><a href='<?php  echo URLROOT.'/uploads/'.$get->filename   ?>' >Download</a></td>
        </tr>
        <?php
