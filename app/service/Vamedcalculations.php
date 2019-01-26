@@ -137,6 +137,11 @@ class Vamedcalculations{
       return $amount;
    }
 
+   public static function totalbonus($standardovertime, $teamdevelopment, $satsunholovertime){
+     $amount = $standardovertime+ $teamdevelopment+ $satsunholovertime;
+     return $amount;
+   }
+
 
 
 }
