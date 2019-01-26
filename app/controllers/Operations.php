@@ -147,7 +147,7 @@ class Operations extends Controller{
 
      public function leaveform(){
         $employeeid  = $_POST['employeeid'];
-        $empdata = Employee::getEmployeesById($employeeid)[0];
+        $empdata = Employee::getEmployeesById($employeeid);
         $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
         $usersdata = User::ListAll();
 
