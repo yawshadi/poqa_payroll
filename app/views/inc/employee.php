@@ -11,14 +11,11 @@ $role =  $n->recordObject->role;
 <a href="<?php echo URLROOT  ?>/pages/employees"> <i  class="fa  fa-circle"></i> Add New Employee</a>
 <a href="<?php echo URLROOT  ?>/pages/designation"> <i  class="fa  fa-circle"></i> Employee Designation</a>
 <?php } ?>
-<?php if($role == 'HR Manager' || $role == 'Administrator' || $role == 'Head of Admin' || $role == 'Data Entry Clerk' || $role == 'Agent'  ){
-  ?>
-<a href="<?php echo URLROOT  ?>/pages/visaemployees"><i  class="fa  fa-circle"></i> Add Visa Employee</a>
-<?php } ?>
+
 <?php
-  if($role == 'Administrator' || $role == 'Head of Admin' || $role == 'HR Manager' || $role == 'Expatriate'|| $role == 'Agent'){
+  if($role == 'Administrator' || $role == 'Head of Admin' || $role == 'HR Manager'){
 ?>
-<a href="<?php echo URLROOT  ?>/pages/visamasterlist"><i  class="fa  fa-circle"></i> Master List of Visa Employee</a>
+<a href="<?php echo URLROOT  ?>/pages/visamasterlist"><i  class="fa  fa-circle"></i> Masterlist of Employee</a>
 <?php } ?>
 
 </div>

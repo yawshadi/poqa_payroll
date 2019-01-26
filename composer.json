@@ -13,7 +13,8 @@
     "etdsolutions/sumoselect": "dev-master",
     "twbs/bootstrap": "v4.0.0-alpha.6",
     "hsalazr/jquery-validation":"dev-master",
-    "se/opentrans": "^0.1.3"
+    "se/opentrans": "^0.1.3",
+    "spipu/html2pdf": "^5.2"
   }
 
 }

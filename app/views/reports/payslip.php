@@ -11,6 +11,11 @@ tr, td{
   padding:2px;
 }
 
+.vas{
+  font-weight: 700;
+  font-size: 12px;
+}
+
 </style>
 
 
@@ -46,11 +51,11 @@ tr, td{
       <div class='card'>
       <div class="container">
       <br/>
-      <div align='center'>
+      <div>
 
       <form method='post'>
 
-      <table  class='table table-bordered table-condensed apptables' style='font-size:12px'>
+      <table  class='table table-bordered table-condensed' style='font-size:12px'>
 
        <tr>
        <td>
@@ -87,244 +92,149 @@ tr, td{
 
       </table>
     </form>
+  </div>
 
     <br/>
 
     <?php if(isset($data['payrolldata'])): ?>
-    <div><a style='font-size:10px' href='<?php echo URLROOT  ?>/excelreport/payslipexcel/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['employeeid']) ?>'
-   class='btn btn-danger pull-left'>Download PaySlip</a></div>
-  <div style='width:100%; overflow-x:scroll; margin-top:10px'>
-  <?php
-    foreach($data['payrolldata'] as $key=>$get):
 
-    ?>
-  <table width="100%"  align="center" class='table table-bordered  table-condensed'>
-  <tr>
-    <td width="187">Payslip No</td>
-    <td width="186">1</td>
-    <td width="12">&nbsp;</td>
-    <td width="221">&nbsp;</td>
-    <td width="83"></td>
-    <td width="107">Period</td>
-    <td width="191"><?php  echo $data['startdate']. ' / '. $data['enddate'];  ?></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td colspan="4"><b>OVERTIME</b></td>
-  </tr>
-  <tr>
-    <td>Employee Code</td>
-    <td><?php echo $get['staffid'];  ?></td>
-    <td>&nbsp;</td>
-    <td>Day(s)</td>
-    <td>Hours </td>
-    <td>Rate</td>
-    <td>Amount</td>
-  </tr>
-  <tr>
-    <td>Department</td>
-    <td><?php echo $get['department'];  ?></td>
-    <td>&nbsp;</td>
-    <td>WeekDay</td>
+  <div style='width:70%; margin-top:10px'>
+    <a style='font-size:10px' href='<?php echo URLROOT  ?>/payslip/slipdf/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['employeeid']) ?>'
+      class='btn btn-danger pull-right'>Download PaySlip</a>
 
-    <td><?php echo  $get['weekdayovertimehours'];   ?></td>
-    <td><?php  echo  round($get['weekdayovertimerate'],2);  ?></td>
-    <td><?php  echo  $get['weekdayovertimeallowance']; ?></td>
-  </tr>
-  <tr>
-    <td>Position</td>
-    <td><?php  echo $get['position']; ?></td>
-    <td>&nbsp;</td>
-    <td>Holiday/Weekend</td>
+    <div style="width:50%">
+    <table  class='table table-bordered '>
+      <tr>
+       <td>Staff Name</td>
+       <td class="vas"><?php echo $data['payrolldata']['fullname']  ?></td>
+      </tr>
+      <tr>
+       <td>Position</td>
+       <td class="getvisaemployees"><?php echo $data['payrolldata']['position']  ?></td>
+      </tr>
 
-    <td><?php echo $get['holidayandweekendovertimehours']   ?></td>
-    <td><?php echo round($get['holidayandweekendovertimerate'],2)  ?></td>
-    <td><?php echo  $get['holidayandweekendovertimeallowance'];  ?></td>
-  </tr>
-  <tr>
-    <td>Name</td>
-    <td><?php echo $get['fullname'];  ?></td>
-    <td>&nbsp;</td>
-    <td>Total</td>
-    <td><?php echo  $get['weekdayovertimehours'] +  $get['holidayandweekendovertimehours'];    ?></td>
-    <td>&nbsp;</td>
-    <td><?php echo $get['weekdayovertimeallowance'] + $get['holidayandweekendovertimeallowance'];  ?></td>
-  </tr>
-  <tr>
-    <td>Bank</td>
-    <td><?php echo $get['bank']; ?></td>
-    <td>&nbsp;</td>
-    <td>Officer's OT</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>Branch</td>
-    <td><?php echo $get['branch']; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>Account</td>
-    <td><?php echo $get['accountnumber'];  ?></td>
-    <td>&nbsp;</td>
-    <td>No. of days/hours worked</td>
-    <td><?php  echo $get['numberofdaysworked'];  ?></td>
-    <td>Night Hours</td>
-    <td><?php  echo $get['nighthours'];  ?></td>
-  </tr>
-  <tr>
-    <td>SSF No</td>
-    <td><?php echo $get['ssnitnumber']  ?></td>
-    <td>&nbsp;</td>
-    <td>Daily Hourly Rate</td>
-    <td><?php  echo round($get['weekdayhourlyrate'],2)  ?></td>
-    <td>Hourly Rate</td>
-    <td><?php echo round($get['weekdayhourlyrate'],2) ?></td>
-  </tr>
-  <tr>
-    <td>Tier 2 No</td>
-    <td><?php echo $get['tiernumber']  ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td colspan="7">&nbsp;</td>
+      <tr>
+       <td>Social Security No:</td>
+       <td class="vas"><?php echo $data['payrolldata']['ssnitnumber']  ?></td>
+      </tr>
 
-  </tr>
-  <tr>
-    <td><strong>EARNINGS</strong></td>
-    <td><strong>AMOUNT(GHC)</strong></td>
-    <td>&nbsp;</td>
-    <td><strong>DEDUCTIONS</strong></td>
-    <td>&nbsp;</td>
-    <td><strong>AMOUNT </strong></td>
-    <td><strong>Taxable Salary (GHS)</strong></td>
-  </tr>
-  <tr>
-    <td>Monthly Wage</td>
-    <td><?php  echo $get['basic_salary'];   ?></td>
-    <td>&nbsp;</td>
-    <td>SSF Employee (5.5%)</td>
-    <td></td>
-    <td><?php  echo $get['ssnitpercent'];   ?></td>
-    <td><?php //echo $taxable   ?></td>
-  </tr>
-  <tr>
-    <td>Overtime</td>
-    <td><?php  echo payround($get['overtime']);   ?></td>
-    <td>&nbsp;</td>
-    <td>Income Tax </td>
-    <td></td>
-    <td><?php  echo $get['paye']  ?></td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>Transport Allowance</td>
-    <td><?php //echo $var->transport_allowance  ?></td>
-    <td>&nbsp;</td>
-    <td>Overtime Tax</td>
-    <td></td>
-    <td><?php echo payround($get['overtimetax']);  ?></td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>Night Allowance</td>
-    <td><?php echo $get['nightshiftallowance'];  ?></td>
-    <td>&nbsp;</td>
-    <td>Loan</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>Other Deductions</td>
-    <td></td>
-    <td><?php echo $get['otherdeductions']  ?></td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>Gross</td>
-    <td><?php echo $get['overallgross']  ?></td>
-    <td>&nbsp;</td>
-    <td>Total Deductions</td>
-    <td><?php echo payround($get['totaldeduction'])  ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>Net Pay</td>
-    <td><?php echo payround($get['netsalary'])   ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td colspan="7" style='font-weight:700'>Employers Contributions</td>
-  </tr>
-  <tr>
-    <td>SSF Employer (15%)</td>
-    <td><?php  echo payround($get['ssnitocompany'])  ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>Total SSF</td>
-    <td><?php  echo payround($get['totalssf'])  ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-</table>
-    <?php
-     endforeach;
-    ?>
+      <tr>
+       <td>BBG Details</td>
+       <td class="vas"><?php echo $data['payrolldata']['bankname'] . '<br>'.
+            $data['payrolldata']['accountnumber'] . '-'.$data['payrolldata']['branch'];
+         ?></td>
+      </tr>
+
+    </table>
+  </div>
+
+<table class='table table-bordered '>
+
+      <tr style="font-weight:700; font-size:15px;">
+       <td>Basis for Calculation</td>
+       <td>Total (GHs)</td>
+      </tr>
+
+      <tr style="color:#00ACE5; font-weight:700">
+       <td colspan=2>Income</td>
+      </tr>
+
+      <tr>
+       <td>Basic Salary</td>
+       <td class="vas"><?php echo payround($data['payrolldata']['basic_salary'])  ?></td>
+      </tr>
+
+      <tr>
+       <td>5.5% Staff SSNIT Contribution</td>
+       <td class="vas"><?php echo payround($data['payrolldata']['staffssnit'])  ?></td>
+      </tr>
+
+      <tr  style="background:#00ACE5; font-size:20px; color:#fff">
+       <td>Total Income</td>
+       <td class='vas'><?php echo payround($data['payrolldata']['totalincome'])  ?></td>
+      </tr>
+
+      <tr>
+       <td colspan="2">&nbsp</td>
+      </tr>
+
+      <tr  style="color:#00ACE5; font-weight:700">
+       <td colspan=2>Bonuses</td>
+      </tr>
+      <tr>
+       <td>50% Standard Overtime</td>
+       <td class='vas'><?php echo payround($data['payrolldata']['standardovertime'])  ?></td>
+      </tr>
+      <tr>
+       <td>15% Team Development Bonus</td>
+        <td class='vas'><?php echo payround($data['payrolldata']['teamdevelopment'])  ?></td>
+      </tr>
+      <tr>
+       <td>2.5% Saturdays, Sundays, & Public Holidays Overtime	</td>
+        <td class='vas'><?php echo payround($data['payrolldata']['satsunholovertime'])  ?></td>
+      </tr>
+      <tr style="background:#00ACE5; font-size:20px; color:#fff">
+       <td>Total Bonuses</td>
+          <td class="vas"><?php echo payround($data['payrolldata']['totalbonus'])  ?></td>
+      </tr>
+
+      <tr>
+       <td colspan="2">&nbsp</td>
+      </tr>
+
+      <tr  style="color:#00ACE5; font-weight:700">
+       <td colspan="2">Deductions</td>
+      </tr>
+      <tr>
+       <td>Tax Relief</td>
+           <td class='vas'><?php echo payround($data['payrolldata']['taxrelief'])  ?></td>
+      </tr>
+      <tr>
+       <td>Taxable Income</td>
+        <td class='vas'><?php echo payround($data['payrolldata']['taxableincome'])  ?></td>
+      </tr>
+      <tr>
+       <td>PAYE Tax Payable </td>
+           <td class='vas'><?php echo payround($data['payrolldata']['paye'])  ?></td>
+      </tr>
+      <tr>
+       <td>WHT on Overtime</td>
+        <td class='vas'><?php echo payround($data['payrolldata']['whtonstandardovertime'])  ?></td>
+      </tr>
+      <tr>
+       <td>WHT on Excess Overtime</td>
+          <td class='vas'><?php echo payround($data['payrolldata']['whtonsatsunholovertime'])  ?></td>
+      </tr>
+
+      <tr>
+       <td>Bonus Tax</td>
+           <td class='vas'><?php echo payround($data['payrolldata']['bonustax'])  ?></td>
+     </tr>
+
+
+      <tr>
+       <td>Total Tax Payable</td>
+           <td class='vas'><?php echo payround($data['payrolldata']['totaltaxpayable'])  ?></td>
+      </tr>
+
+      <tr>
+       <td>Staff Welfare Association Contribution</td>
+           <td class='vas'><?php echo payround($data['payrolldata']['staffwelfare'])  ?></td>
+      </tr>
+
+      <tr>
+       <td colspan="2">&nbsp</td>
+      </tr>
+
+      <tr  style="background:#D73925; font-size:20px; color:#fff">
+      <td>Net Amount Payable to Staff Account</td>
+          <td class='vas'><?php echo payround($data['payrolldata']['vamedwelfarenetsalary'])  ?></td>
+      </tr>
+
+    </table>
+
+    <br/>
+
 
     </div>
 
