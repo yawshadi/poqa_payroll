@@ -11,7 +11,22 @@ class Leavedays extends tableDataObject{
        return $payrolldb->singleRecord();
      }
 
-     public static function availabledays($employeeid){
+     public static function totalleave(){
+        global $payrolldb;
+        $query = "SELECT leavedays.leavedays FROM leavedays ";
+        $payrolldb->prepare($query);
+       return $payrolldb->fetchColumn();
+     }
+
+     public static function availabledays($employeeid,$year){
          
+        global $payrolldb;
+        $query = "SELECT sum(actualdays) as days FROM leaves WHERE employeeid='$employeeid' and year(reportdate)='$year'";
+        $payrolldb->prepare($query);
+        $l = $payrolldb->fetchColumn();
+        $totalleave = self::totalleave();
+        $available = $totalleave - $l;
+        if ($available < 0) $available = 0;
+        return $available;
      }
 }

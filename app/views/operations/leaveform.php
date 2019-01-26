@@ -37,6 +37,11 @@ if($data['empcount'] > 0){
   </tr>
 
   <tr>
+  <td>Available Leave days</td>
+  <td><?= Leavedays::availabledays($data['empdata']->basic_id,date('Y'))   ?></td>
+  </tr>
+
+  <tr>
   <td>Reported To:</td>
   <td><select class='form-control' name='reportedby'>
     <option>Select</option>
