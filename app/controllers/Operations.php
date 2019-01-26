@@ -481,8 +481,4 @@ class Operations extends Controller{
       $this->view('operations/leavedays',$leave);
 
      }
-
-     public function try(){
-     print_r( Leavedays::availabledays('656',date('Y')));
-     }
 }
