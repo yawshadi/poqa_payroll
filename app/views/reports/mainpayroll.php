@@ -105,13 +105,13 @@ tr, td{
 
   <div style='width:100%; margin-top:10px'>
 
-  <div><a style='font-size:10px' href='#' id='paybutton'
-   class='btn btn-danger pull-right'>Download</a></div>
+  <div><a style='font-size:10px' href='<?php echo URLROOT  ?>/excelreport/actualexcel/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['companyid']) ?>'
+       class='btn btn-danger pull-right'>Download</a></div>
   <br/>
 
   <table class='table table-bordered table-condensed' id='payrolltable' >
   <tr style="font-weight:700">
-      <td><img src="<?php echo URLROOT ?>/img/vamed.png" alt="Vamed"</td>
+      <td>No:</td>
       <td>Employee Name</td>
       <td>Department</td>
       <td>Position</td>
@@ -176,18 +176,3 @@ tr, td{
     </div>
     </div>
     <?php require APPROOT .'/views/inc/footer.php'  ?>
-    <script>
-    // var wb = XLSX.utils.table_to_book(document.getElementById('payrolltable'), {sheet:"Sheet JS"});
-    // var wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
-    // function s2ab(s) {
-    //                 var buf = new ArrayBuffer(s.length);
-    //                 var view = new Uint8Array(buf);
-    //                 for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-    //                 return buf;
-    // }
-
-    $("#paybutton").click(function(){
-    $("#payrolltable").tableExport();
-    });
-
-    </script>
