@@ -3,7 +3,6 @@
 <div href="#"> PAYROLL CONFIGURATIONS</div>
 <a href="<?php echo URLROOT  ?>/pages/payperiod"><i  class="fa  fa-circle"></i> Payroll Period</a>
 <a href="<?php echo URLROOT  ?>/pages/recurrent"><i  class="fa  fa-circle"></i> Recurrent Config</a>
-<a href="<?php echo URLROOT  ?>/pages/officerrecurrent"><i  class="fa  fa-circle"></i> Officer Recurrent Config</a>
 <a href="<?php echo URLROOT  ?>/pages/bankcodes"><i  class="fa  fa-circle"></i> Bank Sort Codes</a>
 
 

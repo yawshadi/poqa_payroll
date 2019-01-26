@@ -245,10 +245,10 @@ class Pages extends Controller{
 		$department = $_POST['department'];
 
 		$lastpayperiod = Payperiod::getLastPayperiod($_POST['company']);
-		$startdate = $lastpayperiod[0]->start;
-		$endate = $lastpayperiod[0]->end;
+		echo $startdate = $lastpayperiod[0]->start;
+		echo $endate = $lastpayperiod[0]->end;
 
-		$empdata = PayrollRecurrent::getRecurrentPayroll($company, $department, $startdate, $endate, 'Casual');
+		$empdata = PayrollRecurrent::getRecurrentPayroll($company, $department, $startdate, $endate);
 		$alldata =  ['companies'=>$comdata, 'employeedata'=>$empdata];
         $this->view('config/recurrent',  $alldata );
 
@@ -400,14 +400,14 @@ class Pages extends Controller{
 			$companydata = new Companies();
 			$companydata->recordObject->companyname = $_POST['companyname'];
 			$companydata->store();
-			
+
 			$comdata =  Companies::getCompany();
 			$this->view('pages/company', $comdata) ;
 
 	   }else{
 		 $comdata = Companies::getCompany();
 		 $this->view('pages/company', $comdata);
-	   }
+	 }
 
 
 	}

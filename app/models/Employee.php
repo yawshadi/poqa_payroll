@@ -23,7 +23,7 @@ class Employee extends tableDataObject{
 
     public static  function getEmployeesByCompany($company){
         global $payrolldb;
-        $getrecords = "select * from  basicinformation  where company = '$company' and designation = 'Casual' ";
+        $getrecords = "select * from  basicinformation  where company = '$company' ";
         $payrolldb->prepare($getrecords);
         $payrolldb->execute();
         return $payrolldb->resultSet();
@@ -42,7 +42,7 @@ class Employee extends tableDataObject{
         $getrecords = "select * from  basicinformation  where basic_id = '$id' ";
         $payrolldb->prepare($getrecords);
         $payrolldb->execute();
-        return $payrolldb->resultSet();
+        return $payrolldb->singleRecord();
     }
 
 
