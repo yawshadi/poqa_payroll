@@ -1211,8 +1211,6 @@ $(document).ready(function() {
         },
         minLength: 2
     });
-
-
     $('.accumulated').focusin(function(){
 
 
