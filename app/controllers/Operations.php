@@ -481,4 +481,15 @@ class Operations extends Controller{
       $this->view('operations/leavedays',$leave);
 
      }
+
+     public function leaveconfig(){
+
+		$employeeid =  $_POST['employeeid'];
+		$field = $_POST['field'];
+		$value = $_POST['value'];
+
+	  $recut = new Employee($employeeid);
+		$recut->recordObject->$field = $value;
+		$recut->store();
+     }
 }

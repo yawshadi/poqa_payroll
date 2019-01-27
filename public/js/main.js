@@ -1211,4 +1211,36 @@ $(document).ready(function() {
         },
         minLength: 2
     });
+
+
+    $('.accumulated').focusin(function(){
+
+
+        var field = $(this).attr('field');
+        var employeeid = $(this).attr('employeeid');
+
+        var  ajaxurl =  urlroot + '/operations/leaveconfig';
+
+        $(this).focusout(function(){
+            var value =$(this).val();
+
+            var postdata = {field:field, employeeid:employeeid, value:value};
+             $.ajax({
+                type: "POST",
+                url:  ajaxurl,
+                data: postdata,
+                dataType: "html",
+                beforeSend: function () {},
+                success: function (text) {
+               //  $('#ajaxcontainer').html(text);
+                },
+                complete: function () {},
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + " " + thrownError);
+
+                }
+                })
+        })
+        return false;
+    });
 })
