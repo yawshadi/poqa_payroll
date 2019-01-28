@@ -189,8 +189,8 @@ tr, td{
          <td><select class='form-control bom' name='category' id='category'>
           <option><?php echo $data['employees']->category  ?></option>
            <option>Manager</option>
-           <option>Officer 1</option>
-           <option>Officer 2</option>
+           <option value="Officer 1">Officer 1 (27.5 %)</option>
+           <option  value="Officer 2">Officer 2 (2.5 %)</option>
           </select></td>
           <td><input type="text" class="form-control bom" name='basicsalary' value="<?php echo $data['employees']->basicsalary  ?>" id="basicsalary" placeholder="Basic Salary"/></td>
          </tr>
