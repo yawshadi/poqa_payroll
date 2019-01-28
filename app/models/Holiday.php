@@ -10,4 +10,14 @@ class Holiday extends tableDataObject{
         $payrolldb->prepare($query);
        return $payrolldb->singleRecord();
      }
+
+     public static function holidays(){
+        global $payrolldb;
+        $query = "SELECT holidaydate FROM holiday";
+        $payrolldb->prepare($query);
+       foreach($payrolldb->resultSet() as $l){
+            $holiday[]=$l->holidaydate;
+       }
+       return $holiday;
+     }
 }

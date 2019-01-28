@@ -44,11 +44,18 @@ tr, td{
     </div>
 
 
-
-<div class="row" style="margin-bottom:20px">
-
+   <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Current Year Leave</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Accumulated Leave</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="row" style="margin-bottom:20px">
      <div class="col-lg-5 col-md-5 col-sm-12">
-
      <div class='card'>
      <form method='post'>
      <table class='table'>
@@ -74,11 +81,9 @@ tr, td{
          </table>
          </form>
      </div>
-
       </div>
 
-      <div class="col-lg-7 col-md-7 col-sm-7">
-
+    <div class="col-lg-7 col-md-7 col-sm-7">
       <div class='card'>
       <div class="container">
       <br/>
@@ -94,7 +99,9 @@ tr, td{
       </thead>
 
        <?php
+       $tleave = 0;
         foreach(Leavedays::listAll() as $get):
+          $tleave=$get->leavedays;
        ?>
        <tr>
        <td><?php echo $get->leavedays   ?></td>
@@ -103,33 +110,47 @@ tr, td{
        <?php
        endforeach;
        ?>
-
-
-
       </table>
       </div>
-
-
      </div>
      </div>
+    </div>
+  </div>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <div class="row">
+  <?php
+    $doublearray = array_chunk(Employee::listAll(),10);
+      foreach($doublearray as $double):
+    ?>
+  <div class="col-md-4">
+  <table id='success'  class='table datatable table-bordered table-condensed'>
+  	<thead>
+	   <tr style='font-weight:700'>
+  		<td>Employee</td>
+  		<td>Accumulated Leave</td>
+     </tr>
+      </thead>
+     <?php     
+      foreach($double as $get):
+		    $id=$get->basic_id;
+     ?>
+     <tr>
+     	<td width='45%'><?php echo $get->fullname ?><br/>
+        <span style='font-size:10px; color:red'><?php echo $get->position ?></span>
+      </td>
+  		<td><input type='text' employeeid = '<?php echo $get->basic_id ?>'  value="<?= ($get->accumulatedleave=='')?$tleave:$get->accumulatedleave ?>" field='accumulatedleave' class='form-control accumulated'/></td>
+     </tr>
+     <?php
+	   endforeach;
+     ?>
+  </table> 
+  </div>
+    <?php endforeach; ?>
+  </div>
+  </div>
+  </div>
 
-      </div>
-
-
-      </div>
-
-
-
-
-      <!-- End of first upper row -->
-
-
-      <div class="row" style="margin-bottom:20px">
-
-
-
-
-      </div>
     </div>   <!-- End of Placeholder -->
 
     </div>
