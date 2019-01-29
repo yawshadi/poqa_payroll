@@ -92,6 +92,10 @@ class Payrollreport extends Controller{
         }
 
      }
+     public function leavereport(){
+
+      $this->view('reports/leavereport');
+     }
 
 
 

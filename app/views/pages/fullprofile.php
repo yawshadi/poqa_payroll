@@ -67,7 +67,7 @@ tr, td{
      <table class='table table-bordered' style='color:#fff'>
          <tr>
          <td width=40%>Name: </td>
-         <td class='fontdisplay'><?php  echo $data['empdata']->fullname  ?></td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->fullname.' '.$data['empdata']->othernames  ?></td>
          </tr>
          <tr>
          <td>Date of Birth</td>
@@ -89,6 +89,18 @@ tr, td{
          </tr>
 
          <tr>
+         <td>Location</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->location  ?></td>
+         </tr>
+         <tr>
+         <td>Nationality</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->nationality  ?></td>
+         </tr>
+         <tr>
+         <td>Gender</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->gender  ?></td>
+         </tr>
+         <tr>
          <td>Company</td>
          <td class='fontdisplay'><?php  echo $data['empdata']->company  ?></td>
          </tr>
@@ -102,7 +114,10 @@ tr, td{
          <td>Position</td>
          <td class='fontdisplay'><?php  echo $data['empdata']->position  ?></td>
          </tr>
-
+         <tr>
+         <td>Academic Title</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->academictitle  ?></td>
+         </tr>
          <tr>
          <td>ID Type</td>
          <td class='fontdisplay'><?php  echo $data['empdata']->idtype  ?></td>
@@ -157,7 +172,26 @@ tr, td{
          <td>Probation End</td>
          <td class='fontdisplay'><?php  echo $data['empdata']->probationend  ?></td>
          </tr>
-
+         <tr>
+         <td>Contract Start</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->contractstart  ?></td>
+         </tr>
+         <tr>
+         <td>Contract End</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->contractend  ?></td>
+         </tr>
+         <tr>
+         <td>Contract Allocation</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->contractallocation  ?></td>
+         </tr>
+         <tr>
+         <td>Entry Date</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->entrydate  ?></td>
+         </tr>
+         <tr>
+         <td>Exit Date</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->exitdate  ?></td>
+         </tr>
          <tr>
          <td>Guarantor Name</td>
          <td class='fontdisplay'><?php  echo $data['empdata']->gaurantor  ?></td>
@@ -166,6 +200,13 @@ tr, td{
          <tr>
          <td>Guarantor Telephone</td>
          <td class='fontdisplay'><?php  echo $data['empdata']->gaurantor_telephone  ?></td>
+         </tr>
+         <tr>
+         <td>Category</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->category  ?></td>
+         </tr><tr>
+         <td>Basic Salary</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->basicsalary  ?></td>
          </tr>
 
          </table>
@@ -271,18 +312,31 @@ tr, td{
        <?php  if(count($data['leavedata']) > 0 ): ?>
       <table  style='font-size:12px; color:#fff' class='table table-bordered'>
         <tr>
-          <td colspan="4" align='center' style='font-weight:700'>LEAVES REQUEST </td>
+          <td colspan="5" align='center' style='font-weight:700'>LEAVES REQUEST </td>
+        </tr>
+        <tr>
+          <td>Leave entitled to </td>
+          <td>Dates on Leave(From) </td>
+          <td>Dates on Leave (To)</td>
+          <td>Total No. of days applied</td>
+          <td>Outstanding days</td>
         </tr>
         <?php
+        $i=1;
          foreach($data['leavedata'] as $get):
         ?>
         <tr>
+        <td <?= ($i==1)?"rowspan=".sizeof($data['leavedata']):"style=display:none"?>><?php echo $data['empdata']->accumulatedleave ?></td>
           <td><?php echo $get->startdate  ?></td>
           <td><?php echo $get->endate  ?></td>
-          <td><?php  echo $get->status == '' ?  'Pending' : $get->status  ?></td>
-          <td><a href='<?php  echo URLROOT.'/uploads/'.$get->filename  ?>'>Download</a></td>
+          <td><?php  echo $get->actualdays  ?></td>
+          <td <?= ($i==1)?"rowspan=".sizeof($data['leavedata']):"style=display:none"?>><?php echo Leavedays::availabledays($data['empdata']->basic_id,date('Y')) ?></td>
+<!--<td <?= (sizeof($data['leavedata'])==$i)?'':'rowspan='.sizeof($data['leavedata'])?>><span style="display:<?= (sizeof($data['leavedata'])==$i)?'':'none'?>"><?php echo $data['empdata']->accumulatedleave ?></span></td>-->
         </tr>
-          <?php endforeach; ?>
+        <?php
+        $i++; 
+        endforeach; 
+        ?>
       </table>
       <?php endif;  ?>
 

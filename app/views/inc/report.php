@@ -6,6 +6,7 @@
 <a href="<?php echo URLROOT  ?>/payrollreport/payereport"><i  class="fa fa-folder-open"></i> PAYE Report</a>
 <a href="<?php echo URLROOT  ?>/payrollreport/tierreport"><i  class="fa fa-folder-open"></i> TIER 2 Report</a>
 <a href="<?php echo URLROOT  ?>/payrollreport/ssnitreport"><i  class="fa fa-folder-open"></i> Employers SSNIT Schedule</a>
+<a href="<?php echo URLROOT  ?>/payrollreport/leavereport"><i  class="fa fa-folder-open"></i> Leave Report</a>
 
 </div>
 

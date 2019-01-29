@@ -378,7 +378,11 @@ class Operations extends Controller{
       		 $uploadresponse = $uploads->upLoadFile();
       		 $filename =  $uploadresponse['filename'];
 
+           //return leavedays from the start and end dates excluding holiday and weekends
            $actualdays = Tools::datediff($_POST['startdate'],$_POST['endate']);
+
+           
+
            $gv  = new Leave();
            $gv->recordObject->description = $description;
            $gv->recordObject->reportdate =  date('Y-m-d');
@@ -389,6 +393,7 @@ class Operations extends Controller{
            $gv->recordObject->startdate = $_POST['startdate'];
            $gv->recordObject->endate = $_POST['endate'];
            $gv->recordObject->actualdays = $actualdays;
+           $gv->recordObject->status = "Approve";
 
            if($gv->store()){
 
@@ -403,6 +408,11 @@ class Operations extends Controller{
                }
            }
 
+           //get the accumulated leave of the employee if any (else get the system leave days) and deduct the actual days from it
+          /* $emp = new Employee($employeeid);
+           $accumulated = $emp->recordObject->accumulatedleave;
+           $emp->recordObject->accumulatedleave = $accumulated - $actualdays;
+           $emp->store();*/
          
            Redirecting::location('operations/leave');
          }
