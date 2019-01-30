@@ -55,11 +55,12 @@ tr, td{
 
      <div class='card'>
      <table class='table'>
-         <tr>
-         <td width=90%><input type="text" class="form-control bom"  id="empname" placeholder="Search Employee Name, Number or Telephone"/></td>
+     <tr>
+         <td width=90%><input type="text" class="form-control bom employeename"  id="empname" placeholder="Search Employee Name, StaffID or Telephone"/></td>
          <td><button type='button' id='grievancebtn' style='font-size:10px' class='btn btn-primary'>
          <i class='fa fa-plus-circle'></i> Search</button></td>
          </tr>
+         <input type="hidden" class="form-control" id="employeeid">
 
       </table>
          <div id='searchcontainer' style="margin:10px"> </div>

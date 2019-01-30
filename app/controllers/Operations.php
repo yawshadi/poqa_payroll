@@ -96,9 +96,9 @@ class Operations extends Controller{
      }
 
      public function grievanceform(){
-        $empname  = $_POST['empname'];
-        $empdata = Employee::searchemployeegeneral($empname);
-        $empcount = Employee::searchemployeegeneralcount($empname);
+      $employeeid  = $_POST['employeeid'];
+      $empdata = Employee::getEmployeesById($employeeid);
+      $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
         $usersdata = User::ListAll();
 
         $data = [ 'empdata'=>$empdata,  'empcount'=>$empcount, 'userdata'=>$usersdata];
@@ -107,9 +107,9 @@ class Operations extends Controller{
      }
 
      public function disciplineform(){
-        $empname  = $_POST['empname'];
-        $empdata = Employee::searchemployeegeneral($empname);
-        $empcount = Employee::searchemployeegeneralcount($empname);
+      $employeeid  = $_POST['employeeid'];
+      $empdata = Employee::getEmployeesById($employeeid);
+      $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
         $usersdata = User::ListAll();
 
         $data = [ 'empdata'=>$empdata,  'empcount'=>$empcount, 'userdata'=>$usersdata];
@@ -118,10 +118,10 @@ class Operations extends Controller{
      }
 
      public function promotionform(){
-        $empname  = $_POST['empname'];
-        $empdata = Employee::searchemployeegeneral($empname);
+      $employeeid  = $_POST['employeeid'];
+      $empdata = Employee::getEmployeesById($employeeid);
+      $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
         $companyname  = $empdata->company;
-        $empcount = Employee::searchemployeegeneralcount($empname);
         $usersdata = User::ListAll();
         $departments = Department::getDepartmentByCompany($companyname);
 
@@ -132,10 +132,10 @@ class Operations extends Controller{
      }
 
      public function transferform(){
-       $empname  = $_POST['empname'];
-       $empdata = Employee::searchemployeegeneral($empname);
+      $employeeid  = $_POST['employeeid'];
+      $empdata = Employee::getEmployeesById($employeeid);
+      $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
        $companyname  = $empdata->company;
-       $empcount = Employee::searchemployeegeneralcount($empname);
        $usersdata = User::ListAll();
        $departments = Department::getDepartmentByCompany($companyname);
 

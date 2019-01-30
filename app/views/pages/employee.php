@@ -165,7 +165,7 @@ tr, td{
          </tr>
 
          <tr>
-         <td><input type="text" class="form-control bom"  id="tierno"  placeholder="Tire 2 No: "/></td>
+         <td><input type="text" class="form-control bom"  id="tierno"  placeholder="Tier 2 No: "/></td>
          <td align='right'><input type="text" class="form-control bom"  id="hiredate" placeholder="Hire Date"/></td>
          </tr>
 

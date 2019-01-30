@@ -873,8 +873,9 @@ $(document).ready(function() {
 
 
           $(document).on('click', '#grievancebtn', function(){
-             var empname   = $('#empname').val();
-             var postdata = {empname:empname};
+            var employeeid   = $('#employeeid').val();
+            if (employeeid=='')return;
+            var postdata = {employeeid:employeeid};
              var ajaxurl =  urlroot + '/operations/grievanceform';
              $.ajax({
                 type: "POST",
@@ -899,8 +900,9 @@ $(document).ready(function() {
 
 
           $(document).on('click', '#disciplinarybtn', function(){
-             var empname   = $('#empname').val();
-             var postdata = {empname:empname};
+            var employeeid   = $('#employeeid').val();
+            if (employeeid=='')return;
+            var postdata = {employeeid:employeeid};
              var ajaxurl =  urlroot + '/operations/disciplineform';
              $.ajax({
                 type: "POST",
@@ -924,8 +926,9 @@ $(document).ready(function() {
           })
 
           $(document).on('click', '#transferbtn', function(){
-             var empname   = $('#empname').val();
-             var postdata = {empname:empname};
+            var employeeid   = $('#employeeid').val();
+            if (employeeid=='')return;
+            var postdata = {employeeid:employeeid};
              var ajaxurl =  urlroot + '/operations/transferform';
              $.ajax({
                 type: "POST",
@@ -950,8 +953,9 @@ $(document).ready(function() {
 
 
           $(document).on('click', '#promotionbtn', function(){
-               var empname   = $('#empname').val();
-               var postdata = {empname:empname};
+            var employeeid   = $('#employeeid').val();
+            if (employeeid=='')return;
+            var postdata = {employeeid:employeeid};
                var ajaxurl =  urlroot + '/operations/promotionform';
                $.ajax({
                   type: "POST",
