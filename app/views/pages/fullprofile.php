@@ -224,16 +224,20 @@ tr, td{
       <table  style='font-size:12px'>
         <tr>
           <td colspan="3" align='center'>
-            <?php if(!isset($data['passport']->newname)): ?>
+            <?php if(!isset($data['passport']->newname)):
+            $did = null;  
+            ?>
             <img style="border-radius: 50%"
             src='<?php  echo URLROOT.'/img/noimage.jpg' ?>' height="150"
             width="150" class='img-circle'   /></td>
           <?php endif;  ?>
 
-          <?php if(isset($data['passport']->newname)): ?>
+          <?php if(isset($data['passport']->newname)): 
+            $did = $data['passport']->did;
+            ?>
           <img style="border-radius: 50%"
           src='<?php  echo URLROOT.'/uploads/'.$data['passport']->newname ?>' height="150"
-          width="150" class='img-circle'   /></td>
+          width="150" class='img-circle'/></td>
         <?php endif;  ?>
         </tr>
         <tr>
@@ -390,8 +394,7 @@ tr, td{
 
   <?php require APPROOT .'/views/inc/footer.php'  ?>
   <script type="text/javascript">
-  var uroot = '<?php echo URLROOT.'/pages/savepassport/'.$data['empdata']->basic_id ?>';
-
+  var uroot = "<?= URLROOT.'/pages/savepassport/'.$data['empdata']->basic_id.'/'.$did ?>";
 
   $('#filedoc').uploadifive({
       'buttonText'  : 'Browse for picture',

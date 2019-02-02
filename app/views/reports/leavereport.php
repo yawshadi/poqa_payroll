@@ -61,6 +61,7 @@ tr, td{
       ?>
       <tr>
       <td style="padding-top:<?=($x==0)?'40px !important':'' ?>"> <?= $employee->fullname ?></td>
+      <td style="text-transform:capitalize;padding-top:<?=($x==0)?'40px !important':'' ?>"><?= $employee->location ?></td>
       <td>
       <table  style='font-size:12px; color:#000' class='table table-bordered'>
         <tr style="font-weight:bold;display:<?=($x==0)?'':'none' ?>">

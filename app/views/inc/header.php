@@ -32,6 +32,7 @@ $companyname  = $com->recordObject->companyname;
     <link rel="stylesheet" type="text/css" href="<?php echo URLROOT ?>/css/dataTables/css/rowReorder.dataTables.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo URLROOT ?>/css/dataTables/css/responsive.dataTables.min.css"/>
     <link href="<?php echo URLROOT ?>/css/style.css" rel="stylesheet">
+    <link href="<?php echo URLROOT ?>/css/notie.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" id="theme" href="<?php echo URLROOT ?>/vendor/components/jqueryui/themes/base/jquery-ui.css"/>
     <link href="<?php echo URLROOT ?>/vendor/etdsolutions/sumoselect/sumoselect.css" rel="stylesheet" />

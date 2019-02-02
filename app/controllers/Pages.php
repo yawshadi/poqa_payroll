@@ -677,7 +677,7 @@ class Pages extends Controller{
 	}
 
 
-	public function savepassport($basicid){
+	public function savepassport($basicid,$did=null){
 
 			$filedata = $_FILES['Filedata'];
 			$filedoc = $_POST['filedoc'];
@@ -686,7 +686,7 @@ class Pages extends Controller{
 			$uploadresponse = $uploads->upLoadFile($filedoc);
 			if($uploadresponse['status'] == 'SUCCESS'){
 				 $docname = $uploadresponse['filename'];
-				 $docdata = new Document();
+				 $docdata = new Document($did);
 				 $size = $_FILES['Filedata']['size'];
 				 $type = $_FILES['Filedata']['type'];
 				 $name = $_FILES['Filedata']['name'];

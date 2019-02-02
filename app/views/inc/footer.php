@@ -41,6 +41,7 @@
 <script src="<?php echo URLROOT ?>/js/jquery.sumoselect.js"></script>
 <script src="<?php echo URLROOT ?>/js/jquery.serializejson.js"></script>
 <script src="<?php echo URLROOT ?>/js/jquery.validate.min.js"></script>
+<script src="<?php echo URLROOT ?>/js/notie.js"></script>
 <script src="<?php echo URLROOT ?>/uploadify/jquery.uploadifive.min.js"></script>
 <script type="text/javascript" src="<?php echo URLROOT ?>/css/dataTables/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="<?php echo URLROOT ?>/css/dataTables/js/dataTables.rowReorder.min.js"></script>

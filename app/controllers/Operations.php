@@ -502,4 +502,15 @@ class Operations extends Controller{
 		$recut->recordObject->$field = $value;
 		$recut->store();
      }
+
+     public function isleavevalid(){
+      // $employeeid = $_POST['employeeid'];
+       $startdate = $_POST['startdate'];
+       $enddate = $_POST['enddate'];
+       $available = $_POST['available'];
+       $actualdays = Tools::datediff($_POST['startdate'],$_POST['enddate']);
+       $a = $available - $actualdays;
+
+       echo $a;
+     }
 }
