@@ -14,14 +14,25 @@ class Vamedcalculations{
       return $amount;
    }
 
-   public static function standardovertime($basicsalary){
-     $amount =  $basicsalary * 0.5;
-      return $amount;
+   public static function standardovertime($basicsalary, $category){
+
+       if($category == 'Manager') {
+           return $basicsalary * 0.5;
+       }elseif($category == 'Officer 1' || $category == 'Officer 2'){
+          $amount = ($basicsalary / 22) * 0.10 * 66;
+           return $amount;
+       }
    }
 
-   public static function teamdevelopment($basicsalary){
-     $amount =  $basicsalary * 0.15;
-      return $amount;
+   public static function teamdevelopment($basicsalary, $category){
+       if($category == 'Manager') {
+         $amount =  $basicsalary * 0.15;
+          return $amount;
+       }else{
+           $amount =  $basicsalary * 0.25;
+           return $amount;
+       }
+
    }
 
    public static function satsunholovertime($category, $basicsalary){
@@ -51,8 +62,8 @@ class Vamedcalculations{
       return $amount;
    }
 
-   public static function grossincome($totalincome, $transportvehiclemaintenance, $rentallowance){
-     $amount =  $totalincome + $transportvehiclemaintenance +  $rentallowance;
+   public static function grossincome($basicsalary, $transportallowance, $rentallowance, $staffssnit){
+     $amount =  $basicsalary + $transportallowance +$rentallowance + $staffssnit;
       return $amount;
    }
 
@@ -102,11 +113,9 @@ class Vamedcalculations{
       return $amount;
    }
 
-   public static function vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $rentallowance,
-                                      $transportvehiclemaintenance, $totaltaxpayable, $salaryadvance)
-                                      {
-     $amount = $grossincome + $standardovertime + $teamdevelopment + $satsunholovertime + $rentallowance +
-                                        $transportvehiclemaintenance - $totaltaxpayable - $salaryadvance;
+   public static function vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance)
+   {
+     $amount = $grossincome + $standardovertime + $teamdevelopment + $satsunholovertime  - $totaltaxpayable - $salaryadvance;
       return $amount;
    }
 
@@ -141,6 +150,7 @@ class Vamedcalculations{
      $amount = $standardovertime+ $teamdevelopment+ $satsunholovertime;
      return $amount;
    }
+
 
 
 

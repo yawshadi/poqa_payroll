@@ -75,9 +75,19 @@ ob_start();
      <td class="vas"><?php echo payround($data['payrolldata']['staffssnit'])  ?></td>
     </tr>
 
-    <tr  style="background:#00ACE5; font-size:15px; color:#fff">
-     <td>Total Income</td>
-     <td class='vas'><?php echo payround($data['payrolldata']['totalincome'])  ?></td>
+    <tr>
+        <td>Transport Allowance</td>
+        <td class="vas"><?php echo payround($data['payrolldata']['transportvehiclemaintenance'])  ?></td>
+    </tr>
+
+    <tr>
+        <td>Rent Allowance</td>
+        <td class="vas"><?php echo payround($data['payrolldata']['rentallowance'])  ?></td>
+    </tr>
+
+    <tr  style="background:#00ACE5; font-size:20px; color:#fff">
+        <td>Gross Income</td>
+        <td class='vas'><?php echo payround($data['payrolldata']['grossincome'])  ?></td>
     </tr>
 
     <tr>
@@ -92,11 +102,11 @@ ob_start();
      <td class='vas'><?php echo payround($data['payrolldata']['standardovertime'])  ?></td>
     </tr>
     <tr>
-     <td>15% Team Development Bonus</td>
+     <td>Team Development Bonus</td>
       <td class='vas'><?php echo payround($data['payrolldata']['teamdevelopment'])  ?></td>
     </tr>
     <tr>
-     <td>2.5% Saturdays, Sundays, & Public Holidays Overtime	</td>
+     <td>Saturdays, Sundays, & Public Holidays Overtime	</td>
       <td class='vas'><?php echo payround($data['payrolldata']['satsunholovertime'])  ?></td>
     </tr>
     <tr style="background:#00ACE5; font-size:15px; color:#fff">
