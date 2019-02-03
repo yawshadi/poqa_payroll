@@ -1245,4 +1245,27 @@ $(document).ready(function() {
         })
         return false;
     });
+
+    $("#maritalstatus").change(function (e) { 
+        e.preventDefault();
+        var x = $(this).val();
+        var randomnumber = $("#randomnumber").val();
+        ajaxurl = urlroot + "/pages/marital";
+        postdata = {randomnumber:randomnumber};
+        if (x == "Married"){
+            $("#maritalmodal").modal('show');
+            AjaxPostContainer(ajaxurl,postdata,'mform');
+
+        }
+    });
+    $("#viewmarital").click(function (e) { 
+        e.preventDefault();
+        var randomnumber = $("#randomnumber").val();
+        ajaxurl = urlroot + "/pages/marital";
+        postdata = {randomnumber:randomnumber};
+            $("#maritalmodal").modal('show');
+            AjaxPostContainer(ajaxurl,postdata,'mform');
+
+        
+    });
 })

@@ -527,6 +527,8 @@ class Pages extends Controller{
 			$datarow->gender = $_POST['gender'];
 			$datarow->category = $_POST['category'];
 			$datarow->basicsalary = $_POST['basicsalary'];
+			$datarow->randomnumber = $_POST['randomnumber'];
+			$datarow->maritalstatus = $_POST['maritalstatus'];
 
 			$empdata->store();
 
@@ -957,7 +959,33 @@ class Pages extends Controller{
 	}
 
 
+public function marital(){
+	$randomnumber = $_POST['randomnumber'];
+	$maritaldata = Marital::maritaldata($randomnumber);
+	if(!is_object($maritaldata)){
+		$maritalid = null;
+	}else{
+		$maritalid = $maritaldata->maritalid;
+	} 
+	if(isset($_POST['mode'])){
 
+		$marital = new Marital($maritalid);
+		$doc =&   $marital->recordObject;
+		$doc->spouse = $_POST['spouse'];
+		$doc->spousecontact = $_POST['contact'];
+		$doc->first = $_POST['first'];
+		$doc->second = $_POST['second'];
+		$doc->third = $_POST['third'];
+		$doc->fourth = $_POST['fourth'];
+		$doc->randomnumber = $randomnumber;
+		$marital->store();
+		
+	}else{
+		$viewdata = array("randomnumber"=>$randomnumber,"maritaldata"=>$maritaldata);
+		$this->view('pages/maritalform',$viewdata);
+
+	}
+	}
 
 
 

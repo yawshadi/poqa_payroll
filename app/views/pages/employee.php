@@ -83,6 +83,21 @@ tr, td{
           </select></td>
          </tr>
 
+
+
+         <tr>
+         <td colspan=2><select class='form-control bom' required name="maritalstatus" id='maritalstatus'>
+          <option value=''>Marital Status</option>
+           <option>Single</option>
+           <option>Married</option>
+           <option>Divorced</option>
+           <option>Separated</option>
+          </select>
+         </td>
+         </tr>
+<input type="hidden" name="randomnumber" id="randomnumber" value="<?= time()?>">
+
+
          <tr>
          <td>
          <select class='form-control bom' id='compval'>
@@ -268,6 +283,16 @@ tr, td{
     </div>
     </div>
 
+    <div class="modal fade" id="maritalmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" style='width:500px' role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant mform">
+
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
 
   <!--Footer and JS directies -->
 

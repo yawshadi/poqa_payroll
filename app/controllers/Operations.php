@@ -393,6 +393,7 @@ class Operations extends Controller{
            $gv->recordObject->startdate = $_POST['startdate'];
            $gv->recordObject->endate = $_POST['endate'];
            $gv->recordObject->actualdays = $actualdays;
+           $gv->recordObject->leavetype = $leavetype;
            $gv->recordObject->status = "Approve";
 
            if($gv->store()){
