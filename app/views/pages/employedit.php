@@ -34,7 +34,7 @@ tr, td{
 
       <div class="row">
         <div class="col-12">
-          <h1 style='color:#FB6600; font-weight:700' class="page-title"> EDIT EMPLOYEE: <?php echo $data['employees'][0]->fullname   ?></h1>
+          <h1 style='color:#FB6600; font-weight:700' class="page-title"> EDIT EMPLOYEE: <?php echo $data['employees']->fullname   ?></h1>
         </div>
    </div>
       
@@ -58,30 +58,30 @@ tr, td{
      <form method='post'>
      <table class='table'>
          <tr>
-         <td><input type="text" class="form-control bom"  name="firstname" value="<?php echo $data['employees'][0]->firstname   ?>" placeholder='First Name'/></td>
-         <td><input type="text" class="form-control bom" name="lastname" value="<?php echo $data['employees'][0]->surname   ?>"  placeholder='Last Name'/></td>
+         <td><input type="text" class="form-control bom"  name="firstname" value="<?php echo $data['employees']->firstname   ?>" placeholder='First Name'/></td>
+         <td><input type="text" class="form-control bom" name="lastname" value="<?php echo $data['employees']->surname   ?>"  placeholder='Last Name'/></td>
          </tr>
          <tr>
-         <td><input type="text" class="form-control bom" name="othernames" value="<?php echo $data['employees'][0]->othernames   ?>"  placeholder='Othernames'/></td>
-         <td><input type="text" class="form-control bom"  name="dob" value="<?php echo $data['employees'][0]->dateofbirth  ?>"  placeholder='Date of Birth'/></td>
+         <td><input type="text" class="form-control bom" name="othernames" value="<?php echo $data['employees']->othernames   ?>"  placeholder='Othernames'/></td>
+         <td><input type="text" class="form-control bom"  name="dob" value="<?php echo $data['employees']->dateofbirth  ?>"  placeholder='Date of Birth'/></td>
          </tr>
 
-         <td><input type="text" class="form-control bom" name="staffid" value="<?php echo $data['employees'][0]->staffid   ?>"  placeholder='STAFF ID'/></td>
-         <td><input type="text" class="form-control bom" name="email" value="<?php echo $data['employees'][0]->email   ?>"  placeholder='Email'/></td>
+         <td><input type="text" class="form-control bom" name="staffid" value="<?php echo $data['employees']->staffid   ?>"  placeholder='STAFF ID'/></td>
+         <td><input type="text" class="form-control bom" name="email" value="<?php echo $data['employees']->email   ?>"  placeholder='Email'/></td>
          </tr>
 
          <tr>
-         <td><input type="text" class="form-control bom" name="location" value="<?php echo $data['employees'][0]->location  ?>"  placeholder='First Location'/></td>
-         <td><input type="text" class="form-control bom" name="telephone" value="<?php echo $data['employees'][0]->telephone  ?>"  placeholder='Telephone'/></td>
+         <td><input type="text" class="form-control bom" name="location" value="<?php echo $data['employees']->location  ?>"  placeholder='First Location'/></td>
+         <td><input type="text" class="form-control bom" name="telephone" value="<?php echo $data['employees']->telephone  ?>"  placeholder='Telephone'/></td>
          </tr>
          <tr>
          <td><select class='form-control bom' name='nationality' id='nationality'>
-          <option ><?php echo $data['employees'][0]->nationality  ?></option>
+          <option ><?php echo $data['employees']->nationality  ?></option>
            <option>Ghanaian</option>
            <option>Expatriate</option>
           </select></td>
          <td><select class='form-control bom' name='gender' id='gender'>
-          <option ><?php echo $data['employees'][0]->gender  ?></option>
+          <option ><?php echo $data['employees']->gender  ?></option>
            <option>Male</option>
            <option>Female</option>
           </select></td>
@@ -89,7 +89,7 @@ tr, td{
          <tr>
          <td>
          <select class='form-control bom' id='compval' name='company'>
-          <option><?php echo $data['employees'][0]->company   ?></option>
+          <option><?php echo $data['employees']->company   ?></option>
           <?php
            foreach($data['companies'] as $get):
            ?>
@@ -101,7 +101,7 @@ tr, td{
         </td>
 
         <td><select class='form-control bom' id='department' name='department'>
-          <option><?php echo $data['employees'][0]->department   ?></option>
+          <option><?php echo $data['employees']->department   ?></option>
          
           </select>
         </td>
@@ -109,12 +109,12 @@ tr, td{
         
         <tr>
          <td> <select class='form-control bom' id='position' name='position'>
-          <option><?php echo $data['employees'][0]->position   ?></option>
+          <option><?php echo $data['employees']->position   ?></option>
           
           </select></td>
          <td>
          <select class='form-control bom' name='idtype'>
-        <option><?php echo $data['employees'][0]->idtype   ?></option>
+        <option><?php echo $data['employees']->idtype   ?></option>
         <option>Voter ID</option>
         <option>National ID</option>
         <option>NHIS ID</option>
@@ -125,15 +125,15 @@ tr, td{
          </tr>
 
          <tr>
-         <td><input type="text" class="form-control bom" name="idnumber"  placeholder='ID Number' value="<?php echo $data['employees'][0]->idnumber   ?>"/></td>
+         <td><input type="text" class="form-control bom" name="idnumber"  placeholder='ID Number' value="<?php echo $data['employees']->idnumber   ?>"/></td>
          <td>
-         <input type="text" class="form-control bom"  name="tinnumber"  placeholder='Employee TIN' value="<?php echo $data['employees'][0]->tinnumber   ?>"/></td>
+         <input type="text" class="form-control bom"  name="tinnumber"  placeholder='Employee TIN' value="<?php echo $data['employees']->tinnumber   ?>"/></td>
          </tr>
 
          <tr>
          <td>
          <select class='form-control bom' id='bankname' name='bankname'>
-          <option><?php echo $data['employees'][0]->bankname   ?></option>
+          <option><?php echo $data['employees']->bankname   ?></option>
           <?php
            foreach($data['banks'] as $get):
            ?>
@@ -145,7 +145,7 @@ tr, td{
          </td>
          <td>
          <select class='form-control bom' id='branch' name='branch'>
-          <option><?php echo $data['employees'][0]->branch  ?></option>
+          <option><?php echo $data['employees']->branch  ?></option>
           
           </select>
          
@@ -153,50 +153,50 @@ tr, td{
          </tr>
 
          <tr>
-         <td><input type="text" class="form-control bom" name="accountnumber"  placeholder='Account Number' value="<?php echo $data['employees'][0]->accountnumber   ?>"/></td>
-         <td><input type="text" class="form-control bom"  name="ssnitnumber"  placeholder='SSNIT Number' value="<?php echo $data['employees'][0]->ssnitnumber   ?>"/></td>
+         <td><input type="text" class="form-control bom" name="accountnumber"  placeholder='Account Number' value="<?php echo $data['employees']->accountnumber   ?>"/></td>
+         <td><input type="text" class="form-control bom"  name="ssnitnumber"  placeholder='SSNIT Number' value="<?php echo $data['employees']->ssnitnumber   ?>"/></td>
          </tr>
 
          <tr>
-         <td><input type="text" class="form-control bom " name="probationstart"  placeholder='Probation Start' value="<?php echo $data['employees'][0]->probationstart   ?>"/></td>
-         <td><input type="text" class="form-control bom "  name="probationend"  placeholder='Probation End' value="<?php echo $data['employees'][0]->probationend   ?>"/></td>
+         <td><input type="text" class="form-control bom " name="probationstart"  placeholder='Probation Start' value="<?php echo $data['employees']->probationstart   ?>"/></td>
+         <td><input type="text" class="form-control bom "  name="probationend"  placeholder='Probation End' value="<?php echo $data['employees']->probationend   ?>"/></td>
          </tr>
 
          <tr>
-         <td><input type="text" class="form-control bom"  name="gname"  placeholder='Guarantor' value="<?php echo $data['employees'][0]->gaurantor   ?>"/></td>
-         <td> <input type="text" class="form-control bom"  name="gtelephone"  placeholder='Guarantor Telephone' value="<?php echo $data['employees'][0]->gaurantor_telephone  ?>"/></td>
+         <td><input type="text" class="form-control bom"  name="gname"  placeholder='Guarantor' value="<?php echo $data['employees']->gaurantor   ?>"/></td>
+         <td> <input type="text" class="form-control bom"  name="gtelephone"  placeholder='Guarantor Telephone' value="<?php echo $data['employees']->gaurantor_telephone  ?>"/></td>
          </tr>
 
          <tr>
-         <td><input type="text" class="form-control bom"  name="tierno"  placeholder='Tire 2 Number' value="<?php echo $data['employees'][0]->tiernumber  ?>"/></td>
-         <td align='right'><input type="text" class="form-control bom"  placeholder='Hire Date'  name="hiredate" value="<?php echo $data['employees'][0]->hiredate   ?>"/></td>
+         <td><input type="text" class="form-control bom"  name="tierno"  placeholder='Tire 2 Number' value="<?php echo $data['employees']->tiernumber  ?>"/></td>
+         <td align='right'><input type="text" class="form-control bom"  placeholder='Hire Date'  name="hiredate" value="<?php echo $data['employees']->hiredate   ?>"/></td>
          </tr>
 
          <tr>
-         <td><input type="text" class="form-control bom"  id="contractstart" name='contractstart' value="<?php echo $data['employees'][0]->contractstart  ?>" placeholder="Contract Start "/></td>
-         <td align='right'><input type="text" class="form-control bom"  name='contractend' id="contractend" value="<?php echo $data['employees'][0]->contractend  ?>" placeholder="Contract End"/></td>
+         <td><input type="text" class="form-control bom"  id="contractstart" name='contractstart' value="<?php echo $data['employees']->contractstart  ?>" placeholder="Contract Start "/></td>
+         <td align='right'><input type="text" class="form-control bom"  name='contractend' id="contractend" value="<?php echo $data['employees']->contractend  ?>" placeholder="Contract End"/></td>
          </tr>
 
          <tr>
-         <td><input type="text" class="form-control bom"  id="entrydate" name='entrydate' value="<?php echo $data['employees'][0]->entrydate  ?>" placeholder="Entry Date"/></td>
-         <td align='right'><input type="text" class="form-control bom"  name='exitdate' value="<?php echo $data['employees'][0]->exitdate  ?>" id="exitdate" placeholder="Exit Date"/></td>
+         <td><input type="text" class="form-control bom"  id="entrydate" name='entrydate' value="<?php echo $data['employees']->entrydate  ?>" placeholder="Entry Date"/></td>
+         <td align='right'><input type="text" class="form-control bom"  name='exitdate' value="<?php echo $data['employees']->exitdate  ?>" id="exitdate" placeholder="Exit Date"/></td>
          </tr>
          <tr>
-         <td><input type="text" class="form-control bom"  name='contractallocation' id="contractallocation" value="<?php echo $data['employees'][0]->contractallocation  ?>"  placeholder="Contract Allocation"/></td>
-         <td><input type="text" class="form-control bom" name='academictitle'  id="academictitle"  value="<?php echo $data['employees'][0]->academictitle  ?>" placeholder="Academic Title"/></td>
+         <td><input type="text" class="form-control bom"  name='contractallocation' id="contractallocation" value="<?php echo $data['employees']->contractallocation  ?>"  placeholder="Contract Allocation"/></td>
+         <td><input type="text" class="form-control bom" name='academictitle'  id="academictitle"  value="<?php echo $data['employees']->academictitle  ?>" placeholder="Academic Title"/></td>
          </tr>
          <tr>
          <td><select class='form-control bom' name='category' id='category'>
-          <option><?php echo $data['employees'][0]->category  ?></option>
+          <option><?php echo $data['employees']->category  ?></option>
            <option>Manager</option>
            <option>Officer 1</option>
            <option>Officer 2</option>
           </select></td>
-          <td><input type="text" class="form-control bom" name='basicsalary' value="<?php echo $data['employees'][0]->basicsalary  ?>" id="basicsalary" placeholder="Basic Salary"/></td>
+          <td><input type="text" class="form-control bom" name='basicsalary' value="<?php echo $data['employees']->basicsalary  ?>" id="basicsalary" placeholder="Basic Salary"/></td>
          </tr>
 
          <tr>
-         <td><input type="hidden"  id="employeeid"   value="<?php echo $data['employees'][0]->basic_id  ?>"/></td>
+         <td><input type="hidden"  id="employeeid"   value="<?php echo $data['employees']->basic_id  ?>"/></td>
          <td align='right'><button type='submit' name='updateemployeebtn' style='font-size:12px' class='btn btn-primary'>
          <i class='fa fa-plus-circle'></i> UPDATE EMPLOYEE</button></td>
          </tr>

@@ -1,10 +1,10 @@
 <script>
 
 const urlroot = marketplacecfg.urlroot;
-$('#reportedbycc').SumoSelect({search: true, okCancelInMulti: true});
+$('#reportedbycc').SumoSelect({search: true});
 
 $(".leavedate").datepicker({inline: true,
-changeMonth: true, changeYear: true, yearRange: "1920:2020", dateFormat: 'yy-mm-dd' });
+changeMonth: true, changeYear: true, yearRange: "1920:2080", dateFormat: 'yy-mm-dd' });
 
 </script>
 
@@ -34,6 +34,11 @@ if($data['empcount'] > 0){
   <tr>
   <td>Position</td>
   <td><?php echo $data['empdata']->position   ?></td>
+  </tr>
+
+  <tr>
+  <td>Available Leave days</td>
+  <td><?= Leavedays::availabledays($data['empdata']->basic_id,date('Y'))   ?></td>
   </tr>
 
   <tr>

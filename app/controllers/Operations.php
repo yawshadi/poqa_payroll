@@ -147,7 +147,7 @@ class Operations extends Controller{
 
      public function leaveform(){
         $employeeid  = $_POST['employeeid'];
-        $empdata = Employee::getEmployeesById($employeeid)[0];
+        $empdata = Employee::getEmployeesById($employeeid);
         $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
         $usersdata = User::ListAll();
 
@@ -447,7 +447,19 @@ class Operations extends Controller{
       $holidays = Holiday::listAll();
 
       foreach($holidays as $holiday){
-        $list[]=array("title"=>$holiday->holidayname,"start"=>$holiday->holidaydate,"end"=>$holiday->holidaydate);
+        $list[]=array("title"=>'(H) '.$holiday->holidayname,"start"=>$holiday->holidaydate,"end"=>$holiday->holidaydate);
+       }
+       echo json_encode($list);
+     }
+
+
+     public function leavelist(){
+      $leavelist = Leave::listAll();
+
+      foreach($leavelist as $get){
+          $em = new Employee($get->employeeid);
+          $employeename  =   $em->recordObject->fullname;
+        $list[]=array("title"=>$employeename,"start"=>$get->startdate,"end"=>$get->endate,"id"=>$get->lid,"icon"=>"calendar");
        }
        echo json_encode($list);
      }

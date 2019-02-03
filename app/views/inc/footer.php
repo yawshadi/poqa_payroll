@@ -28,7 +28,11 @@
 <script src="<?php echo URLROOT ?>/public/js/moment.js"></script>
 <script src="<?php echo URLROOT ?>/public/js/fullcalendar.js"></script>
 <script src="<?php echo URLROOT ?>/js/jquery-ui-1.10.0.custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js
+"></script>
 <!-- <script type="text/javascript" src="<?php //echo URLROOT ?>/js/semantic/dist/semantic.js"></script> -->
+
+
 <script src='<?php echo URLROOT ?>/js/notify.min.js'></script>
 <script src="<?php echo URLROOT ?>/js/bootstrap.min.js"></script>
 <script src='<?php echo URLROOT ?>/js/jquery.blockUI.js'></script>

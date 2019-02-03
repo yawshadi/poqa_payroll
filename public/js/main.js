@@ -1108,10 +1108,10 @@ $(document).ready(function() {
          //calendar view called in dashboard by id given
     $('#calendar').fullCalendar({
         header: {
-            left: 'prev',
+            left:   'today',
             center: 'title',
-            right: 'next'
-        },
+            right:  'month agendaWeek prev,next'
+          },
         fixedWeekCount: false,
         height: 660,
 
@@ -1122,9 +1122,10 @@ $(document).ready(function() {
             var udate = moment(calEvent.start).format();
             var eventid = calEvent.id;
 
-            $('#myCalendarModal').modal('show');
-            viewevent(eventid);
-            $("#bookingModal").modal('hide');
+            window.location.href= urlroot+'/Operations/operationprofile/Leave/'+eventid;
+           // $('#myCalendarModal').modal('show');
+          //  viewevent(eventid);
+            //$("#bookingModal").modal('hide');
         },
 
         dayClick: function(date, jsEvent, view) {
@@ -1133,10 +1134,10 @@ $(document).ready(function() {
             var tday = new Date();
             var todaydate = moment(tday).format("YYYY-MM-DD");
             var formatdate = date.format("YYYY-MM-DD");
-            $('#eventdate').val(selectedday);
+         //   $('#eventdate').val(selectedday);
             if (todaydate === selectedday || date.isAfter(todaydate)) {
-                $('#myCalendarModal').modal('show');
-                callbookingform(formatdate);
+           //     $('#myCalendarModal').modal('show');
+             //   callbookingform(formatdate);
 
             } else {
                 //    Nothing happens
@@ -1150,9 +1151,14 @@ $(document).ready(function() {
             // your event source
             {
               url: urlroot+'/operations/holidaylist', // use the `url` property
-              color: 'yellow',    // an option!
-              textColor: 'black'  // an option!
-            }
+              color: 'green',    // an option!
+              textColor: 'white'  // an option!
+            },
+            {
+                url: urlroot+'/operations/leavelist', // use the `url` property
+                color: '#00ACE5',    // an option!
+                textColor: 'white'  // an option!
+              }
         
             // any other sources...
         
@@ -1164,13 +1170,13 @@ $(document).ready(function() {
             var mtoday = moment(today).format("YYYY-MM-DD");
             var mold = moment(old).format("YYYY-MM-DD");
             if (event.icon) {
-                element.find(".fc-title").prepend("<i style='color:white;padding-left:25%' class='fa fa-" + event.icon + "'></i>");
+                element.find(".fc-title").prepend("<i style='color:white;padding-left:3%;padding-right:5px' class='fa fa-" + event.icon + "'></i>");
                 element.css('border-radius', '2px')
             }
 
-            if (moment(mold).isBefore(mtoday, 'day')) {
+           /* if (moment(mold).isBefore(mtoday, 'day')) {
                 element.css({ 'background': '#A1565F', 'border': 'none', 'border-radius': '2px' })
-            }
+            }*/
         }
     });
 
