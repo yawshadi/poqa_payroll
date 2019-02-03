@@ -4,6 +4,8 @@
 <a href="<?php echo URLROOT  ?>/payrollreport/mainpayroll"><i  class="fa fa-folder-open"></i> Actual Payroll</a>
 <a href="<?php echo URLROOT  ?>/payrollreport/bankadvice"><i  class="fa fa-folder-open"></i> Bank Advice</a>
 <a href="<?php echo URLROOT  ?>/payrollreport/payereport"><i  class="fa fa-folder-open"></i> PAYE Report</a>
+<a href="<?php echo URLROOT  ?>/payrollreport/leavereport"><i  class="fa fa-folder-open"></i> Leave Report</a>
+
 </div>
 
 
