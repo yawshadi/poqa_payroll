@@ -532,6 +532,8 @@ $(document).ready(function() {
         var  gender = $('#gender').val();
         var  category = $('#category').val();
         var  basicsalary = $('#basicsalary').val();
+        var  randomnumber = $('#randomnumber').val();
+        var  maritalstatus = $('#maritalstatus').val();
 
 
 
@@ -542,7 +544,7 @@ $(document).ready(function() {
         email:email,  location: location, idtype:idtype, idnumber:idnumber, bankname:bankname, accountnumber:accountnumber,
         branch:branch, ssnitnumber:ssnitnumber,  gname:gname, gtelephone:gtelephone, dateofbirth:dateofbirth,
         department:department, position:position, staffid:staffid, hiredate:hiredate, probationstart:probationstart,
-        probationend:probationend, company:company, addemployee:addemployee, dob:dob, tinnumber:tinnumber, tierno:tierno,nationality:nationality,academictitle:academictitle,contractallocation:contractallocation,contractstart:contractstart,contractend:contractend,entrydate:entrydate,exitdate:exitdate,gender:gender,category:category,basicsalary:basicsalary};
+        probationend:probationend,randomnumber:randomnumber,maritalstatus:maritalstatus, company:company, addemployee:addemployee, dob:dob, tinnumber:tinnumber, tierno:tierno,nationality:nationality,academictitle:academictitle,contractallocation:contractallocation,contractstart:contractstart,contractend:contractend,entrydate:entrydate,exitdate:exitdate,gender:gender,category:category,basicsalary:basicsalary};
 
         var  ajaxurl =  urlroot + '/pages/employees';
         var  redirectionurl =  urlroot + '/pages/employees';

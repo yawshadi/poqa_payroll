@@ -204,11 +204,45 @@ tr, td{
          <tr>
          <td>Category</td>
          <td class='fontdisplay'><?php  echo $data['empdata']->category  ?></td>
-         </tr><tr>
+         </tr>
+         <tr>
          <td>Basic Salary</td>
          <td class='fontdisplay'><?php  echo $data['empdata']->basicsalary  ?></td>
          </tr>
+         <tr>
+         <td>Marital Status</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->maritalstatus  ?></td>
+         </tr>
+          <?php 
+          if($data['empdata']->maritalstatus=='Married'):
+            $maritaldata = Marital::maritaldata($data['empdata']->randomnumber);
 
+          ?>
+         <tr>
+         <td>Spouse Name</td>
+         <td class='fontdisplay'><?php  echo $maritaldata->spouse  ?></td>
+         </tr>
+         <tr>
+         <td>Spouse Contact</td>
+         <td class='fontdisplay'><?php  echo $maritaldata->spousecontact  ?></td>
+         </tr>
+         <tr>
+         <td>1st Dependant</td>
+         <td class='fontdisplay'><?php  echo $maritaldata->first  ?></td>
+         </tr>
+         <tr>
+         <td>2nd Dependant</td>
+         <td class='fontdisplay'><?php  echo $maritaldata->second  ?></td>
+         </tr>
+         <tr>
+         <td>3rd Dependant</td>
+         <td class='fontdisplay'><?php  echo $maritaldata->third  ?></td>
+         </tr>
+         <tr>
+         <td>4th Dependant</td>
+         <td class='fontdisplay'><?php  echo $maritaldata->fourth  ?></td>
+         </tr>
+          <?php endif;?>
          </table>
 
      </form>

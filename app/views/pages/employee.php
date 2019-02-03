@@ -54,7 +54,7 @@ tr, td{
      <form method='post'>
      <table class='table'>
          <tr>
-         <td><input type="text" class="form-control bom"  id="firstname" placeholder="Firstname"/></td>
+         <td><input type="text" class="form-control bom" required id="firstname" placeholder="Firstname"/></td>
          <td><input type="text" class="form-control bom" id="lastname" placeholder="Lastname"/></td>
          </tr>
          <tr>
@@ -87,7 +87,7 @@ tr, td{
 
          <tr>
          <td colspan=2><select class='form-control bom' required name="maritalstatus" id='maritalstatus'>
-          <option value=''>Marital Status</option>
+          <option>Marital Status</option>
            <option>Single</option>
            <option>Married</option>
            <option>Divorced</option>

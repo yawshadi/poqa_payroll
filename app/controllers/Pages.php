@@ -331,10 +331,11 @@ class Pages extends Controller{
 			$datarow->gender = $_POST['gender'];
 			$datarow->category = $_POST['category'];
 			$datarow->basicsalary = $_POST['basicsalary'];
+			$datarow->randomnumber = $_POST['randomnumber'];
+			$datarow->maritalstatus = $_POST['maritalstatus'];
 
 
 			$empdata->store();
-
 			$basicid = $datarow->basic_id;
 
 			$lastpayperiod = Payperiod::getLastPayperiod($_POST['company']);
