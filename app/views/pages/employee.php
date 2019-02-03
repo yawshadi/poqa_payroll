@@ -54,7 +54,7 @@ tr, td{
      <form method='post'>
      <table class='table'>
          <tr>
-         <td><input type="text" class="form-control bom"  id="firstname" placeholder="Firstname"/></td>
+         <td><input type="text" class="form-control bom" required id="firstname" placeholder="Firstname"/></td>
          <td><input type="text" class="form-control bom" id="lastname" placeholder="Lastname"/></td>
          </tr>
          <tr>
@@ -82,6 +82,21 @@ tr, td{
            <option>Female</option>
           </select></td>
          </tr>
+
+
+
+         <tr>
+         <td colspan=2><select class='form-control bom' required name="maritalstatus" id='maritalstatus'>
+          <option>Marital Status</option>
+           <option>Single</option>
+           <option>Married</option>
+           <option>Divorced</option>
+           <option>Separated</option>
+          </select>
+         </td>
+         </tr>
+<input type="hidden" name="randomnumber" id="randomnumber" value="<?= time()?>">
+
 
          <tr>
          <td>
@@ -165,7 +180,7 @@ tr, td{
          </tr>
 
          <tr>
-         <td><input type="text" class="form-control bom"  id="tierno"  placeholder="Tire 2 No: "/></td>
+         <td><input type="text" class="form-control bom"  id="tierno"  placeholder="Tier 2 No: "/></td>
          <td align='right'><input type="text" class="form-control bom"  id="hiredate" placeholder="Hire Date"/></td>
          </tr>
 
@@ -268,6 +283,16 @@ tr, td{
     </div>
     </div>
 
+    <div class="modal fade" id="maritalmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" style='width:500px' role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant mform">
+
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
 
   <!--Footer and JS directies -->
 

@@ -1,6 +1,6 @@
 <script>
 
-const urlroot = marketplacecfg.urlroot;
+var urlroot = marketplacecfg.urlroot;
 $('#reportedbycc').SumoSelect({search: true});
 
 $(".leavedate").datepicker({inline: true,
@@ -40,10 +40,18 @@ if($data['empcount'] > 0){
   <td>Available Leave days</td>
   <td><?= Leavedays::availabledays($data['empdata']->basic_id,date('Y'))   ?></td>
   </tr>
-
+  <input type="hidden" id='availableleave' value="<?= Leavedays::availabledays($data['empdata']->basic_id,date('Y'))   ?>" name="">
+  <tr>
+  <td>Leave Type:</td>
+  <td><select class='form-control' id='leavetype' name='leavetype'>
+    <option>Normal</option>
+    <option>Maternity</option>
+  </select>
+  </td>
+  </tr>
   <tr>
   <td>Reported To:</td>
-  <td><select class='form-control' name='reportedby'>
+  <td><select class='form-control' required name='reportedby'>
     <option>Select</option>
     <?php
     foreach($data['userdata'] as $get){
@@ -68,17 +76,17 @@ if($data['empcount'] > 0){
 
   <tr>
   <td>Start Date</td>
-  <td>  <input type='text' name='startdate'  class="form-control leavedate"  /></td>
+  <td>  <input type='text' name='startdate' required id='leavestartdate' class="form-control leavedate"  /></td>
   </tr>
 
   <tr>
   <td>End Date</td>
-  <td>  <input type='text' name=endate  class="form-control leavedate"   /></td>
+  <td>  <input type='text' name='endate' required id='leaveenddate' class="form-control leavedate"   /></td>
   </tr>
 
   <tr>
   <td>Reason</td>
-  <td><textarea class='form-control' name=description></textarea></td>
+  <td><textarea class='form-control' required name='description'></textarea></td>
   </tr>
 
 
@@ -102,3 +110,30 @@ if($data['empcount'] > 0){
   echo '<h3>Sorry. No Records Found !!!</h3>';
 }
  ?>
+
+<script>
+var urlroot = marketplacecfg.urlroot;
+
+  $("#leaveenddate").change(function (e) { 
+        e.preventDefault();
+        var startdate = $("#leavestartdate").val();
+        var enddate = $(this).val();
+        var available = $("#availableleave").val();
+        var leavetype = $("#leavetype").val();
+        if (leavetype=='Maternity') return;
+        ajaxurl = urlroot + "/operations/isleavevalid";
+        postdata ={startdate:startdate,enddate:enddate,available:available}
+        $.ajax({
+            type: "POST",
+            url:  ajaxurl,
+            data: postdata,
+            dataType: "html",
+            success: function (text) {
+               if(text < 0){
+                notie.alert({ type: 3, text: 'You have exceeded the available days', time: 3 });
+                $("#leaveenddate").val("");
+               }
+            }
+            })
+    });
+</script>

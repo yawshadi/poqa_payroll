@@ -27,9 +27,24 @@ class Leavedays extends tableDataObject{
 
         $accumulated = Employee::getEmployeesById($employeeid)->accumulatedleave;
         $totalleave = self::totalleave();
-        if($accumulated=='') {$totalleave = self::totalleave();}else{$totalleave = $accumulated; }
+        if($accumulated==''|| empty($accumulated)) {$totalleave = self::totalleave();}else{$totalleave = $accumulated; }
         $available = $totalleave - $l;
         if ($available < 0) $available = 0;
+        return $available;
+     }
+
+     public static function entitlteddays($employeeid,$year){
+         
+        global $payrolldb;
+        $query = "SELECT sum(actualdays) as days FROM leaves WHERE employeeid='$employeeid' and year(reportdate)='$year'";
+        $payrolldb->prepare($query);
+        $l = $payrolldb->fetchColumn();
+
+        $accumulated = Employee::getEmployeesById($employeeid)->accumulatedleave;
+        $totalleave = self::totalleave();
+        if($accumulated==''|| empty($accumulated)) {$totalleave = self::totalleave();}else{$totalleave = $accumulated; }
+        $available = $totalleave + $l;
+       
         return $available;
      }
 }

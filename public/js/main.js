@@ -532,6 +532,8 @@ $(document).ready(function() {
         var  gender = $('#gender').val();
         var  category = $('#category').val();
         var  basicsalary = $('#basicsalary').val();
+        var  randomnumber = $('#randomnumber').val();
+        var  maritalstatus = $('#maritalstatus').val();
 
 
 
@@ -542,7 +544,7 @@ $(document).ready(function() {
         email:email,  location: location, idtype:idtype, idnumber:idnumber, bankname:bankname, accountnumber:accountnumber,
         branch:branch, ssnitnumber:ssnitnumber,  gname:gname, gtelephone:gtelephone, dateofbirth:dateofbirth,
         department:department, position:position, staffid:staffid, hiredate:hiredate, probationstart:probationstart,
-        probationend:probationend, company:company, addemployee:addemployee, dob:dob, tinnumber:tinnumber, tierno:tierno,nationality:nationality,academictitle:academictitle,contractallocation:contractallocation,contractstart:contractstart,contractend:contractend,entrydate:entrydate,exitdate:exitdate,gender:gender,category:category,basicsalary:basicsalary};
+        probationend:probationend,randomnumber:randomnumber,maritalstatus:maritalstatus, company:company, addemployee:addemployee, dob:dob, tinnumber:tinnumber, tierno:tierno,nationality:nationality,academictitle:academictitle,contractallocation:contractallocation,contractstart:contractstart,contractend:contractend,entrydate:entrydate,exitdate:exitdate,gender:gender,category:category,basicsalary:basicsalary};
 
         var  ajaxurl =  urlroot + '/pages/employees';
         var  redirectionurl =  urlroot + '/pages/employees';
@@ -873,8 +875,9 @@ $(document).ready(function() {
 
 
           $(document).on('click', '#grievancebtn', function(){
-             var empname   = $('#empname').val();
-             var postdata = {empname:empname};
+            var employeeid   = $('#employeeid').val();
+            if (employeeid=='')return;
+            var postdata = {employeeid:employeeid};
              var ajaxurl =  urlroot + '/operations/grievanceform';
              $.ajax({
                 type: "POST",
@@ -899,8 +902,9 @@ $(document).ready(function() {
 
 
           $(document).on('click', '#disciplinarybtn', function(){
-             var empname   = $('#empname').val();
-             var postdata = {empname:empname};
+            var employeeid   = $('#employeeid').val();
+            if (employeeid=='')return;
+            var postdata = {employeeid:employeeid};
              var ajaxurl =  urlroot + '/operations/disciplineform';
              $.ajax({
                 type: "POST",
@@ -924,8 +928,9 @@ $(document).ready(function() {
           })
 
           $(document).on('click', '#transferbtn', function(){
-             var empname   = $('#empname').val();
-             var postdata = {empname:empname};
+            var employeeid   = $('#employeeid').val();
+            if (employeeid=='')return;
+            var postdata = {employeeid:employeeid};
              var ajaxurl =  urlroot + '/operations/transferform';
              $.ajax({
                 type: "POST",
@@ -950,8 +955,9 @@ $(document).ready(function() {
 
 
           $(document).on('click', '#promotionbtn', function(){
-               var empname   = $('#empname').val();
-               var postdata = {empname:empname};
+            var employeeid   = $('#employeeid').val();
+            if (employeeid=='')return;
+            var postdata = {employeeid:employeeid};
                var ajaxurl =  urlroot + '/operations/promotionform';
                $.ajax({
                   type: "POST",
@@ -1240,5 +1246,28 @@ $(document).ready(function() {
                 })
         })
         return false;
+    });
+
+    $("#maritalstatus").change(function (e) { 
+        e.preventDefault();
+        var x = $(this).val();
+        var randomnumber = $("#randomnumber").val();
+        ajaxurl = urlroot + "/pages/marital";
+        postdata = {randomnumber:randomnumber};
+        if (x == "Married"){
+            $("#maritalmodal").modal('show');
+            AjaxPostContainer(ajaxurl,postdata,'mform');
+
+        }
+    });
+    $("#viewmarital").click(function (e) { 
+        e.preventDefault();
+        var randomnumber = $("#randomnumber").val();
+        ajaxurl = urlroot + "/pages/marital";
+        postdata = {randomnumber:randomnumber};
+            $("#maritalmodal").modal('show');
+            AjaxPostContainer(ajaxurl,postdata,'mform');
+
+        
     });
 })

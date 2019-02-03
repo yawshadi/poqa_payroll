@@ -49,6 +49,7 @@
     <option>Suspension</option>
     <option>Dimissal</option>
     <option>Termination</option>
+    <option>Resignation</option>
   </select>
   </td>
   </tr>

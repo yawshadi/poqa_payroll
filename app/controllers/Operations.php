@@ -96,9 +96,9 @@ class Operations extends Controller{
      }
 
      public function grievanceform(){
-        $empname  = $_POST['empname'];
-        $empdata = Employee::searchemployeegeneral($empname);
-        $empcount = Employee::searchemployeegeneralcount($empname);
+      $employeeid  = $_POST['employeeid'];
+      $empdata = Employee::getEmployeesById($employeeid);
+      $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
         $usersdata = User::ListAll();
 
         $data = [ 'empdata'=>$empdata,  'empcount'=>$empcount, 'userdata'=>$usersdata];
@@ -107,9 +107,9 @@ class Operations extends Controller{
      }
 
      public function disciplineform(){
-        $empname  = $_POST['empname'];
-        $empdata = Employee::searchemployeegeneral($empname);
-        $empcount = Employee::searchemployeegeneralcount($empname);
+      $employeeid  = $_POST['employeeid'];
+      $empdata = Employee::getEmployeesById($employeeid);
+      $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
         $usersdata = User::ListAll();
 
         $data = [ 'empdata'=>$empdata,  'empcount'=>$empcount, 'userdata'=>$usersdata];
@@ -118,10 +118,10 @@ class Operations extends Controller{
      }
 
      public function promotionform(){
-        $empname  = $_POST['empname'];
-        $empdata = Employee::searchemployeegeneral($empname);
+      $employeeid  = $_POST['employeeid'];
+      $empdata = Employee::getEmployeesById($employeeid);
+      $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
         $companyname  = $empdata->company;
-        $empcount = Employee::searchemployeegeneralcount($empname);
         $usersdata = User::ListAll();
         $departments = Department::getDepartmentByCompany($companyname);
 
@@ -132,10 +132,10 @@ class Operations extends Controller{
      }
 
      public function transferform(){
-       $empname  = $_POST['empname'];
-       $empdata = Employee::searchemployeegeneral($empname);
+      $employeeid  = $_POST['employeeid'];
+      $empdata = Employee::getEmployeesById($employeeid);
+      $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
        $companyname  = $empdata->company;
-       $empcount = Employee::searchemployeegeneralcount($empname);
        $usersdata = User::ListAll();
        $departments = Department::getDepartmentByCompany($companyname);
 
@@ -378,7 +378,11 @@ class Operations extends Controller{
       		 $uploadresponse = $uploads->upLoadFile();
       		 $filename =  $uploadresponse['filename'];
 
+           //return leavedays from the start and end dates excluding holiday and weekends
            $actualdays = Tools::datediff($_POST['startdate'],$_POST['endate']);
+
+           
+
            $gv  = new Leave();
            $gv->recordObject->description = $description;
            $gv->recordObject->reportdate =  date('Y-m-d');
@@ -389,6 +393,8 @@ class Operations extends Controller{
            $gv->recordObject->startdate = $_POST['startdate'];
            $gv->recordObject->endate = $_POST['endate'];
            $gv->recordObject->actualdays = $actualdays;
+           $gv->recordObject->leavetype = $leavetype;
+           $gv->recordObject->status = "Approve";
 
            if($gv->store()){
 
@@ -403,6 +409,11 @@ class Operations extends Controller{
                }
            }
 
+           //get the accumulated leave of the employee if any (else get the system leave days) and deduct the actual days from it
+          /* $emp = new Employee($employeeid);
+           $accumulated = $emp->recordObject->accumulatedleave;
+           $emp->recordObject->accumulatedleave = $accumulated - $actualdays;
+           $emp->store();*/
          
            Redirecting::location('operations/leave');
          }
@@ -491,5 +502,16 @@ class Operations extends Controller{
 	  $recut = new Employee($employeeid);
 		$recut->recordObject->$field = $value;
 		$recut->store();
+     }
+
+     public function isleavevalid(){
+      // $employeeid = $_POST['employeeid'];
+       $startdate = $_POST['startdate'];
+       $enddate = $_POST['enddate'];
+       $available = $_POST['available'];
+       $actualdays = Tools::datediff($_POST['startdate'],$_POST['enddate']);
+       $a = $available - $actualdays;
+
+       echo $a;
      }
 }

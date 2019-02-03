@@ -87,6 +87,11 @@ tr, td{
           </tr>
 
           <tr>
+           <td>Leave Type</td>
+           <td><?php  echo $data['opdata']->leavetype  ?></td>
+          </tr>
+
+          <tr>
            <td>Reason</td>
            <td><?php  echo $data['opdata']->description  ?></td>
           </tr>

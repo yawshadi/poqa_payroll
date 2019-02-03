@@ -13,7 +13,7 @@ $role =  $n->recordObject->role;
 ?>
 
 <a href="<?php echo URLROOT  ?>/operations/grievance"> <i  class="fa  fa-circle"></i> Grievances Management Form</a>
-<a href="<?php echo URLROOT  ?>/operations/discipline"><i  class="fa  fa-circle"></i> Disciplinary Management Form</a>
+<a href="<?php echo URLROOT  ?>/operations/discipline"><i  class="fa  fa-circle"></i> Disciplinary /Resignation Mgt Form</a>
 <a href="<?php echo URLROOT  ?>/operations/promotion"><i  class="fa  fa-circle"></i> Promotions Management Form</a>
 <a href="<?php echo URLROOT  ?>/operations/transfer"><i  class="fa  fa-circle"></i> Transfers Management Form</a>
 <a href="<?php echo URLROOT  ?>/operations/leave"><i  class="fa  fa-circle"></i> Leave Management Form</a>

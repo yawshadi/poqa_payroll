@@ -1,5 +1,5 @@
 <?php require APPROOT .'/views/inc/header.php';  ?>
-<?php require APPROOT .'/views/inc/side_nav.php' ; ?>
+<?php require APPROOT .'/views/inc/employee.php' ; ?>
 
 <style>
 tr, td{
@@ -86,6 +86,25 @@ tr, td{
            <option>Female</option>
           </select></td>
          </tr>
+
+         
+         <tr>
+         <td <?= ($data['employees']->maritalstatus!='Married')?'colspan=2':''?>>
+         <select class='form-control bom' name="maritalstatus" id='maritalstatus'>
+         <option ><?php echo $data['employees']->maritalstatus  ?></option>
+           <option>Single</option>
+           <option>Married</option>
+           <option>Divorced</option>
+           <option>Separated</option>
+          </select>
+         </td>
+         <?php if($data['employees']->maritalstatus=='Married'):?>
+         <td>
+         <button style="padding:3px;border-radius:0px" class="btn btn-primanry " id='viewmarital'>view </button>
+         </td>
+        <?php endif;?>
+         </tr>
+<input type="hidden" name="randomnumber" id="randomnumber" value="<?= $data['employees']->randomnumber?>">
          <tr>
          <td>
          <select class='form-control bom' id='compval' name='company'>
@@ -270,7 +289,16 @@ tr, td{
 
     </div>
     </div>
-   
+    <div class="modal fade" id="maritalmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" style='width:500px' role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant mform">
+
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
 
   <!--Footer and JS directies -->
   
