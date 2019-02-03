@@ -44,8 +44,8 @@ class Payslip extends Controller{
             //payrollcalculations
             $staffssnit = Vamedcalculations::staffssnit($basicsalary);
             $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
-            $standardovertime = Vamedcalculations::standardovertime($basicsalary);
-            $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary);
+            $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
+            $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
             $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
             $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
             $rentallowance = Vamedcalculations::rentallowance($basicsalary);
@@ -56,8 +56,7 @@ class Payslip extends Controller{
             $whtonsatsunholovertime =  Vamedcalculations::whtonsatsunholovertime($satsunholovertime);
             $bonustax = Vamedcalculations::bonustax($teamdevelopment);
             $totaltaxpayable = Vamedcalculations::totaltaxpayable($paye, $whtonstandardovertime, $whtonsatsunholovertime, $bonustax);
-            $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $rentallowance,
-                                               $transportvehiclemaintenance, $totaltaxpayable, $salaryadvance);
+            $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance);
             $vamedwelfarenetsalary = Vamedcalculations::vamedwelfarenetsalary($vamednetpay, $staffwelfare);
             $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
             $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
@@ -126,19 +125,18 @@ class Payslip extends Controller{
         $staffssnit = Vamedcalculations::staffssnit($basicsalary);
         $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
         $standardovertime = Vamedcalculations::standardovertime($basicsalary);
-        $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary);
+        $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
         $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
         $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
         $rentallowance = Vamedcalculations::rentallowance($basicsalary);
-        $grossincome = Vamedcalculations::grossincome($totalincome, $transportvehiclemaintenance, $rentallowance);
+        $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
         $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief);
         $paye =  Vamedcalculations::paye($taxableincome);
         $whtonstandardovertime = Vamedcalculations::whtonstandardovertime($standardovertime);
         $whtonsatsunholovertime =  Vamedcalculations::whtonsatsunholovertime($satsunholovertime);
         $bonustax = Vamedcalculations::bonustax($teamdevelopment);
         $totaltaxpayable = Vamedcalculations::totaltaxpayable($paye, $whtonstandardovertime, $whtonsatsunholovertime, $bonustax);
-        $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $rentallowance,
-                                           $transportvehiclemaintenance, $totaltaxpayable, $salaryadvance);
+        $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance);
         $vamedwelfarenetsalary = Vamedcalculations::vamedwelfarenetsalary($vamednetpay, $staffwelfare);
         $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
         $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
