@@ -49,7 +49,7 @@ class Payslip extends Controller{
             $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
             $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
             $rentallowance = Vamedcalculations::rentallowance($basicsalary);
-            $grossincome = Vamedcalculations::grossincome($totalincome, $transportvehiclemaintenance, $rentallowance);
+            $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
             $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief);
             $paye =  Vamedcalculations::paye($taxableincome);
             $whtonstandardovertime = Vamedcalculations::whtonstandardovertime($standardovertime);
@@ -124,7 +124,7 @@ class Payslip extends Controller{
         //payrollcalculations
         $staffssnit = Vamedcalculations::staffssnit($basicsalary);
         $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
-        $standardovertime = Vamedcalculations::standardovertime($basicsalary);
+        $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
         $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
         $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
         $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
@@ -168,7 +168,7 @@ class Payslip extends Controller{
 
    }
 
-    public function slipexcsl($startdate, $enddate, $employeeid){
+    public function slipexcel($startdate, $enddate, $employeeid){
 
 
         $empdata = Employee::getEmployeesById($employeeid);
@@ -198,7 +198,7 @@ class Payslip extends Controller{
         //payrollcalculations
         $staffssnit = Vamedcalculations::staffssnit($basicsalary);
         $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
-        $standardovertime = Vamedcalculations::standardovertime($basicsalary);
+        $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
         $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
         $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
         $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
