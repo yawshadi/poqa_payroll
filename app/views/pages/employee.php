@@ -243,7 +243,7 @@ tr, td{
        ?>
        <tr>
        <td><a href='<?php echo URLROOT.'/pages/fullprofile/'.$get->basic_id;   ?>'><?php  echo $get->fullname  ?></a></td>
-       <td><?php  echo $get->location ?></td>
+       <td><?php  echo $get->department ?></td>
        <td><?php  echo $get->position ?></td>
        <td><a href='<?php echo URLROOT  ?>/payslip/slip/<?php echo $get->basic_id  ?>' >Slip</a></td>
        <td><a href='<?php echo URLROOT  ?>/pages/editemployee/<?php echo $get->basic_id  ?>' ><i class='fa fa-pencil'></i></a></td>

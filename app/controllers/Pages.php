@@ -988,6 +988,37 @@ public function marital(){
 	}
 	}
 
+	public function folder(){
+		$randomnumber = $_POST['randomnumber'];
+		$documents = Document::getemployeefolder($randomnumber);
+		$viewdata = array("randomnumber"=>$randomnumber,"document"=>$documents);
+		$this->view('pages/folderform',$viewdata);
+	}
+
+	public function folderupload(){
+		$filedata = $_FILES['Filedata'];
+		 $documentname = $_POST['filename'];
+		 $randomnumber = $_POST['randomnumber'];
+		 $uploads = new Uploads();
+		 $uploads->filename = $_FILES['Filedata'];
+		 $uploadresponse = $uploads->upLoadFile();
+
+		 $docname = $uploadresponse['filename'];
+		 $size = $_FILES['Filedata']['size'];
+		 $type = $_FILES['Filedata']['type'];
+		 $name = $_FILES['Filedata']['name'];
+		 $docdate = date('Y-m-d');
+		 $docdata = new Document();
+		 $doc =&   $docdata->recordObject;
+		 $doc->name = $name;
+		 $doc->newname = $docname;
+		 $doc->type = $type;
+		 $doc->size = $size;
+		 $doc->docdate = $docdate;
+		 $doc->documentname = $documentname;
+		 $doc->randomnumber = $randomnumber;
+		 $docdata->store();
+	}
 
 
 }
