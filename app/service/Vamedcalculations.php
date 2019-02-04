@@ -63,7 +63,7 @@ class Vamedcalculations{
    }
 
    public static function grossincome($basicsalary, $transportallowance, $rentallowance, $staffssnit){
-     $amount =  $basicsalary + $transportallowance +$rentallowance + $staffssnit;
+     $amount =  $basicsalary + $transportallowance + $rentallowance - $staffssnit;
       return $amount;
    }
 
