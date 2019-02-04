@@ -108,6 +108,12 @@ class Ajax extends Controller{
         $service->deleteFromDB();
     }
 
+    public function deletefolder(){
+      $did = $_POST['did'];
+      $service = new Document($did);
+      $service->deleteFromDB();
+  }
+
     public function feedbackresponse(){
       $fid  = $_POST['fid'];
       $fd  = new Feedback($fid);

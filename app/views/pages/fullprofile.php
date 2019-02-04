@@ -248,7 +248,7 @@ tr, td{
      </form>
      </div>
       </div>
-
+<input type="hidden" name="" id="randomnumber" value="<?=$data['empdata']->randomnumber ?>">
       <div class="col-lg-7 col-md-7 col-sm-7">
 
       <div>
@@ -284,6 +284,9 @@ tr, td{
             <td>
                 <a href='<?php echo URLROOT.'/payrollreport/payslip/'.$data['empdata']->basic_id  ?>' class='btn btn-danger'  style='font-size:12px; background:#BFFF00; color:#000'> Print Slip</a>
             </td>
+            <td>
+            <a  class='btn btn-danger' id="employeefolder" style='font-size:12px;color:white'><i class="fa fa-folder-o"></i> Folder</a>
+
           </td>
         </tr>
       </table>
@@ -423,7 +426,16 @@ tr, td{
     </div>
     </div>
 
+    <div class="modal fade" id="foldermodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" style='width:500px' role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant folderform">
 
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
   <!--Footer and JS directies -->
 
   <?php require APPROOT .'/views/inc/footer.php'  ?>

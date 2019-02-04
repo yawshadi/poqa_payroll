@@ -1270,4 +1270,14 @@ $(document).ready(function() {
 
         
     });
+     $("#employeefolder").click(function (e) { 
+        e.preventDefault();
+        var randomnumber = $("#randomnumber").val();
+        ajaxurl = urlroot + "/pages/folder";
+        postdata = {randomnumber:randomnumber};
+            $("#foldermodal").modal('show');
+            AjaxPostContainer(ajaxurl,postdata,'folderform');
+
+        
+    });
 })

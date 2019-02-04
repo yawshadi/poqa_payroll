@@ -42,6 +42,13 @@ class Document extends tableDataObject {
         return $payrolldb->resultSet();
     }
 
+    public static  function getemployeefolder($randomnumber){
+        global $payrolldb;
+        $getrecords = "select * from document where randomnumber = '$randomnumber' ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+    }
 
 
 }
