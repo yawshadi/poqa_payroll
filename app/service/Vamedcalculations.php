@@ -16,9 +16,9 @@ class Vamedcalculations{
 
    public static function standardovertime($basicsalary, $category){
 
-       if($category == 'Manager') {
+       if($category == 'Officer 1' || $category == 'Officer 2') {
            return $basicsalary * 0.5;
-       }elseif($category == 'Officer 1' || $category == 'Officer 2'){
+       }elseif($category == 'Manager'){
           $amount = ($basicsalary / 22) * 0.10 * 66;
            return $amount;
        }
