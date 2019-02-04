@@ -44,9 +44,9 @@ class Excelreport extends Controller{
             $objPHPExcel->getActiveSheet()->SetCellValue('W5', 'Net Amount Payable to Staff Accounts');
             $objPHPExcel->getActiveSheet()->SetCellValue('X5', '13% Employer SSNIT');
             $objPHPExcel->getActiveSheet()->SetCellValue('Y5', '18.5% Total SSNIT');
-            $objPHPExcel->getActiveSheet()->SetCellValue('Z5', '13% Employer SSNIT');
-            $objPHPExcel->getActiveSheet()->SetCellValue('AA5', '13.5% SSNIT Act 766');
-            $objPHPExcel->getActiveSheet()->SetCellValue('AB5', '5% EIC Second Tier');
+            $objPHPExcel->getActiveSheet()->SetCellValue('Z5', '13.5% SSNIT Act 766');
+            $objPHPExcel->getActiveSheet()->SetCellValue('AA5', '5% EIC Second Tier');
+
 
 
 
@@ -115,17 +115,17 @@ class Excelreport extends Controller{
              	$objPHPExcel->getActiveSheet()->SetCellValue('O' . $i, payround($paye));
              	$objPHPExcel->getActiveSheet()->SetCellValue('P' .$i, payround($whtonstandardovertime));
              	$objPHPExcel->getActiveSheet()->SetCellValue('Q' .$i, payround($whtonsatsunholovertime));
-             	$objPHPExcel->getActiveSheet()->SetCellValue('R' .$i, payround($whtonsatsunholovertime));
-             	$objPHPExcel->getActiveSheet()->SetCellValue('S' .$i, payround($bonustax));
-             	$objPHPExcel->getActiveSheet()->SetCellValue('T' .$i, payround($totaltaxpayable));
-             	$objPHPExcel->getActiveSheet()->SetCellValue('U' .$i, payround($salaryadvance));
-             	$objPHPExcel->getActiveSheet()->SetCellValue('V' .$i, payround($vamednetpay));
-             	$objPHPExcel->getActiveSheet()->SetCellValue('W' .$i, payround($staffwelfare));
-             	$objPHPExcel->getActiveSheet()->SetCellValue('X' .$i, payround($vamedwelfarenetsalary));
-             	$objPHPExcel->getActiveSheet()->SetCellValue('Y' .$i, payround($employerssnit));
-             	$objPHPExcel->getActiveSheet()->SetCellValue('Z' .$i, payround($totalssnit));
-             	$objPHPExcel->getActiveSheet()->SetCellValue('AA' .$i, payround($ssnitact));
-             	$objPHPExcel->getActiveSheet()->SetCellValue('AB' .$i, payround($secondtier));
+             	$objPHPExcel->getActiveSheet()->SetCellValue('R' .$i, payround($bonustax));
+             	$objPHPExcel->getActiveSheet()->SetCellValue('S' .$i, payround($totaltaxpayable));
+             	$objPHPExcel->getActiveSheet()->SetCellValue('T' .$i, payround($salaryadvance));
+             	$objPHPExcel->getActiveSheet()->SetCellValue('U' .$i, payround($vamednetpay));
+             	$objPHPExcel->getActiveSheet()->SetCellValue('V' .$i, payround($staffwelfare));
+             	$objPHPExcel->getActiveSheet()->SetCellValue('W' .$i, payround($vamedwelfarenetsalary));
+             	$objPHPExcel->getActiveSheet()->SetCellValue('X' .$i, payround($employerssnit));
+             	$objPHPExcel->getActiveSheet()->SetCellValue('Y' .$i, payround($totalssnit));
+             	$objPHPExcel->getActiveSheet()->SetCellValue('Z' .$i, payround($ssnitact));
+             	$objPHPExcel->getActiveSheet()->SetCellValue('AA' .$i, payround($secondtier));
+
 
               $i++;
          }
