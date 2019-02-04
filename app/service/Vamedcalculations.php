@@ -26,10 +26,10 @@ class Vamedcalculations{
 
    public static function teamdevelopment($basicsalary, $category){
        if($category == 'Manager') {
-         $amount =  $basicsalary * 0.15;
+         $amount =  $basicsalary * 0.25;
           return $amount;
        }else{
-           $amount =  $basicsalary * 0.25;
+           $amount =  $basicsalary * 0.15;
            return $amount;
        }
 
