@@ -99,13 +99,13 @@ tr, td{
 
     <?php if(isset($data['payrolldata'])): ?>
 
-    <div style='width:100%; overflow:scroll; margin-top:10px;'>
+    <div style='width:100%; margin-top:10px;'>
 
-  <div><a style='font-size:10px' href='<?php echo URLROOT  ?>/excelreport/bankadvice/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['companyid']) ?>'
+  <div><a style='font-size:10px' href='<?php echo URLROOT  ?>/bankadvice/excel/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['companyid']) ?>'
    class='btn btn-danger pull-left'>Download</a></div>
   <br/>
   <table class='table table-bordered table-condensed' >
-  <tr>
+  <tr style ='font-weight:700'>
       <td>Employee Name</td>
       <td>Bank</td>
       <td>Account Number</td>
@@ -118,11 +118,11 @@ tr, td{
 
     ?>
     <tr>
-      <td><?php echo $get['name']  ?></td>
+      <td><?php echo $get['fullname']  ?></td>
       <td><?php echo $get['bank']  ?></td>
       <td><?php echo $get['accountnumber'];  ?></td>
       <td><?php echo $get['branchcode'];     ?></td>
-      <td><?php echo $get['netpay'];    ?></td>
+      <td><?php echo payround($get['vamednetpay']);    ?></td>
 
     </tr>
     <?php
