@@ -197,6 +197,8 @@ class Payereport extends Controller{
               $objPHPExcel->getActiveSheet()->SetCellValue('O' . $i, 0.00);
               $objPHPExcel->getActiveSheet()->SetCellValue('P' .$i, 0.00);
               $objPHPExcel->getActiveSheet()->SetCellValue('Q' .$i, 0.00);
+              $objPHPExcel->getActiveSheet()->SetCellValue('R' .$i, $totalAssessableincome);
+              $objPHPExcel->getActiveSheet()->SetCellValue('S' .$i, 0.00);
               $objPHPExcel->getActiveSheet()->SetCellValue('T' .$i, payround($totalreliefs));
               $objPHPExcel->getActiveSheet()->SetCellValue('U' .$i, payround($chargeableincome));
               $objPHPExcel->getActiveSheet()->SetCellValue('V' .$i, payround($paye));

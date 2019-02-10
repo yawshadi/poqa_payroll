@@ -71,7 +71,7 @@ class Bankadvice extends Controller{
 
 
              $payrolldata[] = [
-                               'bank'=>$bank, 'accountnumber'=>$account, 'branchcode'=>$branchcode,'fullname'=>$fullname,'vamednetpay'=>$vamednetpay
+                               'bank'=>$bank, 'accountnumber'=>$account, 'branchcode'=>$branchcode,'fullname'=>$fullname,'vamednetpay'=>$vamedwelfarenetsalary
                              ];
 
           }
@@ -167,7 +167,7 @@ class Bankadvice extends Controller{
              	$objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $bank);
              	$objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $account);
              	$objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $branchcode );
-             	$objPHPExcel->getActiveSheet()->setCellValue('E' . $i, payround($vamednetpay));
+             	$objPHPExcel->getActiveSheet()->setCellValue('E' . $i, payround($vamedwelfarenetsalary));
 
               $i++;
          }
