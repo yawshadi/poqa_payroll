@@ -93,6 +93,11 @@ class Operations extends Controller{
            $data = ['status'=>$status, 'listdata'=>$listdata];
            $this->view('operations/transferpromoview', $data);
          }
+         if($status  == 'Assets'){
+          $listdata = Assets::ListAll();
+          $data = ['status'=>$status, 'listdata'=>$listdata];
+          $this->view('operations/assetsview', $data);
+        }
      }
 
      public function grievanceform(){
@@ -404,7 +409,7 @@ class Operations extends Controller{
 
                   $us = new User($uid);
                   $telephone = $us->recordObject->telephone;
-                 // sendGrievanceText($telephone, 'leave request');
+                  sendGrievanceText($telephone, 'leave request');
                   Leave::insertleaveusers($lid, $uid);
                }
            }
