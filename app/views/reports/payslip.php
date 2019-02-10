@@ -184,7 +184,7 @@ tr, td{
        <td class='vas'><?php echo payround($data['payrolldata']['standardovertime'])  ?></td>
       </tr>
       <tr>
-       <td>Team Development Bonus</td>
+       <td>Team Development & Weekend Bonus</td>
         <td class='vas'><?php echo payround($data['payrolldata']['teamdevelopment'])  ?></td>
       </tr>
       <tr>

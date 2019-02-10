@@ -56,7 +56,7 @@ ob_start();
 <table class='table table-bordered '>
 
     <tr style="font-weight:700; font-size:15px;">
-     <td>Basis for Calculation</td>
+     <td width="300">Basis for Calculation</td>
      <td>Total (GHs)</td>
     </tr>
 
@@ -102,7 +102,7 @@ ob_start();
      <td class='vas'><?php echo payround($data['payrolldata']['standardovertime'])  ?></td>
     </tr>
     <tr>
-     <td>Team Development Bonus</td>
+     <td>Team Development & Weekend Bonus</td>
       <td class='vas'><?php echo payround($data['payrolldata']['teamdevelopment'])  ?></td>
     </tr>
     <tr>

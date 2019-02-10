@@ -151,6 +151,50 @@ class Vamedcalculations{
      return $amount;
    }
 
+   public static function bonusincome ($basicsalary){
+     return $basicsalary * 0.15;
+   }
+
+
+   public static function taxonbonusincome ($bonusincome, $excessbonus){
+     return ($bonusincome * 0.05) + ($excessbonus * 0.10);
+   }
+
+   public static function excessbonus ($basicsalary){
+     return $basicsalary * (0.925-0.5-0.15);
+   }
+
+   public static function totalcashemolument ($basicsalary, $cashallowance = 0){
+     return $basicsalary + $cashallowance;
+   }
+
+   public static function totalAssessableincome($totalcashemolument, $accomodation=0, $vehicle=0, $noncashbenefit=0){
+
+      return $totalcashemolument + $accomodation + $vehicle + $noncashbenefit;
+   }
+
+   public static function totalreliefs($staffssnit, $thirdtier=0, $dedrelief=0){
+
+      return $staffssnit + $thirdtier + $dedrelief;
+   }
+
+   public static function chargeableincome ($totalAssessableincome, $totalreliefs){
+      return $totalAssessableincome - $totalreliefs;
+   }
+
+   public static function overtimecallincome ($basicsalary){
+      return $basicsalary * 0.5;
+   }
+
+   public static function overtimecalltax ($overtimecallincome){
+      return $overtimecallincome * 0.05;
+   }
+
+   public static function togra ($taxonbonusincome , $paye, $overtimecalltax){
+      return $taxonbonusincome + $paye + $overtimecalltax;
+   }
+
+
 
 
 

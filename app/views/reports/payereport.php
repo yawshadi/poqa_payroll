@@ -26,9 +26,9 @@ tr, td{
           <h1 style='color:#FB6600; font-weight:700' class="page-title"> P.A.Y.E REPORT </h1>
         </div>
    </div>
-      
+
       <hr/>
-     
+
       <div id='placeholder'>
 
 
@@ -39,20 +39,20 @@ tr, td{
 
 
 
-<div class="row" style="margin-bottom:20px">  
+<div class="row" style="margin-bottom:20px">
 
 
 
 
       <div class="col-lg-12 col-md-12 col-sm-12">
-      
+
       <div class='card'>
       <div class="container">
       <br/>
       <div align='center'>
 
       <form method='post'>
-      
+
       <table  class='table table-bordered table-condensed apptables' style='font-size:12px'>
 
        <tr>
@@ -90,71 +90,51 @@ tr, td{
         endforeach;
        ?>
        </select>
-       
+
        </td>
        <td><button type='submit' name='payebtn' class='btn btn-warning'>Search</button></td>
-    
+
       </tr>
-       
+
       </table>
     </form>
     <br/>
-     
-    <?php if(isset($data['payrolldata'])): ?>
-    <div style='width:100%; overflow-y:scroll; margin-top:10px'>
-    <div><a style='font-size:10px' href='<?php echo URLROOT  ?>/excelreport/payeexcel/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['companyid']) ?>' 
+
+  <?php if(isset($data['payrolldata'])): ?>
+    <div style='width:100%; margin-top:10px'>
+    <div><a style='font-size:10px' href='<?php echo URLROOT  ?>/payereport/excel/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['companyid']) ?>'
    class='btn btn-danger pull-right'>Download</a></div>
   <table class='table table-bordered table-condensed' >
-  <tr>
-   <td>Employee Code</td>  
+  <tr style="font-weight:700">
+   <td>No:</td>
    <td>Employee Name</td>
    <td>Position</td>
    <td>Employee TIN</td>
    <td>Basic Salary</td>
-   <td>Extra / Overtime Allowance</td>
- 
-   <td>Other Allowance </td>
-   <td>Other Deductions</td>
-   <td>Overall Gross </td>
-   <td>SSNIT (13%)</td>
-   <td>SSF (5.5%)</td>
-   <td>TOTAL SSF</td>
-  
-   <td>PAYE</td>
-   <td>Total Tax</td>
+   <td>Tax Deductible</td>
+   <td>Total Tax to GRA</td>
 
- 
    </tr>
-    <?php 
+    <?php
     foreach($data['payrolldata'] as $key=>$get):
-
+     $count  = $key + 1;
     ?>
     <tr>
-  
-  <td><?php echo $get['staffid'];   ?></td>
+
+  <td><?php echo $count;   ?></td>
   <td><?php echo $get['fullname'];   ?></td>
   <td><?php echo $get['position'];   ?></td>
   <td><?php echo $get['tinnumber'];   ?></td>
-  <td><?php echo $get['basic_salary'];    ?> </td>
-  <td><?php echo $get['weekday_overtime_rate'];    ?></td> 
-
-   <td><?php echo $get['otherallowances'];    ?> </td>
-   <td><?php echo $get['otherdeductions'];    ?></td>
-   <td><?php echo $get['overallgross'];    ?></td>
-   <td><?php echo $get['ssnitocompany'];    ?></td>
-   <td><?php echo $get['ssnitpercent'];    ?></td>
-   <td><?php echo $get['totalssf'];    ?></td>
-   <td><?php echo $get['paye'];    ?></td>
-   <td><?php echo $get['paye'];    ?></td>
-  
-  
+  <td><?php echo $get['basicsalary'];    ?> </td>
+  <td><?php echo payround($get['paye']);    ?></td>
+  <td><?php echo payround($get['togra']);    ?> </td>
 
     </tr>
     <?php
     endforeach;
     ?>
    </table>
-  
+
     </div>
     <?php
      endif;
@@ -163,23 +143,23 @@ tr, td{
       </div>
      </div>
      </div>
-    
-      </div>
-
 
       </div>
 
 
-      
+      </div>
+
+
+
 
       <!-- End of first upper row -->
 
 
       <div class="row" style="margin-bottom:20px">
 
-      
 
-    
+
+
       </div>
     </div>   <!-- End of Placeholder -->
 

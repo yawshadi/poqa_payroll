@@ -277,7 +277,7 @@ class Payslip extends Controller{
         $objPHPExcel->getActiveSheet()->SetCellValue('A28', 'Saturdays, Sundays, & Public Holidays Overtime');
         $objPHPExcel->getActiveSheet()->SetCellValue('D28', $satsunholovertime);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A29', 'Team Development');
+        $objPHPExcel->getActiveSheet()->SetCellValue('A29', 'Team Development & Weekend Bonus');
         $objPHPExcel->getActiveSheet()->SetCellValue('D29', $teamdevelopment);
 
         $objPHPExcel->getActiveSheet()->SetCellValue('A30', 'Total Bonus');
