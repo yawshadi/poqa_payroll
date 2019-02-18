@@ -4,13 +4,14 @@ class Operations extends Controller{
 
      public function index (){
 
+       $assetcount = Assets::getCount('All');
        $leavecount = Leave::getCount('All');
        $transfercount =  Transfer::getCount('All');
        $promotioncount =  Promotion::getCount('All');
        $disciplinecount =  Discipline::getCount('All');
        $grievancecount = Grievance::getCount('All');
 
-       $data = ['leavecount'=> $leavecount, 'transfercount'=> $transfercount, 'promotioncount'=>$promotioncount, 'grievancecount'=>$grievancecount,
+       $data = ['assetcount'=>$assetcount,'leavecount'=> $leavecount, 'transfercount'=> $transfercount, 'promotioncount'=>$promotioncount, 'grievancecount'=>$grievancecount,
                'disciplinecount'=>$disciplinecount];
 
        $this->view('operations/odashboard', $data);
@@ -41,6 +42,13 @@ class Operations extends Controller{
          $data = ['opdata'=>$opdata, 'opusers'=>$opusers];
          $this->view('operations/leaveprofile', $data);
        }
+
+       if($type == 'assets'){
+        $dt = new Assets($id);
+        $opdata = $dt->recordObject;
+        $data = ['opdata'=>$opdata];
+        $this->view('operations/assetsprofile', $data);
+      }
 
        if($type == 'Disciplinary'){
          $dt = new Discipline($id);
@@ -133,6 +141,20 @@ class Operations extends Controller{
 
         $data = ['empdata'=>$empdata, 'empcount'=>$empcount, 'userdata'=>$usersdata, 'departmentdata'=>$departments];
         $this->view('operations/promotionform', $data);
+
+     }
+
+     public function assetsform(){
+      $employeeid  = $_POST['employeeid'];
+      $empdata = Employee::getEmployeesById($employeeid);
+      $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
+        $companyname  = $empdata->company;
+        $usersdata = User::ListAll();
+        $departments = Department::getDepartmentByCompany($companyname);
+
+
+        $data = ['empdata'=>$empdata, 'empcount'=>$empcount, 'userdata'=>$usersdata, 'departmentdata'=>$departments];
+        $this->view('operations/assetsform', $data);
 
      }
 
@@ -365,6 +387,44 @@ class Operations extends Controller{
        }
 
      }
+
+
+
+     public function assets(){
+      $assetdata = Assets::ListAll();
+
+        if(isset($_POST['submitasset'])){
+          $reportedby  = $_POST['reportedby'];
+          $description = $_POST['description'];
+          $employeeid  = $_POST['employeeid'];
+
+          $uploads = new Uploads();
+          $uploads->filename = $_FILES['assetdoc'];
+          $uploadresponse = $uploads->upLoadFile();
+          $filename =  $uploadresponse['filename'];
+
+          $gv  = new Assets();
+          $gv->recordObject->description = $description;
+          $gv->recordObject->reportdate =  date('Y-m-d');
+          $gv->recordObject->employeeid = $employeeid;
+          $gv->recordObject->uid = $_SESSION['uid'];
+          $gv->recordObject->recipientid = $reportedby;
+          $gv->recordObject->filename = $filename;
+          $gv->recordObject->assetname = $_POST['assetname'];
+          $gv->recordObject->assetquantity = $_POST['assetquantity'];
+
+
+          $gv->store();
+          $data = ['assetdata'=>$assetdata];
+          $this->view('operations/assets', $data);
+        }
+
+        else{
+        $data = ['assetdata'=>$assetdata];
+        $this->view('operations/assets', $data);
+      }
+
+    }
 
 
      public function leave(){

@@ -236,6 +236,19 @@ $(document).ready(function() {
         }
 
     })
+    $(document).on('click', '.deleteasset', function(){
+        
+                var  assetid =  $(this).attr('assetid');
+        
+        
+                var postdata = {assetid:assetid};
+                var ajaxurl =  urlroot + '/ajax/deleteasset';        
+                if(confirm('Do you want to delete period ?')){
+                    AjaxPostRequest(ajaxurl, postdata);
+                }
+                window.location.href='';
+        
+            })
 
     $(document).on('click', '.deleteemployee', function(){
 
@@ -980,6 +993,31 @@ $(document).ready(function() {
 
           })
 
+          $(document).on('click', '#assetsbtn', function(){
+            var employeeid   = $('#employeeid').val();
+            if (employeeid=='')return;
+            var postdata = {employeeid:employeeid};
+               var ajaxurl =  urlroot + '/operations/assetsform';
+               $.ajax({
+                  type: "POST",
+                  url:  ajaxurl,
+                  data: postdata,
+                  dataType: "html",
+                  beforeSend: function () {
+                    $.blockUI();
+                  },
+                  success: function (text) {
+                    $('#searchcontainer').html(text)
+                  },
+                  complete: function () {
+                    $.unblockUI();
+                  },
+                  error: function (xhr, ajaxOptions, thrownError) {
+                      alert(xhr.status + " " + thrownError);
+                  }
+                })
+
+          })
 
           $(document).on('click', '#leavebtn', function(){
                var employeeid   = $('#employeeid').val();

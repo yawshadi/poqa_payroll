@@ -40,9 +40,8 @@ tr, td{
            <thead>
            <tr>
            <td>Employee</td>
-           <td>Subject</td>
+           <td>Asset Name</td>
            <td>Reported  Date</td>
-           <td>Status</td>
            <td>View </td>
            <td>Action</td>
           </tr>
@@ -52,26 +51,13 @@ tr, td{
             foreach($data['listdata'] as $get):
               $em = new Employee($get->employeeid);
               $employeename  =   $em->recordObject->fullname;
-
-              $status = $data['status'];
-              if($status == 'Grievance'){
-                $id = $get->gid ;
-              }else{
-                  $id = $get->did ;
-              }
            ?>
            <tr>
            <td><?php echo $employeename   ?></td>
-           <td><?php  echo $get->subject ?></td>
+           <td><?php  echo $get->assetname ?></td>
            <td><?php  echo $get->reportdate ?></td>
-           <td><?php if($get->status == ''){
-               echo '<span style="color:orange">Pending</span>';
-           }else{
-               echo '<span style="color:green">'. $get->status .'</span>';
-           }
-           ?></td>
-           <td><a href='<?php  echo URLROOT.'/operations/operationprofile/'.$data['status'].'/'.$id   ?>' >View</a></td>
-           <td><a href='#' class='operationnmodule' status='<?php echo $data['status'] ?>' actionid='<?php echo  $id ?>' >Action</a></td>
+           <td><a href='<?php  echo URLROOT.'/operations/operationprofile/assets/'.$get->aid   ?>' >View</a></td>
+           <td><a href='#' class='deleteasset'  assetid='<?php echo  $id ?>' >Delete</a></td>
            </tr>
            <?php
            endforeach;

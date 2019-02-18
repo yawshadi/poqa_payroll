@@ -86,7 +86,7 @@
     <br>
   <div align='center'><span style='color:#fff; font-size:12px;font-weight:700'> ASSETS</span></div>
   <hr style='background:#fff'/>
-  <div align='center' style='font-size:30px; font-weight:700; color:#fff'><?php echo $data['leavecount']   ?></div>
+  <div align='center' style='font-size:30px; font-weight:700; color:#fff'><?php echo $data['assetcount']   ?></div>
   </div>
   </div>
   </a>
