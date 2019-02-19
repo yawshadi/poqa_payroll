@@ -16,4 +16,12 @@ class Assets extends tableDataObject {
    
      }
 
+     public static function getAssets($employeeid){
+        global $payrolldb;
+        $query = "Select * from assets where employeeid = $employeeid ";
+        $payrolldb->prepare($query);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+     }
+
 }

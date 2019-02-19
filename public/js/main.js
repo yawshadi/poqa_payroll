@@ -239,11 +239,10 @@ $(document).ready(function() {
     $(document).on('click', '.deleteasset', function(){
         
                 var  assetid =  $(this).attr('assetid');
-        
-        
+    
                 var postdata = {assetid:assetid};
                 var ajaxurl =  urlroot + '/ajax/deleteasset';        
-                if(confirm('Do you want to delete period ?')){
+                if(confirm('Do you want to delete ?')){
                     AjaxPostRequest(ajaxurl, postdata);
                 }
                 window.location.href='';

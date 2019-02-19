@@ -36,9 +36,9 @@ tr, td{
           <h1 style='color:#FB6600; font-weight:700' class="page-title"> ASSETS MANAGEMENT</h1>
         </div>
 
-        <div class="col-2">
+       <!-- <div class="col-2">
          <div style='margin-top:10px'><a class='btn btn-danger' style='font-size:11px' href='<?php echo URLROOT.'/downloads/promotion.docx'  ?>'><i class='fa fa-download'></i>  Download Form </a></div>
-        </div>
+        </div>-->
    </div>
 
       <hr/>
@@ -83,7 +83,7 @@ tr, td{
 
        <td>Asset Name</td>
        <td>Asset Quantity</td>
-       <td>Reported Date</td>
+       <td>Assigned Date</td>
        <td>View </td>
        <td>Download</td>
       </tr>
@@ -99,7 +99,7 @@ tr, td{
        <td><?php  echo $get->assetname ?></td>
        <td><?php  echo $get->assetquantity ?></td>
        <td><?php  echo $get->reportdate ?></td>
-       <td><a href='#' >View</a></td>
+       <td><a href='<?php  echo URLROOT.'/operations/operationprofile/assets/'.$get->aid   ?>' >View</a></a></td>
        <td><a href='<?php  echo URLROOT.'/uploads/'.$get->filename   ?>' >Download</a></td>
 
       </tr>

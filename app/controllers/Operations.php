@@ -416,7 +416,8 @@ class Operations extends Controller{
 
           $gv->store();
           $data = ['assetdata'=>$assetdata];
-          $this->view('operations/assets', $data);
+          //$this->view('operations/assets', $data);
+          Redirecting::location('operations/Assets');
         }
 
         else{

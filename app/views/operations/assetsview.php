@@ -41,7 +41,7 @@ tr, td{
            <tr>
            <td>Employee</td>
            <td>Asset Name</td>
-           <td>Reported  Date</td>
+           <td>Assigned  Date</td>
            <td>View </td>
            <td>Action</td>
           </tr>
@@ -57,7 +57,7 @@ tr, td{
            <td><?php  echo $get->assetname ?></td>
            <td><?php  echo $get->reportdate ?></td>
            <td><a href='<?php  echo URLROOT.'/operations/operationprofile/assets/'.$get->aid   ?>' >View</a></td>
-           <td><a href='#' class='deleteasset'  assetid='<?php echo  $id ?>' >Delete</a></td>
+           <td><a href='#' class='deleteasset'  assetid='<?php echo  $get->aid  ?>' >Delete</a></td>
            </tr>
            <?php
            endforeach;
