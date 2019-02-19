@@ -31,7 +31,7 @@
                    <tr>
                    <td><?=$doc->documentname  ?></td>
                    <td> <a target='_blank' href="<?= URLROOT?>/uploads/<?=$doc->newname ?>"><?=$doc->name  ?></a> </td>
-                   <td align="center"><a  did='<?= $doc->did ?>' class='deldoc' style='color:red'><i class='fa fa-times'></i></a></td>
+                   <td align="center"><a  did='<?= $doc->did ?>' class='deldoc' style='color:red'><i class='fa fa-trash'></i></a></td>
                    </tr>
             <?php
               endforeach

@@ -58,6 +58,14 @@ class Ajax extends Controller{
  
      }
 
+     public function deleteasset(){
+      
+            $assetid = $_POST['assetid'];
+            $delete = new Assets($assetid);
+            $delete->deleteFromDB();
+       
+           }
+
      public function deleteleavedays(){
 
       $daysid = $_POST['daysid'];

@@ -285,7 +285,11 @@ tr, td{
                 <a href='<?php echo URLROOT.'/payrollreport/payslip/'.$data['empdata']->basic_id  ?>' class='btn btn-danger'  style='font-size:12px; background:#BFFF00; color:#000'> Print Slip</a>
             </td>
             <td>
+<<<<<<< HEAD
             <a  class='btn btn-danger' id="employeefolder" style='font-size:12px;color:white'><i class="fa fa-folder-o"></i>Employee Folder</a>
+=======
+            <a  class='btn btn-danger' id="employeefolder" style='font-size:12px;color:white'><i class="fa fa-folder-o"></i> Employee Folder</a>
+>>>>>>> workingshadi
 
           </td>
         </tr>
@@ -397,6 +401,34 @@ tr, td{
         </tr>
       <?php endforeach; ?>
 
+      </table>
+      <?php endif;  ?>
+
+
+      <?php  if(count($data['assetdata']) > 0 ):  ?>
+
+      <table  style='font-size:12px; color:#fff' class='table table-bordered'>
+        <tr>
+          <td colspan="5" align='center' style='font-weight:700'>ASSETS LIST</td>
+        </tr>
+        <tr>
+          <td>Asigned Date</td>
+          <td>Asset Name</td>
+          <td>Asset Quantity</td>
+          <td>Status</td>
+          <td>Action</td>
+        </tr>
+        <?php
+         foreach($data['assetdata'] as $get):
+        ?>
+        <tr>
+          <td><?php echo $get->reportdate  ?></td>
+          <td><?php echo $get->assetname  ?></td>
+          <td><?php echo $get->assetquantity  ?></td>
+          <td><?php  echo $get->status == '' ?  'Approved' : $get->status  ?></td>
+          <td><a href='<?php  echo URLROOT.'/uploads/'.$get->filename  ?>' >Download</a></td>
+        </tr>
+          <?php endforeach; ?>
       </table>
       <?php endif;  ?>
 
