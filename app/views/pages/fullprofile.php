@@ -285,11 +285,7 @@ tr, td{
                 <a href='<?php echo URLROOT.'/payrollreport/payslip/'.$data['empdata']->basic_id  ?>' class='btn btn-danger'  style='font-size:12px; background:#BFFF00; color:#000'> Print Slip</a>
             </td>
             <td>
-<<<<<<< HEAD
             <a  class='btn btn-danger' id="employeefolder" style='font-size:12px;color:white'><i class="fa fa-folder-o"></i>Employee Folder</a>
-=======
-            <a  class='btn btn-danger' id="employeefolder" style='font-size:12px;color:white'><i class="fa fa-folder-o"></i> Employee Folder</a>
->>>>>>> workingshadi
 
           </td>
         </tr>
