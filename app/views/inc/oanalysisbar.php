@@ -78,6 +78,18 @@
   </div>
 
 
-
+  <div class="col-lg-4 col-md-4 col-sm-12">
+  <a href="<?php echo URLROOT.'/operations/operationsview/Assets' ?>">
+  <div class="card"  style="background:#EC9900;">
+  <div align='center' style="margin-top:20px"><i style="color:#fff" class="fa fa-th-list fa-4x"></i></div>
+  <div class="container" >
+    <br>
+  <div align='center'><span style='color:#fff; font-size:12px;font-weight:700'> ASSETS</span></div>
+  <hr style='background:#fff'/>
+  <div align='center' style='font-size:30px; font-weight:700; color:#fff'><?php echo $data['assetcount']   ?></div>
+  </div>
+  </div>
+  </a>
+  </div>
 
 </div>

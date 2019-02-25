@@ -842,13 +842,14 @@ class Pages extends Controller{
 		$grievancedata = Grievance::getGrievance($employeeid);
 		$transferdata = Transfer::getTransfers($employeeid);
 		$leavedata = Leave::getLeave($employeeid);
+		$assetdata = Assets::getAssets($employeeid);
 		$promotiondata = Promotion::getPromotion($employeeid);
 		$disciplinedata = Discipline::getDiscipline($employeeid);
 		$passport = Document::getPassportbyBasicid($employeeid);
 
 		$data = ['empdata'=>$empdata, 'grievancedata'=>$grievancedata, 'leavedata'=>$leavedata,
 		          'transferdata'=>$transferdata, 'promotiondata'=> $promotiondata,
-							'disciplinedata'=>$disciplinedata, 'passport'=>$passport ];
+							'disciplinedata'=>$disciplinedata, 'passport'=>$passport,'assetdata'=>$assetdata ];
 
 		$this->view('pages/fullprofile', $data);
 
