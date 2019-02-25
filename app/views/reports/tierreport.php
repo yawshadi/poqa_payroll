@@ -41,9 +41,6 @@ tr, td{
 
 <div class="row" style="margin-bottom:20px">  
 
-
-
-
       <div class="col-lg-12 col-md-12 col-sm-12">
       
       <div class='card'>
@@ -101,33 +98,33 @@ tr, td{
     <br/>
     <?php if(isset($data['payrolldata'])): ?>
 
-    <div style='width:100%; overflow-x:scroll; margin-top:10px'>
-    <div><a style='font-size:10px' href='<?php echo URLROOT  ?>/excelreport/tierexcel/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['companyid']) ?>' 
+    <div style='width:100%; margin-top:10px'>
+    <div><a style='font-size:10px' href='<?php echo URLROOT  ?>/tier2/excel/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['companyid']) ?>'
    class='btn btn-danger pull-right'>Download</a></div>
    
 
     <table class='table table-bordered table-condensed' >
 
-  <tr>
-   <td>Employee Code</td>  
+  <tr style="font-weight: bold">
+   <td>No:</td>
    <td>Employee Name</td>
    <td>Position</td>
-   <td>Tier 2 No </td>
+   <td>Tier 2 Number </td>
    <td>Basic Salary</td>
    <td>SSF (5%)</td>
  
    </tr>
     <?php 
     foreach($data['payrolldata'] as $key=>$get):
-
+       $count = $key + 1;
     ?>
     <tr>
   
-  <td><?php echo $get['staffid'];   ?></td>
+  <td><?php echo $count   ?></td>
   <td><?php echo $get['fullname'];   ?></td>
   <td><?php echo $get['position'];   ?></td>
   <td><?php echo $get['tiernumber'];   ?></td>
-  <td><?php echo $get['basic_salary'];    ?> </td>
+  <td><?php echo $get['basicsalary'];    ?> </td>
   <td><?php echo $get['ssnit'];    ?></td> 
   
 
