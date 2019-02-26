@@ -79,12 +79,23 @@ if($data['empcount'] > 0){
   </td>
   </tr>
   <tr>
-  <td>Reported To:</td>
+  <td>Assigning Officer:</td>
   <td><select class='form-control' name='reportedby'>
     <option>Select</option>
     <?php
     foreach($data['userdata'] as $get){
       echo '<option value='.$get->uid.'>'.$get->firstname.' '.$get->surname  .'</option>';
+    }
+    ?>
+  </select>
+  </td>
+  </tr>
+  <tr>
+  <td>Cc:</td>
+  <td><select class='form-control' name='reportedbycc[]' id='reportedbycc' multiple >
+    <?php
+    foreach($data['userdata'] as $get){
+          echo '<option value='.$get->uid.'>'.$get->firstname.' '.$get->surname  .'</option>';
     }
     ?>
   </select>

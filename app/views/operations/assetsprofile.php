@@ -104,7 +104,7 @@ tr, td{
 
 
       </div>
-      <!--<div class="col-lg-6 col-md-6 col-sm-6">
+      <div class="col-lg-6 col-md-6 col-sm-6">
 
         <h5 style='color:green'>Copied User(s)</h5>
        <table class='table table-bordered'>
@@ -125,7 +125,7 @@ tr, td{
        </table>
 
 
-      </div>-->
+      </div>
 
       </div>
 

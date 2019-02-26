@@ -24,4 +24,17 @@ class Assets extends tableDataObject {
         return $payrolldb->resultSet();
      }
 
+     public static function insertassetusers($aid, $uid){
+      global $payrolldb;
+      $query = "INSERT INTO assetusers (aid,uid) values ($aid, $uid) ";
+      $payrolldb->prepare($query);
+      $payrolldb->execute();
+   }
+
+   public static function getassetusers($id){
+    global $payrolldb;
+    $query = "Select * from  assetusers where aid = $id ";
+    $payrolldb->prepare($query);
+    return  $payrolldb->resultSet();
+ }
 }

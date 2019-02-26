@@ -45,8 +45,9 @@ class Operations extends Controller{
 
        if($type == 'assets'){
         $dt = new Assets($id);
+        $opusers =  Assets::getassetusers($id);        
         $opdata = $dt->recordObject;
-        $data = ['opdata'=>$opdata];
+        $data = ['opdata'=>$opdata, 'opusers'=>$opusers];
         $this->view('operations/assetsprofile', $data);
       }
 
@@ -397,6 +398,8 @@ class Operations extends Controller{
           $reportedby  = $_POST['reportedby'];
           $description = $_POST['description'];
           $employeeid  = $_POST['employeeid'];
+          $reportedbycc = $_POST['reportedbycc'];
+          array_push($reportedbycc, $reportedby);
 
           $uploads = new Uploads();
           $uploads->filename = $_FILES['assetdoc'];
@@ -413,8 +416,16 @@ class Operations extends Controller{
           $gv->recordObject->assetname = $_POST['assetname'];
           $gv->recordObject->assetquantity = $_POST['assetquantity'];
 
+          if($gv->store()){
+           $aid = $gv->recordObject->aid;
+           foreach($reportedbycc as $uid){
+              $us = new User($uid);
+              $telephone = $us->recordObject->telephone;
+              sendGrievanceText($telephone, 'Assets Assignment');
+              Assets::insertassetusers($aid, $uid);
+           }
+          }
 
-          $gv->store();
           $data = ['assetdata'=>$assetdata];
           //$this->view('operations/assets', $data);
           Redirecting::location('operations/Assets');
