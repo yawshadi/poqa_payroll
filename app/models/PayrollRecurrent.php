@@ -28,4 +28,15 @@ class PayrollRecurrent extends tableDataObject{
         return $count;
     }
 
+    public static  function getlistforcron($startdate, $enddate){
+        global $payrolldb;
+
+        $getrecords = "select * from  payrollrecurrent  where paystart = '$startdate' 
+                       and payend='$enddate'  ";
+
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+    }
+
 }

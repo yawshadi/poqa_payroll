@@ -195,6 +195,11 @@ class Vamedcalculations{
    }
 
 
+    public static function ssnitforschedule($basicsalary){
+        $amount =  $basicsalary * 0.135;
+        return $amount;
+    }
+
 
 
 

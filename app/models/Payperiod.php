@@ -14,6 +14,15 @@ class Payperiod extends tableDataObject{
         return $payrolldb->resultSet();
     }
 
+    public static function getcronperiod(){
+
+        global $payrolldb;
+        $getrecords = "SELECT end, start FROM payrollperiod ORDER BY payrollperiodid DESC LIMIT 1 ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->singleRecord();
+    }
+
 
     public static function getLastPayperiod($company){
 
@@ -22,7 +31,7 @@ class Payperiod extends tableDataObject{
        $payrolldb->prepare($getrecords);
        $payrolldb->execute();
        return $payrolldb->resultSet();
-      }
+    }
 
 
    public static function getLastEndPayperiod($company){

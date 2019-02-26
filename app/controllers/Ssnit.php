@@ -14,7 +14,7 @@ class Ssnit extends Controller
         $paydata  = Payperiod::getPayrollPeriod();
         $alldata =  ['companies'=>$comdata, 'payperiod'=>$paydata];
 
-        if(isset($_POST['tierbtn'])){
+        if(isset($_POST['ssnitbtn'])){
 
             $startdate = $_POST['startdate'];
             $enddate = $_POST['enddate'];
@@ -31,6 +31,10 @@ class Ssnit extends Controller
                 $department =  $get->department;
                 $position  = $get->position;
                 $fullname =  $get->fullname;
+                $firstname  = $get->firstname;
+                $surname  = $get->surname;
+                $othernames  = $get->othernames;
+
                 $basic_id = $get->basic_id;
                 $category = $get->category;
                 $ssnitnumber = $get->ssnitnumber;
@@ -40,11 +44,12 @@ class Ssnit extends Controller
                 $tiernumber = $get->tiernumber;
 
                 //payrollcalculations
-                $staffssnit = Vamedcalculations::staffssnit($basicsalary);
+                $employerssnit = Vamedcalculations::ssnitforschedule($basicsalary);
 
                 $payrolldata[] = [
-                    'fullname'=>$fullname, 'position'=>$position, 'tiernumber'=>$tiernumber,
-                    'basicsalary'=>$basicsalary, 'ssnit'=>$staffssnit
+                     'firstname'=>$firstname, 'lastname'=>$surname, 'othernames'=>$othernames,
+                     'basicsalary'=>$basicsalary, 'ssnit'=>$employerssnit,
+                     'ssnitnumber'=>$ssnitnumber
                 ];
 
             }
@@ -75,11 +80,12 @@ class Ssnit extends Controller
 
         $objPHPExcel->setActiveSheetIndex(0);
         $objPHPExcel->getActiveSheet()->SetCellValue('A6', 'No:');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B6', 'Employee Name');
-        $objPHPExcel->getActiveSheet()->SetCellValue('C6', 'Postion');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D6', 'Tier2 Number');
-        $objPHPExcel->getActiveSheet()->SetCellValue('E6', 'Basic Salary');
-        $objPHPExcel->getActiveSheet()->SetCellValue('F6', 'SSF (5%)');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B6', 'Firstname');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C6', 'Surname');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D6', 'Othernames');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E6', 'SNNIT Number');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F6', 'Basic Salary');
+        $objPHPExcel->getActiveSheet()->SetCellValue('G6', 'SSF (13.5%)');
 
         for ($i = 'A'; $i != $objPHPExcel->getActiveSheet()->getHighestColumn(); $i++) {
             $objPHPExcel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
@@ -90,20 +96,32 @@ class Ssnit extends Controller
         foreach($empdata as $key=>$get){
 
             $count = $key + 1;
+            $company = $_POST['company'];
+            $department =  $get->department;
             $position  = $get->position;
             $fullname =  $get->fullname;
+            $firstname  = $get->firstname;
+            $surname  = $get->surname;
+            $othernames  = $get->othernames;
+
+            $basic_id = $get->basic_id;
+            $category = $get->category;
+            $ssnitnumber = $get->ssnitnumber;
+            $location = $get->location;
             $basicsalary = $get->basicsalary;
+            $tinnumber = $get->tinnumber;
             $tiernumber = $get->tiernumber;
 
             //payrollcalculations
-            $staffssnit = Vamedcalculations::staffssnit($basicsalary);
+            $employerssnit = Vamedcalculations::ssnitforschedule($basicsalary);
 
             $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $count);
-            $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $fullname);
-            $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $position);
-            $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $tiernumber );
-            $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $basicsalary);
-            $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $staffssnit);
+            $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $firstname);
+            $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $surname);
+            $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $othernames);
+            $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $ssnitnumber);
+            $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $basicsalary);
+            $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $employerssnit);
             $i++;
         }
 
@@ -132,7 +150,7 @@ class Ssnit extends Controller
             ));
         $objPHPExcel->getActiveSheet()->getStyle('D2')->applyFromArray($styleHeader);
         $objPHPExcel->getActiveSheet()->getStyle('D3')->applyFromArray($styleHeader);
-        $objPHPExcel->getActiveSheet()->getStyle('A6:F6')->applyFromArray($titleHeader);
+        $objPHPExcel->getActiveSheet()->getStyle('A6:G6')->applyFromArray($titleHeader);
 
 
 
@@ -151,11 +169,11 @@ class Ssnit extends Controller
         $objDrawing->setCoordinates('A1');
         $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 
-        $objPHPExcel->getActiveSheet()->setTitle('Tier2 Report');
+        $objPHPExcel->getActiveSheet()->setTitle('SSNIT Schdule Report');
 
         ob_end_clean();
         header( "Content-type: application/vnd.ms-excel" );
-        header('Content-Disposition: attachment; filename="tier2report.xlsx"');
+        header('Content-Disposition: attachment; filename="ssnitreport.xlsx"');
         header("Pragma: no-cache");
         header("Expires: 0");
 
