@@ -1018,6 +1018,32 @@ $(document).ready(function() {
 
           })
 
+          $(document).on('click', '#appraisalbtn', function(){
+            var employeeid   = $('#employeeid').val();
+            if (employeeid=='')return;
+            var postdata = {employeeid:employeeid};
+               var ajaxurl =  urlroot + '/operations/appraisalform';
+               $.ajax({
+                  type: "POST",
+                  url:  ajaxurl,
+                  data: postdata,
+                  dataType: "html",
+                  beforeSend: function () {
+                    $.blockUI();
+                  },
+                  success: function (text) {
+                    $('#searchcontainer').html(text)
+                  },
+                  complete: function () {
+                    $.unblockUI();
+                  },
+                  error: function (xhr, ajaxOptions, thrownError) {
+                      alert(xhr.status + " " + thrownError);
+                  }
+                })
+
+          })
+
           $(document).on('click', '#leavebtn', function(){
                var employeeid   = $('#employeeid').val();
                if (employeeid=='')return;

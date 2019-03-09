@@ -10,9 +10,10 @@ class Operations extends Controller{
        $promotioncount =  Promotion::getCount('All');
        $disciplinecount =  Discipline::getCount('All');
        $grievancecount = Grievance::getCount('All');
+       $appraisal = sizeof(Appraisal::appraisalList());
 
        $data = ['assetcount'=>$assetcount,'leavecount'=> $leavecount, 'transfercount'=> $transfercount, 'promotioncount'=>$promotioncount, 'grievancecount'=>$grievancecount,
-               'disciplinecount'=>$disciplinecount];
+               'disciplinecount'=>$disciplinecount,'appraisalcount'=>$appraisal];
 
        $this->view('operations/odashboard', $data);
      }
@@ -107,6 +108,12 @@ class Operations extends Controller{
           $data = ['status'=>$status, 'listdata'=>$listdata];
           $this->view('operations/assetsview', $data);
         }
+
+        if($status  == 'Appraisal'){
+          $listdata = Appraisal::appraisalList();
+          $data = ['status'=>$status, 'listdata'=>$listdata];
+          $this->view('operations/appraisalview', $data);
+        }
      }
 
      public function grievanceform(){
@@ -156,6 +163,20 @@ class Operations extends Controller{
 
         $data = ['empdata'=>$empdata, 'empcount'=>$empcount, 'userdata'=>$usersdata, 'departmentdata'=>$departments];
         $this->view('operations/assetsform', $data);
+
+     }
+
+     public function appraisalform(){
+      $employeeid  = $_POST['employeeid'];
+      $empdata = Employee::getEmployeesById($employeeid);
+      $empcount = Employee::searchemployeegeneralcount($empdata->staffid);
+        $companyname  = $empdata->company;
+        $usersdata = User::ListAll();
+        $departments = Department::getDepartmentByCompany($companyname);
+
+
+        $data = ['empdata'=>$empdata, 'empcount'=>$empcount, 'userdata'=>$usersdata, 'departmentdata'=>$departments];
+        $this->view('operations/appraisalform', $data);
 
      }
 
@@ -437,6 +458,68 @@ class Operations extends Controller{
       }
 
     }
+
+
+    public function appraisal(){
+      $assetdata = Appraisal::ListAll();
+
+        if(isset($_POST['submitappraisal'])){
+
+
+          $uploads = new Uploads();
+          $uploads->filename = $_FILES['assetdoc'];
+          $uploadresponse = $uploads->upLoadFile();
+          $filename =  $uploadresponse['filename'];
+          $employeeid  = $_POST['employeeid'];
+
+          // print_r($_POST);
+          foreach ($_POST as $question=>$answer){
+            if(is_int($question)){
+              $sectionid = Appraisal::sectionFromQuestion($question);
+
+              $gv  = new Appraisal();
+              $gv->recordObject->answer = $answer;
+              $gv->recordObject->reportdate =  date('Y-m-d');
+              $gv->recordObject->employeeid = $employeeid;
+              $gv->recordObject->uid = $_SESSION['uid'];
+              $gv->recordObject->questionid = $question;
+              $gv->recordObject->filename = $filename;
+              $gv->recordObject->sectionid = $sectionid;
+    
+              $gv->store();
+            }
+            // print_r($sectionid."=>".$question."=>".$answer);
+          }
+          Redirecting::location('operations/Appraisalresult/'.$employeeid);
+        }
+
+        else{
+        $data = ['assetdata'=>$assetdata];
+        $this->view('operations/appraisal', $data);
+      }
+
+    }
+
+    public function appraisalresult($employeeid){
+
+      $empdata = Employee::getEmployeesById($employeeid);
+      $companyname  = $empdata->company;
+      $departments = Department::getDepartmentByCompany($companyname);      
+      $sectionresults = Appraisal::sectionResult($employeeid);
+      $filename = $sectionresults[0]->filename;
+      foreach ($sectionresults as $result){
+          $sr[]=array($result->sectionid=>round($result->totalanswer/$result->totalsection) );
+      }
+
+       
+// echo "<br/>";
+//         print($overall);
+        $data = ['filename'=>$filename,'empdata'=>$empdata,'departmentdata'=>$departments,'sectionresult'=>$sr];
+
+        $this->view('operations/appraisalresult', $data);
+    }
+
+
 
 
      public function leave(){
