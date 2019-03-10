@@ -52,7 +52,10 @@ class PersonalNootifications{
             $fullname = $emp->recordObject->fullname;
             $employeecode = $emp->recordObject->staffid;
 
-            if($dateofbirth == $today){
+            $systemdate = date('m-d', strtotime($today));
+            $dob = date('m-d', strtotime($dateofbirth));
+
+            if($systemdate == $dob){
                 $message = "Today is the birthday of $fullname with employeeid of $employeecode. Thank you";
                 sendNotification(VAMED_TELEPHONE, $message);
             }

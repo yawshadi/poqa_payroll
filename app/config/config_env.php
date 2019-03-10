@@ -17,7 +17,8 @@ define ('SMTP_PORT', '587');
 define ('MAIL_USERNAME', 'odurusphp');
 define ('MAIL_PASSWORD', 'Prince@2018');
 
-define('VAMED_TELEPHONE', '0540111328');
+//define('VAMED_TELEPHONE', '0540111328');
+define('VAMED_TELEPHONE', '0264496303');
 
 
 
