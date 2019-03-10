@@ -7,6 +7,7 @@
     <a href="<?php echo URLROOT  ?>/tier2"><i  class="fa fa-folder-open"></i> TIER 2 Report</a>
     <a href="<?php echo URLROOT  ?>/ssnit"><i  class="fa fa-folder-open"></i> SSNIT Schedule</a>
     <a href="<?php echo URLROOT  ?>/masterlist"><i  class="fa fa-folder-open"></i> Masterlist</a>
+    <a href="<?php echo URLROOT  ?>/payrollreport/leavereport"><i  class="fa fa-folder-open"></i> Leave Report</a>
 </div>
 
 
