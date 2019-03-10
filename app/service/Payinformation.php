@@ -28,7 +28,7 @@ class Payinformation
         $rentallowance = Vamedcalculations::rentallowance($basicsalary);
         $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
 
-        return $grossincome;
+        return payround($grossincome);
     }
 
 

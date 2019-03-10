@@ -66,7 +66,9 @@ class Masterlist extends Controller{
 
          $i = 7;
 
-         foreach($ghdata as $get){
+         foreach($ghdata as $key=>$get){
+
+             $count = $key + 1;
 
              $fullname = $get->firstname. ' '. $get->surname;
              $income = Payinformation::gross($get->basic_id);
@@ -74,7 +76,7 @@ class Masterlist extends Controller{
              $eurorate = $ex->euros;
              $euroincome  = payround($income / $eurorate);
 
-           $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $i);
+           $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $count);
            $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $fullname);
            $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $get->position);
            $objPHPExcel->getActiveSheet()->setCellValue('D' . $i,	$get->dateofbirth);
@@ -107,7 +109,8 @@ class Masterlist extends Controller{
       $objPHPExcel->getActiveSheet()->SetCellValue('L'.$y, 'Gender');
 
       $y = $y + 1;
-      foreach($ghdata as $key=>$get){
+
+      foreach($exdata as $key=>$get){
 
           $count = $key + 1;
 

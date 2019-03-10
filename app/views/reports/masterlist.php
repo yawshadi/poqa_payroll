@@ -54,8 +54,12 @@
                                     <div><a style='font-size:10px'   href="<?php echo URLROOT.'/masterlist/masterlistexcel' ?>"
                                             class='btn btn-danger pull-left'>Download</a></div>
                                     <br/>
+
                                     <table class='table table-bordered table-condensed' >
-                                        <tr style ='font-weight:700'>
+                                        <tr>
+                                            <td colspan="13"><h6>LIST OF GHANAIAN EMPLOYEES</h6></td>
+                                        </tr>
+                                        <tr style ='font-weight:700; color:#fff' bgcolor="#00ACE5">
                                             <td>No:</td>
                                             <td>Name</td>
                                             <td>Position </td>
@@ -101,7 +105,11 @@
                                     </table>
 
                                     <table class='table table-bordered table-condensed' >
-                                        <tr style ='font-weight:700'>
+
+                                        <tr>
+                                            <td colspan="13"><h6>LIST OF EXPATRIATE EMPLOYEES</h6></td>
+                                        </tr>
+                                        <tr style ='font-weight:700; color:#fff' bgcolor="#00ACE5">
                                             <td>No:</td>
                                             <td>Name</td>
                                             <td>Position </td>
@@ -147,7 +155,10 @@
                                     </table>
 
                                     <table class='table table-bordered table-condensed' >
-                                        <tr style ='font-weight:700'>
+                                        <tr>
+                                            <td colspan="6"><h6>LIST OF JOINING STAFF IN THE REFERRING REPORTING MONTH</h6></td>
+                                        </tr>
+                                        <tr style ='font-weight:700; color:#fff' bgcolor="#00ACE5">
                                             <td>No:</td>
                                             <td>Name</td>
                                             <td>Position </td>
@@ -177,7 +188,10 @@
                                     </table>
 
                                     <table class='table table-bordered table-condensed' >
-                                        <tr style ='font-weight:700'>
+                                        <tr>
+                                            <td colspan="6"><h6>LIST OF LEAVING OF PERMANENT STAFF IN THE REFERRING REPORTING MONTH</h6></td>
+                                        </tr>
+                                        <tr style ='font-weight:700; color:#fff' bgcolor="#00ACE5">
                                             <td>No:</td>
                                             <td>Name</td>
                                             <td>Position </td>
