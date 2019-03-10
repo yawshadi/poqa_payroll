@@ -511,10 +511,14 @@ class Operations extends Controller{
           $sr[]=array($result->sectionid=>round($result->totalanswer/$result->totalsection) );
       }
 
-       
-// echo "<br/>";
-//         print($overall);
-        $data = ['filename'=>$filename,'empdata'=>$empdata,'departmentdata'=>$departments,'sectionresult'=>$sr];
+      $sresult=array('0'=>'');
+      foreach ($sr as $s){
+          foreach ($s as $t=>$y){
+              array_push($sresult,$y);
+          }
+      }
+      $overall = round (array_sum($sresult)/(sizeof($sresult)-1),0);
+      $data = ['filename'=>$filename,'empdata'=>$empdata,'departmentdata'=>$departments,'sectionresult'=>$sresult,'overall'=>$overall];
 
         $this->view('operations/appraisalresult', $data);
     }

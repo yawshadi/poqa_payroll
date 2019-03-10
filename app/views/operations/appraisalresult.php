@@ -51,20 +51,6 @@ tr, td{
       <div id='placeholder'>
 
     </div>
-
-    <?php
-         $sresult=array('0'=>'');
-        foreach ($data['sectionresult'] as $s){
-            foreach ($s as $t=>$y){
-                array_push($sresult,$y);
-
-            $overall = array_sum($s) / sizeof($s);
-            }
-
-        }
-
-        ?>
-
 <div class="row" style="margin-bottom:20px">
 
      <div class="col-lg-12 col-md-12 col-sm-12">
@@ -117,7 +103,7 @@ tr, td{
            <?=$section->description?>
            </div>
            <div class='col-md-4'>
-           <button style='border-radius:10%'class='btn pull-left'>section result : <?=$sresult[$section->sectionid]?></button>
+           <button style='border-radius:0px'class='btn pull-left'>section result : <?=$data['sectionresult'][$section->sectionid]?></button>
            </div>
            </div>
 
@@ -135,7 +121,7 @@ tr, td{
             for ($i = 1; $i <= $section->scale; $i++):
             ?>
             <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio"  class="custom-control-input"  <?= (Appraisal::answerFromQuestion($questions->questionid,$data['empdata']->basic_id) == $i)?'checked':''?> value='<?=$i?>' id="<?=$questions->questionid . '-' . $i?>" name="<?=$questions->questionid?>">
+            <input type="radio"  disabled class="custom-control-input"  <?= (Appraisal::answerFromQuestion($questions->questionid,$data['empdata']->basic_id) == $i)?'checked':''?> value='<?=$i?>' id="<?=$questions->questionid . '-' . $i?>" name="<?=$questions->questionid?>">
             <label class="custom-control-label" for="<?=$questions->questionid . '-' . $i?>"> <?=$i;?> </label>
             </div>
             <?php
@@ -171,7 +157,7 @@ tr, td{
       </div>
       <div class="card-header" id="headingOne">
            <h5 class="mb-0">
-             <button type='button' class="btn btn-link" data-toggle="" data-target="#<?=$section->sectionid . 'xyx'?>" aria-expanded="true" aria-controls="collapseOne">
+             <button type='button' class="btn btn-link">
             Overall Result
              </button>
            </h5>
@@ -187,7 +173,7 @@ tr, td{
         </ul>
         </div>
       <div class='col-md-4'>
-           <button class='btn pull-left'>overall result : <?=$overall?></button>
+           <button style='border-radius:0px' class='btn pull-left'>overall result : <?=$data['overall']?></button>
         </div>
       </div>
       </div>
