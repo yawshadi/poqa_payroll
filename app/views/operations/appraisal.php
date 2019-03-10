@@ -36,9 +36,9 @@ tr, td{
           <h1 style='color:#FB6600; font-weight:700' class="page-title">EMPLOYEE APPRAISAL </h1>
         </div>
 
-       <!-- <div class="col-2">
-         <div style='margin-top:10px'><a class='btn btn-danger' style='font-size:11px' href='<?php echo URLROOT.'/downloads/promotion.docx'  ?>'><i class='fa fa-download'></i>  Download Form </a></div>
-        </div>-->
+       <div class="col-2">
+         <div style='margin-top:10px'><a class='btn btn-danger' style='font-size:11px' href='<?php echo URLROOT.'/downloads/Appraisal.docx'  ?>'><i class='fa fa-download'></i>  Download Form </a></div>
+        </div>
    </div>
 
       <hr/>
