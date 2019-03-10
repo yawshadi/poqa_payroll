@@ -354,6 +354,29 @@ class Ajax extends Controller{
 
     }
 
+    public function updatedepartment(){
+        $departmentid = $_POST['departmentid'];
+        $departmentname = $_POST['departmentname'];
+        $departmentcode = $_POST['departmentcode'];
+
+        $dp = new Department($departmentid);
+        $dp->recordObject->departmentname = $departmentname;
+        $dp->recordObject->departmentcode = $departmentcode;
+        $dp->store();
+    }
+
+    public function updateposition(){
+        $positionid = $_POST['positionid'];
+        $departmentname = $_POST['departmentname'];
+        $positionname = $_POST['positionname'];
+
+        $dp = new Position($positionid);
+        $dp->recordObject->department = $departmentname;
+        $dp->recordObject->positionname = $positionname;
+        $dp->store();
+
+    }
+
 }
 
 ?>

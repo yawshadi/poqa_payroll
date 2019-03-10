@@ -1022,6 +1022,57 @@ public function marital(){
 	}
 
 
+
+
+	public function currency(){
+
+        if(isset($_POST['updaterates'])){
+
+            $pounds = $_POST['pounds'];
+            $dollars = $_POST['dollars'];
+            $euros = $_POST['euros'];
+
+            $ex = new Exchangerates('1');
+			$ex->recordObject->pounds = $pounds;
+            $ex->recordObject->dollars = $dollars;
+            $ex->recordObject->euros = $euros;
+            $ex->store();
+
+        	$data = ['pounds'=>$pounds, 'dollars'=>$dollars, 'euros'=>$euros];
+            $this->view('pages/currency', $data);
+
+		}else{
+
+        	$ex = new Exchangerates('1');
+        	$pounds = $ex->recordObject->pounds;
+            $dollars = $ex->recordObject->dollars;
+            $euros = $ex->recordObject->euros;
+
+            $data = ['pounds'=>$pounds, 'dollars'=>$dollars, 'euros'=>$euros];
+            $this->view('pages/currency', $data);
+		}
+
+	}
+
+
+	public function editdepartment(){
+		$departmentid  = $_POST['departmentid'];
+		$dp = new Department($departmentid);
+		$data  = $dp->recordObject;
+		$this->view('pages/editdepartment', $data);
+	}
+
+    public function editposition(){
+        $positionid  = $_POST['positionid'];
+        $po = new Position($positionid);
+        $postiondata  = $po->recordObject;
+		$departmentdata = Department::listAll();
+		$data = ['positiondata'=>$postiondata, 'departmentdata'=>$departmentdata];
+
+        $this->view('pages/editposition', $data);
+    }
+
+
 }
 
 

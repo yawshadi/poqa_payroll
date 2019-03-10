@@ -1317,4 +1317,49 @@ $(document).ready(function() {
 
         
     });
+
+    $(document).on('click', '.editdepartment', function(){
+
+        $('#viewmodal').modal('show');
+        var departmentid = $(this).attr('departmentid');
+        var postdata = {departmentid:departmentid};
+        var ajaxurl =  urlroot + '/pages/editdepartment';
+        AjaxPostRequest(ajaxurl, postdata)
+
+    })
+
+    $(document).on('click', '.updatedepartment', function(){
+
+        $('#viewmodal').modal('hide');
+        var departmentid = $(this).attr('departmentid');
+        var departmentname = $('#departmentname').val();
+        var departmentcode = $('#departmentcode').val();
+        var postdata = {departmentid:departmentid, departmentname:departmentname, departmentcode:departmentcode};
+        var ajaxurl =  urlroot + '/ajax/updatedepartment';
+        var redirectionurl  = urlroot + '/pages/departments';
+        AjaxPostRedirection(ajaxurl, postdata, redirectionurl)
+    })
+
+    $(document).on('click', '.editposition', function(){
+
+        $('#viewmodal').modal('show');
+        var positionid = $(this).attr('positionid');
+        var postdata = {positionid:positionid };
+        var ajaxurl =  urlroot + '/pages/editposition';
+        AjaxPostRequest(ajaxurl, postdata)
+
+    })
+
+    $(document).on('click', '.updateposition', function(){
+
+        $('#viewmodal').modal('hide');
+        var positionid = $(this).attr('positionid');
+        var departmentname = $('#departmentname').val();
+        var positionname  = $('#positionname').val();
+        var postdata = {positionid:positionid , departmentname:departmentname, positionname:positionname};
+        var ajaxurl =  urlroot + '/ajax/updateposition';
+        var redirectionurl  = urlroot + '/pages/positions';
+        AjaxPostRedirection(ajaxurl, postdata, redirectionurl)
+    })
+
 })

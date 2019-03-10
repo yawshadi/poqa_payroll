@@ -44,6 +44,15 @@ class Payperiod extends tableDataObject{
 
    }
 
+    public static function getPayperiod(){
+
+        global $payrolldb;
+        $getrecords = "SELECT end, start FROM payrollperiod  ORDER BY payrollperiodid DESC LIMIT 1 ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+    }
+
     public static function comparePayPeriod($company){
 
       $dbdate = self::getLastEndPayperiod($company);
