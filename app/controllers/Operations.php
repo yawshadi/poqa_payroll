@@ -37,6 +37,9 @@ class Operations extends Controller{
        }
 
        if($type == 'Leave'){
+         if($id == 'undefined') {
+           Redirecting::location('operations/operationsview/Leave');
+         }
          $dt = new Leave($id);
          $opdata = $dt->recordObject;
          $opusers =  Leave::getleaveusers($id);
