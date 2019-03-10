@@ -103,7 +103,7 @@ tr, td{
            <?=$section->description?>
            </div>
            <div class='col-md-4'>
-           <button style='border-radius:0px'class='btn pull-left'>section result : <?=$data['sectionresult'][$section->sectionid]?></button>
+           <button style='border-radius:0px'class='btn pull-left'>Section result : <span class="badge badge-light"> <?=$data['sectionresult'][$section->sectionid]?></span></button>
            </div>
            </div>
 
@@ -173,12 +173,12 @@ tr, td{
         </ul>
         </div>
       <div class='col-md-4'>
-           <button style='border-radius:0px' class='btn pull-left'>overall result : <?=$data['overall']?></button>
+           <button style='border-radius:0px' class='btn pull-left'> Overall result : <span class="badge badge-light"><?=$data['overall']?></span> </button>
         </div>
       </div>
       </div>
 
-
+      
 
       <!-- End of first upper row -->
 
