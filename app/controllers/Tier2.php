@@ -6,7 +6,7 @@
  * Time: 11:52 AM
  */
 
-class Tier2 extends controller
+class Tier2 extends Controller
 {
 
     public function index(){
