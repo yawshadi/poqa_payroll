@@ -37,4 +37,5 @@ spl_autoload_register(function($class){
 $payrolldb = new Database();
 
 
-echo COMPANYNAME;
+
+?>

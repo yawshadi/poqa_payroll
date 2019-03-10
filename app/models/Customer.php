@@ -18,7 +18,13 @@ class Customer extends tableDataObject{
         return $realestatedb->resultSet();
     }
 
-    
+
+
+
+
+
+
+
     public static function testApplication($value){
 
         if(is_null($value)){

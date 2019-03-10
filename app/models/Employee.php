@@ -97,6 +97,33 @@ class Employee extends tableDataObject{
 
 
 
+    public static function getemployeebynationality($nationality){
+        global $payrolldb;
+        $getrecords = "select * from basicinformation where nationality = '$nationality' ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+    }
+
+    public static function getentrylist(){
+        global $payrolldb;
+        $getrecords = "select * from basicinformation where  entrydate != '' ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+    }
+
+
+    public static function getexitlist(){
+        global $payrolldb;
+        $getrecords = "select * from basicinformation where  exitdate != '' " ;
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+        return $payrolldb->resultSet();
+    }
+
+
+
 }
 
 ?>

@@ -131,7 +131,7 @@ tr, td{
        <td>Company Name</td>
        <td>Department</td>
        <td>Position</td>
-       <!--<td align='center'>Configure</td>-->
+       <td align='center'>Edit</td>
        <td align='center'>Delete</td>
       </tr>
       </thead>
@@ -143,12 +143,7 @@ tr, td{
        <td><?php  echo $get->company  ?></td>
        <td><?php  echo $get->department  ?></td>
        <td><?php  echo $get->positionname  ?></td>
-      <!-- <td align='center'><a href='#' class='configureofficer' posid='<?php echo $get->pid  ?>'
-       company='<?php echo $get->company  ?>'
-       department='<?php echo $get->department  ?>'
-       position='<?php echo $get->positionname  ?>'
-       > Configure</a>
-       </td>-->
+       <td align='center'><a href='#' class='editposition' positionid='<?php echo $get->pid  ?>'> Edit</a></td>
        <td align='center'><a href='#' class='deleteposition' posid='<?php echo $get->pid  ?>'><i class='fa fa-trash'></i></a></td>
       </tr>
        <?php

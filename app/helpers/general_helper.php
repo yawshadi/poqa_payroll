@@ -83,6 +83,20 @@ function sendcredentials($telephone, $username, $password){
 
 
 
+function sendNotification($telephone, $message){
+
+    $key="c4b012085cf6c914e538";
+    $altelephone = substr($telephone, 1);
+    $mestelephone = '233'.$altelephone;
+    $message=urlencode($message);
+    $sender_id = 'VAMED';
+    $url="https://apps.mnotify.net/smsapi?key=$key&to=$mestelephone&msg=$message&sender_id=$sender_id";
+    $result=file_get_contents($url);
+
+}
+
+
+
 
 function preparepaysliphtml($enddate, $fullname, $position, $ssnitnumber, $accountnumber, $branch,
                             $basicsalary, $staffssnit, $transportvehiclemaintenance, $rentallowance,
