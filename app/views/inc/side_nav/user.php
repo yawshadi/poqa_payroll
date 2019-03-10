@@ -2,10 +2,6 @@
 <div href="#" > QUICK MENU </div>
 <a href="<?php echo URLROOT  ?>/pages/createuser"> <i  class="fa  fa-folder-open"></i> Create a User</a>
 <a href="<?php echo URLROOT  ?>/pages/userlist"> <i  class="fa  fa-folder-open"></i> Manage Users</a>
-
-
-<a href="<?php echo URLROOT  ?>/pages/agents/pending"> <i  class="fa  fa-cog"></i> Pending Agents</a>
-<a href="<?php echo URLROOT  ?>/pages/agents/approved"> <i  class="fa  fa-cog"></i> Approved Agents</a>
 </div>
 
 
