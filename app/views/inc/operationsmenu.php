@@ -12,6 +12,7 @@ $role =  $n->recordObject->role;
 //if($role == 'Administrator' || $role == 'Head of Admin' ||  $role == 'HR Manager'  ){
 ?>
 
+<a href="<?php echo URLROOT  ?>/operations/Appraisal"> <i  class="fa  fa-circle"></i> Appraisal Form</a>
 <a href="<?php echo URLROOT  ?>/operations/grievance"> <i  class="fa  fa-circle"></i> Grievances Management Form</a>
 <a href="<?php echo URLROOT  ?>/operations/discipline"><i  class="fa  fa-circle"></i> Disciplinary /Resignation Mgt Form</a>
 <a href="<?php echo URLROOT  ?>/operations/promotion"><i  class="fa  fa-circle"></i> Promotions Management Form</a>
