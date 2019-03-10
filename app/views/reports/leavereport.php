@@ -36,7 +36,7 @@ tr, td{
 
         </div>
         <div class="col-md-6">
-          <button onclick="window.print()"class='btn btn-primary pull-right'>Print</button>
+          <button onclick="window.print()"class='btn btn-primary pull-right'>Download</button>
 
         </div>
    </div>
