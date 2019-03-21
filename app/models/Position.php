@@ -34,6 +34,13 @@ class Position extends tableDataObject{
 
     }
 
+    public static  function updatePositionbydepartment($department){
+        global $payrolldb;
+        $getrecords = "UPDATE position SET  department  = '$department'  where department = '$department' ";
+        $payrolldb->prepare($getrecords);
+        $payrolldb->execute();
+    }
+
 
 
 }

@@ -173,7 +173,7 @@ class Bankadvice extends Controller{
          }
 
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('C2', 'VAMED ENGINEERING GmbH');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C2', COMPANYNAME);
 
         $imgpath = URLROOT.'/img/vamed.jpg';
 

@@ -1376,6 +1376,17 @@ $(document).ready(function() {
 
     })
 
+
+    $(document).on('click', '.editbank', function(){
+
+        $('#viewmodal').modal('show');
+        var bankid = $(this).attr('bankid');
+        var postdata = {bankid:bankid};
+        var ajaxurl =  urlroot + '/pages/editbank';
+        AjaxPostRequest(ajaxurl, postdata)
+
+    })
+
     $(document).on('click', '.updateposition', function(){
 
         $('#viewmodal').modal('hide');
@@ -1385,6 +1396,23 @@ $(document).ready(function() {
         var postdata = {positionid:positionid , departmentname:departmentname, positionname:positionname};
         var ajaxurl =  urlroot + '/ajax/updateposition';
         var redirectionurl  = urlroot + '/pages/positions';
+        AjaxPostRedirection(ajaxurl, postdata, redirectionurl)
+    })
+
+
+    $(document).on('click', '.updatebank', function(){
+
+        $('#viewmodal').modal('hide');
+        var bankid = $(this).attr('bankid');
+        var bankname = $('#bankname').val();
+        var bankcode  = $('#bankcode').val();
+        var branchname  = $('#branchname').val();
+        var branchcode  = $('#branchcode').val();
+        var postdata = {bankid:bankid, bankname:bankname, bankcode:bankcode, branchname:branchname, branchcode:branchcode   };
+        var ajaxurl =  urlroot + '/ajax/updatebank';
+        var redirectionurl  = urlroot + '/pages/bankcodes';
+
+        alert('Updates successfully done !!! ')
         AjaxPostRedirection(ajaxurl, postdata, redirectionurl)
     })
 

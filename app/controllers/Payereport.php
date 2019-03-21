@@ -222,7 +222,7 @@ class Payereport extends Controller{
         $objPHPExcel->getActiveSheet()->SetCellValue('B6', 'Adabraka');
 
         $objPHPExcel->getActiveSheet()->SetCellValue('A7', 'NAME OF EMPLOYER');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B7', 'VAMED ENGINEERING GmbH');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B7',  COMPANYNAME);
 
         $objPHPExcel->getActiveSheet()->SetCellValue('A8', 'EMPLOYER TIN');
         $objPHPExcel->getActiveSheet()->SetCellValue('B8', 'C	0	0	0	1	8	8	8	0	5	6');
