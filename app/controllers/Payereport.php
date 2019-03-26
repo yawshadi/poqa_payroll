@@ -28,7 +28,7 @@ class Payereport extends Controller{
             $company = $_POST['company'];
             $department =  $get->department;
             $position  = $get->position;
-            $fullname =  $get->fullname;
+            $fullname =  $get->surname.' '.$get->firstname;
             $basic_id = $get->basic_id;
             $category = $get->category;
             $ssnitnumber = $get->ssnitnumber;
@@ -142,7 +142,7 @@ class Payereport extends Controller{
               $count = $key + 1;
               $department =  $get->department;
               $position  = $get->position;
-              $fullname =  $get->fullname;
+              $fullname =  $get->surname.' '.$get->firstname;
               $basic_id = $get->basic_id;
               $category = $get->category;
               $ssnitnumber = $get->ssnitnumber;
