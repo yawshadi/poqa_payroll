@@ -99,7 +99,6 @@ tr, td{
        <td><input type='text' class='form-control' name='position'></td>
       </tr>
 
-
       <tr>
        <td></td>
        <td><button class='btn btn-danger' type='submit' name='addposition' > Add </button></td>

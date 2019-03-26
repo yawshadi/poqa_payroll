@@ -28,7 +28,7 @@ class Bankadvice extends Controller{
             $company = $_POST['company'];
             $department =  $get->department;
             $position  = $get->position;
-            $fullname =  $get->fullname;
+            $fullname =  $get->surname.' '.$get->surname;
             $basic_id = $get->basic_id;
             $category = $get->category;
             $ssnitnumber = $get->ssnitnumber;
@@ -120,7 +120,7 @@ class Bankadvice extends Controller{
 
               $department =  $get->department;
               $position  = $get->position;
-              $fullname =  $get->fullname;
+              $fullname =  $get->surname.' '.$get->surname;
               $basic_id = $get->basic_id;
               $category = $get->category;
               $ssnitnumber = $get->ssnitnumber;
@@ -173,7 +173,7 @@ class Bankadvice extends Controller{
          }
 
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('C2', 'VAMED ENGINEERING GmbH');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C2', COMPANYNAME);
 
         $imgpath = URLROOT.'/img/vamed.jpg';
 

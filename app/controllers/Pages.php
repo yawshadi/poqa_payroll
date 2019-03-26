@@ -1072,6 +1072,15 @@ public function marital(){
         $this->view('pages/editposition', $data);
     }
 
+    public function editbank(){
+        $bankid  = $_POST['bankid'];
+        $ba = new Bank($bankid);
+        $bankdata  = $ba->recordObject;
+        $data = ['bankdata'=>$bankdata];
+
+        $this->view('pages/editbank', $data);
+    }
+
 
 }
 

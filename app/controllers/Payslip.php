@@ -9,7 +9,7 @@ class Payslip extends Controller{
         $paydata  = Payperiod::getPayrollPeriod();
         $empdata = Employee::getEmployeesById($employeeid);
         $company = $empdata->company;
-        $fullname =  $empdata->fullname;
+        $fullname =  $empdata->surname.' '.$empdata->firstname;
         $alldata =  ['company'=>$company, 'payperiod'=>$paydata, 'name'=>$fullname];
 
 
@@ -22,7 +22,7 @@ class Payslip extends Controller{
             $company =    $empdata->company;
             $department =  $empdata->department;
             $position  = $empdata->position;
-            $fullname =  $empdata->fullname;
+            $fullname =  $get->empdata.' '.$empdata->firstname;
             $basic_id = $empdata->basic_id;
             $tinnumber =$empdata->tinnumber;
             $staffid = $empdata->staffid;
@@ -102,7 +102,7 @@ class Payslip extends Controller{
         $company =    $empdata->company;
         $department =  $empdata->department;
         $position  = $empdata->position;
-        $fullname =  $empdata->fullname;
+        $fullname =  $empdata->surname.' '.$empdata->firstname;
         $basic_id = $empdata->basic_id;
         $tinnumber =$empdata->tinnumber;
         $staffid = $empdata->staffid;
@@ -176,7 +176,7 @@ class Payslip extends Controller{
         $company =    $empdata->company;
         $department =  $empdata->department;
         $position  = $empdata->position;
-        $fullname =  $empdata->fullname;
+        $fullname =  $empdata->surname.' '.$empdata->firstname;
         $basic_id = $empdata->basic_id;
         $tinnumber =$empdata->tinnumber;
         $staffid = $empdata->staffid;

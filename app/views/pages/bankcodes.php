@@ -15,9 +15,21 @@ tr, td{
 
   <!-- Commhr content goes here -->
   <div class="content-wrapper" style="background: #fafafa">
+      <div id="viewmodal" class="modal fade" role="dialog">
+          <div class="modal-dialog" style="width:600px" role="document">
+
+              <div class="modal-content">
+                  <div class="modal-body" id="ajaxcontainer" >
+
+                  </div>
+
+              </div>
+          </div>
+      </div>
 
 
-  <div class="container-fluid main_container" style='margin-top:-10px'>
+
+      <div class="container-fluid main_container" style='margin-top:-10px'>
 
       <div class="row">
         <div class="col-12">
@@ -100,7 +112,7 @@ tr, td{
        <td>Bank Code</td>
        <td>Branch Name</td>
        <td>Branch Code</td>
-       <!-- <td>Edit </td> -->
+        <td>Edit </td>
        <td>Delete</td>
       </tr>
       </thead>
@@ -113,7 +125,7 @@ tr, td{
        <td><?php  echo $get->bankcode  ?></td>
        <td><?php  echo $get->branch ?></td>
        <td><?php  echo $get->branchcode ?></td>
-       <!-- <td><a href='#'<i class='fa fa-pencil'></i></a></td> -->
+        <td><a href='#' class = "editbank" bankid='<?php echo $get->bankid  ?>' ><i class='fa fa-pencil'></i></a></td>
        <td><a href='#' class='deletebank' bankid='<?php echo $get->bankid  ?>'><i class='fa fa-trash'></i></a></td>
       </tr>
        <?php

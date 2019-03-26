@@ -70,7 +70,7 @@ class Masterlist extends Controller{
 
              $count = $key + 1;
 
-             $fullname = $get->firstname. ' '. $get->surname;
+             $fullname = $get->surname.' '.$get->firstname;
              $income = Payinformation::gross($get->basic_id);
              $ex = Exchangerates::getrates();
              $eurorate = $ex->euros;
@@ -114,7 +114,7 @@ class Masterlist extends Controller{
 
           $count = $key + 1;
 
-          $fullname = $get->firstname. ' '. $get->surname;
+          $fullname = $get->surname.' '.$get->firstname;
           $income = Payinformation::gross($get->basic_id);
           $ex = Exchangerates::getrates();
           $eurorate = $ex->euros;
@@ -152,7 +152,7 @@ class Masterlist extends Controller{
       foreach($entrydata as $key=>$get){
 
           $count = $key + 1;
-          $fullname = $get->firstname. ' '. $get->surname;
+          $fullname = $get->surname.' '.$get->firstname;
 
           $objPHPExcel->getActiveSheet()->setCellValue('A' . $x, $count);
           $objPHPExcel->getActiveSheet()->setCellValue('B' . $x, $fullname);
@@ -183,7 +183,7 @@ class Masterlist extends Controller{
       foreach($entrydata as $key=>$get){
           $count = $key + 1 ;
 
-          $fullname = $get->firstname. ' '. $get->surname;
+          $fullname = $get->surname.' '.$get->firstname;
 
           $objPHPExcel->getActiveSheet()->setCellValue('A' . $z, $count);
           $objPHPExcel->getActiveSheet()->setCellValue('B' . $z, $fullname);

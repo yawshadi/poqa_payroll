@@ -363,6 +363,10 @@ class Ajax extends Controller{
         $dp->recordObject->departmentname = $departmentname;
         $dp->recordObject->departmentcode = $departmentcode;
         $dp->store();
+        
+
+        // update department in position
+        Position::updatePositionbydepartment($departmentname);
     }
 
     public function updateposition(){
@@ -374,6 +378,23 @@ class Ajax extends Controller{
         $dp->recordObject->department = $departmentname;
         $dp->recordObject->positionname = $positionname;
         $dp->store();
+
+    }
+
+    public function  updatebank(){
+
+        $bankid  = $_POST['bankid'];
+        $bankname = $_POST['bankname'];
+        $bankcode  = $_POST['bankcode'];
+        $branchname  = $_POST['branchname'];
+        $branchcode = $_POST['branchcode'];
+
+        $bk = new Bank($bankid);
+        $bk->recordObject->bankname = $bankname;
+        $bk->recordObject->bankcode = $bankcode;
+        $bk->recordObject->branch = $branchname;
+        $bk->recordObject->branchcode = $branchcode;
+        $bk->store();
 
     }
 

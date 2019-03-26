@@ -30,7 +30,7 @@ class Ssnit extends Controller
                 $company = $_POST['company'];
                 $department =  $get->department;
                 $position  = $get->position;
-                $fullname =  $get->fullname;
+                $fullname =  $get->surname.' '.$get->firstname;
                 $firstname  = $get->firstname;
                 $surname  = $get->surname;
                 $othernames  = $get->othernames;
@@ -99,7 +99,7 @@ class Ssnit extends Controller
             $company = $_POST['company'];
             $department =  $get->department;
             $position  = $get->position;
-            $fullname =  $get->fullname;
+            $fullname =  $get->surname.' '.$get->firstname;
             $firstname  = $get->firstname;
             $surname  = $get->surname;
             $othernames  = $get->othernames;
@@ -116,8 +116,8 @@ class Ssnit extends Controller
             $employerssnit = Vamedcalculations::ssnitforschedule($basicsalary);
 
             $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $count);
-            $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $firstname);
-            $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $surname);
+            $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $surname);
+            $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $firstname);
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $othernames);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $ssnitnumber);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $basicsalary);
@@ -155,13 +155,13 @@ class Ssnit extends Controller
 
 
 
-        $imgpath = URLROOT.'/img/gralogo.jpg';
+        $imgpath = URLROOT.'/img/ssnitlogo.jpg';
 
         $gdImage = imagecreatefromjpeg($imgpath);
 
         $objDrawing = new PHPExcel_Worksheet_MemoryDrawing();
-        $objDrawing->setName('GRA LOGO');
-        $objDrawing->setDescription('GRA LOGO');
+        $objDrawing->setName('SSNIT LOGO');
+        $objDrawing->setDescription('SSNIT LOGO');
         $objDrawing->setImageResource($gdImage);
         $objDrawing->setRenderingFunction(PHPExcel_Worksheet_MemoryDrawing::RENDERING_JPEG);
         $objDrawing->setMimeType(PHPExcel_Worksheet_MemoryDrawing::MIMETYPE_DEFAULT);

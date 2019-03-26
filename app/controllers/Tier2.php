@@ -31,7 +31,7 @@ class Tier2 extends Controller
                 $company = $_POST['company'];
                 $department =  $get->department;
                 $position  = $get->position;
-                $fullname =  $get->fullname;
+                $fullname =  $get->surname.' '.$get->firstname;
                 $basic_id = $get->basic_id;
                 $category = $get->category;
                 $ssnitnumber = $get->ssnitnumber;
@@ -92,7 +92,7 @@ class Tier2 extends Controller
 
         $count = $key + 1;
         $position  = $get->position;
-        $fullname =  $get->fullname;
+        $fullname =  $get->surname.' '.$get->firstname;
         $basicsalary = $get->basicsalary;
         $tiernumber = $get->tiernumber;
 
