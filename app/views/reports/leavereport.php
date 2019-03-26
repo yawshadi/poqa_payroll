@@ -51,7 +51,7 @@ tr, td{
       <div class="container">
       <br/>
       <div>
-      <table  class='table table-bordered table-condensed' style='font-size:12px'>
+      <table  class='exp table table-bordered table-condensed' style='font-size:12px'>
       <tr>
           <td colspan="5" align='center' style='font-weight:700'>LEAVE DEDUCTIONS FOR <?= date('Y')?> </td>
         </tr>
@@ -60,7 +60,7 @@ tr, td{
       foreach(Employee::listAll() as $employee):
       ?>
       <tr>
-      <td style="padding-top:<?=($x==0)?'40px !important':'' ?>"> <?= $employee->fullname ?></td>
+      <td style="padding-top:<?=($x==0)?'40px !important':'' ?>"> <?= $employee->surname.' '.$employee->firstname.' '.$employee->othernames ?></td>
       <td style="text-transform:capitalize;padding-top:<?=($x==0)?'40px !important':'' ?>"><?= $employee->location ?></td>
       <td>
       <table  style='font-size:12px; color:#000' class='table table-bordered'>
@@ -122,3 +122,10 @@ tr, td{
     </div>
     </div>
     <?php require APPROOT .'/views/inc/footer.php'  ?>
+
+
+<script>
+$(".exp").tableExport({
+    bootstrap: false
+});
+</script>

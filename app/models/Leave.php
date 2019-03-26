@@ -39,6 +39,13 @@ class Leave extends tableDataObject{
      return $payrolldb->resultSet();
    }
 
+   public static function LeaveEmp(){
+    global $payrolldb;
+    $query = "Select * from leaves join basicinformation on leaves.employeeid = basicinformation.basic_id ";
+    $payrolldb->prepare($query);
+    $payrolldb->execute();
+    return $payrolldb->resultSet();
+  }
 
    
 
