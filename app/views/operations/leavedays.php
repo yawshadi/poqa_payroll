@@ -139,7 +139,7 @@ tr, td{
      	<td width='45%'><?php echo $get->fullname ?><br/>
         <span style='font-size:10px; color:red'><?php echo $get->position ?></span>
       </td>
-  		<td><input type='text' employeeid = '<?php echo $get->basic_id ?>'  value="<?= ($get->accumulatedleave=='' || empty($get->accumulatedleave))?$tleave:$get->accumulatedleave ?>" field='accumulatedleave' class='form-control accumulated'/></td>
+  		<td><input type='text' employeeid = '<?php echo $get->basic_id ?>'  value="<?= ($get->accumulatedleave=='')?$tleave:$get->accumulatedleave ?>" field='accumulatedleave' class='form-control accumulated'/></td>
      </tr>
      <?php
 	   endforeach;

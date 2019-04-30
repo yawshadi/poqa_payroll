@@ -35,10 +35,10 @@ tr, td{
           <h1 style='color:#FB6600; font-weight:700' class="page-title">Leave Report for <?= date('Y') ?></h1>
 
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <button onclick="window.print()"class='btn btn-primary pull-right'>Download</button>
 
-        </div>
+        </div> -->
    </div>
 
       <hr/>
@@ -55,58 +55,37 @@ tr, td{
       <tr>
           <td colspan="5" align='center' style='font-weight:700'>LEAVE DEDUCTIONS FOR <?= date('Y')?> </td>
         </tr>
+      </table>
+
+      <table  class='exp table table-bordered table-condensed' style='font-size:12px'>
+      <thead>
+          <th>Staff Name </th>
+          <th>Leave entitled to </th>
+          <th>Dates on Leave(From) </th>
+          <th>Dates on Leave (To)</th>
+          <th>Total No. of days applied</th>
+          <th>Outstanding days</th>
+      </thead>
+      <tbody>
       <?php
-      $x=0; 
-      foreach(Employee::listAll() as $employee):
+      $x=1; 
+      foreach(Leave::LeaveEmp() as $employee):
       ?>
       <tr>
-      <td style="padding-top:<?=($x==0)?'40px !important':'' ?>"> <?= $employee->fullname ?></td>
-      <td style="text-transform:capitalize;padding-top:<?=($x==0)?'40px !important':'' ?>"><?= $employee->location ?></td>
-      <td>
-      <table  style='font-size:12px; color:#000' class='table table-bordered'>
-        <tr style="font-weight:bold;display:<?=($x==0)?'':'none' ?>">
-          <td>Leave entitled to </td>
-          <td>Dates on Leave(From) </td>
-          <td>Dates on Leave (To)</td>
-          <td>Total No. of days applied</td>
-          <td>Outstanding days</td>
-        </tr>
-        <?php
-        $i=1;
-        $leavedata = Leave::getLeave($employee->basic_id);
-        if(sizeof($leavedata) > 0):
-         foreach($leavedata as $get):
-        ?>
-        <tr>
-        <td width='15%' <?= ($i==1)?"rowspan=".sizeof($leavedata):"style=display:none"?>><?php echo $employee->accumulatedleave ?></td>
-          <td width='15%'><?php echo $get->startdate  ?></td>
-          <td width='15%'><?php echo $get->endate  ?></td>
-          <td width='15%'><?php  echo $get->actualdays  ?></td>
-          <td width='15%' <?= ($i==1)?"rowspan=".sizeof($leavedata):"style=display:none"?>><?php echo Leavedays::availabledays($employee->basic_id,date('Y')) ?></td>
-        </tr>
-        <?php
-        $i++; 
-        endforeach; 
-        else:
-        ?>
-
-        <tr>
-         <td width='15%'><?php echo $employee->accumulatedleave ?></td>
-          <td width='15%'>-</td>
-          <td width='15%'>-</td>
-          <td width='15%'>-</td>
-          <td width='15%'><?php echo Leavedays::availabledays($employee->basic_id,date('Y')) ?></td>
-        </tr>
-        <?php endif; ?>
-      </table>
       
-      
-      </td>
+        <td> <?= $employee->surname.' '.$employee->firstname.' '.$employee->othernames ?></td>
+        <td><?= $employee->accumulatedleave ?></td>
+        <td><?= $employee->startdate ?></td>
+        <td><?= $employee->endate ?></td>
+        <td> <?= $employee->actualdays ?></td>
+        <td> <?= Leavedays::availabledays($employee->basic_id,date('Y')) ?></td>
       </tr>
-    <?php 
-    $x++;
-    endforeach;
-    ?>
+      <?php 
+      $x++;
+      endforeach;
+      ?>
+      </tbody>
+
       </table>
    
   </div>
@@ -122,3 +101,21 @@ tr, td{
     </div>
     </div>
     <?php require APPROOT .'/views/inc/footer.php'  ?>
+
+
+<script>
+var t = $(".exp").tableExport({
+    headings: true,                    // (Boolean), display table headings (th/td elements) in the <thead>
+    footers: true,                     // (Boolean), display table footers (th/td elements) in the <tfoot>
+    formats: ["xlsx"],    // (String[]), filetypes for the export
+    fileName: "LeaveReport",                    // (id, String), filename for the downloaded file
+    bootstrap: false,                   // (Boolean), style buttons using bootstrap
+    position: "top" ,                // (top, bottom), position of the caption element relative to table
+    ignoreRows: null,                  // (Number, Number[]), row indices to exclude from the exported file(s)
+    ignoreCols: null,                  // (Number, Number[]), column indices to exclude from the exported file(s)
+    ignoreCSS: ".tableexport-ignore",  // (selector, selector[]), selector(s) to exclude from the exported file(s)
+    emptyCSS: ".tableexport-empty",    // (selector, selector[]), selector(s) to replace cells with an empty string in the exported file(s)
+    trimWhitespace: false              // (Boolean), remove all leading/trailing newlines, spaces, and tabs from cell text in the exported file(s)
+});
+
+</script>

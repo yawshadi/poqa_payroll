@@ -637,7 +637,7 @@ class Operations extends Controller{
       foreach($leavelist as $get){
           $em = new Employee($get->employeeid);
           $employeename  =   $em->recordObject->fullname;
-        $list[]=array("title"=>$employeename,"start"=>$get->startdate,"end"=>$get->endate,"id"=>$get->lid,"icon"=>"calendar");
+        $list[]=array("title"=>$employeename,"start"=>$get->startdate,"end"=>Tools::plusOneDay($get->endate),"id"=>$get->lid,"icon"=>"calendar");
        }
        echo json_encode($list);
      }

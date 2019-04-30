@@ -27,7 +27,7 @@ class Leavedays extends tableDataObject{
 
         $accumulated = Employee::getEmployeesById($employeeid)->accumulatedleave;
         $totalleave = self::totalleave();
-        if($accumulated==''|| empty($accumulated)) {$totalleave = self::totalleave();}else{$totalleave = $accumulated; }
+        if($accumulated=='') {$totalleave = self::totalleave();}else{$totalleave = $accumulated; }
         $available = $totalleave - $l;
         if ($available < 0) $available = 0;
         return $available;
