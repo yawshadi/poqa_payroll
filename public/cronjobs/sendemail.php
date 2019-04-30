@@ -105,10 +105,17 @@
 
 
                   // Send Email
-                  sendEmail(SENDEREMAIL, $email, 'Payslip', $message, COMPANYNAME);
+                  if($email != '') {
+                      $emailstatus = sendEmail(SENDEREMAIL, $email, 'Payslip', $message, COMPANYNAME);
+                      //return $emailstatus;
+                      //Cronpayslip::updateStatus($basicid, $startdate, $enddate);
+                  }
 
                   // update status of cron
                   Cronpayslip::updateStatus($basicid, $startdate, $enddate);
+
+
+
 
               }
           }
@@ -116,12 +123,6 @@
       }
  }
 
-
-$sm =  new Sendpayslipemail();
-$data  = $sm->getDataToProcess();
-
-echo '<pre/>';
-print_r($data);
 
 
 
