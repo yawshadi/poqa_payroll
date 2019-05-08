@@ -264,6 +264,26 @@ $(document).ready(function() {
 
     })
 
+
+
+    $(document).on('click', '.deleteleave', function(){
+
+      var  leaveid =  $(this).attr('lid');
+
+      var postdata = {leaveid:leaveid};
+      var ajaxurl =  urlroot + '/ajax/deleteleave';
+      var redirectionurl =  '';
+
+      if(confirm('Do you want to delete this leave ?')){
+       AjaxPostRedirection(ajaxurl, postdata,redirectionurl);
+      }
+
+  })
+
+
+
+
+
     $(document).on('click', '.deletevisaemployee', function(){
 
         var  employeeid =  $(this).attr('employeeid');

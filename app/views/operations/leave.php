@@ -82,6 +82,8 @@ tr, td{
        <td>Start Date</td>
        <td>End Date</td>
        <td>View </td>
+       <td>Edit </td>
+       <td>Delete </td>
        <td>Download</td>
       </tr>
       </thead>
@@ -96,6 +98,8 @@ tr, td{
        <td><?php  echo $get->startdate ?></td>
        <td><?php  echo $get->endate ?></td>
        <td><a href='<?php  echo URLROOT.'/Operations/operationprofile/Leave/'.$get->lid   ?>'>View</a></td>
+       <td><a href='<?php  echo URLROOT.'/Operations/Leaveedit/'.$get->lid   ?>'>Edit</a></td>
+       <td><a style='color:crimson' href='#' lid="<?=$get->lid?>" class="deleteleave">Delete</a></td>
        <td><a href='<?php  echo URLROOT.'/uploads/'.$get->filename   ?>' >Download</a></td>
        </tr>
        <?php
