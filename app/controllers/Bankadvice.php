@@ -28,7 +28,7 @@ class Bankadvice extends Controller{
             $company = $_POST['company'];
             $department =  $get->department;
             $position  = $get->position;
-            $fullname =  $get->surname.' '.$get->surname;
+            $fullname =  $get->surname.' '.$get->firstname;
             $basic_id = $get->basic_id;
             $category = $get->category;
             $ssnitnumber = $get->ssnitnumber;
@@ -120,7 +120,7 @@ class Bankadvice extends Controller{
 
               $department =  $get->department;
               $position  = $get->position;
-              $fullname =  $get->surname.' '.$get->surname;
+              $fullname =  $get->surname.' '.$get->firstname;
               $basic_id = $get->basic_id;
               $category = $get->category;
               $ssnitnumber = $get->ssnitnumber;
