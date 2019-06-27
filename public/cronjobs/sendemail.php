@@ -114,9 +114,6 @@
                   // update status of cron
                   Cronpayslip::updateStatus($basicid, $startdate, $enddate);
 
-
-
-
               }
           }
 

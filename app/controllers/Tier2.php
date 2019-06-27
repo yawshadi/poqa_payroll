@@ -41,7 +41,7 @@ class Tier2 extends Controller
                 $tiernumber = $get->tiernumber;
 
                 //payrollcalculations
-                $staffssnit = Vamedcalculations::staffssnit($basicsalary);
+                $staffssnit = Vamedcalculations::tierssnit($basicsalary);
 
                 $payrolldata[] = [
                     'fullname'=>$fullname, 'position'=>$position, 'tiernumber'=>$tiernumber,
@@ -97,7 +97,7 @@ class Tier2 extends Controller
         $tiernumber = $get->tiernumber;
 
         //payrollcalculations
-        $staffssnit = Vamedcalculations::staffssnit($basicsalary);
+        $staffssnit = Vamedcalculations::tierssnit($basicsalary);
 
         $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $count);
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $fullname);

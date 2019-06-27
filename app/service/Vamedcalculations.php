@@ -9,6 +9,13 @@ class Vamedcalculations{
         return $amount;
    }
 
+
+    public static function tierssnit($basicsalary){
+
+        $amount =  $basicsalary * 0.05;
+        return $amount;
+    }
+
    public static function totalincome($basicsalary, $staffssnit){
      $amount =  $basicsalary - $staffssnit;
       return $amount;
