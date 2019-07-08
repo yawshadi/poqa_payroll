@@ -122,7 +122,9 @@ $role =  $n->recordObject->role;
       </div>
     <?php } ?>
 
-
+    <?php
+        if($role == 'Administrator' || $role == 'Head of Admin'){
+          ?>
       <div class="col-lg-4 col-md-4 col-sm-12">
         <a href="<?php echo URLROOT ?>/task/taskdashboard">
         <div class="card">
@@ -135,7 +137,7 @@ $role =  $n->recordObject->role;
        </div>
         </a>
 
-
+        <?php }?>
       </div>
 
       </div>

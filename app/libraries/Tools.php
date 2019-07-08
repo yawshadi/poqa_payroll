@@ -193,7 +193,9 @@ class Tools extends tableDataObject{
 
         return $days;
      }
-  public static function plusOneDay($date){
+
+
+     public static function plusOneDay($date){
        
         $date1 = str_replace('-', '/', $date);
         $tomorrow = date('Y-m-d',strtotime($date1 . "+1 days"));

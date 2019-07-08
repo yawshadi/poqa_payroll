@@ -539,6 +539,7 @@ class Operations extends Controller{
 
            $description = $_POST['description'];
            $employeeid  = $_POST['employeeid'];
+           $leavetype  = $_POST['leavetype'];
 
            $uploads = new Uploads();
       		 $uploads->filename = $_FILES['leavedoc'];
@@ -590,6 +591,51 @@ class Operations extends Controller{
          $this->view('operations/leave', $data);
        }
 
+     }
+
+     public function leaveedit($lid){
+      if(isset($_POST['submitleave'])){
+          
+        $description = $_POST['description'];
+        $employeeid  = $_POST['employeeid'];
+        $lid = $_POST['leaveid'];
+        $leavetype  = $_POST['leavetype'];
+
+
+        //return leavedays from the start and end dates excluding holiday and weekends
+        $actualdays = Tools::datediff($_POST['startdate'],$_POST['endate']);
+
+
+        $uploads = new Uploads();
+        $uploads->filename = $_FILES['leavedoc'];
+        $uploadresponse = $uploads->upLoadFile();
+        $filename =  $uploadresponse['filename'];
+
+
+        $gv  = new Leave($lid);
+        $gv->recordObject->description = $description;
+        $gv->recordObject->reportdate =  date('Y-m-d');
+        $gv->recordObject->employeeid = $employeeid;
+        $gv->recordObject->filename = $filename;
+        $gv->recordObject->startdate = $_POST['startdate'];
+        $gv->recordObject->endate = $_POST['endate'];
+        $gv->recordObject->actualdays = $actualdays;
+        $gv->recordObject->leavetype = $leavetype;
+        $gv->recordObject->status = "Approve";
+
+        $gv->store();
+        Redirecting::location('operations/leave');
+        }else{
+        $grievancedata = Leave::ListAll();
+        $l = new Leave($lid);
+        $leave = &$l->recordObject;
+        $employeeid  = $leave->employeeid;
+        $empdata = Employee::getEmployeesById($employeeid);
+        $usersdata = User::ListAll();
+
+        $data = [ 'empdata'=>$empdata,  'leavedata'=>$leave, 'userdata'=>$usersdata,'grievancedata'=>$grievancedata];
+        $this->view('operations/leaveedit',$data);
+        }
      }
 
      public function bookingform(){

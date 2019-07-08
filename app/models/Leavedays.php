@@ -18,12 +18,17 @@ class Leavedays extends tableDataObject{
        return $payrolldb->fetchColumn();
      }
 
-     public static function availabledays($employeeid,$year){
-         
+     public static function availabledays($employeeid,$year,$lid=null){
+      
         global $payrolldb;
+        if(is_null($lid)){
         $query = "SELECT sum(actualdays) as days FROM leaves WHERE employeeid='$employeeid' and year(reportdate)='$year'";
+        }else{
+         $query = "SELECT sum(actualdays) as days FROM leaves WHERE employeeid='$employeeid' and year(reportdate)='$year' and lid<>$lid";
+ 
+        }
         $payrolldb->prepare($query);
-        $l = $payrolldb->fetchColumn();
+       $l = $payrolldb->fetchColumn();
 
         $accumulated = Employee::getEmployeesById($employeeid)->accumulatedleave;
         $totalleave = self::totalleave();

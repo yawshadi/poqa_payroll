@@ -104,6 +104,12 @@ class Ajax extends Controller{
         $comdelete->deleteFromDB();
     }
 
+    public function deleteleave(){
+      $leaveid= $_POST['leaveid'];
+      $comdelete = new Leave($leaveid);
+      $comdelete->deleteFromDB();
+  }
+
     public function deletecomp(){
         $serviceid = $_POST['serviceid'];
         $service = new ServicesData($serviceid);

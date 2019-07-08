@@ -69,6 +69,7 @@
                 <option>Expatriate</option>
                 <option value='Administrator'>Managing Director</option>
                 <option>IT Manager</option>
+                <option>Accounts Officer</option>
 
 
               </select></td>
