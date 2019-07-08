@@ -44,6 +44,10 @@ class Pages extends Controller{
 				$_SESSION['uid'] = $uid;
 				header('Location:'.URLROOT.'/pages/dashboard');
 				}
+				if($status == 'Active' && $role == 'Accounts Officer' ){
+					$_SESSION['uid'] = $uid;
+					header('Location:'.URLROOT.'/pages/dashboard');
+					}
 
 				if($status == 'Active' && $role == 'Data Entry Clerk' ){
 				$_SESSION['uid'] = $uid;
