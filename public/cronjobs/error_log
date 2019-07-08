@@ -1,0 +1,2 @@
+[30-Mar-2019 18:35:29 Europe/London] PHP Fatal error:  Call to a member function prepare() on null in /home/princeoduro2017/public_html/vamed.pnyo.org/poqa_payroll/app/libraries/Database.php on line 50
+[30-Mar-2019 18:35:41 Europe/London] PHP Fatal error:  Call to a member function prepare() on null in /home/princeoduro2017/public_html/vamed.pnyo.org/poqa_payroll/app/libraries/Database.php on line 50

@@ -86,7 +86,7 @@
                                             ?>
                                             <tr>
                                                 <td><?php echo $count ?></td>
-                                                <td><?php echo $get->fullname;  ?></td>
+                                                <td><?php echo $get->surname.' '.$get->firstname;  ?></td>
                                                 <td><?php echo $get->position;  ?></td>
                                                 <td><?php echo $get->dateofbirth;     ?></td>
                                                 <td><?php echo $get->academictitle;    ?></td>
@@ -136,7 +136,7 @@
                                             ?>
                                             <tr>
                                                 <td><?php echo $count ?></td>
-                                                <td><?php echo $get->fullname;  ?></td>
+                                                <td><?php echo $get->surname.' '.$get->firstname;  ?></td>
                                                 <td><?php echo $get->position;  ?></td>
                                                 <td><?php echo $get->dateofbirth;     ?></td>
                                                 <td><?php echo $get->academictitle;    ?></td>
@@ -175,7 +175,7 @@
                                             ?>
                                             <tr>
                                                 <td><?php echo $count ?></td>
-                                                <td><?php echo $get->fullname  ?></td>
+                                                <td><?php echo $get->surname.' '.$get->firstname;  ?></td>
                                                 <td><?php echo $get->position  ?></td>
                                                 <td><?php echo $get->dateofbirth    ?></td>
                                                 <td><?php echo $get->academictitle    ?></td>
@@ -208,7 +208,7 @@
                                             ?>
                                             <tr>
                                                 <td><?php echo $count ?></td>
-                                                <td><?php echo $get->fullname  ?></td>
+                                                <td><?php echo $get->surname.' '.$get->firstname; ?></td>
                                                 <td><?php echo $get->position  ?></td>
                                                 <td><?php echo $get->dateofbirth;     ?></td>
                                                 <td><?php echo $get->academictitle    ?></td>

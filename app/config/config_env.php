@@ -10,12 +10,12 @@ define('JSVARS',serialize(array(
 
 
 
-define ('SENDEREMAIL', 'quatsons@yahoo.com');
+define ('SENDEREMAIL', 'ivy.tetteh-odjidja@vamed.com');
 define ('SMTP_PREFIX', 'TLS');
-define ('SMTP_HOST', 'smtp.gmail.com');
+define ('SMTP_HOST', 'smtp.mailgun.org');
 define ('SMTP_PORT', '587');
-define ('MAIL_USERNAME', 'odurusphp');
-define ('MAIL_PASSWORD', 'Prince@2018');
+define ('MAIL_USERNAME', 'info@pnyo.org');
+define ('MAIL_PASSWORD', 'Pnyo@2019');
 
 //define('VAMED_TELEPHONE', '0540111328');
 define('VAMED_TELEPHONE', '0264496303');
