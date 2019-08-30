@@ -108,6 +108,7 @@ tr, td{
   <tr style="font-weight: bold">
    <td>No:</td>
    <td>Employee Name</td>
+      <td>Staff ID</td>
    <td>Position</td>
    <td>Tier 2 Number </td>
    <td>Basic Salary</td>
@@ -122,6 +123,7 @@ tr, td{
   
   <td><?php echo $count   ?></td>
   <td><?php echo $get['fullname'];   ?></td>
+        <td><?php echo $get['staffid'];   ?></td>
   <td><?php echo $get['position'];   ?></td>
   <td><?php echo $get['tiernumber'];   ?></td>
   <td><?php echo $get['basicsalary'];    ?> </td>

@@ -39,13 +39,14 @@ class Tier2 extends Controller
                 $basicsalary = $get->basicsalary;
                 $tinnumber = $get->tinnumber;
                 $tiernumber = $get->tiernumber;
+                $staffid  = $get->staffid;
 
                 //payrollcalculations
                 $staffssnit = Vamedcalculations::tierssnit($basicsalary);
 
                 $payrolldata[] = [
                     'fullname'=>$fullname, 'position'=>$position, 'tiernumber'=>$tiernumber,
-                    'basicsalary'=>$basicsalary, 'ssnit'=>$staffssnit
+                    'basicsalary'=>$basicsalary, 'ssnit'=>$staffssnit, 'staffid'=>$staffid
                 ];
 
             }
@@ -77,10 +78,11 @@ class Tier2 extends Controller
     $objPHPExcel->setActiveSheetIndex(0);
     $objPHPExcel->getActiveSheet()->SetCellValue('A6', 'No:');
     $objPHPExcel->getActiveSheet()->SetCellValue('B6', 'Employee Name');
-    $objPHPExcel->getActiveSheet()->SetCellValue('C6', 'Postion');
-    $objPHPExcel->getActiveSheet()->SetCellValue('D6', 'Tier2 Number');
-    $objPHPExcel->getActiveSheet()->SetCellValue('E6', 'Basic Salary');
-    $objPHPExcel->getActiveSheet()->SetCellValue('F6', 'SSF (5%)');
+    $objPHPExcel->getActiveSheet()->SetCellValue('C6', 'Staff ID');
+    $objPHPExcel->getActiveSheet()->SetCellValue('D6', 'Postion');
+    $objPHPExcel->getActiveSheet()->SetCellValue('E6', 'Tier2 Number');
+    $objPHPExcel->getActiveSheet()->SetCellValue('F6', 'Basic Salary');
+    $objPHPExcel->getActiveSheet()->SetCellValue('G6', 'SSF (5%)');
 
     for ($i = 'A'; $i != $objPHPExcel->getActiveSheet()->getHighestColumn(); $i++) {
         $objPHPExcel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
@@ -95,16 +97,18 @@ class Tier2 extends Controller
         $fullname =  $get->surname.' '.$get->firstname;
         $basicsalary = $get->basicsalary;
         $tiernumber = $get->tiernumber;
+        $staffid = $get->staffid;
 
         //payrollcalculations
         $staffssnit = Vamedcalculations::tierssnit($basicsalary);
 
         $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $count);
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $fullname);
-        $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $position);
-        $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $tiernumber );
-        $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $basicsalary);
-        $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $staffssnit);
+        $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $staffid);
+        $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $position);
+        $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $tiernumber );
+        $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $basicsalary);
+        $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $staffssnit);
         $i++;
        }
 
