@@ -32,7 +32,7 @@ class PayrollRecurrent extends tableDataObject{
         global $payrolldb;
 
         $getrecords = "select * from  payrollrecurrent  where paystart = '$startdate' 
-                       and payend='$enddate'  ";
+                       and payend='$enddate' ";
 
         $payrolldb->prepare($getrecords);
         $payrolldb->execute();
