@@ -16,14 +16,17 @@
 
           foreach ($listforpayroll as $get) {
               $basicid = $get->basic_id;
+              $nationality = Employee::getnationality($basicid);
               $count  =  Cronpayslip::getcount($basicid, $startdate, $enddate);
-              if($count == 0) {
-                  $cj = new Cronpayslip();
-                  $cj->recordObject->basicid = $basicid;
-                  $cj->recordObject->paystart = $startdate;
-                  $cj->recordObject->payend = $enddate;
-                  $cj->recordObject->status = 0;
-                  $cj->store();
+              if($nationality == 'Ghanaian') {
+                  if ($count == 0) {
+                      $cj = new Cronpayslip();
+                      $cj->recordObject->basicid = $basicid;
+                      $cj->recordObject->paystart = $startdate;
+                      $cj->recordObject->payend = $enddate;
+                      $cj->recordObject->status = 0;
+                      $cj->store();
+                  }
               }
           }
 
