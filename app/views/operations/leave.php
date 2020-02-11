@@ -89,9 +89,6 @@ tr, td{
       </thead>
 
        <?php
-       echo "<pre>";
-       print_r($data['grievancedata']);
-        echo "</pre>";
         foreach($data['grievancedata'] as $get):
           
           $employeename  =   Employee::getFullname($get->employeeid);
