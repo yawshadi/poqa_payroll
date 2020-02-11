@@ -166,10 +166,11 @@ tr, td{
       </tr>
       </thead>
 
-       <?php
+      <?php
         foreach($data['grievancedata'] as $get):
-          $em = new Employee($get->employeeid);
-          $employeename  =   $em->recordObject->fullname;
+          
+          $employeename  =   Employee::getFullname($get->employeeid);
+          if($employeename!=''){
        ?>
        <tr>
        <td><?php echo $employeename   ?></td>
@@ -181,8 +182,10 @@ tr, td{
        <td><a href='<?php  echo URLROOT.'/uploads/'.$get->filename   ?>' >Download</a></td>
        </tr>
        <?php
+          }
        endforeach;
        ?>
+
 
 
 
