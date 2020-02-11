@@ -45,6 +45,13 @@ class Employee extends tableDataObject{
         return $payrolldb->singleRecord();
     }
 
+    public static  function getFullname($id){
+        global $payrolldb;
+        $getrecords = "select fullname from  basicinformation  where basic_id = '$id' ";
+        $payrolldb->prepare($getrecords);
+        return $payrolldb->fetchColumn();
+    }
+
 
     public static  function addchildren($basicid, $name, $dob){
         global $payrolldb;

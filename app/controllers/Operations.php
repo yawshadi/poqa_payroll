@@ -681,10 +681,11 @@ class Operations extends Controller{
       $leavelist = Leave::listAll();
 
       foreach($leavelist as $get){
-          $em = new Employee($get->employeeid);
-          $employeename  =   $em->recordObject->fullname;
+        $employeename  =   Employee::getFullname($get->employeeid);
+        if($employeename!=''){
         $list[]=array("title"=>$employeename,"start"=>$get->startdate,"end"=>Tools::plusOneDay($get->endate),"id"=>$get->lid,"icon"=>"calendar");
        }
+      }
        echo json_encode($list);
      }
 
