@@ -23,7 +23,7 @@ class Vamedcalculations{
 
    public static function standardovertime($basicsalary, $category){
 
-       if($category == 'Officer 1' || $category == 'Officer 2') {
+       if($category == 'Officer 1' || $category == 'Officer 2' || $category == 'Officer 11' || $category == 'Officer 22') {
            return $basicsalary * 0.5;
        }elseif($category == 'Manager'){
           $amount = ($basicsalary / 22) * 0.10 * 66;
@@ -31,10 +31,32 @@ class Vamedcalculations{
        }
    }
 
+    public static function staffprovidentfund($basicsalary){
+        $amount = $basicsalary * 0.05;
+        return $amount;
+    }
+
+    public static function employeeprovidentfund($basicsalary){
+            $amount = $basicsalary * 0.05;
+            return $amount;
+    }
+    public static function totalprovidentfunc($basicsalary){
+        $amount = self::staffprovidentfund($basicsalary) +  self::employeeprovidentfund($basicsalary);
+        return $amount;
+    }
+
+    public static function basicsalarypercent($basicsalary){
+        $amount = $basicsalary * 0.055;
+        return $amount;
+    }
+
    public static function teamdevelopment($basicsalary, $category){
        if($category == 'Manager') {
-         $amount =  $basicsalary * 0.25;
-          return $amount;
+           $amount = $basicsalary * 0.25;
+           return $amount;
+       }if($category == 'Officer 11' || $category == 'Officer 22') {
+           $amount = $basicsalary * 0.25;
+           return $amount;
        }else{
            $amount =  $basicsalary * 0.15;
            return $amount;
@@ -48,11 +70,11 @@ class Vamedcalculations{
        $amount = 0;
         return $amount;
 
-     }elseif($category == 'Officer 1'){
+     }elseif($category == 'Officer 1' || $category == 'Officer 11'){
        $amount =  $basicsalary * 0.275;
         return $amount;
 
-     }elseif($category == 'Officer 2'){
+     }elseif($category == 'Officer 2' || $category == 'Officer 22'){
        $amount =  $basicsalary * 0.025;
         return $amount;
      }
@@ -60,17 +82,20 @@ class Vamedcalculations{
    }
 
    public static function transportvehiclemaintenance($basicsalary){
-     $amount =  $basicsalary * 0.10;
+     //$amount =  $basicsalary * 0.10;
+     $amount =  ($basicsalary * 0.10) *  ( 1 + 0.40);
       return $amount;
    }
 
    public static function rentallowance($basicsalary){
-     $amount =  $basicsalary * 0.10;
+     //$amount =  $basicsalary * 0.10;
+      $amount =  ($basicsalary * 0.10) *  ( 1 + 0.40);
       return $amount;
    }
 
-   public static function grossincome($basicsalary, $transportallowance, $rentallowance, $staffssnit){
-     $amount =  $basicsalary + $transportallowance + $rentallowance - $staffssnit;
+   public static function grossincome($basicsalary, $transportallowance, $rentallowance, $staffssnit, $providentfund = null){
+
+     $amount =  $basicsalary + $transportallowance + $rentallowance - $staffssnit - $providentfund;
       return $amount;
    }
 
@@ -120,9 +145,9 @@ class Vamedcalculations{
       return $amount;
    }
 
-   public static function vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance)
+   public static function vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance, $otherbenefits)
    {
-     $amount = $grossincome + $standardovertime + $teamdevelopment + $satsunholovertime  - $totaltaxpayable - $salaryadvance;
+     $amount = $grossincome + $standardovertime + $teamdevelopment + $satsunholovertime  - $totaltaxpayable - $salaryadvance + $otherbenefits;
       return $amount;
    }
 
@@ -168,15 +193,19 @@ class Vamedcalculations{
    }
 
    public static function excessbonus ($basicsalary){
-     return $basicsalary * (0.925-0.5-0.15);
+      return $basicsalary * (0.925-0.5-0.15);
    }
 
-   public static function totalcashemolument ($basicsalary, $cashallowance = 0){
-     return $basicsalary + $cashallowance;
+   public static function cashallowance($basicsalary){
+       $amount = ($basicsalary + 0.10) * (1+.40) + ($basicsalary * 0.10) * (1+0.40);
+       return $amount;
+   }
+
+   public static function totalcashemolument ($basicsalary){
+     return $basicsalary + self::cashallowance($basicsalary);
    }
 
    public static function totalAssessableincome($totalcashemolument, $accomodation=0, $vehicle=0, $noncashbenefit=0){
-
       return $totalcashemolument + $accomodation + $vehicle + $noncashbenefit;
    }
 

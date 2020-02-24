@@ -11,6 +11,7 @@ class Database{
 	private $dbuser = DB_USER;
 	private $dbpass = DB_PASS;
 	private $dbname = DB_NAME;
+	private $dbport = DB_PORT;
 
 	public $dbh;
 	private $stmt;
@@ -23,7 +24,7 @@ class Database{
 	 */
 	public function __construct($extraOptions = array()){
 
-		$dsn = "mysql:host=". $this->dbhost . ";dbname=".$this->dbname . ";charset=UTF8MB4";
+		$dsn = "mysql:host=". $this->dbhost . ";port=".$this->dbport. ";dbname=".$this->dbname . ";charset=UTF8MB4";
 		$options = array(
 			PDO::ATTR_PERSISTENT =>true,
 			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION

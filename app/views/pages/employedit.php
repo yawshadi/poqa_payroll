@@ -89,7 +89,7 @@ tr, td{
 
          
          <tr>
-         <td <?= ($data['employees']->maritalstatus!='Married')?'colspan=2':''?>>
+         <td>
          <select class='form-control bom' name="maritalstatus" id='maritalstatus'>
          <option ><?php echo $data['employees']->maritalstatus  ?></option>
            <option>Single</option>
@@ -98,11 +98,17 @@ tr, td{
            <option>Separated</option>
           </select>
          </td>
-         <?php if($data['employees']->maritalstatus=='Married'):?>
-         <td>
-         <button style="padding:3px;border-radius:0px" class="btn btn-primanry " id='viewmarital'>view </button>
-         </td>
-        <?php endif;?>
+             <td>
+                 <select class='form-control bom' name='category' id='category'>
+                     <option><?php echo $data['employees']->category  ?></option>
+                     <option>Manager</option>
+                     <option value="Officer 1">Officer 1 (27.5 %)</option>
+                     <option  value="Officer 2">Officer 2 (2.5 %)</option>
+                     <option  value="Officer 11">Officer 11</option>
+                     <option  value="Officer 22">Officer 22</option>
+                 </select>
+             </td>
+
          </tr>
 <input type="hidden" name="randomnumber" id="randomnumber" value="<?= $data['employees']->randomnumber?>">
          <tr>
@@ -205,12 +211,7 @@ tr, td{
          <td><input type="text" class="form-control bom" name='academictitle'  id="academictitle"  value="<?php echo $data['employees']->academictitle  ?>" placeholder="Academic Title"/></td>
          </tr>
          <tr>
-         <td><select class='form-control bom' name='category' id='category'>
-          <option><?php echo $data['employees']->category  ?></option>
-           <option>Manager</option>
-           <option value="Officer 1">Officer 1 (27.5 %)</option>
-           <option  value="Officer 2">Officer 2 (2.5 %)</option>
-          </select></td>
+         <td>  <input type="text" class="form-control bom"  id="tier3number"  placeholder="Tier 3 No: "  value="<?php echo $data['employees']->tier3number ?>"/></td>
           <td><input type="text" class="form-control bom" name='basicsalary' value="<?php echo $data['employees']->basicsalary  ?>" id="basicsalary" placeholder="Basic Salary"/></td>
          </tr>
 

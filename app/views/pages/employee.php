@@ -86,7 +86,7 @@ tr, td{
 
 
          <tr>
-         <td colspan=2><select class='form-control bom' required name="maritalstatus" id='maritalstatus'>
+         <td><select class='form-control bom' required name="maritalstatus" id='maritalstatus'>
           <option>Marital Status</option>
            <option>Single</option>
            <option>Married</option>
@@ -94,6 +94,17 @@ tr, td{
            <option>Separated</option>
           </select>
          </td>
+             <td>
+                 <select class='form-control bom' id='category'>
+                     <option value=''>Category</option>
+                     <option>Manager</option>
+                     <option value="Officer 1">Officer 1 (27.5 %)</option>
+                     <option  value="Officer 2">Officer 2 (2.5 %)</option>
+                     <option  value="Officer 11">Officer 11</option>
+                     <option  value="Officer 22">Officer 22</option>
+                 </select>
+
+             </td>
          </tr>
 <input type="hidden" name="randomnumber" id="randomnumber" value="<?= time()?>">
 
@@ -198,12 +209,9 @@ tr, td{
          <td><input type="text" class="form-control bom"  id="academictitle" placeholder="Academic Title"/></td>
          </tr>
          <tr>
-         <td><select class='form-control bom' id='category'>
-          <option value=''>Category</option>
-           <option>Manager</option>
-           <option value="Officer 1">Officer 1 (27.5 %)</option>
-           <option  value="Officer 2">Officer 2 (2.5 %)</option>
-          </select></td>
+         <td>
+             <input type="text" class="form-control bom"  id="tier3number"  placeholder="Tier 3 No: "/>
+         </td>
           <td><input type="text" class="form-control bom" name='basicsalary' id="basicsalary" placeholder="Basic Salary"/></td>
 
          </tr>

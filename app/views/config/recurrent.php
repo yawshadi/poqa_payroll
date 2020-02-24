@@ -89,6 +89,7 @@ tr, td{
   		<td  style=''>Tax Relief</td>
   		<td  style=''>Salary Advance </td>
   		<td  style=''>Staff Welfare Association</td>
+           <td  style=''>Other Benefits</td>
       <td style='display:none'>PAYE</td>
 
      </tr>
@@ -106,7 +107,8 @@ tr, td{
       </td>
   		<td  style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->taxrelf ?>" field='taxrelf' class='form-control pay'/></td>
   		<td  style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->salaryadvance ?>" field='salaryadvance' class='form-control pay'/></td>
-  		<td  style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->staffwelfare ?>" field='staffwelfare' class='form-control pay'/></td>
+         <td  style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->staffwelfare ?>" field='staffwelfare' class='form-control pay'/></td>
+  		<td  style=''><input type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->otherbenefits ?>" field='otherbenefits' class='form-control pay'/></td>
       <td style='display:none'><input style='display:none' type='text' recurrentid = '<?php echo $get->recurrentid ?>'  value="<?php echo $get->paye == '' ?  0.00 :  $get->paye; ?>" field='paye' class='form-control pay'/></td>
 
 

@@ -9,6 +9,7 @@ define('JSVARS',serialize(array(
 )));
 
 
+
 //
 // define ('SENDEREMAIL', 'quatsons@yahoo.com');
 // define ('SMTP_PREFIX', 'TLS');

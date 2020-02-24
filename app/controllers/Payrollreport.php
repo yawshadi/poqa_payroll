@@ -39,9 +39,9 @@ class Payrollreport extends Controller{
 
             //recurrent calculation
             $rec = Reports::getpayrollrecurrent($basic_id, $startdate, $enddate);
-            $taxrelief = $rec->taxrelf;
-            $salaryadvance =  $rec->salaryadvance;
-            $staffwelfare = $rec->staffwelfare;
+            $taxrelief = isset($rec->taxrelf) ? $rec->taxrelf : 0 ;
+            $salaryadvance = isset($rec->salaryadvance) ? $rec->salaryadvance : 0 ;
+            $staffwelfare = isset($rec->staffwelfare) ? $rec->staffwelfare : 0  ;
 
             //payrollcalculations
             $staffssnit = Vamedcalculations::staffssnit($basicsalary);
@@ -58,7 +58,9 @@ class Payrollreport extends Controller{
             $whtonsatsunholovertime =  Vamedcalculations::whtonsatsunholovertime($satsunholovertime);
             $bonustax = Vamedcalculations::bonustax($teamdevelopment);
             $totaltaxpayable = Vamedcalculations::totaltaxpayable($paye, $whtonstandardovertime, $whtonsatsunholovertime, $bonustax);
-            $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance);
+              $otherbenefits = $rec->otherbenefits;
+              $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance, $otherbenefits);
+            // $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance);
             $vamedwelfarenetsalary = Vamedcalculations::vamedwelfarenetsalary($vamednetpay, $staffwelfare);
             $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
             $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);

@@ -95,6 +95,16 @@ function sendNotification($telephone, $message){
 
 }
 
+function teamdev($category){
+    if($category == 'Manager') {
+        return  '25%';
+    }if($category == 'Officer 11' || $category == 'Officer 22') {
+        return '25%';
+    }else{
+        return '15%';
+    }
+}
+
 
 
 
@@ -103,10 +113,12 @@ function preparepaysliphtml($enddate, $fullname, $position, $ssnitnumber, $accou
                             $grossincome, $standardovertime, $teamdevelopment,
                             $satsunholovertime, $totalbonus,$taxrelief, $taxableincome, $paye,
                             $whtonstandardovertime,$whtonsatsunholovertime, $bonustax, $totaltaxpayable,
-                            $staffwelfare, $vamedwelfarenetsalary)
+                            $staffwelfare, $vamedwelfarenetsalary, $secondtier, $tier3, $salaryadvance,
+                            $otherbenefits, $category)
 {
 
     $bankdetails  = $accountnumber. ' - '.$branch;
+    $teamdev = teamdev($category);
 
     $dataforemail =  "<table>
     <tr>
@@ -202,7 +214,7 @@ function preparepaysliphtml($enddate, $fullname, $position, $ssnitnumber, $accou
      <td>$standardovertime</td>
     </tr>
     <tr>
-     <td>Team Development & Weekend Bonus</td>
+     <td>$teamdev   Team Development Bonus</td>
       <td>$teamdevelopment</td>
     </tr>
     <tr>
@@ -257,6 +269,15 @@ function preparepaysliphtml($enddate, $fullname, $position, $ssnitnumber, $accou
      <td>Staff Welfare Association Contribution</td>
          <td >$staffwelfare</td>
     </tr>
+      <tr>
+            <td>Salary Advance</td>
+            <td>$salaryadvance</td>
+        </tr>
+
+        <tr>
+            <td>Other Benefits</td>
+            <td>$otherbenefits</td>
+        </tr>
 
     <tr>
      <td colspan=2></td>
@@ -265,6 +286,25 @@ function preparepaysliphtml($enddate, $fullname, $position, $ssnitnumber, $accou
     <tr  style='background:#00ACE5; font-size:15px; color:#fff'>
     <td>Net Amount Payable to Staff Account</td>
         <td> $vamedwelfarenetsalary</td>
+    </tr>
+    
+        <tr style='color:#00ACE5; font-weight:700'>
+        <td colspan=2>Mnnthly Contributions</td>
+    </tr>
+
+    <tr>
+        <td>Tier 1</td>
+        <td>$staffssnit</td>
+    </tr>
+
+    <tr>
+        <td>Tier 2</td>
+        <td>$secondtier</td>
+    </tr>
+
+    <tr>
+        <td>Tier 3</td>
+        <td>$tier3</td>
     </tr>
   </table>";
 

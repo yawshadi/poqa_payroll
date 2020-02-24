@@ -249,8 +249,8 @@ class Pages extends Controller{
 		$department = $_POST['department'];
 
 		$lastpayperiod = Payperiod::getLastPayperiod($_POST['company']);
-		echo $startdate = $lastpayperiod[0]->start;
-		echo $endate = $lastpayperiod[0]->end;
+		$startdate = $lastpayperiod[0]->start;
+		$endate = $lastpayperiod[0]->end;
 
 		$empdata = PayrollRecurrent::getRecurrentPayroll($company, $department, $startdate, $endate);
 		$alldata =  ['companies'=>$comdata, 'employeedata'=>$empdata];
@@ -324,6 +324,7 @@ class Pages extends Controller{
 			$datarow->company = $_POST['company'];
 			$datarow->tinnumber = $_POST['tinnumber'];
 			$datarow->tiernumber = $_POST['tierno'];
+			$datarow->tier3number = $_POST['tier3number'];
 
 			$datarow->nationality = $_POST['nationality'];
 			$datarow->academictitle = $_POST['academictitle'];
@@ -521,6 +522,7 @@ class Pages extends Controller{
 			$datarow->company = $_POST['company'];
 			$datarow->tinnumber = $_POST['tinnumber'];
 			$datarow->tiernumber = $_POST['tierno'];
+			$datarow->tier3number = $_POST['tier3number'];
 
 			$datarow->nationality = $_POST['nationality'];
 			$datarow->academictitle = $_POST['academictitle'];

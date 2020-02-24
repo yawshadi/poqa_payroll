@@ -184,7 +184,7 @@ tr, td{
        <td class='vas'><?php echo payround($data['payrolldata']['standardovertime'])  ?></td>
       </tr>
       <tr>
-       <td>Team Development & Weekend Bonus</td>
+       <td><?php  echo teamdev($data['payrolldata']['category']) ?>  Team Development Bonus</td>
         <td class='vas'><?php echo payround($data['payrolldata']['teamdevelopment'])  ?></td>
       </tr>
       <tr>
@@ -235,10 +235,20 @@ tr, td{
            <td class='vas'><?php echo payround($data['payrolldata']['totaltaxpayable'])  ?></td>
       </tr>
 
-      <tr>
-       <td>Staff Welfare Association Contribution</td>
-           <td class='vas'><?php echo payround($data['payrolldata']['staffwelfare'])  ?></td>
-      </tr>
+          <tr>
+           <td>Staff Welfare Association Contribution</td>
+               <td class='vas'><?php echo payround($data['payrolldata']['staffwelfare'])  ?></td>
+          </tr>
+
+        <tr>
+            <td>Salary Advance</td>
+            <td class='vas'><?php echo payround($data['payrolldata']['salaryadvance'])  ?></td>
+        </tr>
+
+        <tr>
+            <td>Other Benefits</td>
+            <td class='vas'><?php echo payround($data['payrolldata']['otherbenefits'])  ?></td>
+        </tr>
 
       <tr>
        <td colspan="2">&nbsp</td>
@@ -248,6 +258,30 @@ tr, td{
       <td>Net Amount Payable to Staff Account</td>
           <td class='vas'><?php echo payround($data['payrolldata']['vamedwelfarenetsalary'])  ?></td>
       </tr>
+    <tr>
+        <td colspan="2">&nbsp</td>
+    </tr>
+
+    <tr style="color:#00ACE5; font-weight:700">
+        <td colspan="2">Mnnthly Contributions</td>
+    </tr>
+
+    <tr>
+        <td>Tier 1</td>
+        <td><?php  echo $data['payrolldata']['staffssnit']  ?></td>
+    </tr>
+
+    <tr>
+        <td>Tier 2</td>
+        <td><?php  echo $data['payrolldata']['secondtier']    ?></td>
+    </tr>
+
+    <tr>
+        <td>Tier 3</td>
+        <td><?php  echo $data['payrolldata']['tier3'] ?></td>
+    </tr>
+
+
 
     </table>
 

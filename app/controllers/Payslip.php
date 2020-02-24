@@ -22,7 +22,7 @@ class Payslip extends Controller{
             $company =    $empdata->company;
             $department =  $empdata->department;
             $position  = $empdata->position;
-            $fullname =  $get->empdata.' '.$empdata->firstname;
+            $fullname =  $empdata->surname.' '.$empdata->firstname;
             $basic_id = $empdata->basic_id;
             $tinnumber =$empdata->tinnumber;
             $staffid = $empdata->staffid;
@@ -49,14 +49,17 @@ class Payslip extends Controller{
             $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
             $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
             $rentallowance = Vamedcalculations::rentallowance($basicsalary);
-            $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
+            $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
+            $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit, $staffprovidentfund);
             $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief);
             $paye =  Vamedcalculations::paye($taxableincome);
             $whtonstandardovertime = Vamedcalculations::whtonstandardovertime($standardovertime);
             $whtonsatsunholovertime =  Vamedcalculations::whtonsatsunholovertime($satsunholovertime);
             $bonustax = Vamedcalculations::bonustax($teamdevelopment);
             $totaltaxpayable = Vamedcalculations::totaltaxpayable($paye, $whtonstandardovertime, $whtonsatsunholovertime, $bonustax);
-            $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance);
+            //$vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance);
+            $otherbenefits = $rec->otherbenefits;
+            $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance, $otherbenefits);
             $vamedwelfarenetsalary = Vamedcalculations::vamedwelfarenetsalary($vamednetpay, $staffwelfare);
             $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
             $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
@@ -64,6 +67,7 @@ class Payslip extends Controller{
             $secondtier = Vamedcalculations::secondtier($totalssnit, $ssnitact);
 
             $totalbonus = Vamedcalculations::totalbonus($standardovertime, $teamdevelopment, $satsunholovertime);
+            $tier3  =  Vamedcalculations::staffprovidentfund($basicsalary);
 
             $payrolldata = [
                               'company'=>$company, 'department'=>$department, 'position'=>$position, 'ssnitnumber'=>$ssnitnumber,
@@ -77,7 +81,7 @@ class Payslip extends Controller{
                               'bonustax'=>$bonustax, 'totaltaxpayable'=>$totaltaxpayable, 'vamednetpay'=>$vamednetpay,
                               'vamedwelfarenetsalary'=>$vamedwelfarenetsalary, 'employerssnit'=>$employerssnit,
                               'totalssnit'=>$totalssnit, 'ssnitact'=>$ssnitact, 'secondtier'=>$secondtier,
-                              'totalbonus'=>$totalbonus
+                              'totalbonus'=>$totalbonus,  'otherbenefits'=>$otherbenefits, 'tier3'=>$tier3, 'category'=>$category
                             ];
 
 
@@ -129,19 +133,24 @@ class Payslip extends Controller{
         $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
         $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
         $rentallowance = Vamedcalculations::rentallowance($basicsalary);
-        $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
+        $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
+        $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit, $staffprovidentfund);
+        //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
         $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief);
         $paye =  Vamedcalculations::paye($taxableincome);
         $whtonstandardovertime = Vamedcalculations::whtonstandardovertime($standardovertime);
         $whtonsatsunholovertime =  Vamedcalculations::whtonsatsunholovertime($satsunholovertime);
         $bonustax = Vamedcalculations::bonustax($teamdevelopment);
         $totaltaxpayable = Vamedcalculations::totaltaxpayable($paye, $whtonstandardovertime, $whtonsatsunholovertime, $bonustax);
-        $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance);
+        $otherbenefits = $rec->otherbenefits;
+        $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance, $otherbenefits);
+        //$vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance);
         $vamedwelfarenetsalary = Vamedcalculations::vamedwelfarenetsalary($vamednetpay, $staffwelfare);
         $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
         $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
         $ssnitact  = Vamedcalculations::ssnitact($totalssnit);
         $secondtier = Vamedcalculations::secondtier($totalssnit, $ssnitact);
+        $tier3  =  Vamedcalculations::staffprovidentfund($basicsalary);
 
         $totalbonus = Vamedcalculations::totalbonus($standardovertime, $teamdevelopment, $satsunholovertime);
 
@@ -157,7 +166,8 @@ class Payslip extends Controller{
                           'bonustax'=>$bonustax, 'totaltaxpayable'=>$totaltaxpayable, 'vamednetpay'=>$vamednetpay,
                           'vamedwelfarenetsalary'=>$vamedwelfarenetsalary, 'employerssnit'=>$employerssnit,
                           'totalssnit'=>$totalssnit, 'ssnitact'=>$ssnitact, 'secondtier'=>$secondtier,
-                          'totalbonus'=>$totalbonus, 'enddate'=>$enddate
+                          'totalbonus'=>$totalbonus, 'enddate'=>$enddate, 'otherbenefits'=>$otherbenefits,
+                           'tier3'=>$tier3, 'category'=>$category
                         ];
 
 
@@ -203,19 +213,24 @@ class Payslip extends Controller{
         $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
         $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
         $rentallowance = Vamedcalculations::rentallowance($basicsalary);
-        $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
+        $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
+        $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit, $staffprovidentfund);
+        //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
         $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief);
         $paye =  Vamedcalculations::paye($taxableincome);
         $whtonstandardovertime = Vamedcalculations::whtonstandardovertime($standardovertime);
         $whtonsatsunholovertime =  Vamedcalculations::whtonsatsunholovertime($satsunholovertime);
         $bonustax = Vamedcalculations::bonustax($teamdevelopment);
         $totaltaxpayable = Vamedcalculations::totaltaxpayable($paye, $whtonstandardovertime, $whtonsatsunholovertime, $bonustax);
-        $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance);
+        $otherbenefits = $rec->otherbenefits;
+        $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance, $otherbenefits);
+        //$vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance);
         $vamedwelfarenetsalary = Vamedcalculations::vamedwelfarenetsalary($vamednetpay, $staffwelfare);
         $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
         $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
         $ssnitact  = Vamedcalculations::ssnitact($totalssnit);
         $secondtier = Vamedcalculations::secondtier($totalssnit, $ssnitact);
+        $tier3  =  Vamedcalculations::staffprovidentfund($basicsalary);
 
         $totalbonus = Vamedcalculations::totalbonus($standardovertime, $teamdevelopment, $satsunholovertime);
 
@@ -277,7 +292,7 @@ class Payslip extends Controller{
         $objPHPExcel->getActiveSheet()->SetCellValue('A28', 'Saturdays, Sundays, & Public Holidays Overtime');
         $objPHPExcel->getActiveSheet()->SetCellValue('D28', $satsunholovertime);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A29', 'Team Development & Weekend Bonus');
+        $objPHPExcel->getActiveSheet()->SetCellValue('A29',  teamdev($category). ' Team Development Bonus');
         $objPHPExcel->getActiveSheet()->SetCellValue('D29', $teamdevelopment);
 
         $objPHPExcel->getActiveSheet()->SetCellValue('A30', 'Total Bonus');
@@ -309,8 +324,26 @@ class Payslip extends Controller{
         $objPHPExcel->getActiveSheet()->SetCellValue('A40', 'Staff Welfare Association Contribution');
         $objPHPExcel->getActiveSheet()->SetCellValue('D40', $staffwelfare);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A42', 'Net Amount Payable to Staff Account');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D42', $vamedwelfarenetsalary);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A41', 'Other Benefits');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D41',  $otherbenefits);
+
+        $objPHPExcel->getActiveSheet()->SetCellValue('A42', 'Salary Advance');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D42',  $salaryadvance);
+
+        $objPHPExcel->getActiveSheet()->SetCellValue('A44', 'Net Amount Payable to Staff Account');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D44', $vamedwelfarenetsalary);
+
+        $objPHPExcel->getActiveSheet()->SetCellValue('A46', 'Monthly Contributions');
+
+        $objPHPExcel->getActiveSheet()->SetCellValue('A47', 'Tier 1');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D47', $staffssnit);
+
+        $objPHPExcel->getActiveSheet()->SetCellValue('A48', 'Tier 2');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D48', $secondtier);
+
+        $objPHPExcel->getActiveSheet()->SetCellValue('A49', 'Tier 3');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D49', $tier3);
+
 
 
         $imgpath = URLROOT.'/img/vamed.jpg';
@@ -337,7 +370,6 @@ class Payslip extends Controller{
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
         $objWriter->save('php://output');
         exit;
-
 
     }
 

@@ -26,7 +26,9 @@ class Payinformation
         $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
         $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
         $rentallowance = Vamedcalculations::rentallowance($basicsalary);
-        $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
+        $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
+        $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit, $staffprovidentfund);
+        //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
 
         return payround($grossincome);
     }
