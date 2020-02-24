@@ -230,7 +230,7 @@ tr, td{
      </tr>
 
 
-      <tr>
+    <tr style="color:#00ACE5; font-weight:700">
        <td>Total Tax Payable</td>
            <td class='vas'><?php echo payround($data['payrolldata']['totaltaxpayable'])  ?></td>
       </tr>

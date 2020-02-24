@@ -51,11 +51,6 @@ class Excelreport extends Controller{
             $objPHPExcel->getActiveSheet()->SetCellValue('AC5', '5% Employer PF');
             $objPHPExcel->getActiveSheet()->SetCellValue('AD5', '10% Total PF');
 
-
-
-
-
-
           for ($i = 'A'; $i != $objPHPExcel->getActiveSheet()->getHighestColumn(); $i++) {
                 $objPHPExcel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
             }
