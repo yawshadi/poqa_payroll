@@ -108,8 +108,9 @@ class Bankadvice extends Controller{
         $objPHPExcel->getActiveSheet()->SetCellValue('A5', 'Employee Name');
         $objPHPExcel->getActiveSheet()->SetCellValue('B5', 'Bank');
         $objPHPExcel->getActiveSheet()->SetCellValue('C5', 'Account Number');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D5', 'Sort Code');
-        $objPHPExcel->getActiveSheet()->SetCellValue('E5', 'Net Salary');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D5', 'Branch Name');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E5', 'Sort Code');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F5', 'Net Salary');
 
 
         for ($i = 'A'; $i != $objPHPExcel->getActiveSheet()->getHighestColumn(); $i++) {
@@ -172,8 +173,9 @@ class Bankadvice extends Controller{
             $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $fullname);
             $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $bank);
             $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $account);
-            $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $branchcode );
-            $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, payround($vamedwelfarenetsalary));
+            $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $branchname );
+            $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $branchcode );
+            $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, payround($vamedwelfarenetsalary));
 
             $i++;
         }

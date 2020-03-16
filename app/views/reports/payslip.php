@@ -158,6 +158,13 @@ tr, td{
       </tr>
 
     <tr>
+        <td>5% Provident Fund</td>
+        <td class="vas"><?php echo payround($data['payrolldata']['providentfund'])  ?></td>
+    </tr>
+
+
+
+    <tr>
         <td>Transport Allowance</td>
         <td class="vas"><?php echo payround($data['payrolldata']['transportvehiclemaintenance'])  ?></td>
     </tr>
