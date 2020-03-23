@@ -130,7 +130,7 @@ class Excelreport extends Controller{
              	$objPHPExcel->getActiveSheet()->SetCellValue('W' .$i, payround($vamednetpay));
              	$objPHPExcel->getActiveSheet()->SetCellValue('X' .$i, payround($staffwelfare));
              	$objPHPExcel->getActiveSheet()->SetCellValue('Y' .$i, payround($vamedwelfarenetsalary));
-             	$objPHPExcel->getActiveSheet()->SetCellValue('X' .$i, payround($employerssnit));
+             	$objPHPExcel->getActiveSheet()->SetCellValue('Z' .$i, payround($employerssnit));
              	$objPHPExcel->getActiveSheet()->SetCellValue('AA' .$i, payround($totalssnit));
              	$objPHPExcel->getActiveSheet()->SetCellValue('AB' .$i, payround($ssnitact));
              	$objPHPExcel->getActiveSheet()->SetCellValue('AC' .$i, payround($secondtier));

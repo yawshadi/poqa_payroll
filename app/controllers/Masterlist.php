@@ -53,12 +53,14 @@ class Masterlist extends Controller{
          $objPHPExcel->getActiveSheet()->SetCellValue('D6', 'Birth Date');
          $objPHPExcel->getActiveSheet()->SetCellValue('E6', 'Academic Title');
          $objPHPExcel->getActiveSheet()->SetCellValue('F6', 'Entry Date');
-         $objPHPExcel->getActiveSheet()->SetCellValue('G6', 'Monthly Salary (GHC)');
-         $objPHPExcel->getActiveSheet()->SetCellValue('H6', 'Monthly Salary (EUROS)');
-         $objPHPExcel->getActiveSheet()->SetCellValue('I6', 'Annual Bonus (GHC)');
-         $objPHPExcel->getActiveSheet()->SetCellValue('J6', 'Annual Bonus (EUROS)');
-         $objPHPExcel->getActiveSheet()->SetCellValue('K6', 'Location');
-         $objPHPExcel->getActiveSheet()->SetCellValue('L6', 'Gender');
+         $objPHPExcel->getActiveSheet()->SetCellValue('G6', 'Contract Start');
+         $objPHPExcel->getActiveSheet()->SetCellValue('H6', 'Contract End');
+         $objPHPExcel->getActiveSheet()->SetCellValue('I6', 'Monthly Salary (GHC)');
+         $objPHPExcel->getActiveSheet()->SetCellValue('J6', 'Monthly Salary (EUROS)');
+         $objPHPExcel->getActiveSheet()->SetCellValue('L6', 'Annual Bonus (GHC)');
+         $objPHPExcel->getActiveSheet()->SetCellValue('L6', 'Annual Bonus (EUROS)');
+         $objPHPExcel->getActiveSheet()->SetCellValue('M6', 'Location');
+         $objPHPExcel->getActiveSheet()->SetCellValue('N6', 'Gender');
 
        for ($i = 'A'; $i != $objPHPExcel->getActiveSheet()->getHighestColumn(); $i++) {
              $objPHPExcel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
@@ -82,12 +84,14 @@ class Masterlist extends Controller{
            $objPHPExcel->getActiveSheet()->setCellValue('D' . $i,	$get->dateofbirth);
            $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $get->academictitle );
            $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $get->entrydate);
-           $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $income);
-           $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, $euroincome );
-           $objPHPExcel->getActiveSheet()->setCellValue('I' . $i, '');
-           $objPHPExcel->getActiveSheet()->setCellValue('J' . $i, '');
-           $objPHPExcel->getActiveSheet()->setCellValue('K' . $i, $get->location);
-           $objPHPExcel->getActiveSheet()->setCellValue('L' . $i, $get->gender);
+           $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $get->contractstart);
+           $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, $get->contractend);
+           $objPHPExcel->getActiveSheet()->setCellValue('I' . $i, $income);
+           $objPHPExcel->getActiveSheet()->setCellValue('J' . $i, $euroincome );
+           $objPHPExcel->getActiveSheet()->setCellValue('K' . $i, '');
+           $objPHPExcel->getActiveSheet()->setCellValue('L' . $i, '');
+           $objPHPExcel->getActiveSheet()->setCellValue('M' . $i, $get->location);
+           $objPHPExcel->getActiveSheet()->setCellValue('N' . $i, $get->gender);
            $i++;
       }
 
@@ -101,12 +105,14 @@ class Masterlist extends Controller{
       $objPHPExcel->getActiveSheet()->SetCellValue('D'.$y, 'Birth Date');
       $objPHPExcel->getActiveSheet()->SetCellValue('E'.$y, 'Academic Title');
       $objPHPExcel->getActiveSheet()->SetCellValue('F'.$y, 'Entry Date');
-      $objPHPExcel->getActiveSheet()->SetCellValue('G'.$y, 'Monthly Salary (GHC)');
-      $objPHPExcel->getActiveSheet()->SetCellValue('H'.$y, 'Monthly Salary (EUROS)');
-      $objPHPExcel->getActiveSheet()->SetCellValue('I'.$y, 'Annual Bonus (GHC)');
-      $objPHPExcel->getActiveSheet()->SetCellValue('J'.$y, 'Annual Bonus (EUROS)');
-      $objPHPExcel->getActiveSheet()->SetCellValue('K'.$y, 'Location');
-      $objPHPExcel->getActiveSheet()->SetCellValue('L'.$y, 'Gender');
+      $objPHPExcel->getActiveSheet()->setCellValue('G' . $y, 'Contract Start');
+      $objPHPExcel->getActiveSheet()->setCellValue('H' . $y, 'Contract End');
+      $objPHPExcel->getActiveSheet()->SetCellValue('I'.$y, 'Monthly Salary (GHC)');
+      $objPHPExcel->getActiveSheet()->SetCellValue('J'.$y, 'Monthly Salary (EUROS)');
+      $objPHPExcel->getActiveSheet()->SetCellValue('K'.$y, 'Annual Bonus (GHC)');
+      $objPHPExcel->getActiveSheet()->SetCellValue('L'.$y, 'Annual Bonus (EUROS)');
+      $objPHPExcel->getActiveSheet()->SetCellValue('M'.$y, 'Location');
+      $objPHPExcel->getActiveSheet()->SetCellValue('N'.$y, 'Gender');
 
       $y = $y + 1;
 
@@ -126,12 +132,14 @@ class Masterlist extends Controller{
           $objPHPExcel->getActiveSheet()->setCellValue('D' . $y,	$get->dateofbirth);
           $objPHPExcel->getActiveSheet()->setCellValue('E' . $y, $get->academictitle );
           $objPHPExcel->getActiveSheet()->setCellValue('F' . $y, $get->entrydate);
-          $objPHPExcel->getActiveSheet()->setCellValue('G' . $y, $income);
-          $objPHPExcel->getActiveSheet()->setCellValue('H' . $y, $euroincome );
-          $objPHPExcel->getActiveSheet()->setCellValue('I' . $y, '');
-          $objPHPExcel->getActiveSheet()->setCellValue('J' . $y, '');
-          $objPHPExcel->getActiveSheet()->setCellValue('K' . $y, $get->location);
-          $objPHPExcel->getActiveSheet()->setCellValue('L' . $y, $get->gender);
+          $objPHPExcel->getActiveSheet()->setCellValue('G' . $y, $get->contractstart);
+          $objPHPExcel->getActiveSheet()->setCellValue('H' . $y, $get->contractend);
+          $objPHPExcel->getActiveSheet()->setCellValue('I' . $y, $income);
+          $objPHPExcel->getActiveSheet()->setCellValue('J' . $y, $euroincome );
+          $objPHPExcel->getActiveSheet()->setCellValue('K' . $y, '');
+          $objPHPExcel->getActiveSheet()->setCellValue('L' . $y, '');
+          $objPHPExcel->getActiveSheet()->setCellValue('M' . $y, $get->location);
+          $objPHPExcel->getActiveSheet()->setCellValue('N' . $y, $get->gender);
           $y++;
       }
 

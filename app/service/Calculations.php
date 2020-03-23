@@ -3,7 +3,8 @@
 class Calculations{
 
   public static function overallgross($totalwage,$transportactualpresent,$totalovertime,$otherallowance,$nightshiftallowance, $otherdeductions){
-      $overallgross = ($totalwage + $transportactualpresent + $totalovertime + $otherallowance + $nightshiftallowance) - $otherdeductions;
+      $overallgross = ($totalwage + $transportactualpresent + $totalovertime + $otherallowance + $nightshiftallowance)
+                      - $otherdeductions;
       return round($overallgross, 2);
   }
 
