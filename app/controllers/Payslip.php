@@ -265,88 +265,94 @@ class Payslip extends Controller{
         $objPHPExcel->getActiveSheet()->SetCellValue('A16', 'BBG Details');
         $objPHPExcel->getActiveSheet()->SetCellValue('B16', $accountnumber.' - '. $branch);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A18', 'Basic Calculations');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D18', 'Total (GH¢)');
+        $objPHPExcel->getActiveSheet()->SetCellValue('A18', 'Tier 2 Number');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B18', $empdata->tiernumber);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A19', 'Income:');
+        $objPHPExcel->getActiveSheet()->SetCellValue('A20', 'Tier 3 Number');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B20', $empdata->tier3number);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A20', 'Basic Salary');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D20', $basicsalary);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A22', 'Basic Calculations');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D22', 'Total (GH¢)');
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A21', '5.5% Staff SSNIT Contribution');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D21', $staffssnit);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A23', 'Income:');
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A22', '5% Provident Fund');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D22', $staffprovidentfund);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A24', 'Basic Salary');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D24', $basicsalary);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A23', 'Transport Allowance');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D23', $transportvehiclemaintenance);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A25', '5.5% Staff SSNIT Contribution');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D25', $staffssnit);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A24', 'Rent Allowance');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D24', $rentallowance);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A26', '5% Provident Fund');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D26', $staffprovidentfund);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A25', 'Gross Income');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D25', $grossincome);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A27', 'Transport Allowance');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D27', $transportvehiclemaintenance);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A27', 'Bonuses');
+        $objPHPExcel->getActiveSheet()->SetCellValue('A28', 'Rent Allowance');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D28', $rentallowance);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A28', ' Standard Overtime');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D28', $standardovertime);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A29', 'Gross Income');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D29', $grossincome);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A29', 'Saturdays, Sundays, & Public Holidays Overtime');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D29', $satsunholovertime);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A31', 'Bonuses');
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A30',  teamdev($category). ' Team Development Bonus');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D30', $teamdevelopment);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A32', ' Standard Overtime');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D32', $standardovertime);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A31', 'Total Bonus');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D31', $totalbonus);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A33', 'Saturdays, Sundays, & Public Holidays Overtime');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D33', $satsunholovertime);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A33', 'Deductions:');
+        $objPHPExcel->getActiveSheet()->SetCellValue('A34',  teamdev($category). ' Team Development Bonus');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D34', $teamdevelopment);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A34', 'Tax Relief');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D34', $taxrelief);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A35', 'Total Bonus');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D35', $totalbonus);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A35', 'Taxable Income');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D35', $taxableincome);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A37', 'Deductions:');
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A36', 'PAYE Tax Payable ');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D36', $paye);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A38', 'Tax Relief');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D38', $taxrelief);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A37', 'WHT on Overtime ');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D37', $whtonstandardovertime);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A39', 'Taxable Income');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D39', $taxableincome);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A38', 'WHT on Excess Overtime');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D38', $whtonsatsunholovertime);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A40', 'PAYE Tax Payable ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D40', $paye);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A39', 'Bonus Tax');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D39', $bonustax);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A41', 'WHT on Overtime ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D41', $whtonstandardovertime);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A40', 'Total Tax Payable');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D40', $totaltaxpayable);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A42', 'WHT on Excess Overtime');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D42', $whtonsatsunholovertime);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A41', 'Staff Welfare Association Contribution');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D41', $staffwelfare);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A43', 'Bonus Tax');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D43', $bonustax);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A42', 'Other Benefits');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D42',  $otherbenefits);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A44', 'Total Tax Payable');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D44', $totaltaxpayable);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A43', 'Salary Advance');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D43',  $salaryadvance);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A45', 'Staff Welfare Association Contribution');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D45', $staffwelfare);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A45', 'Net Amount Payable to Staff Account');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D45', $vamedwelfarenetsalary);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A46', 'Other Benefits');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D46',  $otherbenefits);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A47', 'Monthly Contributions');
+        $objPHPExcel->getActiveSheet()->SetCellValue('A47', 'Salary Advance');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D47',  $salaryadvance);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A48', 'Tier 1');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D48', $staffssnit);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A49', 'Net Amount Payable to Staff Account');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D49', $vamedwelfarenetsalary);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A49', 'Tier 2');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D49', $secondtier);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A51', 'Monthly Contributions');
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A50', 'Tier 3');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D50', $tier3);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A52', 'Tier 1');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D52', $staffssnit);
+
+        $objPHPExcel->getActiveSheet()->SetCellValue('A53', 'Tier 2');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D53', $secondtier);
+
+        $objPHPExcel->getActiveSheet()->SetCellValue('A54', 'Tier 3');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D54', $tier3);
 
 
 
