@@ -211,7 +211,7 @@ tr, td{
          <td><input type="text" class="form-control bom" name='academictitle'  id="academictitle"  value="<?php echo $data['employees']->academictitle  ?>" placeholder="Academic Title"/></td>
          </tr>
          <tr>
-         <td>  <input type="text" class="form-control bom"  id="tier3number"  placeholder="Tier 3 No: "  value="<?php echo $data['employees']->tier3number ?>"/></td>
+         <td>  <input type="text" class="form-control bom"  name="tier3number"  placeholder="Tier 3 No: "  value="<?php echo $data['employees']->tier3number ?>"/></td>
           <td><input type="text" class="form-control bom" name='basicsalary' value="<?php echo $data['employees']->basicsalary  ?>" id="basicsalary" placeholder="Basic Salary"/></td>
          </tr>
 
