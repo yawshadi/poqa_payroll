@@ -47,7 +47,15 @@ ob_start();
      <td class="vas"><?php echo   $data['payrolldata']['accountnumber'] . '-'.$data['payrolldata']['branch'];
        ?></td>
     </tr>
+    <tr>
+       <td>Tier 2 Number</td>
+       <td class="vas"><?php echo $data['tier2']  ?></td>
 
+      </tr>
+      <tr>
+       <td>Tier 3 Number</td>
+       <td class="vas"><?php echo $data['tier3'] ?></td>
+      </tr>
   </table>
 </div>
 <hr/>

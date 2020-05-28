@@ -553,6 +553,7 @@ $(document).ready(function() {
         var  company = $('#compval').val();
         var  tinnumber = $('#tinnumber').val();
         var  tierno = $('#tierno').val();
+        var  tier3number = $('#tier3number').val();
 
         var  nationality = $('#nationality').val();
         var  academictitle = $('#academictitle').val();
@@ -576,10 +577,11 @@ $(document).ready(function() {
         email:email,  location: location, idtype:idtype, idnumber:idnumber, bankname:bankname, accountnumber:accountnumber,
         branch:branch, ssnitnumber:ssnitnumber,  gname:gname, gtelephone:gtelephone, dateofbirth:dateofbirth,
         department:department, position:position, staffid:staffid, hiredate:hiredate, probationstart:probationstart,
-        probationend:probationend,randomnumber:randomnumber,maritalstatus:maritalstatus, company:company, addemployee:addemployee, dob:dob, tinnumber:tinnumber, tierno:tierno,nationality:nationality,academictitle:academictitle,contractallocation:contractallocation,contractstart:contractstart,contractend:contractend,entrydate:entrydate,exitdate:exitdate,gender:gender,category:category,basicsalary:basicsalary};
+        probationend:probationend,randomnumber:randomnumber,maritalstatus:maritalstatus, company:company, addemployee:addemployee, dob:dob, tinnumber:tinnumber, tierno:tierno,nationality:nationality,academictitle:academictitle,contractallocation:contractallocation,contractstart:contractstart,contractend:contractend,entrydate:entrydate,exitdate:exitdate,gender:gender,category:category,basicsalary:basicsalary,tier3number:tier3number};
 
         var  ajaxurl =  urlroot + '/pages/employees';
         var  redirectionurl =  urlroot + '/pages/employees';
+        //console.log(postdata);
         AjaxPostRedirection(ajaxurl, postdata,redirectionurl);
 
     })

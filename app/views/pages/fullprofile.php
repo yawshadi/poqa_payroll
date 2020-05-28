@@ -159,6 +159,11 @@ tr, td{
          </tr>
 
          <tr>
+         <td>Tier 3 Number </td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->tier3number  ?></td>
+         </tr>
+
+         <tr>
          <td>Hire Date</td>
          <td class='fontdisplay'><?php  echo $data['empdata']->hiredate  ?></td>
          </tr>

@@ -132,6 +132,16 @@ tr, td{
             $data['payrolldata']['accountnumber'] . '-'.$data['payrolldata']['branch'];
          ?></td>
       </tr>
+      <tr>
+       <td>Tier 2 Number</td>
+       <td class="vas"><?php echo $data['tier2']  ?></td>
+
+      </tr>
+      <tr>
+       <td>Tier 3 Number</td>
+       <td class="vas"><?php echo $data['tier3'] ?></td>
+
+      </tr>
 
     </table>
   </div>
@@ -270,7 +280,7 @@ tr, td{
     </tr>
 
     <tr style="color:#00ACE5; font-weight:700">
-        <td colspan="2">Mnnthly Contributions</td>
+        <td colspan="2">Monthly Contributions</td>
     </tr>
 
     <tr>

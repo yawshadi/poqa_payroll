@@ -87,7 +87,7 @@ class Payslip extends Controller{
 
 
              $alldata =  ['companies'=>$comdata, 'payrolldata'=>$payrolldata, 'payperiod'=>$paydata, 'startdate'=>$startdate,
-                          'enddate'=>$enddate, 'company'=>$company, 'name'=>$fullname, 'employeeid'=>$basic_id];
+                          'enddate'=>$enddate, 'company'=>$company, 'name'=>$fullname, 'employeeid'=>$basic_id,'tier2'=>$empdata->tiernumber,'tier3'=>$empdata->tier3number];
              $this->view('reports/payslip', $alldata);
         }else{
 
@@ -172,7 +172,7 @@ class Payslip extends Controller{
                         ];
 
 
-         $alldata =  [ 'payrolldata'=>$payrolldata];
+         $alldata =  [ 'payrolldata'=>$payrolldata,'tier2'=>$empdata->tiernumber,'tier3'=>$empdata->tier3number];
 
          $this->view('reports/slipdf', $alldata);
 
