@@ -63,6 +63,7 @@
                                             <td>No:</td>
                                             <td>Name</td>
                                             <td>Position </td>
+                                            <td>Telephone </td>
                                             <td>Birth Date</td>
                                             <td>Academic Title</td>
                                             <td>Entry Date</td>
@@ -88,6 +89,7 @@
                                                 <td><?php echo $count ?></td>
                                                 <td><?php echo $get->surname.' '.$get->firstname;  ?></td>
                                                 <td><?php echo $get->position;  ?></td>
+                                                <td><?php echo $get->telephone;  ?></td>
                                                 <td><?php echo $get->dateofbirth;     ?></td>
                                                 <td><?php echo $get->academictitle;    ?></td>
                                                 <td><?php echo $get->entrydate;    ?></td>
@@ -113,6 +115,7 @@
                                             <td>No:</td>
                                             <td>Name</td>
                                             <td>Position </td>
+                                            <td>Telephone </td>
                                             <td>Birth Date</td>
                                             <td>Academic Title</td>
                                             <td>Entry Date</td>
@@ -138,6 +141,7 @@
                                                 <td><?php echo $count ?></td>
                                                 <td><?php echo $get->surname.' '.$get->firstname;  ?></td>
                                                 <td><?php echo $get->position;  ?></td>
+                                                <td><?php echo $get->telephone;  ?></td>
                                                 <td><?php echo $get->dateofbirth;     ?></td>
                                                 <td><?php echo $get->academictitle;    ?></td>
                                                 <td><?php echo $get->entrydate;    ?></td>
@@ -162,6 +166,7 @@
                                             <td>No:</td>
                                             <td>Name</td>
                                             <td>Position </td>
+                                            <td>Telephone </td>
                                             <td>Birth Date</td>
                                             <td>Academic Title</td>
                                             <td>Entry Date</td>
@@ -177,6 +182,7 @@
                                                 <td><?php echo $count ?></td>
                                                 <td><?php echo $get->surname.' '.$get->firstname;  ?></td>
                                                 <td><?php echo $get->position  ?></td>
+                                                <td><?php echo $get->telephone  ?></td>
                                                 <td><?php echo $get->dateofbirth    ?></td>
                                                 <td><?php echo $get->academictitle    ?></td>
                                                 <td><?php echo $get->entrydate    ?></td>
@@ -195,6 +201,7 @@
                                             <td>No:</td>
                                             <td>Name</td>
                                             <td>Position </td>
+                                            <td>Telephone </td>
                                             <td>Birth Date</td>
                                             <td>Academic Title</td>
                                             <td>Exit Date</td>
@@ -210,6 +217,7 @@
                                                 <td><?php echo $count ?></td>
                                                 <td><?php echo $get->surname.' '.$get->firstname; ?></td>
                                                 <td><?php echo $get->position  ?></td>
+                                                <td><?php echo $get->telephone  ?></td>
                                                 <td><?php echo $get->dateofbirth;     ?></td>
                                                 <td><?php echo $get->academictitle    ?></td>
                                                 <td><?php echo $get->exitdate    ?></td>

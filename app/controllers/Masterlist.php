@@ -50,17 +50,18 @@ class Masterlist extends Controller{
          $objPHPExcel->getActiveSheet()->SetCellValue('A6', 'No');
          $objPHPExcel->getActiveSheet()->SetCellValue('B6', 'Full Name');
          $objPHPExcel->getActiveSheet()->SetCellValue('C6', 'Position');
-         $objPHPExcel->getActiveSheet()->SetCellValue('D6', 'Birth Date');
-         $objPHPExcel->getActiveSheet()->SetCellValue('E6', 'Academic Title');
-         $objPHPExcel->getActiveSheet()->SetCellValue('F6', 'Entry Date');
-         $objPHPExcel->getActiveSheet()->SetCellValue('G6', 'Contract Start');
-         $objPHPExcel->getActiveSheet()->SetCellValue('H6', 'Contract End');
-         $objPHPExcel->getActiveSheet()->SetCellValue('I6', 'Monthly Salary (GHC)');
-         $objPHPExcel->getActiveSheet()->SetCellValue('J6', 'Monthly Salary (EUROS)');
+         $objPHPExcel->getActiveSheet()->SetCellValue('D6', 'Telephone');
+         $objPHPExcel->getActiveSheet()->SetCellValue('E6', 'Birth Date');
+         $objPHPExcel->getActiveSheet()->SetCellValue('F6', 'Academic Title');
+         $objPHPExcel->getActiveSheet()->SetCellValue('G6', 'Entry Date');
+         $objPHPExcel->getActiveSheet()->SetCellValue('H6', 'Contract Start');
+         $objPHPExcel->getActiveSheet()->SetCellValue('I6', 'Contract End');
+         $objPHPExcel->getActiveSheet()->SetCellValue('J6', 'Monthly Salary (GHC)');
+         $objPHPExcel->getActiveSheet()->SetCellValue('K6', 'Monthly Salary (EUROS)');
          $objPHPExcel->getActiveSheet()->SetCellValue('L6', 'Annual Bonus (GHC)');
-         $objPHPExcel->getActiveSheet()->SetCellValue('L6', 'Annual Bonus (EUROS)');
-         $objPHPExcel->getActiveSheet()->SetCellValue('M6', 'Location');
-         $objPHPExcel->getActiveSheet()->SetCellValue('N6', 'Gender');
+         $objPHPExcel->getActiveSheet()->SetCellValue('M6', 'Annual Bonus (EUROS)');
+         $objPHPExcel->getActiveSheet()->SetCellValue('N6', 'Location');
+         $objPHPExcel->getActiveSheet()->SetCellValue('O6', 'Gender');
 
        for ($i = 'A'; $i != $objPHPExcel->getActiveSheet()->getHighestColumn(); $i++) {
              $objPHPExcel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
@@ -81,17 +82,18 @@ class Masterlist extends Controller{
            $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $count);
            $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $fullname);
            $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $get->position);
-           $objPHPExcel->getActiveSheet()->setCellValue('D' . $i,	$get->dateofbirth);
-           $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $get->academictitle );
-           $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $get->entrydate);
-           $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $get->contractstart);
-           $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, $get->contractend);
-           $objPHPExcel->getActiveSheet()->setCellValue('I' . $i, $income);
-           $objPHPExcel->getActiveSheet()->setCellValue('J' . $i, $euroincome );
-           $objPHPExcel->getActiveSheet()->setCellValue('K' . $i, '');
+           $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $get->telephone);
+           $objPHPExcel->getActiveSheet()->setCellValue('E' . $i,	$get->dateofbirth);
+           $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $get->academictitle );
+           $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $get->entrydate);
+           $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, $get->contractstart);
+           $objPHPExcel->getActiveSheet()->setCellValue('I' . $i, $get->contractend);
+           $objPHPExcel->getActiveSheet()->setCellValue('J' . $i, $income);
+           $objPHPExcel->getActiveSheet()->setCellValue('K' . $i, $euroincome );
            $objPHPExcel->getActiveSheet()->setCellValue('L' . $i, '');
-           $objPHPExcel->getActiveSheet()->setCellValue('M' . $i, $get->location);
-           $objPHPExcel->getActiveSheet()->setCellValue('N' . $i, $get->gender);
+           $objPHPExcel->getActiveSheet()->setCellValue('M' . $i, '');
+           $objPHPExcel->getActiveSheet()->setCellValue('N' . $i, $get->location);
+           $objPHPExcel->getActiveSheet()->setCellValue('O' . $i, $get->gender);
            $i++;
       }
 
@@ -102,17 +104,18 @@ class Masterlist extends Controller{
       $objPHPExcel->getActiveSheet()->SetCellValue('A'.$y, 'No');
       $objPHPExcel->getActiveSheet()->SetCellValue('B'.$y, 'Full Name');
       $objPHPExcel->getActiveSheet()->SetCellValue('C'.$y, 'Position');
-      $objPHPExcel->getActiveSheet()->SetCellValue('D'.$y, 'Birth Date');
-      $objPHPExcel->getActiveSheet()->SetCellValue('E'.$y, 'Academic Title');
-      $objPHPExcel->getActiveSheet()->SetCellValue('F'.$y, 'Entry Date');
-      $objPHPExcel->getActiveSheet()->setCellValue('G' . $y, 'Contract Start');
-      $objPHPExcel->getActiveSheet()->setCellValue('H' . $y, 'Contract End');
-      $objPHPExcel->getActiveSheet()->SetCellValue('I'.$y, 'Monthly Salary (GHC)');
-      $objPHPExcel->getActiveSheet()->SetCellValue('J'.$y, 'Monthly Salary (EUROS)');
-      $objPHPExcel->getActiveSheet()->SetCellValue('K'.$y, 'Annual Bonus (GHC)');
-      $objPHPExcel->getActiveSheet()->SetCellValue('L'.$y, 'Annual Bonus (EUROS)');
-      $objPHPExcel->getActiveSheet()->SetCellValue('M'.$y, 'Location');
-      $objPHPExcel->getActiveSheet()->SetCellValue('N'.$y, 'Gender');
+      $objPHPExcel->getActiveSheet()->SetCellValue('D'.$y, 'Telephone');
+      $objPHPExcel->getActiveSheet()->SetCellValue('E'.$y, 'Birth Date');
+      $objPHPExcel->getActiveSheet()->SetCellValue('F'.$y, 'Academic Title');
+      $objPHPExcel->getActiveSheet()->SetCellValue('G'.$y, 'Entry Date');
+      $objPHPExcel->getActiveSheet()->setCellValue('H' . $y, 'Contract Start');
+      $objPHPExcel->getActiveSheet()->setCellValue('I' . $y, 'Contract End');
+      $objPHPExcel->getActiveSheet()->SetCellValue('J'.$y, 'Monthly Salary (GHC)');
+      $objPHPExcel->getActiveSheet()->SetCellValue('K'.$y, 'Monthly Salary (EUROS)');
+      $objPHPExcel->getActiveSheet()->SetCellValue('L'.$y, 'Annual Bonus (GHC)');
+      $objPHPExcel->getActiveSheet()->SetCellValue('M'.$y, 'Annual Bonus (EUROS)');
+      $objPHPExcel->getActiveSheet()->SetCellValue('N'.$y, 'Location');
+      $objPHPExcel->getActiveSheet()->SetCellValue('O'.$y, 'Gender');
 
       $y = $y + 1;
 
@@ -126,20 +129,21 @@ class Masterlist extends Controller{
           $eurorate = $ex->euros;
           $euroincome  = payround($income / $eurorate);
 
-          $objPHPExcel->getActiveSheet()->setCellValue('A' . $y, $count);
-          $objPHPExcel->getActiveSheet()->setCellValue('B' . $y, $fullname);
-          $objPHPExcel->getActiveSheet()->setCellValue('C' . $y, $get->position);
-          $objPHPExcel->getActiveSheet()->setCellValue('D' . $y,	$get->dateofbirth);
-          $objPHPExcel->getActiveSheet()->setCellValue('E' . $y, $get->academictitle );
-          $objPHPExcel->getActiveSheet()->setCellValue('F' . $y, $get->entrydate);
-          $objPHPExcel->getActiveSheet()->setCellValue('G' . $y, $get->contractstart);
-          $objPHPExcel->getActiveSheet()->setCellValue('H' . $y, $get->contractend);
-          $objPHPExcel->getActiveSheet()->setCellValue('I' . $y, $income);
-          $objPHPExcel->getActiveSheet()->setCellValue('J' . $y, $euroincome );
-          $objPHPExcel->getActiveSheet()->setCellValue('K' . $y, '');
-          $objPHPExcel->getActiveSheet()->setCellValue('L' . $y, '');
-          $objPHPExcel->getActiveSheet()->setCellValue('M' . $y, $get->location);
-          $objPHPExcel->getActiveSheet()->setCellValue('N' . $y, $get->gender);
+           $objPHPExcel->getActiveSheet()->setCellValue('A' . $y, $count);
+           $objPHPExcel->getActiveSheet()->setCellValue('B' . $y, $fullname);
+           $objPHPExcel->getActiveSheet()->setCellValue('C' . $y, $get->position);
+           $objPHPExcel->getActiveSheet()->setCellValue('D' . $y, $get->telephone);
+           $objPHPExcel->getActiveSheet()->setCellValue('E' . $y,	$get->dateofbirth);
+           $objPHPExcel->getActiveSheet()->setCellValue('F' . $y, $get->academictitle );
+           $objPHPExcel->getActiveSheet()->setCellValue('G' . $y, $get->entrydate);
+           $objPHPExcel->getActiveSheet()->setCellValue('H' . $y, $get->contractstart);
+           $objPHPExcel->getActiveSheet()->setCellValue('I' . $y, $get->contractend);
+           $objPHPExcel->getActiveSheet()->setCellValue('J' . $y, $income);
+           $objPHPExcel->getActiveSheet()->setCellValue('K' . $y, $euroincome );
+           $objPHPExcel->getActiveSheet()->setCellValue('L' . $y, '');
+           $objPHPExcel->getActiveSheet()->setCellValue('M' . $y, '');
+           $objPHPExcel->getActiveSheet()->setCellValue('N' . $y, $get->location);
+           $objPHPExcel->getActiveSheet()->setCellValue('O' . $y, $get->gender);
           $y++;
       }
 
@@ -152,9 +156,10 @@ class Masterlist extends Controller{
       $objPHPExcel->getActiveSheet()->SetCellValue('A'.$x, 'No');
       $objPHPExcel->getActiveSheet()->SetCellValue('B'.$x, 'Full Name');
       $objPHPExcel->getActiveSheet()->SetCellValue('C'.$x, 'Position');
-      $objPHPExcel->getActiveSheet()->SetCellValue('D'.$x, 'Birth Date');
-      $objPHPExcel->getActiveSheet()->SetCellValue('E'.$x, 'Academic Title');
-      $objPHPExcel->getActiveSheet()->SetCellValue('F'.$x, 'Entry Date');
+      $objPHPExcel->getActiveSheet()->SetCellValue('D'.$x, 'Telephone');
+      $objPHPExcel->getActiveSheet()->SetCellValue('E'.$x, 'Birth Date');
+      $objPHPExcel->getActiveSheet()->SetCellValue('F'.$x, 'Academic Title');
+      $objPHPExcel->getActiveSheet()->SetCellValue('G'.$x, 'Entry Date');
 
       $x = $x + 1;
       foreach($entrydata as $key=>$get){
@@ -165,9 +170,10 @@ class Masterlist extends Controller{
           $objPHPExcel->getActiveSheet()->setCellValue('A' . $x, $count);
           $objPHPExcel->getActiveSheet()->setCellValue('B' . $x, $fullname);
           $objPHPExcel->getActiveSheet()->setCellValue('C' . $x, $get->position);
-          $objPHPExcel->getActiveSheet()->setCellValue('D' . $x,	$get->dateofbirth);
-          $objPHPExcel->getActiveSheet()->setCellValue('E' . $x, $get->academictitle );
-          $objPHPExcel->getActiveSheet()->setCellValue('F' . $x, $get->entrydate);
+          $objPHPExcel->getActiveSheet()->setCellValue('D' . $x, $get->telephone);
+          $objPHPExcel->getActiveSheet()->setCellValue('E' . $x,	$get->dateofbirth);
+          $objPHPExcel->getActiveSheet()->setCellValue('F' . $x, $get->academictitle );
+          $objPHPExcel->getActiveSheet()->setCellValue('G' . $x, $get->entrydate);
           $x++;
       }
 
@@ -180,9 +186,10 @@ class Masterlist extends Controller{
       $objPHPExcel->getActiveSheet()->SetCellValue('A'.$z, 'No');
       $objPHPExcel->getActiveSheet()->SetCellValue('B'.$z, 'Full Name');
       $objPHPExcel->getActiveSheet()->SetCellValue('C'.$z, 'Position');
-      $objPHPExcel->getActiveSheet()->SetCellValue('D'.$z, 'Birth Date');
-      $objPHPExcel->getActiveSheet()->SetCellValue('E'.$z, 'Academic Title');
-      $objPHPExcel->getActiveSheet()->SetCellValue('F'.$z, 'Exit Date');
+      $objPHPExcel->getActiveSheet()->SetCellValue('D'.$z, 'Telephone');
+      $objPHPExcel->getActiveSheet()->SetCellValue('E'.$z, 'Birth Date');
+      $objPHPExcel->getActiveSheet()->SetCellValue('F'.$z, 'Academic Title');
+      $objPHPExcel->getActiveSheet()->SetCellValue('G'.$z, 'Entry Date');
 
 
       $z = $z + 1;
@@ -196,9 +203,10 @@ class Masterlist extends Controller{
           $objPHPExcel->getActiveSheet()->setCellValue('A' . $z, $count);
           $objPHPExcel->getActiveSheet()->setCellValue('B' . $z, $fullname);
           $objPHPExcel->getActiveSheet()->setCellValue('C' . $z, $get->position);
-          $objPHPExcel->getActiveSheet()->setCellValue('D' . $z,	$get->dateofbirth);
-          $objPHPExcel->getActiveSheet()->setCellValue('E' . $z, $get->academictitle );
-          $objPHPExcel->getActiveSheet()->setCellValue('F' . $z, $get->entrydate);
+          $objPHPExcel->getActiveSheet()->setCellValue('D' . $z, $get->telephone);
+          $objPHPExcel->getActiveSheet()->setCellValue('E' . $z,	$get->dateofbirth);
+          $objPHPExcel->getActiveSheet()->setCellValue('F' . $z, $get->academictitle );
+          $objPHPExcel->getActiveSheet()->setCellValue('G' . $z, $get->entrydate);
           $z++;
       }
 
