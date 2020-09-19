@@ -11,7 +11,7 @@
       <meta name="theme-color" content="#7568E0">
       <meta name="robots" content="all,follow">
       <!-- Bootstrap CSS-->
-      <link rel="stylesheet" href="<?php echo URLROOT ?>/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="<?php echo URLROOT ?>/css/dataTables/css/bootstrap.css">
       <!-- theme stylesheet-->
       <link rel="stylesheet" href="<?php echo URLROOT ?>/css/style.default.css" id="theme-stylesheet">
       <!-- Custom stylesheet - for your changes-->
@@ -21,9 +21,9 @@
       <!-- Font Awesome CDN-->
       <!-- you can replace it by local Font Awesome
          <script src="https://use.fontawesome.com/99347ac47f.js"></script> -->
-      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="<?php echo URLROOT ?>/css/font-awesome.min.css">
       <!-- Font Icons CSS -->
-      <link rel="stylesheet" href="css/icons.css">
+      <link rel="stylesheet" href="<?php echo URLROOT ?>/css/icons.css">
       <!-- Tweaks for older IEs-->
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -84,6 +84,7 @@
          </div>
       </div>
       <!-- Javascript files-->
+      <script src="<?php echo URLROOT ?>/public/js/jquery.min.js"></script>
       <script src="<?php echo URLROOT ?>/js/bootstrap.min.js"></script>
       <script src="<?php echo URLROOT ?>/js/jquery.cookie.js"></script>
       <script src="<?php echo URLROOT ?>/js/jquery.validate.min.js"></script>
