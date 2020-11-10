@@ -40,7 +40,7 @@ Placeholder
 ## Authors
 
 - Prince Oduro / prince@getinnotized.com
-- Shadrach Amponsah / yawshadi@gmail.com
+- Shadrach Amponsah / yawshadi23@gmail.com
 
 ## License
 - 
