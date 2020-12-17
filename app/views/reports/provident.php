@@ -126,7 +126,7 @@
                                                 <td><?php echo $get['fullname'];   ?></td>
                                                 <td><?php echo $get['basicsalary'];   ?></td>
                                                 <td><?php echo $get['ssnitnumber'];    ?> </td>
-                                                <td></td>
+                                                <td><?= $get['memberid']?></td>
                                                 <td><?php echo payround($get['totalprovident']);    ?> </td>
 
                                             </tr>

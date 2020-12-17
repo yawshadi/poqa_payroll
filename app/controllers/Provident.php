@@ -34,12 +34,13 @@ class Provident extends Controller
                 $location = $get->location;
                 $basicsalary = $get->basicsalary;
                 $tinnumber = $get->tinnumber;
+                $tier3number = $get->tier3number;
 
                 $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary);
 
                 $payrolldata[] = [
                     'fullname'=>$fullname,  'ssnitnumber'=>$ssnitnumber,
-                    'basicsalary'=>$basicsalary, 'totalprovident'=> $totalprovident
+                    'basicsalary'=>$basicsalary, 'totalprovident'=> $totalprovident,'memberid'=>$tier3number
                 ];
             }
             $alldata =  ['companies'=>$comdata, 'payrolldata'=>$payrolldata, 'payperiod'=>$paydata,
@@ -105,6 +106,7 @@ class Provident extends Controller
             $location = $get->location;
             $basicsalary = $get->basicsalary;
             $tinnumber = $get->tinnumber;
+            $tier3number = $get->tier3number;
 
             $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary);
 
@@ -113,7 +115,7 @@ class Provident extends Controller
             $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $fullname);
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $basicsalary );
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $ssnitnumber);
-            $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $tier3number);
             $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $totalprovident);
             $i++;
         }
