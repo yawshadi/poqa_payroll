@@ -35,14 +35,21 @@ class Payereport extends Controller{
                 $location = $get->location;
                 $basicsalary = $get->basicsalary;
                 $tinnumber = $get->tinnumber;
+                $otherbenefits = $get->otherbenefit;
+
 
                 //recurrent calculation
                 $rec = Reports::getpayrollrecurrent($basic_id, $startdate, $enddate);
                 $taxrelief = $rec->taxrelf;
                 $salaryadvance =  $rec->salaryadvance;
                 $staffwelfare = $rec->staffwelfare;
+                $otherdeductible = $rec->otherdeductions;
+                $bonus = $rec->bonus;
+                $loanrepayment = $rec->loanrepayment;
+  
 
                 //payrollcalculations
+                $loanbenefits = Vamedcalculations::loanbenefits($loanrepayment); // 2021
                 $staffssnit = Vamedcalculations::staffssnit($basicsalary);
                 $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
                 $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
@@ -53,7 +60,7 @@ class Payereport extends Controller{
                 $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
                 $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit, $staffprovidentfund);
                 //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
-                $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief);
+                $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits);
                 $paye =  Vamedcalculations::paye($taxableincome);
 
                 $bonusincome = Vamedcalculations::bonusincome($basicsalary);
@@ -106,11 +113,11 @@ class Payereport extends Controller{
         $objPHPExcel->getActiveSheet()->SetCellValue('C10', 'Name of Employee');
         $objPHPExcel->getActiveSheet()->SetCellValue('D10', 'Position');
         $objPHPExcel->getActiveSheet()->SetCellValue('E10', 'Non-Resident  (Y / N)');
-        $objPHPExcel->getActiveSheet()->SetCellValue('F10', 'Basic Salary');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F10', 'Consolidated Salary');
         $objPHPExcel->getActiveSheet()->SetCellValue('G10', 'Secondary Employment (Y / N)');
         $objPHPExcel->getActiveSheet()->SetCellValue('H10', 'Social Security Fund ');
         $objPHPExcel->getActiveSheet()->SetCellValue('I10', 'Third Tier');
-        $objPHPExcel->getActiveSheet()->SetCellValue('J10', 'Cash Allowances');
+        $objPHPExcel->getActiveSheet()->SetCellValue('J10', 'Other Benefits / Allowances');
         $objPHPExcel->getActiveSheet()->SetCellValue('K10', 'Bonus Income(up to 15% of Annual Basic salary)');
         $objPHPExcel->getActiveSheet()->SetCellValue('L10', 'Final Tax on Bonus Income');
         $objPHPExcel->getActiveSheet()->SetCellValue('M10', 'EXCESS BONUS');
@@ -151,15 +158,22 @@ class Payereport extends Controller{
             $location = $get->location;
             $basicsalary = $get->basicsalary;
             $tinnumber = $get->tinnumber;
+            $otherbenefits = $get->otherbenefit;
+
 
             //recurrent calculation
             $rec = Reports::getpayrollrecurrent($basic_id, $startdate, $enddate);
             $taxrelief = $rec->taxrelf;
             $salaryadvance =  $rec->salaryadvance;
             $staffwelfare = $rec->staffwelfare;
+            $otherdeductible = $rec->otherdeductions;
+            $bonus = $rec->bonus;
+            $loanrepayment = $rec->loanrepayment;
+
 
             //payrollcalculations
             $staffssnit = Vamedcalculations::staffssnit($basicsalary);
+            $loanbenefits = Vamedcalculations::loanbenefits($loanrepayment); // 2021
             $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
             $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
             $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
@@ -169,7 +183,7 @@ class Payereport extends Controller{
             $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
             $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit, $staffprovidentfund);
             //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
-            $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief);
+            $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits);
             $paye =  Vamedcalculations::paye($taxableincome);
 
             $bonusincome = Vamedcalculations::bonusincome($basicsalary);
@@ -195,7 +209,7 @@ class Payereport extends Controller{
             $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, 'No');
             $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, $staffssnit);
             $objPHPExcel->getActiveSheet()->setCellValue('I' . $i, payround($tier3));
-            $objPHPExcel->getActiveSheet()->setCellValue('J' . $i, payround($cashallowance));
+            $objPHPExcel->getActiveSheet()->setCellValue('J' . $i, payround($otherbenefits));
             $objPHPExcel->getActiveSheet()->setCellValue('K' . $i, payround($bonusincome));
             $objPHPExcel->getActiveSheet()->setCellValue('L' . $i, payround($taxonbonusincome));
             $objPHPExcel->getActiveSheet()->SetCellValue('M' . $i, payround($excessbonus));

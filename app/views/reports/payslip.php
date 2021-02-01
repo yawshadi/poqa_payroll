@@ -120,6 +120,10 @@ tr, td{
        <td>Position</td>
        <td class="getvisaemployees"><?php echo $data['payrolldata']['position']  ?></td>
       </tr>
+      <tr>
+       <td>Job Category</td>
+       <td class="getvisaemployees"><?php echo $data['payrolldata']['jodcat']  ?></td>
+      </tr>
 
       <tr>
        <td>Social Security No:</td>
@@ -158,7 +162,7 @@ tr, td{
       </tr>
 
       <tr>
-       <td>Basic Salary</td>
+       <td>Consolidated Salary</td>
        <td class="vas"><?php echo payround($data['payrolldata']['basic_salary'])  ?></td>
       </tr>
 
