@@ -40,8 +40,13 @@ class Vamedcalculations{
             $amount = $basicsalary * 0.05;
             return $amount;
     }
-    public static function totalprovidentfunc($basicsalary){
-        $amount = self::staffprovidentfund($basicsalary) +  self::employeeprovidentfund($basicsalary);
+    public static function totalprovidentfunc($basicsalary ,$category){
+       if($category == 'Pensioner'){
+          $amount = 0;
+       }else{
+         $amount = self::staffprovidentfund($basicsalary) +  self::employeeprovidentfund($basicsalary);
+
+       }
         return $amount;
     }
 
@@ -93,14 +98,19 @@ class Vamedcalculations{
       return $amount;
    }
 
-   public static function grossincome($basicsalary, $transportallowance, $rentallowance, $staffssnit, $providentfund = null){
+   public static function grossincome($basicsalary, $otherbenefits, $staffssnit, $providentfund = null){
 
-     $amount =  $basicsalary + $transportallowance + $rentallowance - $staffssnit -  $providentfund;
+     $amount =  $basicsalary + $otherbenefits - $staffssnit -  $providentfund;
       return $amount;
    }
 
-   public static function taxableincome($grossincome, $taxrelief){
-     $amount =  $grossincome - $taxrelief;
+   public static function loanbenefits($loanrepayment){
+      $amount =  ($loanrepayment*24*0.1458*2)*0.25;
+       return $amount;
+    }
+
+   public static function taxableincome($grossincome, $taxrelief,$loanbenefits){
+     $amount =  $grossincome + $loanbenefits - $taxrelief;
       return $amount;
    }
 
@@ -135,24 +145,30 @@ class Vamedcalculations{
       return $amount;
    }
 
-   public static function bonustax($teamdevelopment){
-     $amount =  $teamdevelopment * 0.05;
+   public static function bonustax($bonus){
+     $amount =  $bonus * 0.05;
       return $amount;
    }
 
-   public static function totaltaxpayable($paye, $whtonstandardovertime, $whtonsatsunholovertime, $bonustax ){
-     $amount =  $paye + $whtonstandardovertime + $whtonsatsunholovertime + $bonustax;
+   public static function totaltaxpayable($paye, $bonustax ){
+     $amount =  $paye + $bonustax;
       return $amount;
    }
 
-   public static function vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance, $otherbenefits)
+   public static function vamednetpay($grossincome, $totaltaxpayable, $salaryadvance, $loanrepayment,$bonus,$basicsalary,$category)
    {
-     $amount = $grossincome + $standardovertime + $teamdevelopment + $satsunholovertime  - $totaltaxpayable - $salaryadvance + $otherbenefits;
+      if($category == 'Pensioner'){
+
+         $amount = ($grossincome + $bonus  - $totaltaxpayable - $salaryadvance - $loanrepayment) + ($basicsalary*0.185 + $basicsalary*0.10) ;
+         return $amount;
+      }else{
+     $amount = $grossincome + $bonus  - $totaltaxpayable - $salaryadvance - $loanrepayment;
       return $amount;
+      }
    }
 
-   public static function vamedwelfarenetsalary($vamednetpay, $staffwelfare){
-     $amount =  $vamednetpay - $staffwelfare;
+   public static function vamedwelfarenetsalary($vamednetpay, $staffwelfare,$otherdeductible){
+     $amount =  $vamednetpay - $staffwelfare - $otherdeductible;
       return $amount;
    }
 
@@ -167,14 +183,26 @@ class Vamedcalculations{
    }
 
 
-   public static function ssnitact($totalssnit){
-      $amount = 0.135 / 0.185 * $totalssnit;
+   public static function ssnitact($basicsalary,$category){
+      if($category == "Normal"){
+         $amount = 0.135  * $basicsalary;
+      }else{
+      $amount = 0;
+      }
+     
       return $amount;
    }
 
 
-   public static function secondtier($totalssnit, $ssnitact){
-      $amount = $totalssnit - $ssnitact;
+   public static function secondtier($basicsalary, $category){
+      if($category == "Normal"){
+         $amount = 0.05  * $basicsalary;
+      }elseif ($category == 'Pensioner'){
+      $amount = 0;
+      }else{
+         $amount = 0.185  * $basicsalary;
+      }
+     
       return $amount;
    }
 

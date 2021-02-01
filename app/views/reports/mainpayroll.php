@@ -116,7 +116,7 @@ tr, td{
       <td>Department</td>
       <td>Position</td>
       <td>Location</td>
-      <td>Basic Salary</td>
+      <td>Consolidated Salary</td>
       <td>Gross Income</td>
       <td>Total Tax Payable</td>
       <td>Actual Netpay </td>

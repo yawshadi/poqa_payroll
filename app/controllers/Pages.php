@@ -338,6 +338,8 @@ class Pages extends Controller{
 			$datarow->basicsalary = $_POST['basicsalary'];
 			$datarow->randomnumber = $_POST['randomnumber'];
 			$datarow->maritalstatus = $_POST['maritalstatus'];
+			$datarow->jobcat = $_POST['jobcat'];
+			$datarow->otherbenefit = $_POST['otherbenefit'];
 
 
 			$empdata->store();
@@ -536,6 +538,8 @@ class Pages extends Controller{
 			$datarow->basicsalary = $_POST['basicsalary'];
 			$datarow->randomnumber = $_POST['randomnumber'];
 			$datarow->maritalstatus = $_POST['maritalstatus'];
+			$datarow->jobcat = $_POST['jobcat'];
+			$datarow->otherbenefit = $_POST['otherb'];
 
 			$empdata->store();
 

@@ -211,8 +211,16 @@ tr, td{
          <td class='fontdisplay'><?php  echo $data['empdata']->category  ?></td>
          </tr>
          <tr>
-         <td>Basic Salary</td>
+         <td>Consolidated Salary</td>
          <td class='fontdisplay'><?php  echo $data['empdata']->basicsalary  ?></td>
+         </tr>
+         <tr>
+         <td>Job Category</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->jobcat  ?></td>
+         </tr>
+         <tr>
+         <td>other benefits/allowances</td>
+         <td class='fontdisplay'><?php  echo $data['empdata']->otherbenefit  ?></td>
          </tr>
          <tr>
          <td>Marital Status</td>

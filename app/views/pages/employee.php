@@ -97,11 +97,9 @@ tr, td{
              <td>
                  <select class='form-control bom' id='category'>
                      <option value=''>Category</option>
-                     <option>Manager</option>
-                     <option value="Officer 1">Officer 1 (27.5 %)</option>
-                     <option  value="Officer 2">Officer 2 (2.5 %)</option>
-                     <option  value="Officer 11">Officer 11</option>
-                     <option  value="Officer 22">Officer 22</option>
+                     <option>Normal</option>
+                     <option value="Not Eligible">Not Eligible</option>
+                     <option  value="Pensioner">Pensioner</option>
                  </select>
 
              </td>
@@ -212,10 +210,17 @@ tr, td{
          <td>
              <input type="text" class="form-control bom"  id="tier3number"  placeholder="Tier 3 No: "/>
          </td>
-          <td><input type="text" class="form-control bom" name='basicsalary' id="basicsalary" placeholder="Basic Salary"/></td>
+          <td><input type="text" class="form-control bom" name='basicsalary' id="basicsalary" placeholder="Consolidated Salary"/></td>
 
          </tr>
 
+         <tr>
+         <td>
+             <input type="text" class="form-control bom"  id="jobcat"  placeholder="Job Category"/>
+         </td>
+          <td><input type="text" class="form-control bom" name='otherb' id="otherb" placeholder="other benefits/allowances"/></td>
+
+         </tr>
          <tr>
          <td></td>
          <td align='right'><button type='button' id='addemployeebtn' style='font-size:12px' class='btn btn-primary'>

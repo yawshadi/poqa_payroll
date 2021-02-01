@@ -101,11 +101,9 @@ tr, td{
              <td>
                  <select class='form-control bom' name='category' id='category'>
                      <option><?php echo $data['employees']->category  ?></option>
-                     <option>Manager</option>
-                     <option value="Officer 1">Officer 1 (27.5 %)</option>
-                     <option  value="Officer 2">Officer 2 (2.5 %)</option>
-                     <option  value="Officer 11">Officer 11</option>
-                     <option  value="Officer 22">Officer 22</option>
+                     <option>Normal</option>
+                     <option value="Not Eligible">Not Eligible</option>
+                     <option  value="Pensioner">Pensioner</option>
                  </select>
              </td>
 
@@ -212,9 +210,15 @@ tr, td{
          </tr>
          <tr>
          <td>  <input type="text" class="form-control bom"  name="tier3number"  placeholder="Tier 3 No: "  value="<?php echo $data['employees']->tier3number ?>"/></td>
-          <td><input type="text" class="form-control bom" name='basicsalary' value="<?php echo $data['employees']->basicsalary  ?>" id="basicsalary" placeholder="Basic Salary"/></td>
+          <td><input type="text" class="form-control bom" name='basicsalary' value="<?php echo $data['employees']->basicsalary  ?>" id="basicsalary" placeholder="Consolidated Salary"/></td>
          </tr>
+         <tr>
+         <td>
+             <input type="text" class="form-control bom"  id="jobcat"  name='jobcat' placeholder="Job Category" value="<?php echo $data['employees']->jobcat ?>"/>
+         </td>
+          <td><input type="text" class="form-control bom" name='otherb' id="otherb" value="<?php echo $data['employees']->otherbenefit ?>" placeholder="other benefits/allowances"/></td>
 
+         </tr>
          <tr>
          <td><input type="hidden"  id="employeeid"   value="<?php echo $data['employees']->basic_id  ?>"/></td>
          <td align='right'><button type='submit' name='updateemployeebtn' style='font-size:12px' class='btn btn-primary'>
