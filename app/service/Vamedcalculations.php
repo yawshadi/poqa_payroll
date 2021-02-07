@@ -116,22 +116,39 @@ class Vamedcalculations{
 
    public static function paye($taxable){
 
-     if($taxable < 261){
-        return $paye = 0;
-      }elseif($taxable > 261 && $taxable<=330){
-        $paye = ($taxable - 261) * 0.05;
-        return $paye ;
-      }elseif($taxable > 331 && $taxable <= 430){
-         $paye = (($taxable - 331) * 0.10) + 3.5;
-         return $paye ;
-      }elseif($taxable > 431 && $taxable <= 3240){
-          $paye = (($taxable - 431) * 0.175) + 13.5;
-          return  $paye;
-      }elseif($taxable > 3241){
-        $paye = (($taxable - 3241) * 0.25) + 505.25;
-        return  $paye;
+   //   if($taxable < 261){
+   //      return $paye = 0;
+   //    }elseif($taxable > 261 && $taxable<=330){
+   //      $paye = ($taxable - 261) * 0.05;
+   //      return $paye ;
+   //    }elseif($taxable > 331 && $taxable <= 430){
+   //       $paye = (($taxable - 331) * 0.10) + 3.5;
+   //       return $paye ;
+   //    }elseif($taxable > 431 && $taxable <= 3240){
+   //        $paye = (($taxable - 431) * 0.175) + 13.5;
+   //        return  $paye;
+   //    }elseif($taxable > 3241){
+   //      $paye = (($taxable - 3241) * 0.25) + 505.25;
+   //      return  $paye;
+   //    }else{
+   //     return $paye = 0;
+   //    }
+         if($taxable < 319){
+            return $paye = 0;
+      }elseif($taxable > 319 && $taxable<=419){
+            $paye = ($taxable - 318) * 0.05;
+            return  round($paye , 2);
+      }elseif($taxable > 419 && $taxable <= 539){
+            $paye = (($taxable - 419) * 0.10) + 5.0;
+            return  round($paye , 2);
+      }elseif($taxable > 539 && $taxable <= 3539){
+            $paye = (($taxable - 539) * 0.175) + 17;
+            return  round($paye , 2);
+      }elseif($taxable > 3539){
+            $paye = (($taxable - 3539) * 0.25) + 542;
+            return  round($paye , 2);
       }else{
-       return $paye = 0;
+            return $paye = 0;
       }
    }
 
