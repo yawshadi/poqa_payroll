@@ -189,7 +189,8 @@ class Payslip extends Controller{
         ];
 
 
-         $alldata =  [ 'payrolldata'=>$payrolldata,'tier2'=>$empdata->tiernumber,'tier3'=>$empdata->tier3number];
+         $alldata =  [ 'payrolldata'=>$payrolldata,'tier2'=>$empdata->tiernumber,'tier3'=>$empdata->tier3number,'startdate'=>$startdate,
+         'enddate'=>$enddate,];
 
          $this->view('reports/slipdf', $alldata);
 

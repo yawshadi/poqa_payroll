@@ -49,6 +49,7 @@
 <script type="text/javascript" src="<?php echo URLROOT ?>/js/jquery.timepicker.js"></script>
 <script type="text/javascript" src="<?php echo URLROOT ?>/js/raphael.min.js"></script>
 <script type="text/javascript" src="<?php echo URLROOT ?>/js/morris.js"></script>
+<script type="text/javascript" src="<?php echo URLROOT ?>/js/html2pdf.bundle.min.js"></script>
 <script src="<?php echo URLROOT ?>/js/FileSaver.js-master/dist/FileSaver.min.js"></script>
 <script src="<?php echo URLROOT ?>/js/js-xlsx-master/dist/xlsx.core.min.js"></script>
 <script src="<?php echo URLROOT ?>/js/js-xlsx-master/dist/xlsx.full.min.js"></script>

@@ -98,19 +98,25 @@ tr, td{
 
     <?php if(isset($data['payrolldata'])): ?>
 
+     
+
+      
   <div style='width:70%; margin-top:10px'>
 
 
       <table>
           <tr>
-              <td><a style='font-size:10px' href='<?php echo URLROOT  ?>/payslip/slipdf/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['employeeid']) ?>'
-                     class='btn btn-danger pull-right'>Download PDF</a></td>
+              <!-- <td><a style='font-size:10px' href='<?php echo URLROOT  ?>/payslip/slipdf/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['employeeid']) ?>'
+                     class='btn btn-danger pull-right'>Download PDF</a></td> -->
               <td><a style='font-size:10px' href='<?php echo URLROOT  ?>/payslip/slipexcel/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['employeeid']) ?>'
                      class='btn btn-danger pull-right'>Download EXCEL</a></td>
+              <td><button style='font-size:10px' onclick="test()" class='btn btn-warning pull-right'>Download PDF</button></td>
           </tr>
       </table>
-
-    <div style="width:50%">
+      <div id='pdfprint'>
+     <div style="display: none;" align='center'><img src="<?php echo URLROOT ?>/img/vamed.png" alt="Vamed"></div>
+     <br>
+    <div style="width:100%">
     <table  class='table table-bordered '>
       <tr>
        <td>Staff Name</td>
@@ -288,6 +294,7 @@ tr, td{
 
 
     </div>
+    </div>
 
     <?php
      endif;
@@ -319,3 +326,17 @@ tr, td{
     </div>
     </div>
     <?php require APPROOT .'/views/inc/footer.php'  ?>
+    <script>
+      function test() {
+        // Get the element.
+        var element = document.getElementById('pdfprint');
+        console.log('hi')
+        // Generate the PDF.
+        html2pdf().from(element).set({
+          margin: 1,
+          filename: '<?php echo $data['payrolldata']['fullname']  ?>.pdf',
+          html2canvas: { scale: 2 },
+          jsPDF: {orientation: 'portrait', unit: 'in', format: 'letter', compressPDF: true}
+        }).save();
+      }
+    </script>

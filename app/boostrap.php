@@ -7,7 +7,7 @@ require_once 'config/config_env.php';
 
 // Load everything we require via composer
 require('../vendor/autoload.php');
-//require('../vendor/html2pdf/html2pdf.class.php');
+require('helpers/html2pdf/html2pdf.class.php');
 
 //helper functions
 require_once 'helpers/general_helper.php';
