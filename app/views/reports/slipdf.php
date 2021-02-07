@@ -92,70 +92,41 @@ ob_start();
     </tr>
 
     <tr>
-        <td>Transport Allowance</td>
-        <td class="vas"><?php echo payround($data['payrolldata']['transportvehiclemaintenance'])  ?></td>
+        <td>Other Benefits / Allowances</td>
+        <td class="vas"><?php echo payround($data['payrolldata']['otherbenefits'])  ?></td>
     </tr>
 
-    <tr>
-        <td>Rent Allowance</td>
-        <td class="vas"><?php echo payround($data['payrolldata']['rentallowance'])  ?></td>
-    </tr>
 
     <tr  style="background:#00ACE5; font-size:20px; color:#fff">
-        <td>Gross Income</td>
+        <td>Gross Salary</td>
         <td class='vas'><?php echo payround($data['payrolldata']['grossincome'])  ?></td>
     </tr>
 
     <tr>
-     <td colspan="2"><br/></td>
-    </tr>
-
-    <tr  style="color:#00ACE5; font-weight:700">
-     <td colspan=2>Bonuses</td>
+     <td>Monthly Loan Repayment</td>
+     <td class='vas'><?php echo payround($data['payrolldata']['loanrepayment'])  ?></td>
     </tr>
     <tr>
-     <td>50% Standard Overtime</td>
-     <td class='vas'><?php echo payround($data['payrolldata']['standardovertime'])  ?></td>
+     <td>Loan Benefits</td>
+     <td class='vas'><?php echo payround($data['payrolldata']['loanbenefits'])  ?></td>
     </tr>
     <tr>
-     <td><?php  echo teamdev($data['payrolldata']['category']) ?>  Team Development Bonus</td>
-      <td class='vas'><?php echo payround($data['payrolldata']['teamdevelopment'])  ?></td>
-    </tr>
-    <tr>
-     <td>Saturdays, Sundays, & Public Holidays Overtime	</td>
-      <td class='vas'><?php echo payround($data['payrolldata']['satsunholovertime'])  ?></td>
-    </tr>
-    <tr style="background:#00ACE5; font-size:15px; color:#fff">
-     <td>Total Bonuses</td>
-        <td class="vas"><?php echo payround($data['payrolldata']['totalbonus'])  ?></td>
+     <td>Tax Relief	</td>
+      <td class='vas'><?php echo payround($data['payrolldata']['taxrelief'])  ?></td>
     </tr>
 
     <tr>
-     <td colspan="2"><br/></td>
-    </tr>
-
-    <tr  style="color:#00ACE5; font-weight:700">
-     <td colspan="2">Deductions</td>
-    </tr>
-    <tr>
-     <td>Tax Relief</td>
-         <td class='vas'><?php echo payround($data['payrolldata']['taxrelief'])  ?></td>
-    </tr>
-    <tr>
-     <td>Taxable Income</td>
+     <td>Taxable Income	</td>
       <td class='vas'><?php echo payround($data['payrolldata']['taxableincome'])  ?></td>
     </tr>
     <tr>
      <td>PAYE Tax Payable </td>
          <td class='vas'><?php echo payround($data['payrolldata']['paye'])  ?></td>
     </tr>
+
     <tr>
-     <td>WHT on Overtime</td>
-      <td class='vas'><?php echo payround($data['payrolldata']['whtonstandardovertime'])  ?></td>
-    </tr>
-    <tr>
-     <td>WHT on Excess Overtime</td>
-        <td class='vas'><?php echo payround($data['payrolldata']['whtonsatsunholovertime'])  ?></td>
+     <td>Bonus </td>
+         <td class='vas'><?php echo payround($data['payrolldata']['bonus'])  ?></td>
     </tr>
 
     <tr>
@@ -163,25 +134,37 @@ ob_start();
          <td class='vas'><?php echo payround($data['payrolldata']['bonustax'])  ?></td>
    </tr>
 
-
-    <tr>
+   <tr>
      <td>Total Tax Payable</td>
          <td class='vas'><?php echo payround($data['payrolldata']['totaltaxpayable'])  ?></td>
+   </tr>
+
+    <tr style="background:#00ACE5; font-size:15px; color:#fff">
+     <td>Total Cash Emoluments</td>
+        <td class="vas"><?php echo payround($data['payrolldata']['vamedwelfarenetsalary'])  ?></td>
     </tr>
 
+    <tr>
+     <td colspan="2"><br/></td>
+    </tr>
+
+  
+    <tr>
+        <td>Salary Advance</td>
+        <td class='vas'><?php echo payround($data['payrolldata']['salaryadvance'])  ?></td>
+    </tr>
+    <tr>
+        <td>Net Salary</td>
+        <td class='vas'><?php echo payround($data['payrolldata']['vamednetpay'])  ?></td>
+    </tr>
     <tr>
      <td>Staff Welfare Association Contribution</td>
          <td class='vas'><?php echo payround($data['payrolldata']['staffwelfare'])  ?></td>
     </tr>
 
     <tr>
-        <td>Salary Advance</td>
-        <td class='vas'><?php echo payround($data['payrolldata']['salaryadvance'])  ?></td>
-    </tr>
-
-    <tr>
-        <td>Other Benefits</td>
-        <td class='vas'><?php echo payround($data['payrolldata']['otherbenefits'])  ?></td>
+        <td>Other deductible</td>
+        <td class='vas'><?php echo payround($data['payrolldata']['otherdeductible'])  ?></td>
     </tr>
 
     <tr>
@@ -194,21 +177,21 @@ ob_start();
     </tr>
 
     <tr style="color:#00ACE5; font-weight:700">
-        <td colspan="2">Mnnthly Contributions</td>
+        <td colspan="2">Monthly Contributions</td>
     </tr>
 
     <tr>
-        <td>Tier 1</td>
+        <td>Tier 1 - SSF @ 13.5%</td>
         <td><?php  echo $data['payrolldata']['staffssnit']  ?></td>
     </tr>
 
     <tr>
-        <td>Tier 2</td>
+        <td>Tier 2 - OPS @ 5%</td>
         <td><?php  echo $data['payrolldata']['secondtier']    ?></td>
     </tr>
 
     <tr>
-        <td>Tier 3</td>
+        <td>Tier 3 - PF @ 10%</td>
         <td><?php  echo $data['payrolldata']['tier3'] ?></td>
     </tr>
 
