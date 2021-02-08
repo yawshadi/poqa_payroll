@@ -19,17 +19,17 @@ $role =  $n->recordObject->role;
   if($role == 'Administrator' || $role == 'Head of Admin' || $role == 'Payroll Manager'){
 ?>
 <a href="<?php echo URLROOT  ?>/pages/payperiod"><i  class="fa  fa-circle"></i> Payroll Configurtions</a>
-<a href="<?php echo URLROOT  ?>/task/taskdashboard"><i  class="fa  fa-circle"></i> Task Management</a>
-<a href="<?php echo URLROOT  ?>/payrollreport/mainpayroll"><i  class="fa fa-home"></i> Reports</a>
-
-
 <?php } ?>
 <?php
   if($role == 'Administrator' || $role == 'Head of Admin'){
     ?>
 <a href="<?php echo URLROOT  ?>/pages/userlist"><i  class="fa  fa-circle"></i> User Management</a>
 <?php } ?>
-
+<?php
+  if($role != 'Leave Manager'){?>
+<a href="<?php echo URLROOT  ?>/task/taskdashboard"><i  class="fa  fa-circle"></i> Task Management</a>
+<a href="<?php echo URLROOT  ?>/payrollreport/mainpayroll"><i  class="fa fa-home"></i> Reports</a>
+<?php } ?>
 <a href="<?php echo URLROOT  ?>/operations"> <i  class="fa  fa-user"></i> Operational Modules</a>
 
 
