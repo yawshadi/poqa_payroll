@@ -66,6 +66,11 @@ class Pages extends Controller{
 				header('Location:'.URLROOT.'/pages/visamasterlist');
 				}
 
+				if($status == 'Active' && $role == 'Leave Manager' ){
+					$_SESSION['uid'] = $uid;
+					header('Location:'.URLROOT.'/operations/operationsview/Leave');
+					}
+
 			}else{
 				$message = ['message'=>'Incorrect email or password'];
 				$this->view('pages/index', $message);

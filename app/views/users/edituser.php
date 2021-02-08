@@ -66,6 +66,7 @@
                 <option>Site Manager</option>
                 <option>Head of Admin</option>
                 <option>Data Entry Clerk</option>
+                <option>Leave Manager</option>
                 <option>Expatriate</option>
                 <option value='Administrator'>Managing Director</option>
                 <option>IT Manager</option>

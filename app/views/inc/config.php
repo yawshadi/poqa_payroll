@@ -2,12 +2,17 @@
 
 
 <div href="#"> SYSTEM CONFIGURATIONS</div>
+<?php
+if($role != 'Leave Manager'  ){
+?>
+
     <a href="<?php echo URLROOT  ?>/pages/companies"><i  class="fa  fa-circle"></i> Companies</a>
     <a href="<?php echo URLROOT  ?>/pages/departments"><i  class="fa  fa-calculator"></i> Departments</a>
     <a href="<?php echo URLROOT  ?>/pages/positions"><i  class="fa  fa-circle"></i> Positions</a>
+    <a href="<?php echo URLROOT  ?>/pages/currency"><i  class="fa  fa-circle"></i> Currency Config</a>
+<?php } ?>
     <a href="<?php echo URLROOT  ?>/operations/holiday"><i  class="fa  fa-circle"></i> Holiday Setup</a>
     <a href="<?php echo URLROOT  ?>/operations/leavedays"><i  class="fa  fa-circle"></i> Leave Days</a>
-    <a href="<?php echo URLROOT  ?>/pages/currency"><i  class="fa  fa-circle"></i> Currency Config</a>
 </ul>
 <ul class="navbar-nav ml-auto">
 <li class="nav-item" style="te">

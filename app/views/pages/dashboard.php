@@ -45,16 +45,26 @@ $role =  $n->recordObject->role;
          }
       ?>
 
-      <?php if($role == 'HR Manager' || $role == 'Administrator' || $role == 'Head of Admin'){
+      <?php if($role == 'HR Manager' || $role == 'Administrator' || $role == 'Head of Admin'||$role == 'Leave Manager'){
         ?>
 
       <div class="col-lg-4 col-md-4 col-sm-12">
-      <a href="<?php  echo URLROOT.'/pages/companies';  ?>">
+      <?php if($role == 'Leave Manager'){ ?>
+
+         <a href="<?php  echo URLROOT.'/operations/leavedays';  ?>">
+         <?php 
+          } else{
+          ?>
+          <a href="<?php  echo URLROOT.'/pages/companies';  ?>">
+         <?php  
+          }
+          ?>
       <div class="card">
       <div class="container">
       <h4><b>&nbsp;</b></h4>
       <div align='center' class="img-holder"> <img class="card-img" src="<?php echo URLROOT ?>/img/settings.svg"  /> </div>
       <p align="center" class="roboto" >System Configurations </p>
+
       <h4><b>&nbsp;</b></h4>
      </div>
      </div>
@@ -63,8 +73,27 @@ $role =  $n->recordObject->role;
       <?php
          }
       ?>
+      <?php if($role == 'Leave Manager'){
+        ?>
+     <div class="col-lg-4 col-md-4 col-sm-12">
+
+        <div class="card">
+        <a href="<?php echo  URLROOT.'/operations/operationsview/Leave';?>">
+        <div class="container">
+
+        <h4><b>&nbsp;</b></h4>
+        <div align='center' class="img-holder"> <img class="card-img" src="<?php echo URLROOT ?>/img/diploma.svg" /> </div>
+        <p align="center" class="roboto" >Leaves</p>
+
+        <h4><b>&nbsp;</b></h4>
+        </div>
+        </div>
+        </a>
+        </div>
+
 
       <?php
+      }
         if($role == 'Administrator' || $role == 'Head of Admin' || $role == 'Payroll Manager'){
       ?>
       <div class="col-lg-4 col-md-4 col-sm-12">
@@ -91,7 +120,8 @@ $role =  $n->recordObject->role;
 
 
       <div class="row" style="margin-bottom:20px">
-
+      <?php
+        if($role == 'Administrator' || $role == 'Head of Admin' || $role == 'Payroll Manager'){ ?>
       <div class="col-lg-4 col-md-4 col-sm-12">
       <a href="<?php echo URLROOT ?>/payrollreport/mainpayroll">
       <div class="card">
@@ -106,6 +136,7 @@ $role =  $n->recordObject->role;
       </div>
 
       <?php
+        }
         if($role == 'Administrator' || $role == 'Head of Admin'){
           ?>
       <div class="col-lg-4 col-md-4 col-sm-12">
