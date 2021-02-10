@@ -29,8 +29,8 @@ $role =  $n->recordObject->role;
   if($role != 'Leave Manager'){?>
 <a href="<?php echo URLROOT  ?>/task/taskdashboard"><i  class="fa  fa-circle"></i> Task Management</a>
 <a href="<?php echo URLROOT  ?>/payrollreport/mainpayroll"><i  class="fa fa-home"></i> Reports</a>
-<?php } ?>
 <a href="<?php echo URLROOT  ?>/operations"> <i  class="fa  fa-user"></i> Operational Modules</a>
+<?php } ?>
 
 
 </div>
