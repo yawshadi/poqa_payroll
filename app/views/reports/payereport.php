@@ -110,7 +110,7 @@ tr, td{
    <td>Employee Name</td>
    <td>Position</td>
    <td>Employee TIN</td>
-   <td>Basic Salary</td>
+   <td>Consolidated Salary</td>
    <td>Tax Deductible</td>
    <td>Total Tax to GRA</td>
 
