@@ -107,7 +107,7 @@ tr, td{
       <table>
           <tr>
               <td><a style='font-size:10px' href='<?php echo URLROOT  ?>/payslip/slipdf/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['employeeid']) ?>'
-                     class='btn btn-danger pull-right'>Download PDFx</a></td>
+                     class='btn btn-danger pull-right'>Download PDF</a></td>
               <td><a style='font-size:10px' href='<?php echo URLROOT  ?>/payslip/slipexcel/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['employeeid']) ?>'
                      class='btn btn-danger pull-right'>Download EXCEL</a></td>
               <!-- <td><button style='font-size:10px' onclick="test()" class='btn btn-warning pull-right'>Download PDF</button></td> -->
