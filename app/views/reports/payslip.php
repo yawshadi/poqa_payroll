@@ -106,11 +106,11 @@ tr, td{
 
       <table>
           <tr>
-              <!-- <td><a style='font-size:10px' href='<?php echo URLROOT  ?>/payslip/slipdf/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['employeeid']) ?>'
-                     class='btn btn-danger pull-right'>Download PDF</a></td> -->
+              <td><a style='font-size:10px' href='<?php echo URLROOT  ?>/payslip/slipdf/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['employeeid']) ?>'
+                     class='btn btn-danger pull-right'>Download PDFx</a></td>
               <td><a style='font-size:10px' href='<?php echo URLROOT  ?>/payslip/slipexcel/<?php echo $data['startdate'] ?>/<?php echo $data['enddate'] ?>/<?php echo urlencode($data['employeeid']) ?>'
                      class='btn btn-danger pull-right'>Download EXCEL</a></td>
-              <td><button style='font-size:10px' onclick="test()" class='btn btn-warning pull-right'>Download PDF</button></td>
+              <!-- <td><button style='font-size:10px' onclick="test()" class='btn btn-warning pull-right'>Download PDF</button></td> -->
           </tr>
       </table>
       <div id='pdfprint'>
@@ -130,7 +130,10 @@ tr, td{
        <td>Job Category</td>
        <td class="getvisaemployees"><?php echo $data['payrolldata']['jodcat']  ?></td>
       </tr>
-
+      <tr>
+       <td>Location</td>
+       <td class="getvisaemployees"><?php echo $data['payrolldata']['location']  ?></td>
+      </tr>
       <tr>
        <td>Social Security No:</td>
        <td class="vas"><?php echo $data['payrolldata']['ssnitnumber']  ?></td>
@@ -235,7 +238,7 @@ tr, td{
 
 <tr style="background:#00ACE5; font-size:15px; color:#fff">
  <td>Total Cash Emoluments</td>
-    <td class="vas"><?php echo payround($data['payrolldata']['vamedwelfarenetsalary'])  ?></td>
+    <td class="vas"><?php echo payround($data['payrolldata']['paysliptotalpay'])  ?></td>
 </tr>
 
 <tr>
@@ -276,7 +279,7 @@ tr, td{
 
 <tr>
     <td>Tier 1 - SSF @ 13.5%</td>
-    <td><?php  echo $data['payrolldata']['staffssnit']  ?></td>
+    <td><?php  echo $data['payrolldata']['ssnitact']  ?></td>
 </tr>
 
 <tr>
@@ -286,7 +289,7 @@ tr, td{
 
 <tr>
     <td>Tier 3 - PF @ 10%</td>
-    <td><?php  echo $data['payrolldata']['tier3'] ?></td>
+    <td><?php  echo $data['payrolldata']['totalpf'] ?></td>
 </tr>
 
 </table>

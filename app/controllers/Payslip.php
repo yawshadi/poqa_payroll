@@ -71,6 +71,9 @@ class Payslip extends Controller{
             $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
             $secondtier = Vamedcalculations::secondtier($basicsalary, $category); // 2021
 
+
+            $paysliptotalpay = Vamedcalculations::paysliptotal($vamednetpay,$otherbenefits,$bonus,$loanbenefits,$totaltaxpayable,$salaryadvance,$basicsalary); // 2021
+
         $employerprovidentfund  = Vamedcalculations::employeeprovidentfund($basicsalary);
         $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
@@ -91,7 +94,7 @@ class Payslip extends Controller{
                               'totalssnit'=>$totalssnit, 'ssnitact'=>$ssnitact, 'secondtier'=>$secondtier,
                               'totalbonus'=>$totalbonus,  'otherbenefits'=>$otherbenefits, 'tier3'=>$tier3,
                                'category'=>$category, 'providentfund'=> $staffprovidentfund,'jobcat'=>$jobcat,'bonus'=>$bonus,
-                               'otherdeductible'=>$otherdeductible,'loanrepayment'=>$loanrepayment,'loanbenefits'=>$loanbenefits
+                               'otherdeductible'=>$otherdeductible,'loanrepayment'=>$loanrepayment,'loanbenefits'=>$loanbenefits,'totalpf'=>$totalprovident,'paysliptotalpay'=>$paysliptotalpay
             ];
 
 
@@ -165,6 +168,8 @@ class Payslip extends Controller{
         $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
         $secondtier = Vamedcalculations::secondtier($basicsalary, $category); // 2021
 
+        $paysliptotalpay = Vamedcalculations::paysliptotal($vamednetpay,$otherbenefits,$bonus,$loanbenefits,$totaltaxpayable,$salaryadvance,$basicsalary); // 2021
+
     $employerprovidentfund  = Vamedcalculations::employeeprovidentfund($basicsalary);
     $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
@@ -185,7 +190,7 @@ class Payslip extends Controller{
                           'totalssnit'=>$totalssnit, 'ssnitact'=>$ssnitact, 'secondtier'=>$secondtier,
                           'totalbonus'=>$totalbonus,  'otherbenefits'=>$otherbenefits, 'tier3'=>$tier3,
                            'category'=>$category, 'providentfund'=> $staffprovidentfund,'jobcat'=>$jobcat,'bonus'=>$bonus,
-                           'otherdeductible'=>$otherdeductible,'loanrepayment'=>$loanrepayment,'loanbenefits'=>$loanbenefits
+                           'otherdeductible'=>$otherdeductible,'loanrepayment'=>$loanrepayment,'loanbenefits'=>$loanbenefits,'totalpf'=>$totalprovident,'paysliptotalpay'=>$paysliptotalpay
         ];
 
 
@@ -254,6 +259,9 @@ class Payslip extends Controller{
         $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
         $secondtier = Vamedcalculations::secondtier($basicsalary, $category); // 2021
 
+        
+        $paysliptotalpay = Vamedcalculations::paysliptotal($vamednetpay,$otherbenefits,$bonus,$loanbenefits,$totaltaxpayable,$salaryadvance,$basicsalary); // 2021
+
         $employerprovidentfund  = Vamedcalculations::employeeprovidentfund($basicsalary);
         $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
         $tier3  =  Vamedcalculations::staffprovidentfund($basicsalary);
@@ -281,11 +289,14 @@ class Payslip extends Controller{
         $objPHPExcel->getActiveSheet()->SetCellValue('A10', 'Name of Employee');
         $objPHPExcel->getActiveSheet()->SetCellValue('B10',  $fullname);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A12', 'Position');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B12', $position);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A11', 'Position');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B11', $position);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A13', 'Job Category');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B13', $jobcat);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A12', 'Job Category');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B12', $jobcat);
+
+        $objPHPExcel->getActiveSheet()->SetCellValue('A13', 'Location');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B13', $location);
 
         $objPHPExcel->getActiveSheet()->SetCellValue('A14', 'Social Security');
         $objPHPExcel->getActiveSheet()->SetCellValue('B14', $ssnitnumber);
@@ -345,7 +356,7 @@ class Payslip extends Controller{
         $objPHPExcel->getActiveSheet()->SetCellValue('D35', $totaltaxpayable);
 
         $objPHPExcel->getActiveSheet()->SetCellValue('A36', 'Total Cash Emoluments');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D36', payround($vamedwelfarenetsalary));
+        $objPHPExcel->getActiveSheet()->SetCellValue('D36', payround($paysliptotalpay));
 
         $objPHPExcel->getActiveSheet()->SetCellValue('A37', 'Salary Advance');
         $objPHPExcel->getActiveSheet()->SetCellValue('D37',  $salaryadvance);
@@ -365,13 +376,13 @@ class Payslip extends Controller{
         $objPHPExcel->getActiveSheet()->SetCellValue('A42', 'Monthly Contributions');
 
         $objPHPExcel->getActiveSheet()->SetCellValue('A43', 'Tier 1 - SSF @ 13.5%');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D43', $staffssnit);
+        $objPHPExcel->getActiveSheet()->SetCellValue('D43', $ssnitact);
 
         $objPHPExcel->getActiveSheet()->SetCellValue('A44', 'Tier 2 - OPS @ 5%');
         $objPHPExcel->getActiveSheet()->SetCellValue('D44', $secondtier);
 
         $objPHPExcel->getActiveSheet()->SetCellValue('A45', 'Tier 3 - PF @ 10% ');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D45', $tier3);
+        $objPHPExcel->getActiveSheet()->SetCellValue('D45', $totalprovident);
 
 
 

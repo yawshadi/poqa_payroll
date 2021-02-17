@@ -41,6 +41,10 @@ ob_start();
      <td class="getvisaemployees"><?php echo $data['payrolldata']['jobcat']  ?></td>
     </tr>
     <tr>
+       <td>Location</td>
+       <td class="getvisaemployees"><?php echo $data['payrolldata']['location']  ?></td>
+      </tr>
+    <tr>
      <td>Social Sec. No:</td>
      <td class="vas"><?php echo $data['payrolldata']['ssnitnumber']  ?></td>
     </tr>
@@ -141,7 +145,7 @@ ob_start();
 
     <tr style="background:#00ACE5; font-size:15px; color:#fff">
      <td>Total Cash Emoluments</td>
-        <td class="vas"><?php echo payround($data['payrolldata']['vamedwelfarenetsalary'])  ?></td>
+        <td class="vas"><?php echo payround($data['payrolldata']['paysliptotalpay'])  ?></td>
     </tr>
 
     <tr>
@@ -182,7 +186,7 @@ ob_start();
 
     <tr>
         <td>Tier 1 - SSF @ 13.5%</td>
-        <td><?php  echo $data['payrolldata']['staffssnit']  ?></td>
+        <td><?php  echo $data['payrolldata']['ssnitact']  ?></td>
     </tr>
 
     <tr>
@@ -192,7 +196,7 @@ ob_start();
 
     <tr>
         <td>Tier 3 - PF @ 10%</td>
-        <td><?php  echo $data['payrolldata']['tier3'] ?></td>
+        <td><?php  echo $data['payrolldata']['totalpf'] ?></td>
     </tr>
 
   </table>

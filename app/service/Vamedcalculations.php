@@ -184,6 +184,13 @@ class Vamedcalculations{
       }
    }
 
+
+   public static function paysliptotal($vamednetpay,$otherbenefits,$bonus,$loanbenefits,$totaltaxpayable,$salaryadvance,$basicsalary){
+      $amount = $vamednetpay + $otherbenefits - $loanbenefits + $bonus + $totaltaxpayable - $salaryadvance +($basicsalary*0.185)+($basicsalary*0.10);
+
+      return $amount;
+   }
+
    public static function vamedwelfarenetsalary($vamednetpay, $staffwelfare,$otherdeductible){
      $amount =  $vamednetpay - $staffwelfare - $otherdeductible;
       return $amount;
