@@ -35,12 +35,13 @@ class Provident extends Controller
                 $basicsalary = $get->basicsalary;
                 $tinnumber = $get->tinnumber;
                 $tier3number = $get->tier3number;
+                $staffid = $get->staffid;
 
                 $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
                 $payrolldata[] = [
                     'fullname'=>$fullname,  'ssnitnumber'=>$ssnitnumber,
-                    'basicsalary'=>$basicsalary, 'totalprovident'=> $totalprovident,'memberid'=>$tier3number
+                    'basicsalary'=>$basicsalary, 'totalprovident'=> $totalprovident,'memberid'=>$tier3number,'staffid'=>$staffid
                 ];
             }
             $alldata =  ['companies'=>$comdata, 'payrolldata'=>$payrolldata, 'payperiod'=>$paydata,

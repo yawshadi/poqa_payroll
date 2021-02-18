@@ -122,7 +122,7 @@
                                             <tr>
 
                                                 <td><?php echo $count;   ?></td>
-                                                <td></td>
+                                                <td><?php echo $get['staffid'];   ?></td>
                                                 <td><?php echo $get['fullname'];   ?></td>
                                                 <td><?php echo $get['basicsalary'];   ?></td>
                                                 <td><?php echo $get['ssnitnumber'];    ?> </td>
