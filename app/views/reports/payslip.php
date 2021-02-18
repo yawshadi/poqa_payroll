@@ -128,7 +128,7 @@ tr, td{
       </tr>
       <tr>
        <td>Job Category</td>
-       <td class="getvisaemployees"><?php echo $data['payrolldata']['jodcat']  ?></td>
+       <td class="getvisaemployees"><?php echo $data['payrolldata']['jobcat']  ?></td>
       </tr>
       <tr>
        <td>Location</td>
