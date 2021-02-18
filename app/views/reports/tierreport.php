@@ -111,7 +111,7 @@ tr, td{
       <td>Staff ID</td>
    <td>Position</td>
    <td>Tier 2 Number </td>
-   <td>Basic Salary</td>
+   <td>Consolidated Salary</td>
    <td>SSF (5%)</td>
  
    </tr>

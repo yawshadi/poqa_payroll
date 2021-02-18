@@ -111,7 +111,7 @@ tr, td{
    <td>Surname</td>
    <td>Othernames </td>
       <td>SSNIT Number</td>
-   <td>Basic Salary</td>
+   <td>Consolidated Salary</td>
    <td>SSF (13.5%)</td>
  
    </tr>

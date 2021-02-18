@@ -84,7 +84,7 @@ class Ssnit extends Controller
         $objPHPExcel->getActiveSheet()->SetCellValue('C6', 'Surname');
         $objPHPExcel->getActiveSheet()->SetCellValue('D6', 'Othernames');
         $objPHPExcel->getActiveSheet()->SetCellValue('E6', 'SNNIT Number');
-        $objPHPExcel->getActiveSheet()->SetCellValue('F6', 'Basic Salary');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F6', 'Consolidated Salary');
         $objPHPExcel->getActiveSheet()->SetCellValue('G6', 'SSF (13.5%)');
 
         for ($i = 'A'; $i != $objPHPExcel->getActiveSheet()->getHighestColumn(); $i++) {

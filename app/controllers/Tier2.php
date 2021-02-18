@@ -82,7 +82,7 @@ class Tier2 extends Controller
     $objPHPExcel->getActiveSheet()->SetCellValue('D6', 'Postion');
     $objPHPExcel->getActiveSheet()->SetCellValue('E6', 'Tier2 Number');
     $objPHPExcel->getActiveSheet()->SetCellValue('F6', 'SSNIT Number');
-    $objPHPExcel->getActiveSheet()->SetCellValue('G6', 'Basic Salary');
+    $objPHPExcel->getActiveSheet()->SetCellValue('G6', 'Consolidated Salary');
     $objPHPExcel->getActiveSheet()->SetCellValue('H6', 'SSF (5%)');
 
     for ($i = 'A'; $i != $objPHPExcel->getActiveSheet()->getHighestColumn(); $i++) {
