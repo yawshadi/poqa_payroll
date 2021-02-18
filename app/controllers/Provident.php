@@ -36,7 +36,7 @@ class Provident extends Controller
                 $tinnumber = $get->tinnumber;
                 $tier3number = $get->tier3number;
 
-                $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary);
+                $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
                 $payrolldata[] = [
                     'fullname'=>$fullname,  'ssnitnumber'=>$ssnitnumber,
@@ -108,7 +108,7 @@ class Provident extends Controller
             $tinnumber = $get->tinnumber;
             $tier3number = $get->tier3number;
 
-            $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary);
+            $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
             $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $count);
             $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, '');

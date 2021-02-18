@@ -34,6 +34,8 @@ class Bankadvice extends Controller{
                 $ssnitnumber = $get->ssnitnumber;
                 $location = $get->location;
                 $basicsalary = $get->basicsalary;
+                $ssnitnumber = $get->ssnitnumber;
+                $otherbenefits = $get->otherbenefit;
 
                 $account  = $get->accountnumber;
                 $branchname = $get->branch;
@@ -46,7 +48,12 @@ class Bankadvice extends Controller{
                 $taxrelief = $rec->taxrelf;
                 $salaryadvance =  $rec->salaryadvance;
                 $staffwelfare = $rec->staffwelfare;
-
+                $otherdeductible = $rec->otherdeductions;
+                $bonus = $rec->bonus;
+                $loanrepayment = $rec->loanrepayment;
+  
+  
+  
                 //payrollcalculations
                 $staffssnit = Vamedcalculations::staffssnit($basicsalary);
                 $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
@@ -56,21 +63,23 @@ class Bankadvice extends Controller{
                 $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
                 $rentallowance = Vamedcalculations::rentallowance($basicsalary);
                 $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
-                $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit, $staffprovidentfund);
-                //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
-                $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief);
-                $paye =  Vamedcalculations::paye($taxableincome);
+                $grossincome = Vamedcalculations::grossincome($basicsalary, $otherbenefits, $staffssnit, $staffprovidentfund); // 2021
+                $loanbenefits = Vamedcalculations::loanbenefits($loanrepayment); // 2021
+                $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits); // 2021
+                $paye =  Vamedcalculations::paye($taxableincome); // 2021 explain
                 $whtonstandardovertime = Vamedcalculations::whtonstandardovertime($standardovertime);
                 $whtonsatsunholovertime =  Vamedcalculations::whtonsatsunholovertime($satsunholovertime);
-                $bonustax = Vamedcalculations::bonustax($teamdevelopment);
-                $totaltaxpayable = Vamedcalculations::totaltaxpayable($paye, $whtonstandardovertime, $whtonsatsunholovertime, $bonustax);
-                $otherbenefits = $rec->otherbenefits;
-                $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance, $otherbenefits);
-                $vamedwelfarenetsalary = Vamedcalculations::vamedwelfarenetsalary($vamednetpay, $staffwelfare);
+                $bonustax = Vamedcalculations::bonustax($bonus); // 2021
+                $totaltaxpayable = Vamedcalculations::totaltaxpayable($paye,$bonustax); //2021
+                $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $totaltaxpayable, $salaryadvance, $loanrepayment,$bonus,$basicsalary,$category); // 2021
+                $vamedwelfarenetsalary = Vamedcalculations::vamedwelfarenetsalary($vamednetpay, $staffwelfare,$otherdeductible);
                 $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
                 $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
-                $ssnitact  = Vamedcalculations::ssnitact($totalssnit);
-                $secondtier = Vamedcalculations::secondtier($totalssnit, $ssnitact);
+                $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
+                $secondtier = Vamedcalculations::secondtier($basicsalary, $category); // 2021
+  
+                $employerprovidentfund  = Vamedcalculations::employeeprovidentfund($basicsalary);
+                $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
                 $payrolldata[] = [
                     'bank'=>$bank, 'accountnumber'=>$account, 'branchcode'=>$branchcode,'fullname'=>$fullname,'vamednetpay'=>$vamedwelfarenetsalary
@@ -129,6 +138,8 @@ class Bankadvice extends Controller{
             $ssnitnumber = $get->ssnitnumber;
             $location = $get->location;
             $basicsalary = $get->basicsalary;
+            $ssnitnumber = $get->ssnitnumber;
+            $otherbenefits = $get->otherbenefit;
 
             $account  = $get->accountnumber;
             $branchname = $get->branch;
@@ -136,12 +147,16 @@ class Bankadvice extends Controller{
 
             $branchcode = Bank::getbanksortcode($bank, $branchname);
 
-
             //recurrent calculation
             $rec = Reports::getpayrollrecurrent($basic_id, $startdate, $enddate);
             $taxrelief = $rec->taxrelf;
             $salaryadvance =  $rec->salaryadvance;
             $staffwelfare = $rec->staffwelfare;
+            $otherdeductible = $rec->otherdeductions;
+            $bonus = $rec->bonus;
+            $loanrepayment = $rec->loanrepayment;
+
+
 
             //payrollcalculations
             $staffssnit = Vamedcalculations::staffssnit($basicsalary);
@@ -152,22 +167,23 @@ class Bankadvice extends Controller{
             $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
             $rentallowance = Vamedcalculations::rentallowance($basicsalary);
             $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
-            $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit, $staffprovidentfund);
-            //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
-            $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief);
-            $paye =  Vamedcalculations::paye($taxableincome);
+            $grossincome = Vamedcalculations::grossincome($basicsalary, $otherbenefits, $staffssnit, $staffprovidentfund); // 2021
+            $loanbenefits = Vamedcalculations::loanbenefits($loanrepayment); // 2021
+            $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits); // 2021
+            $paye =  Vamedcalculations::paye($taxableincome); // 2021 explain
             $whtonstandardovertime = Vamedcalculations::whtonstandardovertime($standardovertime);
             $whtonsatsunholovertime =  Vamedcalculations::whtonsatsunholovertime($satsunholovertime);
-            $bonustax = Vamedcalculations::bonustax($teamdevelopment);
-            $totaltaxpayable = Vamedcalculations::totaltaxpayable($paye, $whtonstandardovertime, $whtonsatsunholovertime, $bonustax);
-            $otherbenefits = $rec->otherbenefits;
-            $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance, $otherbenefits);
-            //$vamednetpay = Vamedcalculations::vamednetpay($grossincome, $standardovertime, $teamdevelopment, $satsunholovertime, $totaltaxpayable, $salaryadvance);
-            $vamedwelfarenetsalary = Vamedcalculations::vamedwelfarenetsalary($vamednetpay, $staffwelfare);
+            $bonustax = Vamedcalculations::bonustax($bonus); // 2021
+            $totaltaxpayable = Vamedcalculations::totaltaxpayable($paye,$bonustax); //2021
+            $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $totaltaxpayable, $salaryadvance, $loanrepayment,$bonus,$basicsalary,$category); // 2021
+            $vamedwelfarenetsalary = Vamedcalculations::vamedwelfarenetsalary($vamednetpay, $staffwelfare,$otherdeductible);
             $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
             $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
-            $ssnitact  = Vamedcalculations::ssnitact($totalssnit);
-            $secondtier = Vamedcalculations::secondtier($totalssnit, $ssnitact);
+            $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
+            $secondtier = Vamedcalculations::secondtier($basicsalary, $category); // 2021
+
+            $employerprovidentfund  = Vamedcalculations::employeeprovidentfund($basicsalary);
+            $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
 
             $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $fullname);
