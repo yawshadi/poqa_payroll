@@ -108,11 +108,12 @@ class Provident extends Controller
             $basicsalary = $get->basicsalary;
             $tinnumber = $get->tinnumber;
             $tier3number = $get->tier3number;
+            $staffid = $get->staffid;
 
             $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
             $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $count);
-            $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, '');
+            $objPHPExcel->getActiveSheet()->setCellValue('B' . $i,  $staffid);
             $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $fullname);
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $basicsalary );
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $ssnitnumber);
