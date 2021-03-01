@@ -236,16 +236,16 @@ class Vamedcalculations{
    }
 
    public static function bonusincome ($basicsalary){
-     return $basicsalary * 0.15;
+     return $basicsalary * 0;
    }
 
 
    public static function taxonbonusincome ($bonusincome, $excessbonus){
-     return ($bonusincome * 0.05) + ($excessbonus * 0.10);
+     return ($bonusincome * 0.05) ;
    }
 
    public static function excessbonus ($basicsalary){
-      return $basicsalary * (0.925-0.5-0.15);
+      return $basicsalary * 0;
    }
 
    public static function cashallowance($basicsalary){
@@ -253,15 +253,15 @@ class Vamedcalculations{
        return $amount;
    }
 
-   public static function totalcashemolument ($basicsalary){
-     return $basicsalary + self::cashallowance($basicsalary);
+   public static function totalcashemolument ($basicsalary,$otherbenefits,$excessbonus){
+     return $basicsalary + $otherbenefits + $excessbonus;
    }
 
    public static function totalAssessableincome($totalcashemolument, $accomodation=0, $vehicle=0, $noncashbenefit=0){
       return $totalcashemolument + $accomodation + $vehicle + $noncashbenefit;
    }
 
-   public static function totalreliefs($staffssnit, $thirdtier=0, $dedrelief=0){
+   public static function totalreliefs($staffssnit, $thirdtier, $dedrelief=0){
 
       return $staffssnit + $thirdtier + $dedrelief;
    }
@@ -271,11 +271,11 @@ class Vamedcalculations{
    }
 
    public static function overtimecallincome ($basicsalary){
-      return $basicsalary * 0.5;
+      return $basicsalary * 0;
    }
 
    public static function overtimecalltax ($overtimecallincome){
-      return $overtimecallincome * 0.05;
+      return $overtimecallincome * 0;
    }
 
    public static function togra ($taxonbonusincome , $paye, $overtimecalltax){

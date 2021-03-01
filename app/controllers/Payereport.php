@@ -181,7 +181,7 @@ class Payereport extends Controller{
             $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
             $rentallowance = Vamedcalculations::rentallowance($basicsalary);
             $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
-            $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit, $staffprovidentfund);
+            $grossincome = Vamedcalculations::grossincome($basicsalary, $otherbenefits, $staffssnit, $staffprovidentfund); // 2021
             //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
             $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits);
             $paye =  Vamedcalculations::paye($taxableincome);
@@ -189,14 +189,15 @@ class Payereport extends Controller{
             $bonusincome = Vamedcalculations::bonusincome($basicsalary);
             $excessbonus = Vamedcalculations::excessbonus($basicsalary);
             $taxonbonusincome = Vamedcalculations::taxonbonusincome($bonusincome, $excessbonus);
-            $totalcashemolument = Vamedcalculations::totalcashemolument($basicsalary);
+            $totalcashemolument = Vamedcalculations::totalcashemolument($basicsalary,$otherbenefits,$excessbonus);
             $totalAssessableincome = Vamedcalculations::totalAssessableincome($totalcashemolument);
-            $totalreliefs = Vamedcalculations::totalreliefs($staffssnit);
+            $tier3  = Vamedcalculations::employeeprovidentfund($basicsalary);
+            $totalreliefs = Vamedcalculations::totalreliefs($staffssnit,$tier3);
             $chargeableincome = Vamedcalculations::chargeableincome($totalAssessableincome, $totalreliefs);
             $overtimecallincome = Vamedcalculations::overtimecallincome($basicsalary);
             $overtimecalltax = Vamedcalculations::overtimecalltax($overtimecallincome);
-            $togra = Vamedcalculations::togra($taxonbonusincome , $paye, $overtimecalltax);
-            $tier3  = Vamedcalculations::employeeprovidentfund($basicsalary);
+            $togra = Vamedcalculations::togra($taxonbonusincome , $paye, 0);
+          
             $cashallowance = Vamedcalculations::cashallowance($basicsalary);
 
 
@@ -212,7 +213,7 @@ class Payereport extends Controller{
             $objPHPExcel->getActiveSheet()->setCellValue('J' . $i, payround($otherbenefits));
             $objPHPExcel->getActiveSheet()->setCellValue('K' . $i, payround($bonusincome));
             $objPHPExcel->getActiveSheet()->setCellValue('L' . $i, payround($taxonbonusincome));
-            $objPHPExcel->getActiveSheet()->SetCellValue('M' . $i, payround($excessbonus));
+            $objPHPExcel->getActiveSheet()->SetCellValue('M' . $i, 0.00);
             $objPHPExcel->getActiveSheet()->SetCellValue('N' . $i, payround($totalcashemolument));
             $objPHPExcel->getActiveSheet()->SetCellValue('O' . $i, 0.00);
             $objPHPExcel->getActiveSheet()->SetCellValue('P' .$i, 0.00);
@@ -223,8 +224,8 @@ class Payereport extends Controller{
             $objPHPExcel->getActiveSheet()->SetCellValue('U' .$i, payround($chargeableincome));
             $objPHPExcel->getActiveSheet()->SetCellValue('V' .$i, payround($paye));
 
-            $objPHPExcel->getActiveSheet()->SetCellValue('W' .$i, payround($overtimecallincome));
-            $objPHPExcel->getActiveSheet()->SetCellValue('X' .$i, payround($overtimecalltax));
+            $objPHPExcel->getActiveSheet()->SetCellValue('W' .$i, 0.00);
+            $objPHPExcel->getActiveSheet()->SetCellValue('X' .$i, 0.00);
             $objPHPExcel->getActiveSheet()->SetCellValue('Y' .$i, payround($togra));
             $objPHPExcel->getActiveSheet()->SetCellValue('Z' .$i, 0.00);
             $objPHPExcel->getActiveSheet()->SetCellValue('AA' .$i, 'N/A');
