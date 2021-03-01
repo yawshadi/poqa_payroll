@@ -80,6 +80,7 @@ class Masterlist extends Controller{
          $objPHPExcel->getActiveSheet()->SetCellValue('AE6', 'Annual Bonus (EUROS)');
          $objPHPExcel->getActiveSheet()->SetCellValue('AF6', 'Location');
          $objPHPExcel->getActiveSheet()->SetCellValue('AG6', 'Gender');
+         $objPHPExcel->getActiveSheet()->SetCellValue('AH6', 'Job Category');
 
        for ($i = 'A'; $i != $objPHPExcel->getActiveSheet()->getHighestColumn(); $i++) {
              $objPHPExcel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
@@ -130,6 +131,7 @@ class Masterlist extends Controller{
            $objPHPExcel->getActiveSheet()->setCellValue('AE' . $i, '');
            $objPHPExcel->getActiveSheet()->setCellValue('AF' . $i, $get->location);
            $objPHPExcel->getActiveSheet()->setCellValue('AG' . $i, $get->gender);
+           $objPHPExcel->getActiveSheet()->setCellValue('AH' . $i, $get->jobcat);
            $i++;
       }
 
@@ -170,6 +172,7 @@ class Masterlist extends Controller{
          $objPHPExcel->getActiveSheet()->SetCellValue('AE6'.$y, 'Annual Bonus (EUROS)');
          $objPHPExcel->getActiveSheet()->SetCellValue('AF6'.$y, 'Location');
          $objPHPExcel->getActiveSheet()->SetCellValue('AG6'.$y, 'Gender');
+         $objPHPExcel->getActiveSheet()->SetCellValue('AH6'.$y, 'Job Category');
 
       $y = $y + 1;
 
@@ -216,6 +219,7 @@ class Masterlist extends Controller{
           $objPHPExcel->getActiveSheet()->setCellValue('AE' . $y, '');
           $objPHPExcel->getActiveSheet()->setCellValue('AF' . $y, $get->location);
           $objPHPExcel->getActiveSheet()->setCellValue('AG' . $y, $get->gender);
+          $objPHPExcel->getActiveSheet()->setCellValue('AH' . $y, $get->jobcat);
           $y++;
       }
 
