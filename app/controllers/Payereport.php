@@ -49,30 +49,32 @@ class Payereport extends Controller{
   
 
                 //payrollcalculations
-                $loanbenefits = Vamedcalculations::loanbenefits($loanrepayment); // 2021
-                $staffssnit = Vamedcalculations::staffssnit($basicsalary);
-                $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
-                $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
-                $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
-                $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
-                $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
-                $rentallowance = Vamedcalculations::rentallowance($basicsalary);
-                $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
-                $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit, $staffprovidentfund);
-                //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
-                $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits);
-                $paye =  Vamedcalculations::paye($taxableincome);
+      //payrollcalculations
+      $staffssnit = Vamedcalculations::staffssnit($basicsalary);
+      $loanbenefits = Vamedcalculations::loanbenefits($loanrepayment); // 2021
+      $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
+      $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
+      $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
+      $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
+      $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
+      $rentallowance = Vamedcalculations::rentallowance($basicsalary);
+      $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
+      $grossincome = Vamedcalculations::grossincome($basicsalary, $otherbenefits, $staffssnit, $staffprovidentfund); // 2021
+      //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
+      $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits);
+      $paye =  Vamedcalculations::paye($taxableincome);
 
-                $bonusincome = Vamedcalculations::bonusincome($basicsalary);
-                $excessbonus = Vamedcalculations::excessbonus($basicsalary);
-                $taxonbonusincome = Vamedcalculations::taxonbonusincome($bonusincome, $excessbonus);
-                $totalcashemolument = Vamedcalculations::totalcashemolument($basicsalary);
-                $totalAssessableincome = Vamedcalculations::totalAssessableincome($totalcashemolument);
-                $totalreliefs = Vamedcalculations::totalreliefs($staffssnit);
-                $chargeableincome = Vamedcalculations::chargeableincome($totalAssessableincome, $totalreliefs);
-                $overtimecallincome = Vamedcalculations::overtimecallincome($basicsalary);
-                $overtimecalltax = Vamedcalculations::overtimecalltax($overtimecallincome);
-                $togra = Vamedcalculations::togra($taxonbonusincome , $paye, $overtimecalltax);
+      $bonusincome = Vamedcalculations::bonusincome($basicsalary);
+      $excessbonus = Vamedcalculations::excessbonus($basicsalary);
+      $taxonbonusincome = Vamedcalculations::taxonbonusincome($bonusincome, $excessbonus);
+      $totalcashemolument = Vamedcalculations::totalcashemolument($basicsalary,$otherbenefits,$excessbonus);
+      $totalAssessableincome = Vamedcalculations::totalAssessableincome($totalcashemolument);
+      $tier3  = Vamedcalculations::employeeprovidentfund($basicsalary);
+      $totalreliefs = Vamedcalculations::totalreliefs($staffssnit,$tier3);
+      $chargeableincome = Vamedcalculations::chargeableincome($totalAssessableincome, $totalreliefs);
+      $overtimecallincome = Vamedcalculations::overtimecallincome($basicsalary);
+      $overtimecalltax = Vamedcalculations::overtimecalltax($overtimecallincome);
+      $togra = Vamedcalculations::togra($taxonbonusincome , $paye, 0);
 
                 $payrolldata[] = [
                     'fullname'=>$fullname, 'position'=>$position, 'tinnumber'=>$tinnumber, 'basicsalary'=>$basicsalary,
