@@ -63,6 +63,7 @@ class tableDataObject{
          * as properties, but with null values.
          */
         if(isset($objectid)){
+            ini_set('display_errors', false);
             $conditions = array($this->primaryKey => $objectid);
             $getarecord = self::getRecordByParams($this->tableName,$conditions);
             if((!$getarecord) || count($getarecord) !== 1){
