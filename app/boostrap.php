@@ -1,5 +1,5 @@
 <?php
-
+ini_set('display_errors', 'Off');
 // Including the configuration file
 require_once 'config/config.php';
 require_once 'config/config_env.php';
