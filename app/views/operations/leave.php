@@ -79,6 +79,7 @@ tr, td{
        <thead>
        <tr>
        <td>Employee</td>
+       <td>Location</td>
        <td>Start Date</td>
        <td>End Date</td>
        <td>View </td>
@@ -96,6 +97,7 @@ tr, td{
        ?>
        <tr>
        <td><?php echo $employeename   ?></td>
+       <td><?php echo $get->location   ?></td>
        <td><?php  echo $get->startdate ?></td>
        <td><?php  echo $get->endate ?></td>
        <td><a href='<?php  echo URLROOT.'/Operations/operationprofile/Leave/'.$get->lid   ?>'>View</a></td>

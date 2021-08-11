@@ -35,7 +35,10 @@ if($data['empcount'] > 0){
   <td>Position</td>
   <td><?php echo $data['empdata']->position   ?></td>
   </tr>
-
+  <tr>
+  <td>Location</td>
+  <td><?php echo $data['empdata']->location   ?></td>
+  </tr>
   <tr>
   <td>Available Leave days</td>
   <td><?= Leavedays::availabledays($data['empdata']->basic_id,date('Y'))   ?></td>

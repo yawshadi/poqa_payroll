@@ -70,7 +70,10 @@ tr, td{
   <td>Position</td>
   <td><?php echo $data['empdata']->position   ?></td>
   </tr>
-
+  <tr>
+  <td>Location</td>
+  <td><?php echo $data['empdata']->location   ?></td>
+  </tr>
   <tr>
   <td>Available Leave days</td>
   <td><?= Leavedays::availabledays($data['empdata']->basic_id,date('Y'),$data['leavedata']->lid)   ?></td>
@@ -157,6 +160,7 @@ tr, td{
        <thead>
        <tr>
        <td>Employee</td>
+       <td>Location</td>
        <td>Start Date</td>
        <td>End Date</td>
        <td>View </td>
@@ -174,6 +178,7 @@ tr, td{
        ?>
        <tr>
        <td><?php echo $employeename   ?></td>
+       <td><?php echo $get->location   ?></td>
        <td><?php  echo $get->startdate ?></td>
        <td><?php  echo $get->endate ?></td>
        <td><a href='<?php  echo URLROOT.'/Operations/operationprofile/Leave/'.$get->lid   ?>'>View</a></td>
