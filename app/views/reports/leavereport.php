@@ -32,7 +32,7 @@ tr, td{
 
       <div class="row">
         <div class="col-md-6">
-          <h1 style='color:#FB6600; font-weight:700' class="page-title">Leave Report for <?= date('Y') ?></h1>
+          <h1 style='color:#FB6600; font-weight:700' class="page-title">Leave Report </h1>
 
         </div>
         <!-- <div class="col-md-6">
@@ -41,60 +41,86 @@ tr, td{
         </div> -->
    </div>
 
+   <form method='get'>
+
+      <table  class='table table-bordered table-condensed apptables' style='font-size:12px'>
+
+          <tr>
+              <td>
+                  <select class='form-control' name='year' id='year'>
+                      <option>Select Year</option>
+                    
+                      <?php 
+                      for($i = 0; $i<=100; $i++):
+                        $year = 2018;
+                        ?>
+                        <option><?php echo $year+$i?></option>
+                      <?php endfor;?>
+                  </select></td>
+          
+              <td><button type='submit' class='btn btn-warning'>Search</button></td>
+
+          </tr>
+
+      </table>
+   </form>
       <hr/>
+<?php 
+ if(isset($_GET['year'])){
+?>
+    <div class="row" style="margin-bottom:20px">
 
-<div class="row" style="margin-bottom:20px">
+          <div class="col-lg-12 col-md-12 col-sm-12">
 
-      <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class='card'>
+          <div class="container">
+          <br/>
+          <div>
+          <table  class='table table-bordered table-condensed' style='font-size:12px'>
+          <tr>
+              <td colspan="5" align='center' style='font-weight:700'>LEAVE DEDUCTIONS FOR <?= $_GET['year']?> </td>
+            </tr>
+          </table>
 
-      <div class='card'>
-      <div class="container">
-      <br/>
-      <div>
-      <table  class='table table-bordered table-condensed' style='font-size:12px'>
-      <tr>
-          <td colspan="5" align='center' style='font-weight:700'>LEAVE DEDUCTIONS FOR <?= date('Y')?> </td>
-        </tr>
-      </table>
+          <table  class='exp table table-bordered table-condensed' style='font-size:12px'>
+          <thead>
+              <th>Staff Name </th>
+              <th>Location </th>
+              <th>Leave entitled to </th>
+              <th>Dates on Leave(From) </th>
+              <th>Dates on Leave (To)</th>
+              <th>Total No. of days applied</th>
+              <th>Outstanding days</th>
+          </thead>
+          <tbody>
+          <?php
+          $x=1; 
+          foreach(Leave::LeaveEmp($_GET['year']) as $employee):
+          ?>
+          <tr>
+          
+            <td> <?= $employee->surname.' '.$employee->firstname.' '.$employee->othernames ?></td>
+            <td><?= $employee->location ?></td>
+            <td><?= $employee->accumulatedleave ?></td>
+            <td><?= $employee->startdate ?></td>
+            <td><?= $employee->endate ?></td>
+            <td> <?= $employee->actualdays ?></td>
+            <td> <?= Leavedays::availabledays($employee->basic_id,date('Y')) ?></td>
+          </tr>
+          <?php 
+          $x++;
+          endforeach;
+          ?>
+          </tbody>
 
-      <table  class='exp table table-bordered table-condensed' style='font-size:12px'>
-      <thead>
-          <th>Staff Name </th>
-          <th>Location </th>
-          <th>Leave entitled to </th>
-          <th>Dates on Leave(From) </th>
-          <th>Dates on Leave (To)</th>
-          <th>Total No. of days applied</th>
-          <th>Outstanding days</th>
-      </thead>
-      <tbody>
-      <?php
-      $x=1; 
-      foreach(Leave::LeaveEmp() as $employee):
-      ?>
-      <tr>
+          </table>
       
-        <td> <?= $employee->surname.' '.$employee->firstname.' '.$employee->othernames ?></td>
-        <td><?= $employee->location ?></td>
-        <td><?= $employee->accumulatedleave ?></td>
-        <td><?= $employee->startdate ?></td>
-        <td><?= $employee->endate ?></td>
-        <td> <?= $employee->actualdays ?></td>
-        <td> <?= Leavedays::availabledays($employee->basic_id,date('Y')) ?></td>
-      </tr>
-      <?php 
-      $x++;
-      endforeach;
-      ?>
-      </tbody>
-
-      </table>
-   
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      <?php }?>
   </div>
 
       <div class="row" style="margin-bottom:20px"> </div>
