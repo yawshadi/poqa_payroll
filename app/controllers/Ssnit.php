@@ -47,7 +47,7 @@ class Ssnit extends Controller
                 $employerssnit = Vamedcalculations::ssnitforschedule($basicsalary);
 
                 $payrolldata[] = [
-                     'firstname'=>$firstname, 'lastname'=>$surname, 'othernames'=>$othernames,
+                     'firstname'=>$firstname,'location'=>$location, 'lastname'=>$surname, 'othernames'=>$othernames,
                      'basicsalary'=>$basicsalary, 'ssnit'=>$employerssnit,
                      'ssnitnumber'=>$ssnitnumber
                 ];
@@ -86,6 +86,7 @@ class Ssnit extends Controller
         $objPHPExcel->getActiveSheet()->SetCellValue('E6', 'SNNIT Number');
         $objPHPExcel->getActiveSheet()->SetCellValue('F6', 'Consolidated Salary');
         $objPHPExcel->getActiveSheet()->SetCellValue('G6', 'SSF (13.5%)');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H6', 'Location');
 
         for ($i = 'A'; $i != $objPHPExcel->getActiveSheet()->getHighestColumn(); $i++) {
             $objPHPExcel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
@@ -122,6 +123,7 @@ class Ssnit extends Controller
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $ssnitnumber);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $basicsalary);
             $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $employerssnit);
+            $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, $location);
             $i++;
         }
 

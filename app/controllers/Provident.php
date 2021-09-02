@@ -40,7 +40,7 @@ class Provident extends Controller
                 $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
                 $payrolldata[] = [
-                    'fullname'=>$fullname,  'ssnitnumber'=>$ssnitnumber,
+                    'fullname'=>$fullname,'location'=>$location,  'ssnitnumber'=>$ssnitnumber,
                     'basicsalary'=>$basicsalary, 'totalprovident'=> $totalprovident,'memberid'=>$tier3number,'staffid'=>$staffid
                 ];
             }
@@ -90,6 +90,7 @@ class Provident extends Controller
         $objPHPExcel->getActiveSheet()->SetCellValue('E11', 'SSNIT No');
         $objPHPExcel->getActiveSheet()->SetCellValue('F11', 'Member ID ');
         $objPHPExcel->getActiveSheet()->SetCellValue('G11', '10% Monthly Contribution');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H11', 'Location');
 
 
 
@@ -119,6 +120,7 @@ class Provident extends Controller
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $ssnitnumber);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $tier3number);
             $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $totalprovident);
+            $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, $location);
             $i++;
         }
 

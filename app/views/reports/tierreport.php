@@ -113,6 +113,7 @@ tr, td{
    <td>Tier 2 Number </td>
    <td>Consolidated Salary</td>
    <td>SSF (5%)</td>
+   <td>Location</td>
  
    </tr>
     <?php 
@@ -128,6 +129,7 @@ tr, td{
   <td><?php echo $get['tiernumber'];   ?></td>
   <td><?php echo $get['basicsalary'];    ?> </td>
   <td><?php echo $get['ssnit'];    ?></td> 
+  <td><?php echo $get['location'];    ?></td> 
   
 
     </tr>

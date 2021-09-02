@@ -77,7 +77,7 @@ class Payereport extends Controller{
       $togra = Vamedcalculations::togra($taxonbonusincome , $paye, 0);
 
                 $payrolldata[] = [
-                    'fullname'=>$fullname, 'position'=>$position, 'tinnumber'=>$tinnumber, 'basicsalary'=>$basicsalary,
+                    'fullname'=>$fullname, 'position'=>$position, 'location'=>$location,'tinnumber'=>$tinnumber, 'basicsalary'=>$basicsalary,
                     'paye'=>$paye, 'togra'=>$togra
                 ];
 
@@ -114,30 +114,31 @@ class Payereport extends Controller{
         $objPHPExcel->getActiveSheet()->SetCellValue('B10', 'TIN');
         $objPHPExcel->getActiveSheet()->SetCellValue('C10', 'Name of Employee');
         $objPHPExcel->getActiveSheet()->SetCellValue('D10', 'Position');
-        $objPHPExcel->getActiveSheet()->SetCellValue('E10', 'Non-Resident  (Y / N)');
-        $objPHPExcel->getActiveSheet()->SetCellValue('F10', 'Consolidated Salary');
-        $objPHPExcel->getActiveSheet()->SetCellValue('G10', 'Secondary Employment (Y / N)');
-        $objPHPExcel->getActiveSheet()->SetCellValue('H10', 'Social Security Fund ');
-        $objPHPExcel->getActiveSheet()->SetCellValue('I10', 'Third Tier');
-        $objPHPExcel->getActiveSheet()->SetCellValue('J10', 'Other Benefits / Allowances');
-        $objPHPExcel->getActiveSheet()->SetCellValue('K10', 'Bonus Income(up to 15% of Annual Basic salary)');
-        $objPHPExcel->getActiveSheet()->SetCellValue('L10', 'Final Tax on Bonus Income');
-        $objPHPExcel->getActiveSheet()->SetCellValue('M10', 'EXCESS BONUS');
-        $objPHPExcel->getActiveSheet()->SetCellValue('N10', 'Total Cash emolument');
-        $objPHPExcel->getActiveSheet()->SetCellValue('O10', 'Accomodation Element');
-        $objPHPExcel->getActiveSheet()->SetCellValue('P10', 'Vehicle Element');
-        $objPHPExcel->getActiveSheet()->SetCellValue('Q10', 'Non Cash Benefit');
-        $objPHPExcel->getActiveSheet()->SetCellValue('R10', 'Total Assessable Income');
-        $objPHPExcel->getActiveSheet()->SetCellValue('S10', 'Deductible Reliefs');
-        $objPHPExcel->getActiveSheet()->SetCellValue('T10', 'Total Reliefs');
-        $objPHPExcel->getActiveSheet()->SetCellValue('U10', 'Chargeable Income');
-        $objPHPExcel->getActiveSheet()->SetCellValue('V10', 'Tax Deductible');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E10', 'Location');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F10', 'Non-Resident  (Y / N)');
+        $objPHPExcel->getActiveSheet()->SetCellValue('G10', 'Consolidated Salary');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H10', 'Secondary Employment (Y / N)');
+        $objPHPExcel->getActiveSheet()->SetCellValue('I10', 'Social Security Fund ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('J10', 'Third Tier');
+        $objPHPExcel->getActiveSheet()->SetCellValue('K10', 'Other Benefits / Allowances');
+        $objPHPExcel->getActiveSheet()->SetCellValue('L10', 'Bonus Income(up to 15% of Annual Basic salary)');
+        $objPHPExcel->getActiveSheet()->SetCellValue('M10', 'Final Tax on Bonus Income');
+        $objPHPExcel->getActiveSheet()->SetCellValue('N10', 'EXCESS BONUS');
+        $objPHPExcel->getActiveSheet()->SetCellValue('O10', 'Total Cash emolument');
+        $objPHPExcel->getActiveSheet()->SetCellValue('P10', 'Accomodation Element');
+        $objPHPExcel->getActiveSheet()->SetCellValue('Q10', 'Vehicle Element');
+        $objPHPExcel->getActiveSheet()->SetCellValue('R10', 'Non Cash Benefit');
+        $objPHPExcel->getActiveSheet()->SetCellValue('S10', 'Total Assessable Income');
+        $objPHPExcel->getActiveSheet()->SetCellValue('T10', 'Deductible Reliefs');
+        $objPHPExcel->getActiveSheet()->SetCellValue('U10', 'Total Reliefs');
+        $objPHPExcel->getActiveSheet()->SetCellValue('V10', 'Chargeable Income');
+        $objPHPExcel->getActiveSheet()->SetCellValue('W10', 'Tax Deductible');
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('W10', 'Overtime  / Call-In Income');
-        $objPHPExcel->getActiveSheet()->SetCellValue('X10', 'Overtime / Call-In Tax');
-        $objPHPExcel->getActiveSheet()->SetCellValue('Y10', 'Total Tax Payable to GRA ');
-        $objPHPExcel->getActiveSheet()->SetCellValue('Z10', 'Severance pay paid');
-        $objPHPExcel->getActiveSheet()->SetCellValue('AA10', 'Remarks');
+        $objPHPExcel->getActiveSheet()->SetCellValue('X10', 'Overtime  / Call-In Income');
+        $objPHPExcel->getActiveSheet()->SetCellValue('Y10', 'Overtime / Call-In Tax');
+        $objPHPExcel->getActiveSheet()->SetCellValue('Z10', 'Total Tax Payable to GRA ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('AA10', 'Severance pay paid');
+        $objPHPExcel->getActiveSheet()->SetCellValue('AB10', 'Remarks');
 
 
 
@@ -207,30 +208,31 @@ class Payereport extends Controller{
             $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $tinnumber);
             $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $fullname);
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $position );
-            $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, 'No');
-            $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $basicsalary);
-            $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, 'No');
-            $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, $staffssnit);
-            $objPHPExcel->getActiveSheet()->setCellValue('I' . $i, payround($tier3));
-            $objPHPExcel->getActiveSheet()->setCellValue('J' . $i, payround($otherbenefits));
-            $objPHPExcel->getActiveSheet()->setCellValue('K' . $i, payround($bonusincome));
-            $objPHPExcel->getActiveSheet()->setCellValue('L' . $i, payround($taxonbonusincome));
-            $objPHPExcel->getActiveSheet()->SetCellValue('M' . $i, 0.00);
-            $objPHPExcel->getActiveSheet()->SetCellValue('N' . $i, payround($totalcashemolument));
-            $objPHPExcel->getActiveSheet()->SetCellValue('O' . $i, 0.00);
-            $objPHPExcel->getActiveSheet()->SetCellValue('P' .$i, 0.00);
+            $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $location );
+            $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, 'No');
+            $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $basicsalary);
+            $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, 'No');
+            $objPHPExcel->getActiveSheet()->setCellValue('I' . $i, $staffssnit);
+            $objPHPExcel->getActiveSheet()->setCellValue('J' . $i, payround($tier3));
+            $objPHPExcel->getActiveSheet()->setCellValue('K' . $i, payround($otherbenefits));
+            $objPHPExcel->getActiveSheet()->setCellValue('L' . $i, payround($bonusincome));
+            $objPHPExcel->getActiveSheet()->setCellValue('M' . $i, payround($taxonbonusincome));
+            $objPHPExcel->getActiveSheet()->SetCellValue('N' . $i, 0.00);
+            $objPHPExcel->getActiveSheet()->SetCellValue('O' . $i, payround($totalcashemolument));
+            $objPHPExcel->getActiveSheet()->SetCellValue('P' . $i, 0.00);
             $objPHPExcel->getActiveSheet()->SetCellValue('Q' .$i, 0.00);
-            $objPHPExcel->getActiveSheet()->SetCellValue('R' .$i, $totalAssessableincome);
-            $objPHPExcel->getActiveSheet()->SetCellValue('S' .$i, 0.00);
-            $objPHPExcel->getActiveSheet()->SetCellValue('T' .$i, payround($totalreliefs));
-            $objPHPExcel->getActiveSheet()->SetCellValue('U' .$i, payround($chargeableincome));
-            $objPHPExcel->getActiveSheet()->SetCellValue('V' .$i, payround($paye));
+            $objPHPExcel->getActiveSheet()->SetCellValue('R' .$i, 0.00);
+            $objPHPExcel->getActiveSheet()->SetCellValue('S' .$i, $totalAssessableincome);
+            $objPHPExcel->getActiveSheet()->SetCellValue('T' .$i, 0.00);
+            $objPHPExcel->getActiveSheet()->SetCellValue('U' .$i, payround($totalreliefs));
+            $objPHPExcel->getActiveSheet()->SetCellValue('V' .$i, payround($chargeableincome));
+            $objPHPExcel->getActiveSheet()->SetCellValue('W' .$i, payround($paye));
 
-            $objPHPExcel->getActiveSheet()->SetCellValue('W' .$i, 0.00);
             $objPHPExcel->getActiveSheet()->SetCellValue('X' .$i, 0.00);
-            $objPHPExcel->getActiveSheet()->SetCellValue('Y' .$i, payround($togra));
-            $objPHPExcel->getActiveSheet()->SetCellValue('Z' .$i, 0.00);
-            $objPHPExcel->getActiveSheet()->SetCellValue('AA' .$i, 'N/A');
+            $objPHPExcel->getActiveSheet()->SetCellValue('Y' .$i, 0.00);
+            $objPHPExcel->getActiveSheet()->SetCellValue('Z' .$i, payround($togra));
+            $objPHPExcel->getActiveSheet()->SetCellValue('AA' .$i, 0.00);
+            $objPHPExcel->getActiveSheet()->SetCellValue('AB' .$i, 'N/A');
 
 
             $i++;

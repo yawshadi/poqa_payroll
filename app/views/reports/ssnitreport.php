@@ -110,9 +110,10 @@ tr, td{
    <td>Firstname</td>
    <td>Surname</td>
    <td>Othernames </td>
-      <td>SSNIT Number</td>
+  <td>SSNIT Number</td>
    <td>Consolidated Salary</td>
    <td>SSF (13.5%)</td>
+   <td>Location</td>
  
    </tr>
     <?php 
@@ -129,7 +130,8 @@ tr, td{
     <td><?php echo $get['othernames'];   ?></td>
     <td><?php echo $get['ssnitnumber'];    ?> </td>
     <td><?php echo $get['basicsalary'];    ?></td>
-        <td><?php echo $get['ssnit'];    ?></td>
+    <td><?php echo $get['ssnit'];    ?></td>
+    <td><?php echo $get['location'];    ?></td>
 
 
     </tr>

@@ -45,7 +45,7 @@ class Tier2 extends Controller
                 $staffssnit = Vamedcalculations::tierssnit($basicsalary);
 
                 $payrolldata[] = [
-                    'fullname'=>$fullname, 'position'=>$position, 'tiernumber'=>$tiernumber,
+                    'fullname'=>$fullname, 'location'=>$location,'position'=>$position, 'tiernumber'=>$tiernumber,
                     'basicsalary'=>$basicsalary, 'ssnit'=>$staffssnit, 'staffid'=>$staffid
                 ];
 
@@ -84,6 +84,7 @@ class Tier2 extends Controller
     $objPHPExcel->getActiveSheet()->SetCellValue('F6', 'SSNIT Number');
     $objPHPExcel->getActiveSheet()->SetCellValue('G6', 'Consolidated Salary');
     $objPHPExcel->getActiveSheet()->SetCellValue('H6', 'SSF (5%)');
+    $objPHPExcel->getActiveSheet()->SetCellValue('I6', 'Location');
 
     for ($i = 'A'; $i != $objPHPExcel->getActiveSheet()->getHighestColumn(); $i++) {
         $objPHPExcel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
@@ -100,6 +101,7 @@ class Tier2 extends Controller
         $tiernumber = $get->tiernumber;
         $staffid = $get->staffid;
         $ssnitnumber = $get->ssnitnumber;
+        $location = $get->location;
 
         //payrollcalculations
         $staffssnit = Vamedcalculations::tierssnit($basicsalary);
@@ -112,6 +114,7 @@ class Tier2 extends Controller
         $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $ssnitnumber );
         $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $basicsalary);
         $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, $staffssnit);
+        $objPHPExcel->getActiveSheet()->setCellValue('I' . $i, $location);
         $i++;
        }
 

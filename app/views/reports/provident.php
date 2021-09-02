@@ -113,6 +113,7 @@
                                             <td>SSNIT No</td>
                                             <td>Member ID</td>
                                             <td>10% Monthly Contribution</td>
+                                            <td>Location</td>
 
                                         </tr>
                                         <?php
@@ -128,6 +129,7 @@
                                                 <td><?php echo $get['ssnitnumber'];    ?> </td>
                                                 <td><?= $get['memberid']?></td>
                                                 <td><?php echo payround($get['totalprovident']);    ?> </td>
+                                                <td><?php echo $get['location'];    ?> </td>
 
                                             </tr>
                                         <?php

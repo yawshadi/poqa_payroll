@@ -109,6 +109,7 @@ tr, td{
    <td>No:</td>
    <td>Employee Name</td>
    <td>Position</td>
+   <td>Location</td>
    <td>Employee TIN</td>
    <td>Consolidated Salary</td>
    <td>Tax Deductible</td>
@@ -124,6 +125,7 @@ tr, td{
   <td><?php echo $count;   ?></td>
   <td><?php echo $get['fullname'];   ?></td>
   <td><?php echo $get['position'];   ?></td>
+  <td><?php echo $get['location'];   ?></td>
   <td><?php echo $get['tinnumber'];   ?></td>
   <td><?php echo $get['basicsalary'];    ?> </td>
   <td><?php echo payround($get['paye']);    ?></td>

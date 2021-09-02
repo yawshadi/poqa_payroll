@@ -107,6 +107,7 @@ tr, td{
   <table class='table table-bordered table-condensed' >
   <tr style ='font-weight:700'>
       <td>Employee Name</td>
+      <td>Location</td>
       <td>Bank</td>
       <td>Account Number</td>
       <td>Sort Code</td>
@@ -119,6 +120,7 @@ tr, td{
     ?>
     <tr>
       <td><?php echo $get['fullname']  ?></td>
+      <td><?php echo $get['location']  ?></td>
       <td><?php echo $get['bank']  ?></td>
       <td><?php echo $get['accountnumber'];  ?></td>
       <td><?php echo $get['branchcode'];     ?></td>
