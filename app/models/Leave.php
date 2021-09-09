@@ -47,6 +47,12 @@ class Leave extends tableDataObject{
     return $payrolldb->resultSet();
   }
 
-   
+  public static function LeaveEmpAll(){
+    global $payrolldb;
+    $query = "SELECT * from basicinformation left join leaves on basicinformation.basic_id = leaves.employeeid  order by basicinformation.basic_id asc  ";
+    $payrolldb->prepare($query);
+    $payrolldb->execute();
+    return $payrolldb->resultSet();
+  }
 
 }

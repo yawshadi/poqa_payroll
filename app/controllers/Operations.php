@@ -530,7 +530,7 @@ class Operations extends Controller{
 
 
      public function leave(){
-       $grievancedata = Leave::LeaveEmp();
+       $grievancedata = Leave::LeaveEmpAll();
          if(isset($_POST['submitleave'])){
             $grievancedata = Leave::ListAll();
            $reportedby  = $_POST['reportedby'];
