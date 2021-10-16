@@ -91,6 +91,21 @@ $role =  $n->recordObject->role;
         </a>
         </div>
 
+        <div class="col-lg-4 col-md-4 col-sm-12">
+
+        <div class="card">
+        <a href="<?php echo  URLROOT.'/operations/operationsview/Assets';?>">
+        <div class="container">
+
+        <h4><b>&nbsp;</b></h4>
+        <div align='center' class="img-holder"> <img class="card-img" src="<?php echo URLROOT ?>/img/windows-8.svg" /> </div>
+        <p align="center" class="roboto" >Assets</p>
+
+        <h4><b>&nbsp;</b></h4>
+        </div>
+        </div>
+        </a>
+        </div>
 
       <?php
       }
