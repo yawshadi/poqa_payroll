@@ -33,7 +33,7 @@ tr, td{
 
       <div class="row">
         <div class="col-10">
-          <h1 style='color:#FB6600; font-weight:700' class="page-title"> ASSETS MANAGEMENT</h1>
+          <h1 style='color:#FB6600; font-weight:700' class="page-title">EDIT ASSETS MANAGEMENT</h1>
         </div>
 
        <!-- <div class="col-2">
@@ -54,17 +54,80 @@ tr, td{
      <div class="col-lg-5 col-md-5 col-sm-12">
 
      <div class='card'>
-     <table class='table'>
-     <tr>
-         <td width=90%><input type="text" class="form-control bom employeename"  id="empname" placeholder="Search Employee Name, StaffID or Telephone"/></td>
-         <td><button type='button' id='assetsbtn' style='font-size:10px' class='btn btn-primary'>
-         <i class='fa fa-plus-circle'></i> Search</button></td>
-         </tr>
-         <input type="hidden" class="form-control" id="employeeid">
+  
+         <div id='searchcontainer' style="margin:10px">
+        
+<form method='post' enctype="multipart/form-data">
+  <input type='hidden' name='employeeid'    value='<?php echo  $data['empdata']->basic_id ?>'   />
+    <input type='hidden' name='compval' id='compvalue'    value='<?php echo  $data['empdata']->company   ?>'   />
+<table class='table'>
+  <tr>
+  <td>Employee Name</td>
+  <td><?php echo $data['empdata']->fullname   ?></td>
+  </tr>
 
+  <tr>
+  <td>Company</td>
+  <td><?php echo $data['empdata']->company   ?></td>
+  </tr>
 
-      </table>
-         <div id='searchcontainer' style="margin:10px"> </div>
+  <tr>
+  <td>Department</td>
+  <td><?php echo $data['empdata']->department   ?></td>
+  </tr>
+
+  <tr>
+  <td>Position</td>
+  <td><?php echo $data['empdata']->position   ?></td>
+  </tr>
+  <tr>
+  <td>Asset Name:</td>
+  <td><input type="text" name='assetname' class="form-control" value="<?= $data['asset']->assetname?>" id='assetname' required/>
+  </td>
+  </tr>
+  <tr>
+  <td>Asset Quantity:</td>
+  <td><input type="text" name='assetquantity' value="<?= $data['asset']->assetquantity?>" class="form-control" id='assetquantity' required/>
+  </td>
+  </tr>
+  <tr>
+  <td>Assigning Officer:</td>
+  <td><select class='form-control' name='reportedby'>
+    <option>Select</option>
+    <?php foreach($data['userdata'] as $get):?>
+    <option value="<?= $get->uid?>" <?=$get->uid==$data['asset']->uid? 'selected':''?> ><?= $get->firstname.' '.$get->surnamae?></option>
+    <?php endforeach ?>
+    </select>
+  </td>
+  </tr>
+  <!-- <tr>
+  <td>Cc:</td>
+  <td><select class='form-control' name='reportedbycc[]' id='reportedbycc' multiple >
+    <?php
+    foreach($data['userdata'] as $get){
+          echo '<option value='.$get->uid.'>'.$get->firstname.' '.$get->surname  .'</option>';
+    }
+    ?>
+  </select>
+  </td>
+  </tr> -->
+  <tr>
+  <td>Description</td>
+  <td><textarea class='form-control' name=description><?= $data['asset']->description?></textarea></td>
+  </tr>
+  <tr>
+  <td>Attach Document</td>
+  <td><input type="file"  name="assetdoc"/></td>
+  </tr>
+    <tr>
+    <td></td>
+    <td><button type='submit' name='submitasset' style='font-size:9px' class='btn btn-primary'>
+    <i class='fa fa-plus-circle'></i> Submit</button></td>
+    </tr>
+
+</table>
+</form>
+        </div>
      </div>
 
       </div>

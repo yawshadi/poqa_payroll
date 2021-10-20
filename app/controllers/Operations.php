@@ -415,7 +415,7 @@ class Operations extends Controller{
 
 
 
-     public function assets(){
+     public function assets($id=null){
       $assetdata = Assets::ListAll();
 
         if(isset($_POST['submitasset'])){
@@ -430,7 +430,7 @@ class Operations extends Controller{
           $uploadresponse = $uploads->upLoadFile();
           $filename =  $uploadresponse['filename'];
 
-          $gv  = new Assets();
+          $gv  = new Assets($id);
           $gv->recordObject->description = $description;
           $gv->recordObject->reportdate =  date('Y-m-d');
           $gv->recordObject->employeeid = $employeeid;
@@ -452,12 +452,19 @@ class Operations extends Controller{
 
           $data = ['assetdata'=>$assetdata];
           //$this->view('operations/assets', $data);
-          Redirecting::location('operations/Assets');
+          Redirecting::location('operations/Assets/'.$id);
         }
 
-        else{
+        elseif(is_null($id)){
         $data = ['assetdata'=>$assetdata];
         $this->view('operations/assets', $data);
+      }else{
+
+          $asset = Assets::getassetbyid($id);
+          $empdata = Employee::getEmployeesById($asset->employeeid);
+          $usersdata = User::ListAll();
+        $data = ['assetdata'=>$assetdata,'asset'=>$asset,'empdata'=>$empdata,'userdata'=>$usersdata];
+        $this->view('operations/editassets', $data);
       }
 
     }

@@ -43,6 +43,7 @@ tr, td{
            <td>Asset Name</td>
            <td>Assigned  Date</td>
            <td>View </td>
+           <td>Edit </td>
            <td>Action</td>
           </tr>
           </thead>
@@ -57,6 +58,7 @@ tr, td{
            <td><?php  echo $get->assetname ?></td>
            <td><?php  echo $get->reportdate ?></td>
            <td><a href='<?php  echo URLROOT.'/operations/operationprofile/assets/'.$get->aid   ?>' >View</a></td>
+           <td><a href='<?php  echo URLROOT.'/Operations/Assets/'.$get->aid   ?>'>Edit</a></td>
            <td><a href='#' class='deleteasset'  assetid='<?php echo  $get->aid  ?>' >Delete</a></td>
            </tr>
            <?php

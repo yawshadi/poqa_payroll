@@ -37,4 +37,11 @@ class Assets extends tableDataObject {
     $payrolldb->prepare($query);
     return  $payrolldb->resultSet();
  }
+
+ public static function getassetbyid($id){
+   global $payrolldb;
+   $query = "Select * from  assets where aid = $id ";
+   $payrolldb->prepare($query);
+   return  $payrolldb->singleRecord();
+}
 }
