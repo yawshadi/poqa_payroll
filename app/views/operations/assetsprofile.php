@@ -59,7 +59,7 @@ tr, td{
 
           <tr>
            <td width='30%'>Status</td>
-           <td style='font-size:15px; font-weight:700'><?php if($data['opdata']->status == ''){
+           <td style='font-size:15px; font-weight:700'><?php if($data['opdata']->status == 0){
                echo '<span style="color:orange">Approved</span>';
            }elseif($data['opdata']->status == 'Approve'){
                echo '<span style="color:green">Approved</span>';
@@ -89,6 +89,16 @@ tr, td{
           <tr>
            <td>Description</td>
            <td><?php  echo $data['opdata']->description  ?></td>
+          </tr>
+
+          <tr>
+           <td>Asset Return Status</td>
+           <td><?php  echo $data['opdata']->status==1? 'Returned':'Not Returned'   ?></td>
+          </tr>
+
+          <tr>
+           <td>Date Returned</td>
+           <td><?php  echo $data['opdata']->returneddate  ?></td>
           </tr>
         </table>
 

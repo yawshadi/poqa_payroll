@@ -87,7 +87,7 @@ tr, td{
        <td>View </td>
        <td>Edit </td>
        <td>Delete </td>
-       <!-- <td>Download</td> -->
+       <td>Returned</td>
       </tr>
       </thead>
 
@@ -104,7 +104,7 @@ tr, td{
        <td><a href='<?php  echo URLROOT.'/operations/operationprofile/assets/'.$get->aid   ?>' >View</a></a></td>
        <td><a href='<?php  echo URLROOT.'/Operations/Assets/'.$get->aid   ?>'>Edit</a></td>
        <td><a style='color:crimson' href='#' assetid="<?=$get->aid?>" class="deleteasset">Delete</a></td>
-       <!-- <td><a href='<?php  echo URLROOT.'/uploads/'.$get->filename   ?>' >Download</a></td> -->
+       <td><button style='font-size:9px' class='btn-sm  btn-<?=$get->status== 1?'success':'danger'?>'><?=$get->status==1?'Yes':'No'?></button></td>
 
       </tr>
        <?php

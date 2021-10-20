@@ -423,13 +423,20 @@ class Operations extends Controller{
           $description = $_POST['description'];
           $employeeid  = $_POST['employeeid'];
           $reportedbycc = $_POST['reportedbycc'];
+          $status =  isset($_POST['status']) ? $_POST['status'] : 0;
+        
+          if(isset($_POST['returneddate']) && $_POST['returneddate'] !=' '){
+            $returneddate =  $_POST['returneddate'];
+          }else{
+            $returneddate =  null;
+          }
           array_push($reportedbycc, $reportedby);
 
           $uploads = new Uploads();
           $uploads->filename = $_FILES['assetdoc'];
           $uploadresponse = $uploads->upLoadFile();
           $filename =  $uploadresponse['filename'];
-
+         
           $gv  = new Assets($id);
           $gv->recordObject->description = $description;
           $gv->recordObject->reportdate =  date('Y-m-d');
@@ -437,6 +444,8 @@ class Operations extends Controller{
           $gv->recordObject->uid = $_SESSION['uid'];
           $gv->recordObject->recipientid = $reportedby;
           $gv->recordObject->filename = $filename;
+          $gv->recordObject->status = $status;
+          $gv->recordObject->returneddate = $returneddate;
           $gv->recordObject->assetname = $_POST['assetname'];
           $gv->recordObject->assetquantity = $_POST['assetquantity'];
 

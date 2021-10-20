@@ -77,9 +77,9 @@ class Database{
 			try {
 				$result = $this->stmt->execute();
 			} catch (PDOException $e) {
-				throw new MarketplaceError($e->getMessage() . ": \n" . $this->stmt->queryString);
+				//throw new MarketplaceError($e->getMessage() . ": \n" . $this->stmt->queryString);
 			}
-		} catch(MarketplaceError $e){
+		} catch(PDOException $e){
 			die($e->getMessage());
 		}
 		return $result;

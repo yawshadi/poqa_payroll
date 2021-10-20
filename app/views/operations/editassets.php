@@ -100,6 +100,21 @@ tr, td{
     </select>
   </td>
   </tr>
+  <tr>
+  <td>Asset Status:</td>
+  <td><select class='form-control' name='status'>
+    <option>Select</option>
+    <option value="1" <?=$data['asset']->status == 1? 'selected':''?>>Returned</option>
+    <option value="0" <?=$data['asset']->status == 0? 'selected':''?>>Not Returned</option>
+    
+    </select>
+  </td>
+  </tr>
+  <tr>
+  <td>Returned Date</td>
+  <td><input type="text" name="returneddate"  value="<?= $data['asset']->returneddate?>" class='form-control leavedate' id="rdate">
+  </td>
+  </tr>
   <!-- <tr>
   <td>Cc:</td>
   <td><select class='form-control' name='reportedbycc[]' id='reportedbycc' multiple >
@@ -150,7 +165,7 @@ tr, td{
        <td>View </td>
        <td>Edit </td>
        <td>Delete </td>
-       <!-- <td>Download</td> -->
+       <td>Returned</td>
       </tr>
       </thead>
 
@@ -167,7 +182,7 @@ tr, td{
        <td><a href='<?php  echo URLROOT.'/operations/operationprofile/assets/'.$get->aid   ?>' >View</a></a></td>
        <td><a href='<?php  echo URLROOT.'/Operations/Assets/'.$get->aid   ?>'>Edit</a></td>
        <td><a style='color:crimson' href='#' assetid="<?=$get->aid?>" class="deleteasset">Delete</a></td>
-       <!-- <td><a href='<?php  echo URLROOT.'/uploads/'.$get->filename   ?>' >Download</a></td> -->
+       <td><button style='font-size:9px' class='btn-sm  btn-<?=$get->status== 1?'success':'danger'?>'><?=$get->status==1?'Yes':'No'?></button></td>
 
       </tr>
        <?php
@@ -209,3 +224,7 @@ tr, td{
   <!--Footer and JS directies -->
 
   <?php require APPROOT .'/views/inc/footer.php'  ?>
+  <script>
+    $(".leavedate").datepicker({inline: true,
+changeMonth: true, changeYear: true, yearRange: "1920:2080", dateFormat: 'yy-mm-dd' });
+</script>

@@ -44,7 +44,9 @@ tr, td{
            <td>Assigned  Date</td>
            <td>View </td>
            <td>Edit </td>
-           <td>Action</td>
+           <td>Delete</td>
+           <td>Returned</td>
+           <td>Returned Date</td>
           </tr>
           </thead>
 
@@ -60,6 +62,9 @@ tr, td{
            <td><a href='<?php  echo URLROOT.'/operations/operationprofile/assets/'.$get->aid   ?>' >View</a></td>
            <td><a href='<?php  echo URLROOT.'/Operations/Assets/'.$get->aid   ?>'>Edit</a></td>
            <td><a href='#' class='deleteasset'  assetid='<?php echo  $get->aid  ?>' >Delete</a></td>
+           <td><button style='font-size:9px' class='btn-sm  btn-<?=$get->status== 1?'success':'danger'?>'><?=$get->status==1?'Yes':'No'?></button></td>
+           <td><?php  echo $get->returneddate ?></td>
+
            </tr>
            <?php
            endforeach;
