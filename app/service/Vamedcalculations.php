@@ -105,7 +105,7 @@ class Vamedcalculations{
    }
 
    public static function loanbenefits($loanrepayment){
-      $amount =  ($loanrepayment*24*0.1458*2)*0.25;
+      $amount =  ($loanrepayment*0.1458*4);
        return $amount;
     }
 
