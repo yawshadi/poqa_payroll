@@ -118,7 +118,7 @@ class Tier2 extends Controller
         $i++;
        }
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('D2', COMPANYNAME);
+        $objPHPExcel->getActiveSheet()->SetCellValue('D2', $company);
         $objPHPExcel->getActiveSheet()->SetCellValue('D3', 'TIER 2 REPORT');
 
         //Merging cells

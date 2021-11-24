@@ -16,7 +16,7 @@ class PayrollFixed extends tableDataObject{
     }
 
 
-   public function getPayrollFixedId($company, $department, $position){
+   public static function getPayrollFixedId($company, $department, $position){
     global $payrolldb;
     $getrecords = "select payrollfixedid from  payrollfixed where  company='$company' and department='$department'
     and position='$position' ";

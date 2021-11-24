@@ -36,15 +36,22 @@ class Vamedcalculations{
         return $amount;
     }
 
-    public static function employeeprovidentfund($basicsalary){
+    public static function employeeprovidentfund($basicsalary,$category){
+       if(str_contains($category,'Expart')){
+          return 0;
+       }else{
             $amount = $basicsalary * 0.05;
             return $amount;
+       }
     }
     public static function totalprovidentfunc($basicsalary ,$category){
+      if(str_contains($category,'Expart')){
+         return 0;
+      }
        if($category == 'Pensioner'){
           $amount = 0;
        }else{
-         $amount = self::staffprovidentfund($basicsalary) +  self::employeeprovidentfund($basicsalary);
+         $amount = self::staffprovidentfund($basicsalary) +  self::employeeprovidentfund($basicsalary,$category);
 
        }
         return $amount;
@@ -109,9 +116,16 @@ class Vamedcalculations{
        return $amount;
     }
 
-   public static function taxableincome($grossincome, $taxrelief,$loanbenefits){
+   public static function taxableincome($grossincome, $taxrelief,$loanbenefits,$category,$quantifiable){
+      if(str_contains($category,'Expart')){
+
+         $amount =  $grossincome + $loanbenefits - $taxrelief + $quantifiable;
+         return $amount;
+      }else{
+
      $amount =  $grossincome + $loanbenefits - $taxrelief;
       return $amount;
+      }
    }
 
    public static function paye($taxable){
@@ -208,6 +222,26 @@ class Vamedcalculations{
 
 
    public static function ssnitact($basicsalary,$category){
+
+      if(str_contains($category,'Expart')){
+         if($category == 'Expart'){
+
+            if($basicsalary > 35000){
+
+               return 0.135 * 35000;
+            }else{
+
+               return 0.135  * $basicsalary;
+            }
+
+         }else{
+
+            return 0;
+         }
+
+      }
+
+
       if($category == "Normal"){
          $amount = 0.135  * $basicsalary;
       }else{
@@ -289,6 +323,10 @@ class Vamedcalculations{
     }
 
 
+    public static function quantifiablebenefits($basicsalary){  //xpart changes
+      $amount =  500 + $basicsalary * 0.1;
+      return $amount;
+  }
 
 
 }

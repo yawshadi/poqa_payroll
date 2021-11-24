@@ -117,6 +117,7 @@ tr, td{
       <td>Position</td>
       <td>Location</td>
       <td>Consolidated Salary</td>
+      <td>Quantifiable benefits</td>
       <td>Gross Income</td>
       <td>Total Tax Payable</td>
       <td>Actual Netpay </td>
@@ -135,6 +136,7 @@ tr, td{
       <td><?php echo $get['position']  ?></td>
       <td><?php echo $get['location']     ?></td>
       <td><?php echo payround($get['basic_salary'])   ?></td>
+      <td><?php echo payround($get['quantifiable'])   ?></td>
       <td><?php echo payround($get['grossincome'])     ?></td>
       <td><?php echo payround($get['totaltaxpayable'])    ?></td>
       <td><?php echo payround($get['vamednetpay'])   ?></td>

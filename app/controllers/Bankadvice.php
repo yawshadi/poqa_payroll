@@ -55,17 +55,18 @@ class Bankadvice extends Controller{
   
   
                 //payrollcalculations
-                $staffssnit = Vamedcalculations::staffssnit($basicsalary);
+                $staffssnit = Vamedcalculations::staffssnit($basicsalary);  
+$quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
                 $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
                 $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
                 $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
                 $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
                 $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
                 $rentallowance = Vamedcalculations::rentallowance($basicsalary);
-                $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
+                $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary,$category);
                 $grossincome = Vamedcalculations::grossincome($basicsalary, $otherbenefits, $staffssnit, $staffprovidentfund); // 2021
                 $loanbenefits = Vamedcalculations::loanbenefits($loanrepayment); // 2021
-                $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits); // 2021
+                  $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits,$category,$quantifiable); // 2021
                 $paye =  Vamedcalculations::paye($taxableincome); // 2021 explain
                 $whtonstandardovertime = Vamedcalculations::whtonstandardovertime($standardovertime);
                 $whtonsatsunholovertime =  Vamedcalculations::whtonsatsunholovertime($satsunholovertime);
@@ -78,7 +79,7 @@ class Bankadvice extends Controller{
                 $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
                 $secondtier = Vamedcalculations::secondtier($basicsalary, $category); // 2021
   
-                $employerprovidentfund  = Vamedcalculations::employeeprovidentfund($basicsalary);
+                $employerprovidentfund  = Vamedcalculations::employeeprovidentfund($basicsalary,$category);
                 $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
                 $payrolldata[] = [
@@ -160,17 +161,18 @@ class Bankadvice extends Controller{
 
 
             //payrollcalculations
-            $staffssnit = Vamedcalculations::staffssnit($basicsalary);
+            $staffssnit = Vamedcalculations::staffssnit($basicsalary);  
+$quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
             $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
             $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
             $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
             $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
             $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
             $rentallowance = Vamedcalculations::rentallowance($basicsalary);
-            $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
+            $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary,$category);
             $grossincome = Vamedcalculations::grossincome($basicsalary, $otherbenefits, $staffssnit, $staffprovidentfund); // 2021
             $loanbenefits = Vamedcalculations::loanbenefits($loanrepayment); // 2021
-            $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits); // 2021
+              $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits,$category,$quantifiable); // 2021
             $paye =  Vamedcalculations::paye($taxableincome); // 2021 explain
             $whtonstandardovertime = Vamedcalculations::whtonstandardovertime($standardovertime);
             $whtonsatsunholovertime =  Vamedcalculations::whtonsatsunholovertime($satsunholovertime);
@@ -183,7 +185,7 @@ class Bankadvice extends Controller{
             $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
             $secondtier = Vamedcalculations::secondtier($basicsalary, $category); // 2021
 
-            $employerprovidentfund  = Vamedcalculations::employeeprovidentfund($basicsalary);
+            $employerprovidentfund  = Vamedcalculations::employeeprovidentfund($basicsalary,$category);
             $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
 
@@ -199,7 +201,7 @@ class Bankadvice extends Controller{
         }
 
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('C2', COMPANYNAME);
+        $objPHPExcel->getActiveSheet()->SetCellValue('C2', $company);
 
         $imgpath = URLROOT.'/img/vamed.jpg';
 

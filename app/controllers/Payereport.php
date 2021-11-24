@@ -50,7 +50,8 @@ class Payereport extends Controller{
 
                 //payrollcalculations
       //payrollcalculations
-      $staffssnit = Vamedcalculations::staffssnit($basicsalary);
+      $staffssnit = Vamedcalculations::staffssnit($basicsalary);  
+$quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
       $loanbenefits = Vamedcalculations::loanbenefits($loanrepayment); // 2021
       $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
       $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
@@ -58,10 +59,10 @@ class Payereport extends Controller{
       $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
       $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
       $rentallowance = Vamedcalculations::rentallowance($basicsalary);
-      $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
+      $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary,$category);
       $grossincome = Vamedcalculations::grossincome($basicsalary, $otherbenefits, $staffssnit, $staffprovidentfund); // 2021
       //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
-      $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits);
+      $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits,$category,$quantifiable);
       $paye =  Vamedcalculations::paye($taxableincome);
 
       $bonusincome = Vamedcalculations::bonusincome($basicsalary);
@@ -69,7 +70,7 @@ class Payereport extends Controller{
       $taxonbonusincome = Vamedcalculations::taxonbonusincome($bonusincome, $excessbonus);
       $totalcashemolument = Vamedcalculations::totalcashemolument($basicsalary,$otherbenefits,$excessbonus);
       $totalAssessableincome = Vamedcalculations::totalAssessableincome($totalcashemolument);
-      $tier3  = Vamedcalculations::employeeprovidentfund($basicsalary);
+      $tier3  = Vamedcalculations::employeeprovidentfund($basicsalary,$category);
       $totalreliefs = Vamedcalculations::totalreliefs($staffssnit,$tier3);
       $chargeableincome = Vamedcalculations::chargeableincome($totalAssessableincome, $totalreliefs);
       $overtimecallincome = Vamedcalculations::overtimecallincome($basicsalary);
@@ -175,7 +176,8 @@ class Payereport extends Controller{
 
 
             //payrollcalculations
-            $staffssnit = Vamedcalculations::staffssnit($basicsalary);
+            $staffssnit = Vamedcalculations::staffssnit($basicsalary);  
+$quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
             $loanbenefits = Vamedcalculations::loanbenefits($loanrepayment); // 2021
             $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
             $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
@@ -183,10 +185,10 @@ class Payereport extends Controller{
             $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
             $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
             $rentallowance = Vamedcalculations::rentallowance($basicsalary);
-            $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
+            $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary,$category);
             $grossincome = Vamedcalculations::grossincome($basicsalary, $otherbenefits, $staffssnit, $staffprovidentfund); // 2021
             //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
-            $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits);
+            $taxableincome = Vamedcalculations::taxableincome($grossincome, $taxrelief,$loanbenefits,$category,$quantifiable);
             $paye =  Vamedcalculations::paye($taxableincome);
 
             $bonusincome = Vamedcalculations::bonusincome($basicsalary);
@@ -194,7 +196,7 @@ class Payereport extends Controller{
             $taxonbonusincome = Vamedcalculations::taxonbonusincome($bonusincome, $excessbonus);
             $totalcashemolument = Vamedcalculations::totalcashemolument($basicsalary,$otherbenefits,$excessbonus);
             $totalAssessableincome = Vamedcalculations::totalAssessableincome($totalcashemolument);
-            $tier3  = Vamedcalculations::employeeprovidentfund($basicsalary);
+            $tier3  = Vamedcalculations::employeeprovidentfund($basicsalary,$category);
             $totalreliefs = Vamedcalculations::totalreliefs($staffssnit,$tier3);
             $chargeableincome = Vamedcalculations::chargeableincome($totalAssessableincome, $totalreliefs);
             $overtimecallincome = Vamedcalculations::overtimecallincome($basicsalary);

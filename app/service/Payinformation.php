@@ -19,14 +19,15 @@ class Payinformation
         $location = $empdata->location;
 
         //payrollcalculations
-        $staffssnit = Vamedcalculations::staffssnit($basicsalary);
+        $staffssnit = Vamedcalculations::staffssnit($basicsalary);  
+$quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
         $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
         $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
         $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
         $satsunholovertime = Vamedcalculations::satsunholovertime($category, $basicsalary);
         $transportvehiclemaintenance = Vamedcalculations::transportvehiclemaintenance($basicsalary);
         $rentallowance = Vamedcalculations::rentallowance($basicsalary);
-        $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary);
+        $staffprovidentfund = Vamedcalculations::employeeprovidentfund($basicsalary,$category);
         $grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit, $staffprovidentfund);
         //$grossincome = Vamedcalculations::grossincome($basicsalary, $transportvehiclemaintenance, $rentallowance, $staffssnit);
 

@@ -71,7 +71,7 @@ class Provident extends Controller
 
         $objPHPExcel->setActiveSheetIndex(0);
 
-        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'VAMED ENGINEERING GmbH');
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', $company);
         $objPHPExcel->getActiveSheet()->SetCellValue('A2', 'Ghana Branch Office');
 
         $objPHPExcel->getActiveSheet()->SetCellValue('B8', 'SCHEME NAME');
