@@ -158,10 +158,14 @@ class Vamedcalculations{
       }elseif($taxable > 539 && $taxable <= 3539){
             $paye = (($taxable - 539) * 0.175) + 17;
             return  round($paye , 2);
-      }elseif($taxable > 3539){
+      }elseif($taxable > 3539 && $taxable <= 20000){
             $paye = (($taxable - 3539) * 0.25) + 542;
             return  round($paye , 2);
-      }else{
+      }elseif($taxable > 20000){
+         $paye = (($taxable - 20000) * 0.30) + 4657.25;
+         return  round($paye , 2);
+      }
+      else{
             return $paye = 0;
       }
    }
