@@ -62,12 +62,7 @@ spl_autoload_register(function($class){
 
 $payrolldb = new Database();
 //$client = new Google_Client();
-if (!function_exists('str_contains')) {
-    function str_contains(string $haystack, string $needle): bool
-    {
-        return '' === $needle || false !== strpos($haystack, $needle);
-    }
-}
+
 
 // We also always need the session object, and need to create it before any output.
 session_start();

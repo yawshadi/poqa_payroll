@@ -202,5 +202,12 @@ class Tools extends tableDataObject{
         
         return $tomorrow;
      }
+
+  
+      public static  function str_contain(string $haystack, string $needle): bool
+        {
+            return '' === $needle || false !== strpos($haystack, $needle);
+        }
+    
      
     }

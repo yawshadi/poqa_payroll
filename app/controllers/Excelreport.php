@@ -126,7 +126,7 @@ class Excelreport extends Controller{
              	$objPHPExcel->getActiveSheet()->setCellValue('M' . $i, payround($loanbenefits));
              	$objPHPExcel->getActiveSheet()->setCellValue('N' . $i, payround($taxrelief));
              	$objPHPExcel->getActiveSheet()->setCellValue('O' . $i, payround($taxableincome));
-             	$objPHPExcel->getActiveSheet()->setCellValue('O' . $i, payround($paye));
+             	$objPHPExcel->getActiveSheet()->setCellValue('P' . $i, payround($paye));
              	$objPHPExcel->getActiveSheet()->SetCellValue('Q' . $i, payround($bonus));
              	$objPHPExcel->getActiveSheet()->SetCellValue('R' .$i, payround($bonustax));
              	$objPHPExcel->getActiveSheet()->SetCellValue('S' .$i, payround($totaltaxpayable));
