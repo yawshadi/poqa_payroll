@@ -256,7 +256,16 @@ class Vamedcalculations{
    }
 
 
-   public static function secondtier($basicsalary, $category){
+   public static function secondtier($basicsalary, $category,$totalssnit){
+
+
+      if(Tools::str_contain($category,'Expart')){
+         $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
+      
+         return $totalssnit - $ssnitact;
+
+      }
+
       if($category == "Normal"){
          $amount = 0.05  * $basicsalary;
       }elseif ($category == 'Pensioner'){

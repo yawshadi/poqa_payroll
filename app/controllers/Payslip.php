@@ -70,7 +70,7 @@ $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
             $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
             $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
             $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
-            $secondtier = Vamedcalculations::secondtier($basicsalary, $category); // 2021
+            $secondtier = Vamedcalculations::secondtier($basicsalary, $category,$totalssnit); // 2021
 
 
             $paysliptotalpay = Vamedcalculations::paysliptotal($vamednetpay,$otherbenefits,$bonus,$loanbenefits,$totaltaxpayable,$salaryadvance,$basicsalary); // 2021
@@ -168,7 +168,7 @@ $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
         $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
         $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
         $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
-        $secondtier = Vamedcalculations::secondtier($basicsalary, $category); // 2021
+        $secondtier = Vamedcalculations::secondtier($basicsalary, $category,$totalssnit); // 2021
 
         $paysliptotalpay = Vamedcalculations::paysliptotal($vamednetpay,$otherbenefits,$bonus,$loanbenefits,$totaltaxpayable,$salaryadvance,$basicsalary); // 2021
 
@@ -260,7 +260,7 @@ $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
         $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
         $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
         $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
-        $secondtier = Vamedcalculations::secondtier($basicsalary, $category); // 2021
+        $secondtier = Vamedcalculations::secondtier($basicsalary, $category,$totalssnit); // 2021
 
         
         $paysliptotalpay = Vamedcalculations::paysliptotal($vamednetpay,$otherbenefits,$bonus,$loanbenefits,$totaltaxpayable,$salaryadvance,$basicsalary); // 2021

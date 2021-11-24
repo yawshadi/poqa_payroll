@@ -105,7 +105,7 @@ class Excelreport extends Controller{
               $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
               $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
               $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
-              $secondtier = Vamedcalculations::secondtier($basicsalary, $category); // 2021
+              $secondtier = Vamedcalculations::secondtier($basicsalary, $category,$totalssnit); // 2021
 
               $employerprovidentfund  = Vamedcalculations::employeeprovidentfund($basicsalary,$category);
               $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
