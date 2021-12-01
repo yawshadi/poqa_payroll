@@ -100,9 +100,9 @@ tr, td{
                      <option>Normal</option>
                      <option value="Not Eligible">Not Eligible</option>
                      <option  value="Pensioner">Pensioner</option>
-                     <option>Expart</option>
-                     <option>Pensioner Expart</option>
-                     <option>Not Eligible Expart</option>
+                     <option>Expat</option>
+                     <option>Pensioner Expat</option>
+                     <option>Not Eligible Expat</option>
                  </select>
 
              </td>

@@ -37,7 +37,7 @@ class Vamedcalculations{
     }
 
     public static function employeeprovidentfund($basicsalary,$category){
-       if(Tools::str_contain($category,'Expart')){
+       if(Tools::str_contain($category,'Expat')){
           return 0;
        }else{
             $amount = $basicsalary * 0.05;
@@ -45,7 +45,7 @@ class Vamedcalculations{
        }
     }
     public static function totalprovidentfunc($basicsalary ,$category){
-      if(Tools::str_contain($category,'Expart')){
+      if(Tools::str_contain($category,'Expat')){
          return 0;
       }
        if($category == 'Pensioner'){
@@ -117,7 +117,7 @@ class Vamedcalculations{
     }
 
    public static function taxableincome($grossincome, $taxrelief,$loanbenefits,$category,$quantifiable){
-      if(Tools::str_contain($category,'Expart')){
+      if(Tools::str_contain($category,'Expat')){
 
          $amount =  $grossincome - $taxrelief + $loanbenefits+ $quantifiable;
          return $amount;
@@ -227,8 +227,8 @@ class Vamedcalculations{
 
    public static function ssnitact($basicsalary,$category){
 
-      if(Tools::str_contain($category,'Expart')){
-         if($category == 'Expart'){
+      if(Tools::str_contain($category,'Expat')){
+         if($category == 'Expat'){
 
             if($basicsalary > 35000){
 
@@ -259,7 +259,7 @@ class Vamedcalculations{
    public static function secondtier($basicsalary, $category,$totalssnit){
 
 
-      if(Tools::str_contain($category,'Expart')){
+      if(Tools::str_contain($category,'Expat')){
          $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
       
          return $totalssnit - $ssnitact;

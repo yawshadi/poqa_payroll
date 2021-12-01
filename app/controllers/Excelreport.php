@@ -144,7 +144,7 @@ class Excelreport extends Controller{
               $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
 
-              if(Tools::str_contain($category,'Expart')){
+              if(Tools::str_contain($category,'Expat')){
                 $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $fullname);
              	$objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $position);
              	$objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $jobcat);
