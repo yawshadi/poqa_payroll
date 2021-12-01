@@ -116,8 +116,15 @@ tr, td{
       <td>Department</td>
       <td>Position</td>
       <td>Location</td>
+     
       <td>Consolidated Salary</td>
+     
+      <?php 
+      
+      if(Tools::str_contain($data['company'],'EXPATS')){
+      ?>
       <td>Quantifiable benefits</td>
+      <?php } ?>
       <td>Gross Income</td>
       <td>Total Tax Payable</td>
       <td>Actual Netpay </td>
@@ -136,7 +143,13 @@ tr, td{
       <td><?php echo $get['position']  ?></td>
       <td><?php echo $get['location']     ?></td>
       <td><?php echo payround($get['basic_salary'])   ?></td>
+      <?php 
+      if(Tools::str_contain($data['company'],'EXPATS')){
+      ?>
       <td><?php echo payround($get['quantifiable'])   ?></td>
+      <?php 
+  }
+      ?>
       <td><?php echo payround($get['grossincome'])     ?></td>
       <td><?php echo payround($get['totaltaxpayable'])    ?></td>
       <td><?php echo payround($get['vamednetpay'])   ?></td>

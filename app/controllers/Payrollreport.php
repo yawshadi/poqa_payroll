@@ -94,7 +94,7 @@ $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
           }
 
        $alldata =  ['companies'=>$comdata, 'payrolldata'=>$payrolldata, 'payperiod'=>$paydata,
-                   'startdate'=>$startdate, 'enddate'=>$enddate, 'companyid'=>$companyid ];
+                   'startdate'=>$startdate, 'enddate'=>$enddate, 'companyid'=>$companyid,'company'=>$_POST['company'] ];
        $this->view('reports/mainpayroll', $alldata);
         }else{
 
