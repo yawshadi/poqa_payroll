@@ -18,7 +18,7 @@ class Excelreport extends Controller{
                                ->setKeywords("office PHPExcel php")
                                ->setCategory("Test result file");
 
-            if(Tools::str_contain($company,'EXPATS')){
+            // if(Tools::str_contain($company,'EXPATS')){
             $objPHPExcel->setActiveSheetIndex(0);
             $objPHPExcel->getActiveSheet()->SetCellValue('A5', 'Name of Staff');
             $objPHPExcel->getActiveSheet()->SetCellValue('B5', 'Position');
@@ -50,38 +50,38 @@ class Excelreport extends Controller{
             $objPHPExcel->getActiveSheet()->SetCellValue('AB5', '5% EIC Second Tier');
             $objPHPExcel->getActiveSheet()->SetCellValue('AC5', '5% Employer PF');
             $objPHPExcel->getActiveSheet()->SetCellValue('AD5', '10% Total PF');
-            }else{
-               $objPHPExcel->setActiveSheetIndex(0);
-               $objPHPExcel->getActiveSheet()->SetCellValue('A5', 'Name of Staff');
-               $objPHPExcel->getActiveSheet()->SetCellValue('B5', 'Position');
-               $objPHPExcel->getActiveSheet()->SetCellValue('C5', 'Job Category');
-               $objPHPExcel->getActiveSheet()->SetCellValue('D5', 'Location');
-               $objPHPExcel->getActiveSheet()->SetCellValue('E5', 'Staff SSNIT NO');
-               $objPHPExcel->getActiveSheet()->SetCellValue('F5', 'Consolidated Salary');
-               $objPHPExcel->getActiveSheet()->SetCellValue('G5', '5.5% Staff SSF');
-               $objPHPExcel->getActiveSheet()->SetCellValue('H5', '5% Staff PF');
-               $objPHPExcel->getActiveSheet()->SetCellValue('I5', 'Other Benefits / Allowances');
-               $objPHPExcel->getActiveSheet()->SetCellValue('J5', 'Gross Salary'); // formula change
-               $objPHPExcel->getActiveSheet()->SetCellValue('K5', 'Loan Repayment');
-               $objPHPExcel->getActiveSheet()->SetCellValue('L5', 'Loan Benefit');  // formula change
-               $objPHPExcel->getActiveSheet()->SetCellValue('M5', 'Tax Relief'); // formula change
-               $objPHPExcel->getActiveSheet()->SetCellValue('N5', 'Taxable Income'); // formula change
-               $objPHPExcel->getActiveSheet()->SetCellValue('O5', 'PAYE Payable '); // formula
-               $objPHPExcel->getActiveSheet()->SetCellValue('P5', 'Bonus ');
-               $objPHPExcel->getActiveSheet()->SetCellValue('Q5', 'Bonus Tax');
-               $objPHPExcel->getActiveSheet()->SetCellValue('R5', 'Total Tax Payable'); //formula
-               $objPHPExcel->getActiveSheet()->SetCellValue('S5', 'Salary Advance');
-               $objPHPExcel->getActiveSheet()->SetCellValue('T5', 'Actual Net Salary from VE'); //formula
-               $objPHPExcel->getActiveSheet()->SetCellValue('U5', 'Staff Welfare Asso.');
-               $objPHPExcel->getActiveSheet()->SetCellValue('V5', 'Other Deductibles');
-               $objPHPExcel->getActiveSheet()->SetCellValue('W5', 'Amount Payable to Staff Account');
-               $objPHPExcel->getActiveSheet()->SetCellValue('X5', '13% Employer SSNIT');
-               $objPHPExcel->getActiveSheet()->SetCellValue('Y5', '18.5% Total Pensions');
-               $objPHPExcel->getActiveSheet()->SetCellValue('Z5', '13.5% SSNIT Act 766');
-               $objPHPExcel->getActiveSheet()->SetCellValue('AA5', '5% EIC Second Tier');
-               $objPHPExcel->getActiveSheet()->SetCellValue('AB5', '5% Employer PF');
-               $objPHPExcel->getActiveSheet()->SetCellValue('AC5', '10% Total PF');
-            }
+            // }else{
+            //    $objPHPExcel->setActiveSheetIndex(0);
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('A5', 'Name of Staff');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('B5', 'Position');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('C5', 'Job Category');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('D5', 'Location');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('E5', 'Staff SSNIT NO');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('F5', 'Consolidated Salary');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('G5', '5.5% Staff SSF');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('H5', '5% Staff PF');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('I5', 'Other Benefits / Allowances');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('J5', 'Gross Salary'); // formula change
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('K5', 'Loan Repayment');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('L5', 'Loan Benefit');  // formula change
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('M5', 'Tax Relief'); // formula change
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('N5', 'Taxable Income'); // formula change
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('O5', 'PAYE Payable '); // formula
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('P5', 'Bonus ');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('Q5', 'Bonus Tax');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('R5', 'Total Tax Payable'); //formula
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('S5', 'Salary Advance');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('T5', 'Actual Net Salary from VE'); //formula
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('U5', 'Staff Welfare Asso.');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('V5', 'Other Deductibles');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('W5', 'Amount Payable to Staff Account');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('X5', '13% Employer SSNIT');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('Y5', '18.5% Total Pensions');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('Z5', '13.5% SSNIT Act 766');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('AA5', '5% EIC Second Tier');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('AB5', '5% Employer PF');
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('AC5', '10% Total PF');
+            // }
     
 
           for ($i = 'A'; $i != $objPHPExcel->getActiveSheet()->getHighestColumn(); $i++) {
@@ -117,7 +117,7 @@ class Excelreport extends Controller{
 
               //payrollcalculations
               $staffssnit = Vamedcalculations::staffssnit($basicsalary);  
-              $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
+              $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary,$category);
               $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
               $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
               $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
@@ -144,7 +144,7 @@ class Excelreport extends Controller{
               $totalprovident =  Vamedcalculations::totalprovidentfunc($basicsalary,$category);//2021
 
 
-              if(Tools::str_contain($category,'Expat')){
+            //   if(Tools::str_contain($category,'Expat')){
                 $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $fullname);
              	$objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $position);
              	$objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $jobcat);
@@ -175,37 +175,37 @@ class Excelreport extends Controller{
              	$objPHPExcel->getActiveSheet()->SetCellValue('AB' .$i, payround($secondtier));
              	$objPHPExcel->getActiveSheet()->SetCellValue('AC' .$i, payround($employerprovidentfund));
              	$objPHPExcel->getActiveSheet()->SetCellValue('AD' .$i, payround($totalprovident));
-              }else{
-               $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $fullname);
-               $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $position);
-               $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $jobcat);
-               $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $location );
-               $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $ssnitnumber);
-               $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $basicsalary);
-               $objPHPExcel->getActiveSheet()->SetCellValue('G'  .$i, payround($staffssnit));
-               $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, payround($staffprovidentfund));
-               $objPHPExcel->getActiveSheet()->setCellValue('I' . $i, payround($otherbenefits));
-               $objPHPExcel->getActiveSheet()->setCellValue('J' . $i, payround($grossincome));
-               $objPHPExcel->getActiveSheet()->setCellValue('K' . $i, payround($loanrepayment));
-               $objPHPExcel->getActiveSheet()->setCellValue('L' . $i, payround($loanbenefits));
-               $objPHPExcel->getActiveSheet()->setCellValue('M' . $i, payround($taxrelief));
-               $objPHPExcel->getActiveSheet()->setCellValue('N' . $i, payround($taxableincome));
-               $objPHPExcel->getActiveSheet()->setCellValue('O' . $i, payround($paye));
-               $objPHPExcel->getActiveSheet()->SetCellValue('P' . $i, payround($bonus));
-               $objPHPExcel->getActiveSheet()->SetCellValue('Q' .$i, payround($bonustax));
-               $objPHPExcel->getActiveSheet()->SetCellValue('R' .$i, payround($totaltaxpayable));
-               $objPHPExcel->getActiveSheet()->SetCellValue('S' .$i, payround($salaryadvance));
-               $objPHPExcel->getActiveSheet()->SetCellValue('T' .$i, payround($vamednetpay));
-               $objPHPExcel->getActiveSheet()->SetCellValue('U' .$i, payround($staffwelfare));
-               $objPHPExcel->getActiveSheet()->SetCellValue('V' .$i, payround($otherdeductible));
-               $objPHPExcel->getActiveSheet()->SetCellValue('W' .$i, payround($vamedwelfarenetsalary));
-               $objPHPExcel->getActiveSheet()->SetCellValue('X' .$i, payround($employerssnit));
-               $objPHPExcel->getActiveSheet()->SetCellValue('Y' .$i, payround($totalssnit));
-               $objPHPExcel->getActiveSheet()->SetCellValue('Z' .$i, payround($ssnitact));
-               $objPHPExcel->getActiveSheet()->SetCellValue('AA' .$i, payround($secondtier));
-               $objPHPExcel->getActiveSheet()->SetCellValue('AB' .$i, payround($employerprovidentfund));
-               $objPHPExcel->getActiveSheet()->SetCellValue('AC' .$i, payround($totalprovident));
-              }
+            //   }else{
+            //    $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $fullname);
+            //    $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $position);
+            //    $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $jobcat);
+            //    $objPHPExcel->getActiveSheet()->setCellValue('D' . $i, $location );
+            //    $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $ssnitnumber);
+            //    $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $basicsalary);
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('G'  .$i, payround($staffssnit));
+            //    $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, payround($staffprovidentfund));
+            //    $objPHPExcel->getActiveSheet()->setCellValue('I' . $i, payround($otherbenefits));
+            //    $objPHPExcel->getActiveSheet()->setCellValue('J' . $i, payround($grossincome));
+            //    $objPHPExcel->getActiveSheet()->setCellValue('K' . $i, payround($loanrepayment));
+            //    $objPHPExcel->getActiveSheet()->setCellValue('L' . $i, payround($loanbenefits));
+            //    $objPHPExcel->getActiveSheet()->setCellValue('M' . $i, payround($taxrelief));
+            //    $objPHPExcel->getActiveSheet()->setCellValue('N' . $i, payround($taxableincome));
+            //    $objPHPExcel->getActiveSheet()->setCellValue('O' . $i, payround($paye));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('P' . $i, payround($bonus));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('Q' .$i, payround($bonustax));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('R' .$i, payround($totaltaxpayable));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('S' .$i, payround($salaryadvance));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('T' .$i, payround($vamednetpay));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('U' .$i, payround($staffwelfare));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('V' .$i, payround($otherdeductible));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('W' .$i, payround($vamedwelfarenetsalary));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('X' .$i, payround($employerssnit));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('Y' .$i, payround($totalssnit));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('Z' .$i, payround($ssnitact));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('AA' .$i, payround($secondtier));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('AB' .$i, payround($employerprovidentfund));
+            //    $objPHPExcel->getActiveSheet()->SetCellValue('AC' .$i, payround($totalprovident));
+            //   }
 
 
               $i++;

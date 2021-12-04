@@ -336,9 +336,13 @@ class Vamedcalculations{
     }
 
 
-    public static function quantifiablebenefits($basicsalary){  //xpart changes
+    public static function quantifiablebenefits($basicsalary,$category){  //xpart changes
+      if(Tools::str_contain($category,'Expat')){
       $amount =  500 + $basicsalary * 0.1;
       return $amount;
+      } else{
+         return 0;
+      }
   }
 
 

@@ -56,7 +56,7 @@ class Bankadvice extends Controller{
   
                 //payrollcalculations
                 $staffssnit = Vamedcalculations::staffssnit($basicsalary);  
-$quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
+$quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary,$category);
                 $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
                 $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
                 $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
@@ -162,7 +162,7 @@ $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
 
             //payrollcalculations
             $staffssnit = Vamedcalculations::staffssnit($basicsalary);  
-$quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary);
+$quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary,$category);
             $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
             $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
             $teamdevelopment= Vamedcalculations::teamdevelopment($basicsalary, $category);
