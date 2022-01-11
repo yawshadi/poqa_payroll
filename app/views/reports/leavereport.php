@@ -86,6 +86,7 @@ tr, td{
           <thead>
               <th>Staff Name </th>
               <th>Location </th>
+              <th>Leave Type </th>
               <th>Leave entitled to </th>
               <th>Dates on Leave(From) </th>
               <th>Dates on Leave (To)</th>
@@ -101,6 +102,7 @@ tr, td{
           
             <td> <?= $employee->surname.' '.$employee->firstname.' '.$employee->othernames ?></td>
             <td><?= $employee->location ?></td>
+            <td><?= $employee->leavetype ?></td>
             <td><?= $employee->accumulatedleave ?></td>
             <td><?= $employee->startdate ?></td>
             <td><?= $employee->endate ?></td>

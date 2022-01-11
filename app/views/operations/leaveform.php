@@ -49,6 +49,7 @@ if($data['empcount'] > 0){
   <td><select class='form-control' id='leavetype' name='leavetype'>
     <option>Normal</option>
     <option>Maternity</option>
+    <option>Sick leave</option>
   </select>
   </td>
   </tr>

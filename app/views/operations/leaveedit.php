@@ -85,6 +85,7 @@ tr, td{
       <option><?=$data['leavedata']->leavetype?></option>
     <option>Normal</option>
     <option>Maternity</option>
+    <option>Sick leave</option>
   </select>
   </td>
   </tr>
