@@ -125,6 +125,7 @@ var urlroot = marketplacecfg.urlroot;
         var available = $("#availableleave").val();
         var leavetype = $("#leavetype").val();
         if (leavetype=='Maternity') return;
+        if (leavetype=='Sick leave') return;
         ajaxurl = urlroot + "/operations/isleavevalid";
         postdata ={startdate:startdate,enddate:enddate,available:available}
         $.ajax({
