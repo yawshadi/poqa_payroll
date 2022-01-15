@@ -147,19 +147,19 @@ class Vamedcalculations{
    //    }else{
    //     return $paye = 0;
    //    }
-         if($taxable < 319){
+         if($taxable < 365){
             return $paye = 0;
-      }elseif($taxable > 319 && $taxable<=419){
-            $paye = ($taxable - 318) * 0.05;
+      }elseif($taxable > 365 && $taxable<=475){
+            $paye = ($taxable - 365) * 0.05;
             return  round($paye , 2);
-      }elseif($taxable > 419 && $taxable <= 539){
-            $paye = (($taxable - 419) * 0.10) + 5.0;
+      }elseif($taxable > 475 && $taxable <= 605){
+            $paye = (($taxable - 475) * 0.10) + 5.0;
             return  round($paye , 2);
-      }elseif($taxable > 539 && $taxable <= 3539){
-            $paye = (($taxable - 539) * 0.175) + 17;
+      }elseif($taxable > 605 && $taxable <= 3605){
+            $paye = (($taxable - 605) * 0.175) + 17;
             return  round($paye , 2);
-      }elseif($taxable > 3539 && $taxable <= 20000){
-            $paye = (($taxable - 3539) * 0.25) + 542;
+      }elseif($taxable > 3605 && $taxable <= 20000){
+            $paye = (($taxable - 3605) * 0.25) + 542;
             return  round($paye , 2);
       }elseif($taxable > 20000){
          $paye = (($taxable - 20000) * 0.30) + 4657.25;
