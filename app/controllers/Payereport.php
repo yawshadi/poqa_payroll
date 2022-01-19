@@ -50,7 +50,7 @@ class Payereport extends Controller{
 
                 //payrollcalculations
       //payrollcalculations
-      $staffssnit = Vamedcalculations::staffssnit($basicsalary);  
+      $staffssnit = Vamedcalculations::staffssnit($basicsalary,$category);  
 $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary,$category);
       $loanbenefits = Vamedcalculations::loanbenefits($loanrepayment); // 2021
       $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
@@ -176,7 +176,7 @@ $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary,$category);
 
 
             //payrollcalculations
-            $staffssnit = Vamedcalculations::staffssnit($basicsalary);  
+            $staffssnit = Vamedcalculations::staffssnit($basicsalary,$category);  
 $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary,$category);
             $loanbenefits = Vamedcalculations::loanbenefits($loanrepayment); // 2021
             $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);

@@ -19,7 +19,7 @@ class Payinformation
         $location = $empdata->location;
 
         //payrollcalculations
-        $staffssnit = Vamedcalculations::staffssnit($basicsalary);  
+        $staffssnit = Vamedcalculations::staffssnit($basicsalary,$category);  
 $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary,$category);
         $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
         $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);

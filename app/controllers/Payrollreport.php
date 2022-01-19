@@ -49,7 +49,7 @@ class Payrollreport extends Controller{
 
 
               //payrollcalculations
-              $staffssnit = Vamedcalculations::staffssnit($basicsalary);  
+              $staffssnit = Vamedcalculations::staffssnit($basicsalary,$category);  
 $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary,$category);
               $totalincome = Vamedcalculations::totalincome($basicsalary, $staffssnit);
               $standardovertime = Vamedcalculations::standardovertime($basicsalary, $category);
@@ -68,8 +68,8 @@ $quantifiable= Vamedcalculations::quantifiablebenefits($basicsalary,$category);
               $totaltaxpayable = Vamedcalculations::totaltaxpayable($paye,$bonustax); //2021
               $vamednetpay = Vamedcalculations::vamednetpay($grossincome, $totaltaxpayable, $salaryadvance, $loanrepayment,$bonus,$basicsalary,$category); // 2021
               $vamedwelfarenetsalary = Vamedcalculations::vamedwelfarenetsalary($vamednetpay, $staffwelfare,$otherdeductible);
-              $employerssnit  = Vamedcalculations::employerssnit($basicsalary);
-              $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit);
+              $employerssnit  = Vamedcalculations::employerssnit($basicsalary,$category);
+              $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit,$category);
               $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
               $secondtier = Vamedcalculations::secondtier($basicsalary, $category,$totalssnit); // 2021
 

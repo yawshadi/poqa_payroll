@@ -3,8 +3,11 @@
 class Vamedcalculations{
 
 
-   public static function staffssnit($basicsalary){
+   public static function staffssnit($basicsalary,$category){
 
+      if(Tools::str_contain($category,'Pensioner')){
+         return 0;
+      }
        $amount =  $basicsalary * 0.055;
         return $amount;
    }
@@ -37,12 +40,18 @@ class Vamedcalculations{
     }
 
     public static function employeeprovidentfund($basicsalary,$category){
+
+      if(Tools::str_contain($category,'Pensioner')){
+         return 0;
+      }
+
        if(Tools::str_contain($category,'Expat')){
           return 0;
-       }else{
+       }
+
             $amount = $basicsalary * 0.05;
             return $amount;
-       }
+       
     }
     public static function totalprovidentfunc($basicsalary ,$category){
       if(Tools::str_contain($category,'Expat')){
@@ -214,18 +223,32 @@ class Vamedcalculations{
       return $amount;
    }
 
-   public static function employerssnit($basicsalary){
+   public static function employerssnit($basicsalary,$category){
+
+      if(Tools::str_contain($category,'Pensioner')){
+         return 0;
+      }
+
       $amount =  $basicsalary * 0.13;
       return $amount;
    }
 
-   public static function totalssnit($staffssnit, $employerssnit){
+   public static function totalssnit($staffssnit, $employerssnit,$category){
+
+      if(Tools::str_contain($category,'Pensioner')){
+         return 0;
+      }
+
       $amount =  $staffssnit + $employerssnit;
       return $amount;
    }
 
 
    public static function ssnitact($basicsalary,$category){
+
+      if(Tools::str_contain($category,'Pensioner')){
+         return 0;
+      }
 
       if(Tools::str_contain($category,'Expat')){
          if($category == 'Expat'){
@@ -258,6 +281,9 @@ class Vamedcalculations{
 
    public static function secondtier($basicsalary, $category,$totalssnit){
 
+      if(Tools::str_contain($category,'Pensioner')){
+         return 0;
+      }
 
       if(Tools::str_contain($category,'Expat')){
          $ssnitact  = Vamedcalculations::ssnitact($basicsalary,$category); // 2021
