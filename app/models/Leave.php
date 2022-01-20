@@ -55,4 +55,20 @@ class Leave extends tableDataObject{
     return $payrolldb->resultSet();
   }
 
+  public static function leavelist(){
+    global $payrolldb;
+    $query = "Select * from  leaves where leavetype <> 'Sick leave'";
+    $payrolldb->prepare($query);
+    $payrolldb->execute();
+    return  $payrolldb->resultSet();
+ }
+
+ public static function leavesick(){
+  global $payrolldb;
+  $query = "Select * from  leaves where leavetype = 'Sick leave'";
+  $payrolldb->prepare($query);
+  $payrolldb->execute();
+  return  $payrolldb->resultSet();
+}
+
 }

@@ -106,7 +106,15 @@ tr, td{
             <td><?= $employee->accumulatedleave ?></td>
             <td><?= $employee->startdate ?></td>
             <td><?= $employee->endate ?></td>
-            <td> <?= $employee->actualdays ?></td>
+            <td> 
+              <?php
+              if($employee->actualdays == 0){
+                echo   $actualdays = Tools::datediff($employee->startdate,$employee->endate);
+              }else{
+               echo $employee->actualdays; 
+              }
+            ?>
+            </td>
             <td> <?= Leavedays::availabledays($employee->basic_id,date('Y')) ?></td>
           </tr>
           <?php 

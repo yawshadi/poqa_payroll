@@ -246,6 +246,8 @@ changeMonth: true, changeYear: true, yearRange: "1920:2080", dateFormat: 'yy-mm-
         var available = $("#availableleave").val();
         var leavetype = $("#leavetype").val();
         if (leavetype=='Maternity') return;
+        if (leavetype=='Sick leave') return;
+
         ajaxurl = urlroot + "/operations/isleavevalid";
         postdata ={startdate:startdate,enddate:enddate,available:available}
         $.ajax({

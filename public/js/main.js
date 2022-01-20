@@ -1251,6 +1251,11 @@ $(document).ready(function() {
                 url: urlroot+'/operations/leavelist', // use the `url` property
                 color: '#00ACE5',    // an option!
                 textColor: 'white'  // an option!
+              },
+              {
+                url: urlroot+'/operations/leavesick', // use the `url` property
+                color: '#FF0000',    // an option!
+                textColor: 'white'  // an option!
               }
         
             // any other sources...

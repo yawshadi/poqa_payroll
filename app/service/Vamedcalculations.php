@@ -201,14 +201,14 @@ class Vamedcalculations{
 
    public static function vamednetpay($grossincome, $totaltaxpayable, $salaryadvance, $loanrepayment,$bonus,$basicsalary,$category)
    {
-      if($category == 'Pensioner'){
+      // if($category == 'Pensioner'){
 
-         $amount = ($grossincome + $bonus  - $totaltaxpayable - $salaryadvance - $loanrepayment) + ($basicsalary*0.185 + $basicsalary*0.10) ;
-         return $amount;
-      }else{
+      //    $amount = ($grossincome + $bonus  - $totaltaxpayable - $salaryadvance - $loanrepayment) + ($basicsalary*0.185 + $basicsalary*0.10) ;
+      //    return $amount;
+      // }else{
      $amount = $grossincome + $bonus  - $totaltaxpayable - $salaryadvance - $loanrepayment;
       return $amount;
-      }
+      // }
    }
 
 
@@ -356,7 +356,11 @@ class Vamedcalculations{
    }
 
 
-    public static function ssnitforschedule($basicsalary){
+    public static function ssnitforschedule($basicsalary,$category){
+
+      if(Tools::str_contain($category,'Pensioner')){
+         return 0;
+      }
         $amount =  $basicsalary * 0.135;
         return $amount;
     }

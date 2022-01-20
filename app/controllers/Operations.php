@@ -563,8 +563,12 @@ class Operations extends Controller{
       		 $filename =  $uploadresponse['filename'];
 
            //return leavedays from the start and end dates excluding holiday and weekends
+          
            $actualdays = Tools::datediff($_POST['startdate'],$_POST['endate']);
 
+           if ($leavetype =='Sick leave') {
+             $actualdays = 0;
+           }
            
 
            $gv  = new Leave();
@@ -694,7 +698,19 @@ class Operations extends Controller{
 
 
      public function leavelist(){
-      $leavelist = Leave::listAll();
+      $leavelist = Leave::leavelist();
+
+      foreach($leavelist as $get){
+        $employeename  =   Employee::getFullname($get->employeeid);
+        if($employeename!=''){
+        $list[]=array("title"=>$employeename,"start"=>$get->startdate,"end"=>Tools::plusOneDay($get->endate),"id"=>$get->lid,"icon"=>"calendar");
+       }
+      }
+       echo json_encode($list);
+     }
+
+     public function leavesick(){
+      $leavelist = Leave::leavesick();
 
       foreach($leavelist as $get){
         $employeename  =   Employee::getFullname($get->employeeid);
