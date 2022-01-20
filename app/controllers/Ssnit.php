@@ -44,7 +44,7 @@ class Ssnit extends Controller
                 $tiernumber = $get->tiernumber;
 
                 //payrollcalculations
-                $employerssnit = Vamedcalculations::ssnitforschedule($basicsalary,$category);
+                $employerssnit = Vamedcalculations::ssnitact($basicsalary,$category);
 
                 $payrolldata[] = [
                      'firstname'=>$firstname,'location'=>$location, 'lastname'=>$surname, 'othernames'=>$othernames,
@@ -114,7 +114,7 @@ class Ssnit extends Controller
             $tiernumber = $get->tiernumber;
 
             //payrollcalculations
-            $employerssnit = Vamedcalculations::ssnitforschedule($basicsalary,$category);
+            $employerssnit = Vamedcalculations::ssnitact($basicsalary,$category);
 
             $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $count);
             $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $surname);
