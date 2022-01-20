@@ -42,11 +42,15 @@ class Tier2 extends Controller
                 $staffid  = $get->staffid;
 
                 //payrollcalculations
-                $staffssnit = Vamedcalculations::tierssnit($basicsalary);
+                $staffssnit = Vamedcalculations::staffssnit($basicsalary,$category); 
+                $employerssnit  = Vamedcalculations::employerssnit($basicsalary,$category);
+                $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit,$category);
+                $secondtier = Vamedcalculations::secondtier($basicsalary, $category,$totalssnit); // 2022
 
+               
                 $payrolldata[] = [
                     'fullname'=>$fullname, 'location'=>$location,'position'=>$position, 'tiernumber'=>$tiernumber,
-                    'basicsalary'=>$basicsalary, 'ssnit'=>$staffssnit, 'staffid'=>$staffid
+                    'basicsalary'=>$basicsalary, 'ssnit'=>$secondtier, 'staffid'=>$staffid
                 ];
 
             }
@@ -102,9 +106,12 @@ class Tier2 extends Controller
         $staffid = $get->staffid;
         $ssnitnumber = $get->ssnitnumber;
         $location = $get->location;
-
+        $category = $get->category;
         //payrollcalculations
-        $staffssnit = Vamedcalculations::tierssnit($basicsalary);
+        $staffssnit = Vamedcalculations::staffssnit($basicsalary,$category); 
+        $employerssnit  = Vamedcalculations::employerssnit($basicsalary,$category);
+        $totalssnit =  Vamedcalculations::totalssnit($staffssnit, $employerssnit,$category);
+        $secondtier = Vamedcalculations::secondtier($basicsalary, $category,$totalssnit); // 2022
 
         $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $count);
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $fullname);
@@ -113,7 +120,7 @@ class Tier2 extends Controller
         $objPHPExcel->getActiveSheet()->setCellValue('E' . $i, $tiernumber );
         $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $ssnitnumber );
         $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $basicsalary);
-        $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, $staffssnit);
+        $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, $secondtier);
         $objPHPExcel->getActiveSheet()->setCellValue('I' . $i, $location);
         $i++;
        }
