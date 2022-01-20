@@ -44,7 +44,7 @@ class Ssnit extends Controller
                 $tiernumber = $get->tiernumber;
 
                 //payrollcalculations
-                $employerssnit = Vamedcalculations::ssnitforschedule($basicsalary);
+                $employerssnit = Vamedcalculations::ssnitforschedule($basicsalary,$category);
 
                 $payrolldata[] = [
                      'firstname'=>$firstname,'location'=>$location, 'lastname'=>$surname, 'othernames'=>$othernames,
