@@ -93,8 +93,7 @@ tr, td{
 
        <?php
         foreach($data['assetdata'] as $get):
-          $em = new Employee($get->employeeid);
-          $employeename  =   $em->recordObject->fullname;
+          $employeename  =   Employee::getEmployeesById($get->employeeid)->fullname;
        ?>
        <tr>
        <td><?php echo $employeename;  ?></td>
