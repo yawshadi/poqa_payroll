@@ -107,7 +107,7 @@ class Operations extends Controller{
            $this->view('operations/transferpromoview', $data);
          }
          if($status  == 'Assets'){
-          $listdata = Assets::ListAll();
+          $listdata = Assets::getEmployeeAsset();
           $data = ['status'=>$status, 'listdata'=>$listdata];
           $this->view('operations/assetsview', $data);
         }
@@ -416,7 +416,7 @@ class Operations extends Controller{
 
 
      public function assets($id=null){
-      $assetdata = Assets::ListAll();
+      $assetdata = Assets::getEmployeeAsset();
 
         if(isset($_POST['submitasset'])){
           $reportedby  = $_POST['reportedby'];

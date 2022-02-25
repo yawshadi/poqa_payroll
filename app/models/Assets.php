@@ -44,4 +44,11 @@ class Assets extends tableDataObject {
    $payrolldb->prepare($query);
    return  $payrolldb->singleRecord();
 }
+
+public static function getEmployeeAsset(){
+   global $payrolldb;
+   $query = "Select * from  assets join basicinformation on employeeid = basic_id";
+   $payrolldb->prepare($query);
+   return  $payrolldb->resultSet();
+}
 }
