@@ -4,7 +4,7 @@ class Operations extends Controller{
 
      public function index (){
 
-       $assetcount = Assets::getCount('All');
+       $assetcount = sizeof(Assets::getEmployeeAsset());
        $leavecount = Leave::getCount('All');
        $transfercount =  Transfer::getCount('All');
        $promotioncount =  Promotion::getCount('All');
